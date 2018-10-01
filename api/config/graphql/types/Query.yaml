@@ -1,0 +1,19 @@
+Query:
+  type: object
+  config:
+    fields:
+
+      User:
+        type: 'User'
+        resolve: "@=resolver('User', [args['id']])"
+        args:
+          id:
+            description: 'Resolve users by ID.'
+            type: 'Int!'
+
+      Users:
+        type: '[User]'
+        resolve: "@=resolver('Users')"
+
+      Offer:
+        type: 'Offer'

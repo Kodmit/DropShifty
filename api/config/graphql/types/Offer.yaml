@@ -1,0 +1,10 @@
+Offer:
+  type: object
+  config:
+    fields:
+      id:
+        type: 'Int!'
+      name:
+        type: 'String!'
+      astronauts:
+        type: '[User]'
