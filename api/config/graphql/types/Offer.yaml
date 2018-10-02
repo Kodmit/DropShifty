@@ -6,5 +6,15 @@ Offer:
         type: 'Int!'
       name:
         type: 'String!'
+      description:
+        type: 'String!'
+      price:
+        type: 'String!'
+      enabled:
+        type: 'String!'
+      wc_api_limit:
+        type: 'String'
+      wc_orders_limit:
+        type: 'String'
       users:
         type: '[User]'

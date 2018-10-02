@@ -3,6 +3,7 @@
 namespace App\Mutation;
 
 use App\Entity\Offer;
+use App\Service\CoreService;
 use Doctrine\ORM\EntityManagerInterface;
 use Overblog\GraphQLBundle\Definition\Resolver\AliasedInterface;
 use Overblog\GraphQLBundle\Definition\Resolver\MutationInterface;
@@ -16,16 +17,21 @@ final class UserMutation implements MutationInterface, AliasedInterface
     private $em;
     private $passwordEncoder;
     private $validator;
+    private $coreService;
 
-    public function __construct(EntityManagerInterface $em, UserPasswordEncoderInterface $passwordEncoder, ValidatorInterface $validator)
+    public function __construct(EntityManagerInterface $em, UserPasswordEncoderInterface $passwordEncoder, ValidatorInterface $validator, CoreService $coreService)
     {
         $this->em = $em;
         $this->passwordEncoder = $passwordEncoder;
         $this->validator = $validator;
+        $this->coreService = $coreService;
     }
 
     public function newUser($username, $password, $email)
     {
+        if(!$this->coreService->coolDown())
+            return ['content' => "wait 10 seconds"];
+
         $user = new User();
         $user->setUsername($username);
         $user->setEmail($email);

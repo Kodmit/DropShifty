@@ -15,5 +15,6 @@ Query:
         type: '[User]'
         resolve: "@=resolver('Users')"
 
-      Offer:
-        type: 'Offer'
+      Offers:
+        type: '[Offer]'
+        resolve: "@=resolver('Offers')"

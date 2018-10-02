@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Service\CoreService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,8 +34,11 @@ class CoreController extends AbstractController
     /**
      * @Route("/login", name="login", methods={"POST"})
      */
-    public function login(Request $request)
+    public function login(Request $request, CoreService $coreService)
     {
+        if(!$coreService->coolDown(5))
+            return new JsonResponse(["response" => "wait 5 seconds"]);
+
         if(!$this->checker->isGranted("IS_AUTHENTICATED_REMEMBERED")){
 
             $username = $request->get("username");
@@ -47,9 +51,7 @@ class CoreController extends AbstractController
 
                         $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
                         $this->get('security.token_storage')->setToken($token);
-
                         $this->get('session')->set('_security_main', serialize($token));
-
                         $event = new InteractiveLoginEvent($request, $token);
                         $this->eventDispatcher->dispatch("security.interactive_login", $event);
 
