@@ -14,7 +14,10 @@ Offer:
         type: 'String!'
       wc_api_limit:
         type: 'String'
+        description: "Api call limit per month"
       wc_orders_limit:
         type: 'String'
+        description: "Orders limit per month"
       users:
         type: '[User]'
+        description: "List of users who subscribed"

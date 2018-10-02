@@ -121,6 +121,11 @@ class User implements UserInterface, \Serializable
      */
     private $offer;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Country", inversedBy="user")
+     */
+    private $country;
+
     public function __construct()
     {
         $this->created_at = new \DateTime();
@@ -384,6 +389,18 @@ class User implements UserInterface, \Serializable
             // see section on salt below
             // $this->salt
             ) = unserialize($serialized, array('allowed_classes' => false));
+    }
+
+    public function getCountry(): ?Country
+    {
+        return $this->country;
+    }
+
+    public function setCountry(?Country $country): self
+    {
+        $this->country = $country;
+
+        return $this;
     }
 
 }

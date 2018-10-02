@@ -18,3 +18,7 @@ Query:
       Offers:
         type: '[Offer]'
         resolve: "@=resolver('Offers')"
+
+      Countries:
+        type: '[Country]'
+        resolve: "@=resolver('Countries')"
