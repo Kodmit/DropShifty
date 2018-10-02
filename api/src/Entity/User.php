@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -18,6 +20,12 @@ class User implements UserInterface, \Serializable
     private $id;
 
     /**
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 30,
+     *      minMessage = "Your username must be at least {{ limit }} characters long",
+     *      maxMessage = "Your username cannot be longer than {{ limit }} characters"
+     * )
      * @ORM\Column(type="string", length=150, unique=true)
      */
     private $username;
@@ -38,6 +46,10 @@ class User implements UserInterface, \Serializable
     private $lastname;
 
     /**
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true
+     * )
      * @ORM\Column(type="string", length=150, unique=true)
      */
     private $email;
@@ -61,6 +73,17 @@ class User implements UserInterface, \Serializable
      * @ORM\Column(type="text")
      */
     private $password;
+
+    /**
+     * @Assert\Length(
+     *      min = 8,
+     *      max = 200,
+     *      minMessage = "Your password must be at least {{ limit }} characters long",
+     *      maxMessage = "Your password cannot be longer than {{ limit }} characters"
+     * )
+     * DO NOT PERSIST
+    */
+    private $plainPassword;
 
     /**
      * @ORM\Column(type="datetime")
@@ -226,6 +249,22 @@ class User implements UserInterface, \Serializable
         $this->password = $password;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @param mixed $plainPassword
+     */
+    public function setPlainPassword($plainPassword): void
+    {
+        $this->plainPassword = $plainPassword;
     }
 
     public function getCreatedAt(): ?\DateTimeInterface

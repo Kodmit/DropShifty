@@ -13,6 +13,7 @@
         "symfony/orm-pack": "^1.0",
         "symfony/security-bundle": "*",
         "symfony/security-guard": "*",
+        "symfony/validator": "*",
         "symfony/web-server-bundle": "*",
         "symfony/yaml": "*"
     },
