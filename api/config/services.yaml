@@ -30,5 +30,9 @@ services:
         resource: '../src/Resolver'
         tags: ['overblog_graphql.resolver']
 
+    App\Mutation\:
+        resource: '../src/Mutation'
+        tags: ['overblog_graphql.mutation']
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

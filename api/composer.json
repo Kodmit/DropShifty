@@ -11,10 +11,13 @@
         "symfony/framework-bundle": "*",
         "symfony/maker-bundle": "^1.7",
         "symfony/orm-pack": "^1.0",
+        "symfony/security-bundle": "*",
+        "symfony/security-guard": "*",
         "symfony/web-server-bundle": "*",
         "symfony/yaml": "*"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.0",
         "overblog/graphiql-bundle": "^0.1.1",
         "symfony/dotenv": "*"
     },

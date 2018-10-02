@@ -1,0 +1,12 @@
+UserInput:
+  type: input-object
+  config:
+    fields:
+      username:
+        type: 'String!'
+      password:
+        type: 'String!'
+      email:
+        type: 'String!'
+      offerId:
+        type: 'String!'

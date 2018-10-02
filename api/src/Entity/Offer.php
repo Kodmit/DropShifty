@@ -66,6 +66,7 @@ class Offer
     public function __construct()
     {
         $this->user = new ArrayCollection();
+        $this->created_at = new \DateTime();
     }
 
     public function getId(): ?int

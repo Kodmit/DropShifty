@@ -6,5 +6,5 @@ Offer:
         type: 'Int!'
       name:
         type: 'String!'
-      astronauts:
+      users:
         type: '[User]'

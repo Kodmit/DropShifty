@@ -1,0 +1,18 @@
+MutationSuccess:
+  type: object
+  config:
+    fields:
+      content:
+        type: String!
+
+Mutation:
+  type: object
+  config:
+    fields:
+
+      NewUser:
+        type: MutationSuccess
+        resolve: "@=mutation('NewUser', [args['input']['username'], args['input']['password'], args['input']['email'], args['input']['offerId']])"
+        args:
+          input:
+            type: UserInput!

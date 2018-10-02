@@ -3,11 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User
+class User implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id()
@@ -17,9 +18,14 @@ class User
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=150)
+     * @ORM\Column(type="string", length=150, unique=true)
      */
     private $username;
+
+    /**
+     * @ORM\Column(type="string", unique=true)
+     */
+    private $apiKey;
 
     /**
      * @ORM\Column(type="string", length=150, nullable=true)
@@ -32,7 +38,7 @@ class User
     private $lastname;
 
     /**
-     * @ORM\Column(type="string", length=150)
+     * @ORM\Column(type="string", length=150, unique=true)
      */
     private $email;
 
@@ -55,11 +61,6 @@ class User
      * @ORM\Column(type="text")
      */
     private $password;
-
-    /**
-     * @ORM\Column(type="text")
-     */
-    private $salt;
 
     /**
      * @ORM\Column(type="datetime")
@@ -93,9 +94,15 @@ class User
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Offer", inversedBy="user")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $offer;
+
+    public function __construct()
+    {
+        $this->created_at = new \DateTime();
+        $this->enabled = true;
+    }
 
     public function getId(): ?int
     {
@@ -112,6 +119,22 @@ class User
         $this->username = $username;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getApiKey()
+    {
+        return $this->apiKey;
+    }
+
+    /**
+     * @param mixed $apiKey
+     */
+    public function setApiKey($apiKey): void
+    {
+        $this->apiKey = $apiKey;
     }
 
     public function getFirstname(): ?string
@@ -186,6 +209,13 @@ class User
         return $this;
     }
 
+    public function getSalt()
+    {
+        // you *may* need a real salt depending on your encoder
+        // see section on salt below
+        return null;
+    }
+
     public function getPassword(): ?string
     {
         return $this->password;
@@ -194,18 +224,6 @@ class User
     public function setPassword(string $password): self
     {
         $this->password = $password;
-
-        return $this;
-    }
-
-    public function getSalt(): ?string
-    {
-        return $this->salt;
-    }
-
-    public function setSalt(string $salt): self
-    {
-        $this->salt = $salt;
 
         return $this;
     }
@@ -293,4 +311,40 @@ class User
 
         return $this;
     }
+
+    public function getRoles()
+    {
+        return array('ROLE_USER');
+    }
+
+
+
+    public function eraseCredentials()
+    {
+    }
+
+    /** @see \Serializable::serialize() */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt,
+        ));
+    }
+
+    /** @see \Serializable::unserialize() */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt
+            ) = unserialize($serialized, array('allowed_classes' => false));
+    }
+
 }
