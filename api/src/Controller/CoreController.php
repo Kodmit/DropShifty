@@ -2,18 +2,65 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Security\TokenAuthenticator;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class CoreController extends AbstractController
 {
-    /**
-     * @Route("/core2", name="core")
-     */
-    public function index()
+
+    private $auth;
+    private $passwordEncoder;
+    private $checker;
+    private $eventDispatcher;
+
+    public function __construct(TokenAuthenticator $auth, UserPasswordEncoderInterface $passwordEncoder, AuthorizationCheckerInterface $checker, EventDispatcherInterface $eventDispatcher)
     {
-        return $this->render('core/index.html.twig', [
-            'controller_name' => 'CoreController',
-        ]);
+        $this->auth = $auth;
+        $this->passwordEncoder = $passwordEncoder;
+        $this->checker = $checker;
+        $this->eventDispatcher = $eventDispatcher;
+    }
+
+    /**
+     * @Route("/login", name="login", methods={"POST"})
+     */
+    public function login(Request $request)
+    {
+        if(!$this->checker->isGranted("IS_AUTHENTICATED_REMEMBERED")){
+
+            $username = $request->get("username");
+            $password = $request->get("password");
+
+            if($username && $password){
+                $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(["username" => $username]);
+                if($user){
+                    if($this->passwordEncoder->isPasswordValid($user, $password)){
+
+                        $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
+                        $this->get('security.token_storage')->setToken($token);
+
+                        $this->get('session')->set('_security_main', serialize($token));
+
+                        $event = new InteractiveLoginEvent($request, $token);
+                        $this->eventDispatcher->dispatch("security.interactive_login", $event);
+
+                        return new JsonResponse(["response" => "ok"]);
+                    }
+                    return new JsonResponse(["response" => "password incorrect"]);
+                }
+                return new JsonResponse(["response" => "invalid user"]);
+            }
+            return new JsonResponse(["response" => "invalid parameters"]);
+        }
+        return new JsonResponse(["response" => "already logged in"]);
     }
 }

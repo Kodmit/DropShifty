@@ -7,7 +7,7 @@ security:
         db:
             entity:
                 class: App\Entity\User
-                property: apiKey
+                property: username
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -17,9 +17,6 @@ security:
             http_basic: ~
             provider: db
             pattern: ^/
-            guard:
-                authenticators:
-                    - App\Security\TokenAuthenticator
             logout:
                 path:   /logout
                 target: /
@@ -35,5 +32,7 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        - { path: ^/core2, roles: ROLE_USER }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/logout, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        # - { path: ^/, roles: ROLE_USER }
         # - { path: ^/profile, roles: ROLE_USER }

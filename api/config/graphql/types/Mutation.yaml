@@ -12,7 +12,7 @@ Mutation:
 
       NewUser:
         type: MutationSuccess
-        resolve: "@=mutation('NewUser', [args['input']['username'], args['input']['password'], args['input']['email'], args['input']['offerId']])"
+        resolve: "@=mutation('NewUser', [args['input']['username'], args['input']['password'], args['input']['email']])"
         args:
           input:
             type: UserInput!
