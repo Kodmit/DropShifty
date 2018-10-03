@@ -7,9 +7,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\CountryRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ShopCategoryRepository")
  */
-class Country
+class ShopCategory
 {
     /**
      * @ORM\Id()
@@ -19,23 +19,17 @@ class Country
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=200)
+     * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="country")
-     */
-    private $user;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Shop", mappedBy="country")
+     * @ORM\OneToMany(targetEntity="App\Entity\Shop", mappedBy="category")
      */
     private $shops;
 
     public function __construct()
     {
-        $this->user = new ArrayCollection();
         $this->shops = new ArrayCollection();
     }
 
@@ -57,37 +51,6 @@ class Country
     }
 
     /**
-     * @return Collection|User[]
-     */
-    public function getUser(): Collection
-    {
-        return $this->user;
-    }
-
-    public function addUser(User $user): self
-    {
-        if (!$this->user->contains($user)) {
-            $this->user[] = $user;
-            $user->setCountry($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): self
-    {
-        if ($this->user->contains($user)) {
-            $this->user->removeElement($user);
-            // set the owning side to null (unless already changed)
-            if ($user->getCountry() === $this) {
-                $user->setCountry(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection|Shop[]
      */
     public function getShops(): Collection
@@ -99,7 +62,7 @@ class Country
     {
         if (!$this->shops->contains($shop)) {
             $this->shops[] = $shop;
-            $shop->setCountry($this);
+            $shop->setCategory($this);
         }
 
         return $this;
@@ -110,8 +73,8 @@ class Country
         if ($this->shops->contains($shop)) {
             $this->shops->removeElement($shop);
             // set the owning side to null (unless already changed)
-            if ($shop->getCountry() === $this) {
-                $shop->setCountry(null);
+            if ($shop->getCategory() === $this) {
+                $shop->setCategory(null);
             }
         }
 
