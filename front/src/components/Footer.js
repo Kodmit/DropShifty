@@ -3,9 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Footer = () => {
     return (
-        <div className="container">
+        <footer>
             <p>Footer</p>
-        </div>
+        </footer>
     );
 };
 

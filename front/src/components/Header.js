@@ -3,9 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Header = () => {
     return (
-        <div className="container">
+        <header>
             <p>Header</p>
-        </div>
+        </header>
     );
 };
 
