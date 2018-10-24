@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
 @import "./components/variables.scss";
 
 body {
+  font-family: 'Raleway', sans-serif;
   margin: 0;
   padding: 0;
 }
+
 
 header {
   grid-area: header;
@@ -24,7 +27,7 @@ footer {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 100px 1fr 1fr;
+  grid-template-columns: 220px 1fr 1fr;
   grid-template-areas:
     'header header header '
     'menu main main ';
@@ -38,8 +41,38 @@ footer {
 }
 
 .navbar-side {
+  color: #FFF;
   grid-area: menu;
-  width: 75px;
+  width: 195px;
+  background-color: $color-nav;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .row {
+    margin-left: 5px;
+  }
+
+  a {
+    text-decoration: none;
+    color: #FFF;
+    font-size: 15px;
+  }
+  a:hover {
+    color: #33d5db;
+    text-decoration: none;
+    transition: 0.3s;
+    opacity: 0.9;
+  }
+  .icons-nav {
+    width: 25px;
+  }
+}
+
+/*
+.navbar-side {
+  grid-area: menu;
+  width: 100px;
   background-color: $color-nav;
   height: 100vh;
   display: flex;
@@ -62,4 +95,4 @@ footer {
       }
     }
   } 
-}
+} */
