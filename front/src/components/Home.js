@@ -1,16 +1,16 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './Header';
-import Footer from './Footer';
+import NavbarSide from './navbar-side';
 
 const Home = () => {
     return (
         <div>
             <Header/>
-                <div class="container">
-                    <p>Body homepage</p>
-                </div>
-            <Footer/>
+            <NavbarSide/>
+            <div class="container">
+                <p>Body homepage</p>
+            </div>
         </div>
     );
 };
