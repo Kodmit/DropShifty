@@ -1,0 +1,32 @@
+ShopInput:
+  type: input-object
+  config:
+    fields:
+      name:
+        type: 'String!'
+      description:
+        type: 'String'
+      categoryId:
+        type: 'Int!'
+      countryId:
+        type: 'Int!'
+      city:
+        type: 'String'
+      postalCode:
+        type: 'Int'
+      addressLine1:
+        type: 'String'
+      addressLine2:
+        type: 'String'
+      picturePath:
+        type: 'String'
+      url:
+        type: 'String!'
+      wcApiUrl:
+        type: 'String!'
+      wcApiKey:
+        type: 'String!'
+      wcUser:
+        type: 'String!'
+      wcPassword:
+        type: 'String!'

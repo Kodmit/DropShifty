@@ -22,3 +22,19 @@ Query:
       Countries:
         type: '[Country]'
         resolve: "@=resolver('Countries')"
+
+      ShopCategories:
+        type: '[ShopCategory]'
+        resolve: "@=resolver('ShopCategories')"
+
+      Shops:
+        type: '[Shops]'
+        resolve: "@=resolver('Shops')"
+
+      CheckIfHaveShop:
+        type: 'Boolean'
+        resolve: "@=resolver('CheckIfHaveShop')"
+
+      CheckIfConnected:
+        type: 'Boolean'
+        resolve: "@=resolver('CheckIfConnected')"

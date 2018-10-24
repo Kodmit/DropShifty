@@ -8,7 +8,7 @@ use Overblog\GraphQLBundle\Definition\Resolver\ResolverInterface;
 
 
 /**
- * Class UserResolver
+ * Class OfferResolver
  * @package App\Resolver
  */
 final class OfferResolver implements ResolverInterface, AliasedInterface

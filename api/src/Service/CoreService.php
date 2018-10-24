@@ -3,8 +3,17 @@
 namespace App\Service;
 
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\Security\Core\Security;
 
 class CoreService{
+
+    private $security;
+
+    public function __construct(Security $security)
+    {
+        $this->security = $security;
+    }
 
     public function coolDown($time = 10){
         $session = new Session();
@@ -20,4 +29,11 @@ class CoreService{
         $session->set("coolDown", time());
         return true;
     }
+
+    public function ConnectionNeeded(){
+        if(!$this->security->getUser())
+            throw new AccessDeniedException("You need to be connected");
+        return true;
+    }
+
 }
