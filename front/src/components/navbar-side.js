@@ -5,10 +5,10 @@ const NavbarSide = () => {
     return (
         <nav className="navbar-side">
             <ul className="">
-                <li><img src="images/icons/line-chart.svg"></img></li>
-                <li><img src="images/icons/smartphone.svg"></img></li>
-                <li><img src="images/icons/shopping-bag.svg"></img></li>
-                <li><img src="images/icons/notifications-button.svg"></img></li>
+                <li><a href="#"><img src="images/icons/line-chart.svg"></img></a></li>
+                <li><a href="#"><img src="images/icons/smartphone.svg"></img></a></li>
+                <li><a href="#"><img src="images/icons/shopping-bag.svg"></img></a></li>
+                <li><a href="#"><img src="images/icons/notifications-button.svg"></img></a></li>
             </ul>
         </nav>
     );

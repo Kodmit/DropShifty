@@ -17,17 +17,34 @@ footer {
   height: 150px;
 }
 
+.logo {
+  margin-left: 20px;
+  margin-top: 5px;
+  width: 55px;
+}
+
 .navbar-side {
-  width: 100px;
+  width: 85px;
   background-color: $color-nav;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
   ul {
-    margin-left: -10px;
-  }
-  ul li {
-    list-style-type: none;
-  }
-  ul li img {
-    width: 45px;
-  }
+    margin-top: 20px;
+    margin-left: -60px;
+    li {
+      list-style-type: none;
+      img {
+        width: 40px;
+        margin: 20px;
+      }
+      img:hover {
+        transition: 0.3s;
+        opacity: 0.9;
+      }
+      a {
+        margin: 20px;
+      }
+    }
+  } 
 }
