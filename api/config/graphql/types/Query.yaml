@@ -38,3 +38,11 @@ Query:
       CheckIfConnected:
         type: 'Boolean'
         resolve: "@=resolver('CheckIfConnected')"
+
+      CheckIfWCApiFilled:
+        type: 'Boolean'
+        resolve: "@=resolver('CheckIfWCApiFilled')"
+
+      GenWcLink:
+        type: 'String'
+        resolve: "@=resolver('GenWcLink')"

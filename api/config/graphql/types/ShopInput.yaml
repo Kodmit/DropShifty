@@ -24,9 +24,3 @@ ShopInput:
         type: 'String!'
       wcApiUrl:
         type: 'String!'
-      wcApiKey:
-        type: 'String!'
-      wcUser:
-        type: 'String!'
-      wcPassword:
-        type: 'String!'

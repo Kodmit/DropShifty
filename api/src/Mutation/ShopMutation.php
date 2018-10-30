@@ -2,6 +2,7 @@
 
 namespace App\Mutation;
 
+use App\ApiService\WoocommerceApi;
 use App\Entity\Country;
 use App\Entity\Shop;
 use App\Entity\ShopCategory;
@@ -16,15 +17,17 @@ final class ShopMutation implements MutationInterface, AliasedInterface
     private $em;
     private $coreService;
     private $tokenStorage;
+    private $woocommerceApi;
 
-    public function __construct(EntityManagerInterface $em, CoreService $coreService, TokenStorageInterface $tokenStorage)
+    public function __construct(EntityManagerInterface $em, CoreService $coreService, TokenStorageInterface $tokenStorage, WoocommerceApi $woocommerceApi)
     {
         $this->em = $em;
         $this->coreService = $coreService;
         $this->tokenStorage = $tokenStorage;
+        $this->woocommerceApi = $woocommerceApi;
     }
 
-    public function newShop($name, $categoryId, $countryId, $city, $url, $wcApiUrl, $wcApiKey, $wcUser, $wcPassword, $description = null, $postalCode = null, $addressLine1 = null, $addressLine2 = null, $picturePath = null)
+    public function newShop($name, $categoryId, $countryId, $city, $url, $wcApiUrl, $description = null, $postalCode = null, $addressLine1 = null, $addressLine2 = null, $picturePath = null)
     {
         if(!$this->coreService->coolDown())
             return ['content' => "wait 10 seconds"];
@@ -52,14 +55,13 @@ final class ShopMutation implements MutationInterface, AliasedInterface
         $shop->setPicturePath($picturePath);
         $shop->setUrl($url);
         $shop->setWcApiUrl($wcApiUrl);
-        $shop->setWcApiKey($wcApiKey);
-        $shop->setWcUser($wcUser);
-        $shop->setWcPassword($wcPassword);
 
         $this->em->persist($shop);
         $this->em->flush();
 
-        return ['content' => "ok"];
+        return [
+            "content" => $this->woocommerceApi->buildLink($shop->getWcApiUrl())
+        ];
     }
 
     /**
