@@ -36,6 +36,7 @@ final class UserMutation implements MutationInterface, AliasedInterface
         $user->setUsername($username);
         $user->setEmail($email);
         $user->setPlainPassword($password);
+        $user->setKey($this->coreService->genHash());
 
         $errors = $this->validator->validate($user);
 

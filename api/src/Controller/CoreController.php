@@ -14,6 +14,7 @@ use App\Security\TokenAuthenticator;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
@@ -24,13 +25,15 @@ class CoreController extends Controller
     private $passwordEncoder;
     private $checker;
     private $eventDispatcher;
+    private $coreService;
 
-    public function __construct(TokenAuthenticator $auth, UserPasswordEncoderInterface $passwordEncoder, AuthorizationCheckerInterface $checker, EventDispatcherInterface $eventDispatcher)
+    public function __construct(TokenAuthenticator $auth, UserPasswordEncoderInterface $passwordEncoder, AuthorizationCheckerInterface $checker, EventDispatcherInterface $eventDispatcher, CoreService $coreService)
     {
         $this->auth = $auth;
         $this->passwordEncoder = $passwordEncoder;
         $this->checker = $checker;
         $this->eventDispatcher = $eventDispatcher;
+        $this->coreService = $coreService;
     }
 
     /**
@@ -88,26 +91,31 @@ class CoreController extends Controller
         $data = file_get_contents('php://input');
         $arr = json_decode($data, true);
 
-        $shop = $this->getDoctrine()->getRepository(Shop::class)->findOneBy($this->getUser());
-        $shop->setWcUser($arr['user_id']);
-        $shop->setWcApiKey($arr["consumer_key"]);
-        $shop->setWcPassword($arr["consumer_secret"]);
-
-        $this->getDoctrine()->getManager()->persist($shop);
-
         // For debug
-        //file_put_contents("../dump.html", $arr["consumer_key"]);
+        file_put_contents("../dump.html", $this->coreService->findUserByKey($arr['user_id']));
+        dump($data);
 
+        if($user = $this->coreService->findUserByKey($arr['user_id'])){
+            $shop = $this->getDoctrine()->getRepository(Shop::class)->findOneBy(["owner" => $user]);
+            $shop->setWcUser($arr['user_id']);
+            $shop->setWcApiKey($arr["consumer_key"]);
+            $shop->setWcPassword($arr["consumer_secret"]);
+            $this->getDoctrine()->getManager()->flush();
+            return true;
+        }
+        throw new AccessDeniedException("Key invalid");
     }
 
     /**
-     * @Route("/check_wc", name="save_wc", methods={"POST"})
+     * @Route("/check_wc", name="check_wc", methods={"GET"})
      */
     public function checkWcApi(){
-        $shop = $this->getDoctrine()->getRepository(Shop::class)->findOneBy($this->getUser());
+        $shop = $this->getDoctrine()->getRepository(Shop::class)->findOneBy(["owner" => $this->getUser()]);
+
         if(!$shop->getWcApiKey())
             return $this->redirect(""); // todo : Redirection url if fail
         return $this->redirect(""); // todo : Redirection url if success
+
     }
 
 }
