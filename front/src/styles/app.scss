@@ -38,6 +38,10 @@ footer {
   margin-left: 20px;
   margin-top: 8px;
   width: 45px;
+  &:hover {
+    transition: 0.3s;
+    opacity: 0.9;
+  }
 }
 
 .navbar-side {

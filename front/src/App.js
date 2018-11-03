@@ -5,6 +5,11 @@ import Header from './components/includes/Header';
 import NavbarSide from './components/includes/NavbarSide';
 import Dashboard from './components/Dashboard';
 import Orders from './components/Orders';
+import ImportProducts from './components/ImportProducts';
+import ImportedProducts from './components/ImportedProducts';
+import MyProducts from './components/MyProducts';
+import Notifications from './components/Notifications';
+import Parameters from './components/Parameters';
 import {Route, BrowserRouter} from "react-router-dom";
 
 class App extends Component {
@@ -17,6 +22,11 @@ class App extends Component {
                 <NavbarSide/>
                 <Route path="/" component={Dashboard} exact/>
                 <Route path="/orders" component={Orders}/>
+                <Route path="/import" component={ImportProducts}/>
+                <Route path="/imported" component={ImportedProducts}/>
+                <Route path="/products" component={MyProducts}/>
+                <Route path="/notifications" component={Notifications}/>
+                <Route path="/parameters" component={Parameters}/>
             </div>
       
         </div>

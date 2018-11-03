@@ -1,18 +1,15 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from './includes/Header';
-import NavbarSide from './includes/NavbarSide';
-import Dashboard from './Dashboard';
 
-const Home = () => {
+const Dashboard = () => {
     return (
         <div>
-            <div className="container">
+            <div className="container mt-3">
                 <p>Dashboard view</p>   
             </div> 
         </div>
     );
 };
 
-export default Home;
+export default Dashboard;
 
