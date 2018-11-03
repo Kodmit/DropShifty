@@ -10,7 +10,7 @@ const NavbarSide = () => {
                     <img className="icons-nav" src="images/icons/line-chart.svg"></img>
                 </div>
                 <div className="col-sm-10">
-                    <a href="">Dashboard</a>
+                    <a href="/">Dashboard</a>
                 </div>
             </div>
 
@@ -19,7 +19,7 @@ const NavbarSide = () => {
                     <img className="icons-nav" src="images/icons/smartphone.svg"></img>
                 </div>
                 <div className="col-sm-10">
-                    <a href="">Commandes</a>
+                    <a href="/orders">Commandes</a>
                 </div>
             </div>
 

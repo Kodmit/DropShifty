@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/app.scss';
-import Home from './components/Home';
-import Contact from './components/Contact';
+import Header from './components/includes/Header';
+import NavbarSide from './components/includes/NavbarSide';
+import Dashboard from './components/Dashboard';
+import Orders from './components/Orders';
 import {Route, BrowserRouter} from "react-router-dom";
 
 class App extends Component {
@@ -10,8 +12,13 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-            <Route path="/" component={Home} exact/>
-            <Route path="/contact" component={Contact}/>
+            <div className="grid-container">
+                <Header/>
+                <NavbarSide/>
+                <Route path="/" component={Dashboard} exact/>
+                <Route path="/orders" component={Orders}/>
+            </div>
+      
         </div>
       </BrowserRouter>
     );
