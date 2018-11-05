@@ -31,7 +31,7 @@ footer {
   grid-template-areas:
     'header header'
     'menu main';
-  background-color: #e0e0e0;
+  background-color: $background;
 }
 
 .logo {
@@ -75,4 +75,10 @@ footer {
 
 .active {
   color: red;
+}
+
+.separator {
+  background-color: $background;
+  width: 100%;
+  height: 3px;
 }
