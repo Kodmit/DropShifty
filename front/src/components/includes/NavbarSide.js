@@ -11,7 +11,7 @@ const NavbarSide = () => {
                     <img className="icons-nav" src="images/icons/line-chart.svg" alt="graph"></img>
                 </div>
                 <div className="col-sm-10">
-                    <Link to={"/"}>Dashboard</Link>
+                    <Link to={"/"} activeClassName="active">Dashboard</Link>
                 </div>
             </div>
 
@@ -20,7 +20,7 @@ const NavbarSide = () => {
                     <img className="icons-nav" src="images/icons/smartphone.svg" alt="smartphone"></img>
                 </div>
                 <div className="col-sm-10">
-                    <Link to={"/orders"}>Commandes</Link>
+                    <Link to={"/orders"} activeClassName="active">Commandes</Link>
                 </div>
             </div>
 
@@ -29,15 +29,15 @@ const NavbarSide = () => {
                     <img className="icons-nav" src="images/icons/shopping-bag.svg" alt="shopping"></img>
                 </div>
                 <div className="col-sm-10">
-                    <Link to={"/import"}>Importer produit</Link>
+                    <Link to={"/import"} activeClassName="active">Importer produit</Link>
                 </div>
                 <div className="col-sm-2"></div>
                 <div className="col-sm-10">
-                    <Link to={"/imported"}>Produits importés</Link>
+                    <Link to={"/imported"} activeClassName="active">Produits importés</Link>
                 </div>
                 <div className="col-sm-2"></div>
                 <div className="col-sm-10">
-                    <Link to={"/products"}>Mes produits</Link>
+                    <Link to={"/products"} activeClassName="active">Mes produits</Link>
                 </div>
             </div>
 
@@ -46,7 +46,7 @@ const NavbarSide = () => {
                     <img className="icons-nav" src="images/icons/notification.svg" alt="notifications"></img>
                 </div>
                 <div className="col-sm-10">
-                    <Link to={"/notifications"}>Notifications</Link>
+                    <Link to={"/notifications"} activeClassName="active">Notifications</Link>
                 </div>
             </div>
 
@@ -64,7 +64,7 @@ const NavbarSide = () => {
                     <img className="icons-nav" src="images/icons/settings.svg" alt="parametres"></img>
                 </div>
                 <div className="col-sm-10">
-                    <Link to={"/parameters"}>Parametres</Link>
+                    <Link to={"/parameters"} activeClassName="active">Parametres</Link>
                 </div>
             </div>
 
