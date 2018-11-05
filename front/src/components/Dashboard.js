@@ -17,23 +17,23 @@ const Dashboard = () => {
                     </div>
                     <div className="col-sm-4">
                         <div className="overview">
-                            <p className="p-2">Vue d'ensemble</p>
+                            <p className="p-2 bold">Vue d'ensemble</p>
 
                             <div className="separator"></div>
 
                             <div className="container">
                                 <div className="row">
                                     <div className="col-sm-2">
-                                        <p>Ventes</p>
+                                        <p className="bold">Ventes</p>
                                     </div>
-                                    <div className="col-sm-8"></div>
-                                    <div className="col-sm-2">
-                                        <p>19.90 EUR</p>
+                                    <div className="col-sm-6"></div>
+                                    <div className="col-sm-4">
+                                        <p className="bold">19.90 EUR</p>
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className="col-sm-2">
-                                        <p>Commandes</p>
+                                        <p className="bold">Commandes</p>
                                     </div>
                                     <div className="col-sm-8"></div>
                                     <div className="col-sm-2">
