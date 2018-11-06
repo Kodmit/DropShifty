@@ -52,6 +52,34 @@ const Dashboard = () => {
 
                 <h3>Produits les mieux vendus</h3>  
                 
+                <div className="container selling-products mt-4">
+                    <div className="row mt-3 p-3">
+                        <div className="col-sm-8">
+                            <p>Bracelet argent</p>
+                        </div>
+                        <div className="col-sm-2">
+                            <p>2 achats</p>
+                        </div>
+                        <div className="col-sm-2">
+                            <p>34,90 EUR</p>
+                        </div>
+                    </div>
+
+                    <div className="separator"></div>
+
+                    <div className="row p-3">
+                        <div className="col-sm-8">
+                            <p>Bracelet acier</p>
+                        </div>
+                        <div className="col-sm-2">
+                            <p>3 achats</p>
+                        </div>
+                        <div className="col-sm-2">
+                            <p>32,90 EUR</p>
+                        </div>
+                    </div>
+                </div>
+
             </div> 
         </div>
     );
