@@ -1,6 +1,8 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/dashboad.scss';
+import '../styles/app.scss';
+import Chart from './includes/Chart';
 
 const Dashboard = () => {
     return (
@@ -13,6 +15,7 @@ const Dashboard = () => {
                 <div className="row">
                     <div className="col-sm-8">
                         <div className="graph-sales">
+                            <Chart />
                         </div>  
                     </div>
                     <div className="col-sm-4">
@@ -21,7 +24,7 @@ const Dashboard = () => {
 
                             <div className="separator"></div>
 
-                            <div className="container">
+                            <div className="container mt-2">
                                 <div className="row">
                                     <div className="col-sm-2">
                                         <p className="bold">Ventes</p>
@@ -37,14 +40,38 @@ const Dashboard = () => {
                                     </div>
                                     <div className="col-sm-8"></div>
                                     <div className="col-sm-2">
-                                        <p>3</p>
+                                        <p className="bold">3</p>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="separator"></div>
 
-                            <div className></div>
+                            <div className="container mt-2">
+                                <div className="row">
+                                    <div className="col-sm-2">
+                                        <p className="bold">Coûts</p>
+                                    </div>
+                                    <div className="col-sm-6"></div>
+                                    <div className="col-sm-4">
+                                        <p className="bold">4,20 EUR</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="separator"></div>
+
+                            <div className="container mt-4">
+                                <div className="row">
+                                    <div className="col-sm-2">
+                                        <p className="bold">Gains</p>
+                                    </div>
+                                    <div className="col-sm-6"></div>
+                                    <div className="col-sm-4">
+                                        <p className="bold">24,20 EUR</p>
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
