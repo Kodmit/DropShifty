@@ -6,7 +6,7 @@ import Chart from './includes/Chart';
 
 const Dashboard = () => {
     return (
-        <div>
+        <div className="main">
             <div className="container mt-4">
                 <h3>Total des ventes</h3>  
 

@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ImportedProducts = () => {
     return (
-        <div>
+        <div className="main">
             <div className="container mt-3">
                 <p>Imported Products View</p>   
             </div> 

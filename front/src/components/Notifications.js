@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Notifications = () => {
     return (
-        <div>
+        <div className="main">
             <div className="container mt-3">
                 <p>Notifications Views</p>   
             </div>

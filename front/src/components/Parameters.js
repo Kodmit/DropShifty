@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Parameters = () => {
     return (
-        <div>
+        <div className="main">
             <div className="container mt-3">
                 <p>Parameters Views</p>   
             </div>
