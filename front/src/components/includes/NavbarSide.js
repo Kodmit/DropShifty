@@ -1,8 +1,11 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 const NavbarSide = () => {
+    const isActive = (path, match, location) => !!(match || path === location.pathname);
+
     return (
         <nav className="navbar-side">
 
@@ -11,7 +14,7 @@ const NavbarSide = () => {
                     <img className="icons-nav" src="images/icons/line-chart.svg" alt="graph"></img>
                 </div>
                 <div className="col-sm-10">
-                    <Link to={"/"} activeClassName="active">Dashboard</Link>
+                    <NavLink to={"/"} exact activeStyle={{color: "#33d5db"}}>Dashboard</NavLink>
                 </div>
             </div>
 
@@ -20,7 +23,7 @@ const NavbarSide = () => {
                     <img className="icons-nav" src="images/icons/smartphone.svg" alt="smartphone"></img>
                 </div>
                 <div className="col-sm-10">
-                    <Link to={"/orders"} activeClassName="active">Commandes</Link>
+                    <NavLink to={"/orders"} exact activeStyle={{color: "#33d5db"}}>Commandes</NavLink>
                 </div>
             </div>
 
@@ -29,15 +32,15 @@ const NavbarSide = () => {
                     <img className="icons-nav" src="images/icons/shopping-bag.svg" alt="shopping"></img>
                 </div>
                 <div className="col-sm-10">
-                    <Link to={"/import"} activeClassName="active">Importer produit</Link>
+                    <NavLink to={"/import"} exact activeStyle={{color: "#33d5db"}}>Importer produit</NavLink>
                 </div>
                 <div className="col-sm-2"></div>
                 <div className="col-sm-10">
-                    <Link to={"/imported"} activeClassName="active">Produits importés</Link>
+                    <NavLink to={"/imported"} exact activeStyle={{color: "#33d5db"}}>Produits importés</NavLink>
                 </div>
                 <div className="col-sm-2"></div>
                 <div className="col-sm-10">
-                    <Link to={"/products"} activeClassName="active">Mes produits</Link>
+                    <NavLink to={"/products"} exact activeStyle={{color: "#33d5db"}}>Mes produits</NavLink>
                 </div>
             </div>
 
@@ -46,7 +49,7 @@ const NavbarSide = () => {
                     <img className="icons-nav" src="images/icons/notification.svg" alt="notifications"></img>
                 </div>
                 <div className="col-sm-10">
-                    <Link to={"/notifications"} activeClassName="active">Notifications</Link>
+                    <NavLink to={"/notifications"} exact activeStyle={{color: "#33d5db"}}>Notifications</NavLink>
                 </div>
             </div>
 
@@ -55,7 +58,7 @@ const NavbarSide = () => {
                     <img className="icons-nav" src="images/icons/web.svg" alt="web"></img>
                 </div>
                 <div className="col-sm-10">
-                    <Link to={""}>My website</Link>
+                    <NavLink to={""}>My website</NavLink>
                 </div>
             </div>
 
@@ -64,7 +67,7 @@ const NavbarSide = () => {
                     <img className="icons-nav" src="images/icons/settings.svg" alt="parametres"></img>
                 </div>
                 <div className="col-sm-10">
-                    <Link to={"/parameters"} activeClassName="active">Parametres</Link>
+                    <NavLink to={"/parameters"} exact activeStyle={{color: "#33d5db"}}>Parametres</NavLink>
                 </div>
             </div>
 
