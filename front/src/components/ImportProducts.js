@@ -13,7 +13,7 @@ const ImportProducts = () => {
                     <div className="form-group">
                         <label htmlFor="url-product-import">Entrer l'url de votre produit à importer</label>
                         <input type="text" className="_form-control" id="url-product-import" placeholder="Url de votre produit" />
-                        <input type="submit" value="Submit" />
+                        <input className="btn-submit mt-3" type="submit" value="Importer" />
                     </div>
                 </form>
             </div> 
