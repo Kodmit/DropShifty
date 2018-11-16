@@ -1,10 +1,8 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Link} from 'react-router-dom';
 import {NavLink} from 'react-router-dom';
 
 const NavbarSide = () => {
-    const isActive = (path, match, location) => !!(match || path === location.pathname);
 
     return (
         <nav className="navbar-side">
