@@ -24,6 +24,11 @@ const ImportProducts = () => {
                         </div>
                         <div className="col-8 p-4">
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet atque blanditiis consequatur debitis dolorum est eum harum, in minus necessitatibus odio officia quia, repellat repellendus suscipit ut vel voluptate?</p>
+                            <div className="actions-container">
+                                <i className="far fa-eye"></i>
+                                <i className="fas fa-edit ml-3"></i>
+                                <i className="fas fa-trash-alt ml-3"></i>
+                            </div>
                         </div>
                     </div>
                 </div>

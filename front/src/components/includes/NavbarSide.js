@@ -7,7 +7,7 @@ const NavbarSide = () => {
     return (
         <nav className="navbar-side">
 
-            <div className="row  mt-2">
+            <div className="row navbar-content">
                 <div className="col-sm-2">
                     <img className="icons-nav" src="images/icons/line-chart.svg" alt="graph"></img>
                 </div>
@@ -56,7 +56,7 @@ const NavbarSide = () => {
                     <img className="icons-nav" src="images/icons/web.svg" alt="web"></img>
                 </div>
                 <div className="col-sm-10">
-                    <NavLink to={""}>My website</NavLink>
+                    <a href="https://www.amazon.fr/">My website</a>
                 </div>
             </div>
 
