@@ -18,10 +18,10 @@ const ImportedProducts = () => {
                             <div className="col-8 p-4">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet atque blanditiis consequatur debitis dolorum est eum harum, in minus necessitatibus odio officia quia, repellat repellendus suscipit ut vel voluptate?</p>
 
-                                <div className="actions-container">
-                                    <i className="far fa-eye"></i>
-                                    <i className="fas fa-edit ml-3"></i>
-                                    <i className="fas fa-trash-alt ml-3"></i>
+                                <div className="actions-container d-flex">
+                                    <button className="btn-submit"><i className="fas fa-eye"></i></button>
+                                    <button className="btn-submit ml-2"><i className="fas fa-edit"></i></button>
+                                    <button className="btn-submit ml-2"><i className="far fa-trash-alt"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -37,10 +37,10 @@ const ImportedProducts = () => {
                             <div className="col-8 p-4">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet atque blanditiis consequatur debitis dolorum est eum harum, in minus necessitatibus odio officia quia, repellat repellendus suscipit ut vel voluptate?</p>
 
-                                <div className="actions-container">
-                                    <i className="far fa-eye"></i>
-                                    <i className="fas fa-edit ml-3"></i>
-                                    <i className="fas fa-trash-alt ml-3"></i>
+                                <div className="actions-container d-flex">
+                                    <button className="btn-submit"><i className="fas fa-eye"></i></button>
+                                    <button className="btn-submit ml-2"><i className="fas fa-edit"></i></button>
+                                    <button className="btn-submit ml-2"><i className="far fa-trash-alt"></i></button>
                                 </div>
                             </div>
                         </div>

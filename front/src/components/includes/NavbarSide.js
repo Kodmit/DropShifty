@@ -56,7 +56,7 @@ const NavbarSide = () => {
                     <img className="icons-nav" src="images/icons/web.svg" alt="web"></img>
                 </div>
                 <div className="col-sm-10">
-                    <a href="https://www.amazon.fr/">My website</a>
+                    <a href="#">My website</a>
                 </div>
             </div>
 
