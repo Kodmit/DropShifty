@@ -20,7 +20,7 @@ const ImportProducts = () => {
                 <div className="box-product-import mt-5">
                     <div className="row">
                         <div className="col-4">
-                            <img className="product-import" src="/images/products/mug-licorne.jpg" alt="mug licorne" />
+                            <img className="product-import" src="/images/products/iphonex.jpg" alt="mug licorne" />
                         </div>
                         <div className="col-8 p-4">
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet atque blanditiis consequatur debitis dolorum est eum harum, in minus necessitatibus odio officia quia, repellat repellendus suscipit ut vel voluptate?</p>

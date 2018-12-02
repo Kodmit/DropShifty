@@ -1,12 +1,53 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/importedProducts.scss';
+import '../styles/app.scss';
 
 const MyProducts = () => {
     return (
         <div className="main">
-            <div className="container mt-3">
-                <p>My Products View</p>   
-            </div> 
+            <div className="container mt-4">
+                <h3>Mes produits</h3>
+
+                <div className="content-import">
+                    <div className="box-product-import mt-5">
+                        <div className="row">
+                            <div className="col-4">
+                                <img className="product-import" src="/images/products/iphonex.jpg" alt="mug licorne" />
+                            </div>
+                            <div className="col-8 p-4">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet atque blanditiis consequatur debitis dolorum est eum harum, in minus necessitatibus odio officia quia, repellat repellendus suscipit ut vel voluptate?</p>
+
+                                <div className="actions-container">
+                                    <i className="far fa-eye"></i>
+                                    <i className="fas fa-edit ml-3"></i>
+                                    <i className="fas fa-trash-alt ml-3"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="content-import">
+                    <div className="box-product-import mt-5">
+                        <div className="row">
+                            <div className="col-4">
+                                <img className="product-import" src="/images/products/iphonex.jpg" alt="mug licorne" />
+                            </div>
+                            <div className="col-8 p-4">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet atque blanditiis consequatur debitis dolorum est eum harum, in minus necessitatibus odio officia quia, repellat repellendus suscipit ut vel voluptate?</p>
+
+                                <div className="actions-container">
+                                    <i className="far fa-eye"></i>
+                                    <i className="fas fa-edit ml-3"></i>
+                                    <i className="fas fa-trash-alt ml-3"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     );
 };
