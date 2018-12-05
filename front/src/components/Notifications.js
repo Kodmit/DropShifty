@@ -2,7 +2,6 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/notifications.scss';
 import '../styles/app.scss';
-import './includes/app';
 
 const Notifications = () => {
     return (

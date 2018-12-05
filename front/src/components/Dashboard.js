@@ -2,6 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/dashboad.scss';
 import '../styles/app.scss';
+
 import Chart from './includes/Chart';
 
 const Dashboard = () => {

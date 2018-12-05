@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/app.scss';
+import '../src/components/includes/app';
 import Header from './components/includes/Header';
 import NavbarSide from './components/includes/NavbarSide';
 import Dashboard from './components/Dashboard';
