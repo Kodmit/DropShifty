@@ -11,6 +11,7 @@ import ImportedProducts from './components/ImportedProducts';
 import MyProducts from './components/MyProducts';
 import Notifications from './components/Notifications';
 import Parameters from './components/Parameters';
+import Login from './components/Login';
 import {Route, BrowserRouter} from "react-router-dom";
 
 class App extends Component {
@@ -28,6 +29,7 @@ class App extends Component {
                 <Route path="/products" component={MyProducts}/>
                 <Route path="/notifications" component={Notifications}/>
                 <Route path="/parameters" component={Parameters}/>
+                <Route path="/login" component={Login}/>
             </div>
       
         </div>
