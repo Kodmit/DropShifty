@@ -2,22 +2,21 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/login.scss';
 import '../styles/app.scss';
+import { ApolloProvider } from 'react-apollo';
+import ApolloClient from 'apollo-boost';
+
+const client = new ApolloClient({
+    uri: "https://qkv3mq9rp.lp.gql.zone/graphql"
+});
 
 const Login = () => {
     return (
         <div className="main">
-
-            <form className="login-form">
-                <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Email address</label>
-                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+            <ApolloProvider client={client}>
+                <div className="container">
+                    <h2>My first Apollo app</h2>
                 </div>
-                <div className="form-group">
-                    <label htmlFor="exampleInputPassword1">Password</label>
-                    <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
-                </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
+            </ApolloProvider>
         </div>
     );
 };
