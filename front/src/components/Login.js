@@ -1,24 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/login.scss';
-import '../styles/app.scss';
-import { ApolloProvider } from 'react-apollo';
-import ApolloClient from 'apollo-boost';
+import UserForm from './UserForm';
 
-const client = new ApolloClient({
-    uri: "https://qkv3mq9rp.lp.gql.zone/graphql"
-});
-
-const Login = () => {
-    return (
-        <div className="main">
-            <ApolloProvider client={client}>
-                <div className="container">
-                    <h2>My first Apollo app</h2>
-                </div>
-            </ApolloProvider>
-        </div>
-    );
-};
-
-export default Login;
+class Login extends Component {
+    
+    render() {
+      return (
+          <div>
+            <UserForm getUser={this.getUser} />
+          </div>
+      );
+    };
+  };
+  
+  export default Login;
+  

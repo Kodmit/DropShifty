@@ -15,6 +15,7 @@ import Login from './components/Login';
 import {Route, BrowserRouter} from "react-router-dom";
 
 class App extends Component {
+  
   render() {
     return (
       <BrowserRouter>
@@ -31,7 +32,6 @@ class App extends Component {
                 <Route path="/parameters" component={Parameters}/>
                 <Route path="/login" component={Login}/>
             </div>
-      
         </div>
       </BrowserRouter>
     );
