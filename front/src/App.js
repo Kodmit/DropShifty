@@ -11,7 +11,7 @@ import ImportedProducts from './components/ImportedProducts';
 import MyProducts from './components/MyProducts';
 import Notifications from './components/Notifications';
 import Parameters from './components/Parameters';
-import Login from './components/Login';
+import Login from './components/class/Login';
 import {Route, BrowserRouter} from "react-router-dom";
 
 class App extends Component {

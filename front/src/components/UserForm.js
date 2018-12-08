@@ -4,13 +4,12 @@ import '../styles/login.scss';
 import '../styles/app.scss';
 //import Login from './Login';
 import axios from 'axios';
-import $ from 'jquery';
 
 
 class UserForm extends Component {
 
     state = {
-        repos: null
+        name: null
       }
     
     // Get datas from rest api using axios.
@@ -18,11 +17,11 @@ class UserForm extends Component {
       e.preventDefault();
       const user = e.target.elements.username.value;
       if (user) {
-        axios.get('https://api.github.com/users/' + user)
+        axios.get('https://swapi.co/api/people/?name="' + user + '"')
         .then((res) => {
-          console.log(res.data.login);
-          const repos = res.data.public_repos;
-          this.setState({repos});
+          console.log(res.data.name);
+          const name = res.data.public_repos;
+          this.setState({name});
         });
       } else {
         return;
@@ -39,8 +38,11 @@ class UserForm extends Component {
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
-                { this.state.repos ? <p>Number of repos: {this.state.repos}</p> :
-                <p>Please enter a username.</p> }
+                <div className="mt-2">
+                    { this.state.repos ? <p>Number of repos: {this.state.repos}</p> :
+                    <p>Please enter a username.</p> }
+                </div>
+                
             </div>
         );
     };
@@ -48,8 +50,3 @@ class UserForm extends Component {
 };
 
 export default UserForm;
-
-$( document ).ready(function() {
-    console.log("user form charged")
-    $("#user_form").parent().addClass("main");
-});
