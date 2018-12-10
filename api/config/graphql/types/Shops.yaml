@@ -1,0 +1,42 @@
+Shops:
+  type: object
+  config:
+    fields:
+      id:
+        type: 'Int!'
+      name:
+        type: 'String!'
+      description:
+        type: 'String'
+      owner:
+        type: 'User!'
+        description: "Owner of the shop"
+      category:
+        type: 'ShopCategory!'
+        description: "Return the shop category"
+      country:
+        type: 'Country!'
+      city:
+        type: 'String'
+      postal_code:
+        type: 'Int'
+      address_line_1:
+        type: 'String'
+      address_line_2:
+        type: 'String'
+      picture_path:
+        type: 'String'
+      created_at:
+        type: 'DateTime!'
+      url:
+        type: 'String!'
+      enabled:
+        type: 'Boolean!'
+      wc_api_url:
+        type: 'String!'
+      wc_api_key:
+        type: 'String!'
+      wc_user:
+        type: 'String!'
+      wc_password:
+        type: 'String!'

@@ -2,37 +2,54 @@
 
 namespace App\Controller;
 
+use App\Entity\Shop;
 use App\Entity\User;
 use App\Service\CoreService;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Security\TokenAuthenticator;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-class CoreController extends AbstractController
+class CoreController extends Controller
 {
 
     private $auth;
     private $passwordEncoder;
     private $checker;
     private $eventDispatcher;
+    private $coreService;
 
-    public function __construct(TokenAuthenticator $auth, UserPasswordEncoderInterface $passwordEncoder, AuthorizationCheckerInterface $checker, EventDispatcherInterface $eventDispatcher)
+    public function __construct(TokenAuthenticator $auth, UserPasswordEncoderInterface $passwordEncoder, AuthorizationCheckerInterface $checker, EventDispatcherInterface $eventDispatcher, CoreService $coreService)
     {
         $this->auth = $auth;
         $this->passwordEncoder = $passwordEncoder;
         $this->checker = $checker;
         $this->eventDispatcher = $eventDispatcher;
+        $this->coreService = $coreService;
     }
 
     /**
+     * @Route("/", name="home", methods={"GET"})
+     */
+    public function home(){
+
+        return new Response("<body>ok</body>");
+    }
+
+
+    /**
      * @Route("/login", name="login", methods={"POST"})
+     * @param Request $request
+     * @param CoreService $coreService
+     * @return JsonResponse
      */
     public function login(Request $request, CoreService $coreService)
     {
@@ -65,4 +82,40 @@ class CoreController extends AbstractController
         }
         return new JsonResponse(["response" => "already logged in"]);
     }
+
+
+    /**
+     * @Route("/save_wc", name="save_wc", methods={"POST"})
+     */
+    public function saveWcApi(){
+        $data = file_get_contents('php://input');
+        $arr = json_decode($data, true);
+
+        // For debug
+        file_put_contents("../dump.html", $this->coreService->findUserByKey($arr['user_id']));
+        dump($data);
+
+        if($user = $this->coreService->findUserByKey($arr['user_id'])){
+            $shop = $this->getDoctrine()->getRepository(Shop::class)->findOneBy(["owner" => $user]);
+            $shop->setWcUser($arr['user_id']);
+            $shop->setWcApiKey($arr["consumer_key"]);
+            $shop->setWcPassword($arr["consumer_secret"]);
+            $this->getDoctrine()->getManager()->flush();
+            return true;
+        }
+        throw new AccessDeniedException("Key invalid");
+    }
+
+    /**
+     * @Route("/check_wc", name="check_wc", methods={"GET"})
+     */
+    public function checkWcApi(){
+        $shop = $this->getDoctrine()->getRepository(Shop::class)->findOneBy(["owner" => $this->getUser()]);
+
+        if(!$shop->getWcApiKey())
+            return $this->redirect(""); // todo : Redirection url if fail
+        return $this->redirect(""); // todo : Redirection url if success
+
+    }
+
 }

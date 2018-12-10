@@ -1,0 +1,6 @@
+Json:
+  type: custom-scalar
+  config:
+    serialize: ["App\\Type\\JsonType", "serialize"]
+    parseValue: ["App\\Type\\JsonType", "parseValue"]
+    parseLiteral: ["App\\Type\\JsonType", "parseLiteral"]

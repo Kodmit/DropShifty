@@ -16,3 +16,35 @@ Mutation:
         args:
           input:
             type: UserInput!
+
+      NewShop:
+        type: MutationSuccess
+        resolve: "@=mutation('NewShop', [
+          args['input']['name'],
+          args['input']['categoryId'],
+          args['input']['countryId'],
+          args['input']['city'],
+          args['input']['url'],
+          args['input']['wcApiUrl'],
+          args['input']['description'],
+          args['input']['postalCode'],
+          args['input']['addressLine1'],
+          args['input']['addressLine2'],
+          args['input']['picturePath']
+        ])"
+        args:
+          input:
+            type: ShopInput!
+
+      SaveShopResellerAccount:
+        type: MutationSuccess
+        resolve: "@=mutation('SaveShopResellerAccount', [
+                args['input']['shop_reseller_id'],
+                args['input']['api_key'],
+                args['input']['api_secret'],
+                args['input']['username'],
+                args['input']['password']
+              ])"
+        args:
+          input:
+            type: UserResellerInput!
