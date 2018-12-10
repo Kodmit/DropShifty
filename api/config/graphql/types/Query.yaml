@@ -27,9 +27,25 @@ Query:
         type: '[ShopCategory]'
         resolve: "@=resolver('ShopCategories')"
 
+      GetResellerCredentials:
+        type: 'UserReseller'
+        resolve: "@=resolver('GetCredentials', [args['shop_id']])"
+        args:
+          shop_id:
+            description: "Resolve credentials by shop id"
+            type: 'Int!'
+
+      GetResellerCredentialsList:
+        type: '[UserReseller]'
+        resolve: "@=resolver('GetCredentialsList')"
+
       Shops:
         type: '[Shops]'
         resolve: "@=resolver('Shops')"
+
+      ShopResellers:
+        type: '[ShopReseller]'
+        resolve: "@=resolver('ShopResellers')"
 
       CheckIfHaveShop:
         type: 'Boolean'
@@ -46,3 +62,68 @@ Query:
       GenWcLink:
         type: 'String'
         resolve: "@=resolver('GenWcLink')"
+
+      # Products entity calls
+
+      GetProductDetails:
+        type: 'Json'
+        resolve: "@=resolver('GetProductDetails', [args['sku']])"
+        args:
+          sku:
+            description: 'Get Dropshify product details'
+            type: 'Int!'
+
+      GetCBProductDetails:
+        type: 'Json'
+        resolve: "@=resolver('GetCBProductDetails', [args['sku']])"
+        args:
+          sku:
+            description: 'The ChinaBrands SKU'
+            type: 'Int!'
+
+      ImportToWc:
+        type: 'String'
+        resolve: "@=resolver('ImportToWc', [args['sku'], args['cat_id']])"
+        args:
+          sku:
+            description: 'The ChinaBrands SKU'
+            type: 'Int!'
+          cat_id:
+            description: 'The WooCommerce category ID'
+            type: 'Int!'
+
+      # ChinaBrands API calls
+
+      GetCbToken:
+        type: 'Json'
+        resolve: "@=resolver('GetCbToken')"
+
+      # WooCommerce API calls
+
+      WC_GetProductsList:
+        type: '[Json]'
+        resolve: "@=resolver('WC_GetProductsList')"
+
+      WC_GetProduct:
+        type: 'Json'
+        resolve: "@=resolver('WC_GetProduct', [args['id']])"
+        args:
+          id:
+            description: 'Fetch product by ID.'
+            type: 'Int!'
+
+      WC_GetOrdersList:
+        type: '[Json]'
+        resolve: "@=resolver('WC_GetOrdersList')"
+
+      WC_GetProductsCategories:
+        type: '[Json]'
+        resolve: "@=resolver('WC_GetProductsCategories')"
+
+      WC_GetOrder:
+        type: 'Json'
+        resolve: "@=resolver('WC_GetOrder', [args['id']])"
+        args:
+          id:
+            description: 'Fetch order by ID.'
+            type: 'Int!'

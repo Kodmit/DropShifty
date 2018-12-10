@@ -2,9 +2,15 @@
 
 namespace App\Resolver;
 
+use App\Entity\ShopReseller;
+use App\Entity\UserReseller;
 use App\Repository\UserResellerRepository;
+use App\Service\CoreService;
+use Doctrine\Common\Persistence\ObjectManager;
 use Overblog\GraphQLBundle\Definition\Resolver\AliasedInterface;
 use Overblog\GraphQLBundle\Definition\Resolver\ResolverInterface;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Core\Security;
 
 
 /**
@@ -17,30 +23,38 @@ final class UserResellerResolver implements ResolverInterface, AliasedInterface
      * @var UserResellerRepository
      */
     private $userResellerRepository;
+    private $security;
+    private $coreService;
+    private $objectManager;
 
-    /**
-     *
-     * @param UserResellerRepository $userResellerRepository
-     */
-    public function __construct(UserResellerRepository $userResellerRepository)
+    public function __construct(UserResellerRepository $userResellerRepository, Security $security, CoreService $coreService, ObjectManager $objectManager)
     {
         $this->userResellerRepository = $userResellerRepository;
+        $this->security = $security;
+        $this->coreService = $coreService;
+        $this->objectManager = $objectManager;
     }
 
-    /**
-     * @return \App\Entity\UserReseller
-     */
-    public function userReseller(int $id)
+
+    public function getCredentials(int $shop_id)
     {
-        return $this->userResellerRepository->find($id);
+        $this->coreService->ConnectionNeeded();
+
+        if($credentials = $this->objectManager->getRepository(UserReseller::class)->findOneBy([
+            "shop_reseller" => $this->objectManager->find(ShopReseller::class, $shop_id),
+            "user" => $this->security->getUser()
+        ]))
+            return $credentials;
+        throw new NotFoundHttpException("Credentials not found.");
+
     }
 
-    /**
-     * @return \App\Entity\UserReseller[]
-     */
-    public function userResellers()
+    public function getCredentialsList()
     {
-        return $this->userResellerRepository->findAll();
+        $this->coreService->ConnectionNeeded();
+
+        return $this->objectManager->getRepository(UserReseller::class)->findBy(["user" => $this->security->getUser()]);
+
     }
 
     /**
@@ -51,8 +65,8 @@ final class UserResellerResolver implements ResolverInterface, AliasedInterface
     public static function getAliases(): array
     {
         return [
-            'userReseller' => 'UserReseller',
-            'userResellers' => 'UserResellers',
+            'getCredentials' => 'GetCredentials',
+            'getCredentialsList' => 'GetCredentialsList',
         ];
     }
 }

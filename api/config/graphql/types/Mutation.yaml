@@ -35,3 +35,16 @@ Mutation:
         args:
           input:
             type: ShopInput!
+
+      SaveShopResellerAccount:
+        type: MutationSuccess
+        resolve: "@=mutation('SaveShopResellerAccount', [
+                args['input']['shop_reseller_id'],
+                args['input']['api_key'],
+                args['input']['api_secret'],
+                args['input']['username'],
+                args['input']['password']
+              ])"
+        args:
+          input:
+            type: UserResellerInput!

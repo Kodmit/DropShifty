@@ -24,6 +24,16 @@ class Product
     private $name;
 
     /**
+     * @ORM\Column(type="text")
+     */
+    private $description;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $img_url;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     private $created_at;
@@ -103,6 +113,38 @@ class Product
     public function getPrice(): ?float
     {
         return $this->price;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgUrl()
+    {
+        return $this->img_url;
+    }
+
+    /**
+     * @param mixed $img_url
+     */
+    public function setImgUrl($img_url): void
+    {
+        $this->img_url = $img_url;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description): void
+    {
+        $this->description = $description;
     }
 
     public function setPrice(float $price): self
