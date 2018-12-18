@@ -5,9 +5,8 @@ namespace App\DataFixtures;
 use App\Entity\Offer;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
-class OfferFixtures extends Fixture implements OrderedFixtureInterface
+class OfferFixtures extends Fixture
 {
 
     public function load(ObjectManager $manager)
@@ -34,6 +33,4 @@ class OfferFixtures extends Fixture implements OrderedFixtureInterface
 
         $manager->flush();
     }
-
-    public function getOrder() { return 1; }
 }

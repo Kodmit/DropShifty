@@ -1,0 +1,14 @@
+ShopReseller:
+  type: object
+  config:
+    fields:
+      id:
+        type: 'Int!'
+      name:
+        type: 'String!'
+      enabled:
+        type: 'Boolean!'
+      description:
+        type: 'String'
+      website:
+        type: 'String!'

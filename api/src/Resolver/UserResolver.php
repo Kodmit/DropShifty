@@ -5,6 +5,7 @@ namespace App\Resolver;
 use App\Repository\UserRepository;
 use Overblog\GraphQLBundle\Definition\Resolver\AliasedInterface;
 use Overblog\GraphQLBundle\Definition\Resolver\ResolverInterface;
+use Symfony\Component\Security\Core\Security;
 
 
 /**
@@ -17,14 +18,17 @@ final class UserResolver implements ResolverInterface, AliasedInterface
      * @var UserRepository
      */
     private $userRepository;
+    private $security;
 
     /**
      *
-     * @param UserRepository $astronautRepository
+     * @param UserRepository $userRepository
+     * @param Security $security
      */
-    public function __construct(UserRepository $astronautRepository)
+    public function __construct(UserRepository $userRepository, Security $security)
     {
-        $this->userRepository = $astronautRepository;
+        $this->userRepository = $userRepository;
+        $this->security = $security;
     }
 
     /**
@@ -33,6 +37,16 @@ final class UserResolver implements ResolverInterface, AliasedInterface
     public function user(int $id)
     {
         return $this->userRepository->find($id);
+    }
+
+    /**
+     * @return boolean
+     */
+    public function checkIfConnected()
+    {
+        if($this->security->getUser())
+            return true;
+        return false;
     }
 
     /**
@@ -53,6 +67,7 @@ final class UserResolver implements ResolverInterface, AliasedInterface
         return [
             'user' => 'User',
             'users' => 'Users',
+            'checkIfConnected' => 'CheckIfConnected',
         ];
     }
 }

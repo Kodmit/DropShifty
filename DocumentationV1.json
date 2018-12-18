@@ -1,0 +1,996 @@
+{
+	"_type": "export",
+	"__export_format": 3,
+	"__export_date": "2018-12-04T11:17:34.493Z",
+	"__export_source": "insomnia.desktop.app:v6.0.2",
+	"resources": [
+		{
+			"_id": "wrk_8a5cc590c56548228d55fc7dea0d394c",
+			"created": 1538481882559,
+			"description": "",
+			"modified": 1538481882559,
+			"name": "Insomnia",
+			"parentId": null,
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_f1a70780daad426da91d49e98d53c08c",
+			"color": null,
+			"created": 1538481882583,
+			"data": {},
+			"isPrivate": false,
+			"metaSortKey": 1538481882583,
+			"modified": 1538492698814,
+			"name": "New Environment",
+			"parentId": "wrk_8a5cc590c56548228d55fc7dea0d394c",
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_e322dbe8e90f4cbd999dd0f0922f7a7c",
+			"cookies": [
+				{
+					"creation": "2018-10-02T13:03:35.692Z",
+					"domain": "localhost",
+					"hostOnly": true,
+					"httpOnly": true,
+					"id": "09041050540855244",
+					"key": "PHPSESSID",
+					"lastAccessed": "2018-11-03T16:48:10.981Z",
+					"path": "/",
+					"value": "s7jcdraqbver0c9cudheh6mo8i"
+				},
+				{
+					"creation": "2018-11-02T19:24:01.076Z",
+					"domain": "chinabrands.com",
+					"hostOnly": false,
+					"id": "28243191363302556",
+					"key": "ORIGINDC",
+					"lastAccessed": "2018-11-02T19:25:41.744Z",
+					"path": "/",
+					"value": "1"
+				}
+			],
+			"created": 1538481882585,
+			"modified": 1541263690981,
+			"name": "Default Jar",
+			"parentId": "wrk_8a5cc590c56548228d55fc7dea0d394c",
+			"_type": "cookie_jar"
+		},
+		{
+			"_id": "fld_48de5ee3ef2f4507a10c081e18dde385",
+			"created": 1538485796621,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1538485796621,
+			"modified": 1538485796621,
+			"name": "DropShifty API",
+			"parentId": "wrk_8a5cc590c56548228d55fc7dea0d394c",
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_f90c954f69084c578f1432bf72555fdd",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\"key_id\":103,\"user_id\":\"123\",\"consumer_key\":\"ck_737af962918bbad559051c113b862a45fa6f504b\",\"consumer_secret\":\"cs_1c9c3b6267d46824e47c38114344507310537497\",\"key_permissions\":\"read_write\"}"
+			},
+			"created": 1540460054533,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_d0748b73feeb4d1daf1fb6db9618cee5",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1540460054533,
+			"method": "GET",
+			"modified": 1540931093565,
+			"name": "TEST",
+			"parameters": [],
+			"parentId": "wrk_8a5cc590c56548228d55fc7dea0d394c",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8000/check_wc",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_84e3654e3e1844c3b56e2be47e256680",
+			"created": 1541015887299,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1540849245449,
+			"modified": 1541015893906,
+			"name": "WooCommerceAPI",
+			"parentId": "fld_48de5ee3ef2f4507a10c081e18dde385",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_b1fb8c5accfc4c51854ad9a78a9e483c",
+			"created": 1541025041352,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1541025041352,
+			"modified": 1541025041352,
+			"name": "ChinabrandsAPI",
+			"parentId": "fld_48de5ee3ef2f4507a10c081e18dde385",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_b235695542d9457799f354e566718af8",
+			"created": 1541186544215,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1541186544215,
+			"modified": 1541186544215,
+			"name": "TESTS",
+			"parentId": "fld_48de5ee3ef2f4507a10c081e18dde385",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_886f8e0b9e224ae481cba4f0d78b06c6",
+			"created": 1541187916678,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1541187916678,
+			"modified": 1541187916678,
+			"name": "Products Entity",
+			"parentId": "fld_48de5ee3ef2f4507a10c081e18dde385",
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_335eee94c7284c0088f6ec9a094a29b2",
+			"authentication": {},
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"id": "pair_5992f9028a2f464db71d3fded9dfc906",
+						"name": "username",
+						"value": "admin"
+					},
+					{
+						"id": "pair_135d10ae3dff4795a574bd9a42939977",
+						"name": "password",
+						"value": "password"
+					},
+					{
+						"id": "pair_602a9935ce9741ef91452064e8934fd8",
+						"name": "",
+						"value": ""
+					}
+				]
+			},
+			"created": 1538481930235,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_047e184f98294d9d84fe7ce2cab42f9b",
+					"name": "Content-Type",
+					"value": "multipart/form-data"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1538484829974.75,
+			"method": "POST",
+			"modified": 1541263689374,
+			"name": "Login",
+			"parameters": [],
+			"parentId": "fld_48de5ee3ef2f4507a10c081e18dde385",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8000/login",
+			"_type": "request"
+		},
+		{
+			"_id": "req_5d6f96c465f44c4581e130cad7e6b5a9",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"mutation NewUser($user: UserInput!) {\\n  NewUser(input: $user) {\\n    content\\n  }\\n}\\n\",\"variables\":{\"user\":{\"username\":\"admins\",\"password\":\"pass\",\"email\":\"test@live.fr\"}},\"operationName\":\"NewUser\"}"
+			},
+			"created": 1538485771252,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1538484830024.75,
+			"method": "GET",
+			"modified": 1541180023404,
+			"name": "Logout",
+			"parameters": [],
+			"parentId": "fld_48de5ee3ef2f4507a10c081e18dde385",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8000/logout",
+			"_type": "request"
+		},
+		{
+			"_id": "req_776ea08f5a3541878eff3dccaf96315e",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"mutation NewUser($user: UserInput!) {\\n  NewUser(input: $user) {\\n    content\\n  }\\n}\\n\",\"variables\":{\"user\":{\"username\":\"admins\",\"password\":\"pass\",\"email\":\"test@live.fr\"}},\"operationName\":\"NewUser\"}"
+			},
+			"created": 1538486125883,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_de9700f7213543168818bd7711f1d70b",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1538484830074.75,
+			"method": "POST",
+			"modified": 1541180022594,
+			"name": "Register",
+			"parameters": [],
+			"parentId": "fld_48de5ee3ef2f4507a10c081e18dde385",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8000",
+			"_type": "request"
+		},
+		{
+			"_id": "req_6503bcf9d8cb4627805ccaac8d8a252c",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"{\\n  Offers {\\n    id\\n    name\\n    description\\n    enabled\\n    price\\n    wc_api_limit\\n    wc_orders_limit\\n    users {\\n      id\\n    }\\n  }\\n}\\n\"}"
+			},
+			"created": 1538490640311,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_1d8c495807344818a3304fe84de8f1dd",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1538484830124.75,
+			"method": "POST",
+			"modified": 1541180021573,
+			"name": "Get Offers",
+			"parameters": [],
+			"parentId": "fld_48de5ee3ef2f4507a10c081e18dde385",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8000",
+			"_type": "request"
+		},
+		{
+			"_id": "req_041ac19cf97046bf81017985bd224e8b",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"{\\n\\tCountries{\\n\\t\\tid,\\n\\t\\tname\\n\\t}\\n}\"}"
+			},
+			"created": 1538492388735,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_0d78c3be96b844ccad096bb18a6a947b",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1538484830174.75,
+			"method": "POST",
+			"modified": 1541180020968,
+			"name": "Get Countries",
+			"parameters": [],
+			"parentId": "fld_48de5ee3ef2f4507a10c081e18dde385",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8000",
+			"_type": "request"
+		},
+		{
+			"_id": "req_f156895c40144011bd6341651ba379b3",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"{\\n\\tShops{\\n\\t\\tid,\\n\\t\\tname,\\n\\t\\tdescription\\n\\t\\towner{\\n\\t\\t\\tid,\\n\\t\\t\\tusername,\\n\\t\\t\\toffer{\\n\\t\\t\\t\\tname\\n\\t\\t\\t}\\n\\t\\t}\\n\\t\\tcategory{\\n\\t\\t\\tname\\n\\t\\t}\\n\\t\\tcountry{\\n\\t\\t\\tname\\n\\t\\t}\\n\\t\\tcity,\\n\\t\\tpostal_code,\\n\\t\\taddress_line_1,\\n\\t\\taddress_line_2,\\n\\t\\tpicture_path,\\n\\t\\tcreated_at,\\n\\t\\turl,\\n\\t\\tenabled,\\n\\t\\twc_api_url,\\n\\t\\twc_api_key,\\n\\t\\twc_user,\\n\\t\\twc_password\\n\\t}\\n}\"}"
+			},
+			"created": 1540376273220,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_6d21fef3534845ed8ef90f60303d7af5",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1538484830224.75,
+			"method": "POST",
+			"modified": 1541180029589,
+			"name": "Get Shops",
+			"parameters": [],
+			"parentId": "fld_48de5ee3ef2f4507a10c081e18dde385",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8000",
+			"_type": "request"
+		},
+		{
+			"_id": "req_53b6a66f11764bfd8eea29b13f33c2c3",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"{\\n\\tCheckIfHaveShop\\n}\"}"
+			},
+			"created": 1540386237252,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_bf058acac37245cdb25f9dcd736c0d16",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1540386237252,
+			"method": "POST",
+			"modified": 1543921769214,
+			"name": "CheckIfHaveShop",
+			"parameters": [],
+			"parentId": "fld_48de5ee3ef2f4507a10c081e18dde385",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8000",
+			"_type": "request"
+		},
+		{
+			"_id": "req_903618115fc245de817ae12448aafc25",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"{\\n\\tCheckIfConnected\\n}\"}"
+			},
+			"created": 1540388950943,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_62a37addd75a4848a6e2d3967ae3a00f",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1540386237302,
+			"method": "POST",
+			"modified": 1543921769993,
+			"name": "Check If Connected",
+			"parameters": [],
+			"parentId": "fld_48de5ee3ef2f4507a10c081e18dde385",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8000",
+			"_type": "request"
+		},
+		{
+			"_id": "req_a37ca0549ef5469faf0ea7c1bf38b85d",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"mutation NewShop($shop: ShopInput!) {\\n  NewShop(input: $shop) {\\n    content\\n  }\\n}\",\"variables\":{\"shop\":{\"name\":\"Mon shop de test\",\"categoryId\":1,\"countryId\":1,\"city\":\"Paris\",\"url\":\"http://testshop.com\",\"wcApiUrl\":\"http://localhost:8181\",\"postalCode\":75013,\"description\":\"Description du shop de test qui peut aussi être null\",\"addressLine1\":\"6 rue de la meute\",\"addressLine2\":null,\"picturePath\":null}},\"operationName\":\"NewShop\"}"
+			},
+			"created": 1540395179217,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_6c6aff852a304dbf95ceb307af3713a4",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1540389676885,
+			"method": "POST",
+			"modified": 1543921771381,
+			"name": "Create Shop",
+			"parameters": [],
+			"parentId": "fld_48de5ee3ef2f4507a10c081e18dde385",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8000",
+			"_type": "request"
+		},
+		{
+			"_id": "req_1bbcc13fd5474cc2afaf10dfeafb8e49",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"{\\n\\tCheckIfWCApiFilled\\n}\"}"
+			},
+			"created": 1540847217971,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_874d2fadf3f04d6eb8878c3bb3bea55f",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1540847217971,
+			"method": "POST",
+			"modified": 1541180025929,
+			"name": "CheckIfWCApiFilled",
+			"parameters": [],
+			"parentId": "fld_48de5ee3ef2f4507a10c081e18dde385",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8000",
+			"_type": "request"
+		},
+		{
+			"_id": "req_332ea00880864626a6adbd1f6959588b",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"{\\n\\tGenWcLink\\n}\"}"
+			},
+			"created": 1540849245399,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_5b0eb6478a27459186991c54924519cf",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1540849245399,
+			"method": "POST",
+			"modified": 1543921749389,
+			"name": "GenWcLink",
+			"parameters": [],
+			"parentId": "fld_48de5ee3ef2f4507a10c081e18dde385",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8000",
+			"_type": "request"
+		},
+		{
+			"_id": "req_b267d29838d04f3495b084c3ea0c8938",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"{\\n\\tShopResellers{\\n\\t\\tid\\n\\t\\tname\\n\\t\\tdescription\\n\\t\\twebsite\\n\\t\\tenabled\\n\\t}\\n}\"}"
+			},
+			"created": 1541176941728,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_6d21fef3534845ed8ef90f60303d7af5",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1538484830199.75,
+			"method": "POST",
+			"modified": 1541180019784,
+			"name": "Get Shop Resellers",
+			"parameters": [],
+			"parentId": "fld_48de5ee3ef2f4507a10c081e18dde385",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8000",
+			"_type": "request"
+		},
+		{
+			"_id": "req_de4687ac5c374f32bdfdd411a91ade6f",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"{\\n\\tGetResellerCredentialsList{\\n\\t\\tapi_key,\\n\\t\\tapi_secret,\\n\\t\\tusername,\\n\\t\\tpassword\\n\\t}\\n}\"}"
+			},
+			"created": 1541179646783,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_bf058acac37245cdb25f9dcd736c0d16",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1539435533738.375,
+			"method": "POST",
+			"modified": 1543921768595,
+			"name": "GetResellerCredentialsList",
+			"parameters": [],
+			"parentId": "fld_48de5ee3ef2f4507a10c081e18dde385",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8000",
+			"_type": "request"
+		},
+		{
+			"_id": "req_b43b7ac13c684c79a12b6c26a6e02f07",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"{\\n\\tGetResellerCredentials(shop_id:1){\\n\\t\\tapi_key,\\n\\t\\tapi_secret,\\n\\t\\tusername,\\n\\t\\tpassword\\n\\t}\\n}\"}"
+			},
+			"created": 1541179866038,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_bf058acac37245cdb25f9dcd736c0d16",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1538960181981.5625,
+			"method": "POST",
+			"modified": 1541180187898,
+			"name": "GetResellerCredentialsByShop",
+			"parameters": [],
+			"parentId": "fld_48de5ee3ef2f4507a10c081e18dde385",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8000",
+			"_type": "request"
+		},
+		{
+			"_id": "req_538065c759ae4710aaf4d3042d5e946f",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"{\\n\\tImportToWc(sku: 267616201, cat_id: 16)\\n}\"}"
+			},
+			"created": 1541266160334,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_2c0c13cc1d734425a3b6bf894c2cbc23",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1541266160334,
+			"method": "POST",
+			"modified": 1543921726029,
+			"name": "ImportToWoocommerce",
+			"parameters": [],
+			"parentId": "fld_48de5ee3ef2f4507a10c081e18dde385",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8000",
+			"_type": "request"
+		},
+		{
+			"_id": "req_2edc7688f930478c822272ea41010c7b",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"{\\n\\tWC_GetProductsList\\n}\"}"
+			},
+			"created": 1541015904486,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_9ab8f9ac4095489b91a91aaf401a4d16",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1540942991135.4375,
+			"method": "POST",
+			"modified": 1541264886142,
+			"name": "GetProductsList",
+			"parameters": [],
+			"parentId": "fld_84e3654e3e1844c3b56e2be47e256680",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8000",
+			"_type": "request"
+		},
+		{
+			"_id": "req_3f05dbefdee64629bf4e8e8248647705",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"{\\n\\tWC_GetProduct(id:40)\\n}\"}"
+			},
+			"created": 1541017450613,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_9ab8f9ac4095489b91a91aaf401a4d16",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1540932574942.5,
+			"method": "POST",
+			"modified": 1543921749926,
+			"name": "GetProduct",
+			"parameters": [],
+			"parentId": "fld_84e3654e3e1844c3b56e2be47e256680",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8000",
+			"_type": "request"
+		},
+		{
+			"_id": "req_2024c7fdc99f4caebb76e5b7243e5beb",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"{\\n\\tWC_GetOrder(id:0)\\n}\"}"
+			},
+			"created": 1541024933489,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_9ab8f9ac4095489b91a91aaf401a4d16",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1540974239714.25,
+			"method": "POST",
+			"modified": 1543921739919,
+			"name": "GetOrder",
+			"parameters": [],
+			"parentId": "fld_84e3654e3e1844c3b56e2be47e256680",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8000",
+			"_type": "request"
+		},
+		{
+			"_id": "req_bfdedc51ed234acda42ba97790c12fd6",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"{\\n\\tWC_GetOrdersList\\n}\"}"
+			},
+			"created": 1541024935040,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_9ab8f9ac4095489b91a91aaf401a4d16",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1540953407328.375,
+			"method": "POST",
+			"modified": 1541263828868,
+			"name": "GetOrdersList",
+			"parameters": [],
+			"parentId": "fld_84e3654e3e1844c3b56e2be47e256680",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8000",
+			"_type": "request"
+		},
+		{
+			"_id": "req_90cfc976d8d34d75a26a33f9d51752d1",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"{\\n\\tWC_GetProductsCategories\\n}\"}"
+			},
+			"created": 1541263641402,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_9ab8f9ac4095489b91a91aaf401a4d16",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1540948199231.9062,
+			"method": "POST",
+			"modified": 1543921743277,
+			"name": "GetCategories",
+			"parameters": [],
+			"parentId": "fld_84e3654e3e1844c3b56e2be47e256680",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8000",
+			"_type": "request"
+		},
+		{
+			"_id": "req_82874a793c7e4af7b78439cfc6b166ce",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"mutation SaveShopResellerAccount($credentials: UserResellerInput!) {\\n  SaveShopResellerAccount(input: $credentials) {\\n    content\\n  }\\n}\\n\",\"variables\":{\"credentials\":{\"api_key\":\"ok\",\"api_secret\":\"pass\",\"username\":null,\"password\":null,\"shop_reseller_id\":1}}}"
+			},
+			"created": 1541177144755,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_ec65bf887d45443dba7d7238aad2af0b",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1541177144755,
+			"method": "POST",
+			"modified": 1543921765163,
+			"name": "SaveChinabrands Account",
+			"parameters": [],
+			"parentId": "fld_b1fb8c5accfc4c51854ad9a78a9e483c",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8000",
+			"_type": "request"
+		},
+		{
+			"_id": "req_f385dc2175c642a0b403f8ee4f11fc22",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"mutation SaveShopResellerAccount($credentials: UserResellerInput!) {\\n  SaveShopResellerAccount(input: $credentials) {\\n    content\\n  }\\n}\\n\",\"variables\":{\"credentials\":{\"api_key\":\"ok\",\"api_secret\":\"pass\",\"username\":null,\"password\":null,\"shop_reseller_id\":1}}}"
+			},
+			"created": 1541180225142,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_ec65bf887d45443dba7d7238aad2af0b",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1541096524620.5,
+			"method": "POST",
+			"modified": 1541186539294,
+			"name": "ImportProductToWc",
+			"parameters": [],
+			"parentId": "fld_b1fb8c5accfc4c51854ad9a78a9e483c",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8000",
+			"_type": "request"
+		},
+		{
+			"_id": "req_89e29c2218fb46a196bb193250fea5d4",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"{\\n\\tGetCbToken\\n}\"}"
+			},
+			"created": 1541187292228,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_aa3631fe73df45e08dbf32ba0048d143",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1541177144805,
+			"method": "POST",
+			"modified": 1543921764053,
+			"name": "GetToken",
+			"parameters": [],
+			"parentId": "fld_b1fb8c5accfc4c51854ad9a78a9e483c",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8000",
+			"_type": "request"
+		},
+		{
+			"_id": "req_82313736564947a29a788ff3b553ad69",
+			"authentication": {},
+			"body": {},
+			"created": 1541186557375,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1541186557375,
+			"method": "GET",
+			"modified": 1541266420891,
+			"name": "CB API #1",
+			"parameters": [],
+			"parentId": "fld_b235695542d9457799f354e566718af8",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "https://gloapi.chinabrands.com/v2/product/index",
+			"_type": "request"
+		},
+		{
+			"_id": "req_5ca5c63200834e1c83c59e5654213854",
+			"authentication": {},
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"id": "pair_f37cca105f644cafa5056f4f3a07d55d",
+						"name": "email",
+						"value": "alexandre.bly60@gmail.com"
+					},
+					{
+						"id": "pair_04fff98b3cb445dfa86434459b19d0ab",
+						"name": "password",
+						"value": "Izzie1996$"
+					},
+					{
+						"id": "pair_207a079cf51748e2a99df9dbd7d4ca9f",
+						"name": "client_id",
+						"value": "2177686781"
+					}
+				]
+			},
+			"created": 1541186629349,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_c3cbfc2f67c24769b5d7995bee04ddcb",
+					"name": "Content-Type",
+					"value": "multipart/form-data"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1541186629349,
+			"method": "POST",
+			"modified": 1541266418720,
+			"name": "CB API Login",
+			"parameters": [],
+			"parentId": "fld_b235695542d9457799f354e566718af8",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "https://gloapi.chinabrands.com/v2/user/login",
+			"_type": "request"
+		},
+		{
+			"_id": "req_02c71ad1824b442f871085794fa4db27",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/graphql",
+				"text": "{\"query\":\"{\\n\\tGetCBProductDetails(sku: 267616201)\\n}\"}"
+			},
+			"created": 1541187238554,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_aa3631fe73df45e08dbf32ba0048d143",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1541187238554,
+			"method": "POST",
+			"modified": 1541267795607,
+			"name": "GQL Tests",
+			"parameters": [],
+			"parentId": "fld_b235695542d9457799f354e566718af8",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8000",
+			"_type": "request"
+		}
+	]
+}

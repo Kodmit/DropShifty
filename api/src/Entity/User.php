@@ -118,6 +118,11 @@ class User implements UserInterface, \Serializable
     private $address_line_2;
 
     /**
+     * @ORM\Column(type="text", nullable=false)
+     */
+    private $key;
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Offer", inversedBy="user")
      * @ORM\JoinColumn(nullable=true)
      */
@@ -296,6 +301,22 @@ class User implements UserInterface, \Serializable
     public function setPlainPassword($plainPassword): void
     {
         $this->plainPassword = $plainPassword;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getKey()
+    {
+        return $this->key;
+    }
+
+    /**
+     * @param mixed $key
+     */
+    public function setKey($key): void
+    {
+        $this->key = $key;
     }
 
     public function getCreatedAt(): ?\DateTimeInterface

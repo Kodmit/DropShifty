@@ -3,6 +3,7 @@ overblog_graphql:
         schema:
             query: Query
             mutation: Mutation
+        auto_mapping: false
         mappings:
             auto_discover: false
             types:

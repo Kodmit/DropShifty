@@ -1,0 +1,16 @@
+UserReseller:
+  type: object
+  config:
+    fields:
+      id:
+        type: 'Int!'
+      api_key:
+        type: 'String'
+      api_secret:
+        type: 'String'
+      username:
+        type: 'String'
+      password:
+        type: 'String'
+      shop_reseller:
+        type: 'ShopReseller'

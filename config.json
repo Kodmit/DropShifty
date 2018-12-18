@@ -1,0 +1,8 @@
+{
+  "title" : "Dropshify",
+  "version" : "1",
+  "host" : "localhost:8000",
+  "bastPath" : "localhost:800",
+  "schemes" : "HTTPS",
+  "description" : "DropShify Back"
+}
