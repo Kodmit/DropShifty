@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/login.scss';
 import '../styles/app.scss';
-//import Login from './Login';
+import Login from './Login';
 import axios from 'axios';
 
 
@@ -33,8 +33,11 @@ class UserForm extends Component {
             <div id="user_form" className="container">
                 <form onSubmit={this.getUser}>
                     <div className="form-group">
-                        <label htmlFor="username">Name</label>
+                        <label htmlFor="username">Login</label>
                         <input type="text" name="username" className="form-control" id="username" placeholder="Enter name" />
+                        <br/>
+                        <label htmlFor="username">Password</label>
+                        <input type="password" name="password" className="form-control" id="password" placeholder="Enter name" />
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>

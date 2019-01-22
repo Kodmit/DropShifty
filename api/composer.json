@@ -13,6 +13,7 @@
         "symfony/orm-pack": "^1.0",
         "symfony/security-bundle": "*",
         "symfony/security-guard": "*",
+        "symfony/translation": "4.2.*",
         "symfony/validator": "*",
         "symfony/web-server-bundle": "*",
         "symfony/yaml": "*"
@@ -64,7 +65,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "4.1.*"
+            "require": "4.2.*"
         }
     }
 }
