@@ -16,12 +16,14 @@ class UserForm extends Component {
      getUser = (e) => {
       e.preventDefault();
       const user = e.target.elements.username.value;
-      if (user) {
-        axios.get('https://swapi.co/api/people/?name="' + user + '"')
-        .then((res) => {
-          console.log(res.data.name);
-          const name = res.data.public_repos;
-          this.setState({name});
+      const pass = e.target.elements.password.value;
+      if (user && pass) {
+        //axios.get('https://swapi.co/api/people/?name="' + user + '"')
+          axios.post('http://localhost:8000/login?username='+ user +'&password='+ pass)
+
+              .then((res) => {
+          console.log(res);
+          //this.setState({name});
         });
       } else {
         return;
