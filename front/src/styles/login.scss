@@ -3,4 +3,24 @@
 .login_form {
     padding-left: 300px;
     padding-right: 300px;
+    color: $white;
 }
+
+.logo_drop {
+    width: 250px;
+}
+
+.btn_login {
+    width: 100%;
+    text-align: center;
+    color: #FFF;
+    border: none;
+    background-color: $drop-red;
+    padding: 12px;
+    cursor: pointer;
+    &:hover {
+        transition: 0.5s;
+        opacity: 0.9;
+    }
+}
+

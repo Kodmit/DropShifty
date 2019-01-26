@@ -21,7 +21,9 @@ class App extends Component {
 
       <BrowserRouter>
         <div>
-            <Route path="/login" component={Login} />
+            <div className="login_view">
+                <Route path="/login" component={Login} />
+            </div>
             <div className="grid-container">
                 <Header/>
                 <NavbarSide/>

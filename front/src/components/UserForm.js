@@ -4,6 +4,9 @@ import '../styles/login.scss';
 import '../styles/app.scss';
 import axios from 'axios';
 import Alert from '../components/includes/alert/Alert';
+import {findDOMNode} from "react-dom";
+import $ from "jquery";
+
 
 class UserForm extends Component {
 
@@ -37,19 +40,27 @@ class UserForm extends Component {
           }
         });
       } else {
-          return;
+          this.setState({alert_message: 'Veuillez entrer vos identifiants'});
+          this.setState({alert_type: 'warning'});
       }    
     };
-/*
-    changeAlertType = (type) => {
-        this.setState({this.state.alert_type});
-    }
-*/
+
+    loginBtn = () => {
+        if (this.alert_message != '') {
+            console.log("message is empty");
+            $('.alert').fadeIn("slow");
+        }
+    };
+
     render() {
         return (
             <div id="user_form" className="container">
+                <img className="logo_drop mx-auto d-block" src="/images/logo-drop.png" alt="Logo dropshifty"/>
+                <div className="mt-4"></div>
                 {this.state.alert_type == 'success'?<Alert type={this.state.alert_type} message={this.state.alert_message} />:null}
                 {this.state.alert_type == 'danger'?<Alert type={this.state.alert_type} message={this.state.alert_message}/>:null}
+                {this.state.alert_type == 'warning'?<Alert type={this.state.alert_type} message={this.state.alert_message}/>:null}
+
                 <form onSubmit={this.submitLogin}>
                     <div className="form-group">
                         <label htmlFor="username">Login</label>
@@ -58,12 +69,13 @@ class UserForm extends Component {
                         <label htmlFor="username">Password</label>
                         <input type="password" name="password" className="form-control" id="password" placeholder="Mot de passe" />
                     </div>
-                    <button type="submit" className="btn btn-primary">Connexion</button>
+                    <button onClick={this.loginBtn} type="submit" className="btn_login mt-3">Connexion</button>
                 </form>
             </div>
         );
     };
 
 }
+
 
 export default UserForm;
