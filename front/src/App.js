@@ -19,31 +19,61 @@ import $ from "jquery";
 
 class App extends Component {
 
-    loginBtn = () => {
-        axios.post('http://localhost:8000/');
+    constructor(props) {
+        super(props);
+        this.state = {
+            connected: 'true',
+        }
+    }
 
-    };
+    componentDidMount() {
+        this.checkIfConnected();
+        if (this.checkIfConnected() == 'true') {
+            console.log("checkifconnected egal true");
+        }
+    }
+
+    checkIfConnected() {
+        axios.get('http://localhost:8000/graphiql')
+        .then((res) => {
+            if (res != '') {
+                this.setState({connected: 'true'});
+                return "test";
+            } else {
+                this.setState({connected: 'false'});
+            }
+          });
+    }
 
     render() {
-    return (
-      <BrowserRouter>
-        <div>
-            <Route path="/login" component={Login} />
-            <div className="grid-container">
-                <Header/>
-                <NavbarSide/>
-                <Route path="/" component={Dashboard} exact/>
-                <Route path="/orders" component={Orders}/>
-                <Route path="/import" component={ImportProducts}/>
-                <Route path="/imported" component={ImportedProducts}/>
-                <Route path="/products" component={MyProducts}/>
-                <Route path="/notifications" component={Notifications}/>
-                <Route path="/parameters" component={Parameters}/>
-            </div>
-        </div>
-      </BrowserRouter>
-    );
+        if (this.state.connected == 'true') {
+            return (
+                <BrowserRouter>
+                    <div>
+                        <Route path="/login" component={Login} />
+                        <div className="grid-container">
+                            <Header/>
+                            <NavbarSide/>
+                            <Route path="/" component={Dashboard} exact/>
+                            <Route path="/orders" component={Orders}/>
+                            <Route path="/import" component={ImportProducts}/>
+                            <Route path="/imported" component={ImportedProducts}/>
+                            <Route path="/products" component={MyProducts}/>
+                            <Route path="/notifications" component={Notifications}/>
+                            <Route path="/parameters" component={Parameters}/>
+                        </div>
+                    </div>
+                </BrowserRouter>
+            );
+        } else {
+            return (
+                <div>
+                    <p>user not connected</p>
+                </div>
+            )
+        }
+
   };
-};
+}
 
 export default App;
