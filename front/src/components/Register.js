@@ -5,6 +5,14 @@ import '../styles/app.scss';
 import $ from "jquery";
 import axios from 'axios';
 import Alert from '../components/includes/alert/Alert';
+import gql from 'graphql-tag';
+
+const createResolution = gql `
+    mutation NewUser($user: UserInput!) {
+        NewUser(input: $user) {
+            content
+        }
+    }`;
 
 class Register extends Component {
 
@@ -19,6 +27,7 @@ class Register extends Component {
     // Get datas from rest api using axios.
     submitRegister = (e) => {
         e.preventDefault();
+
         const email = e.target.elements.email.value;
         const user = e.target.elements.username.value;
         const pass = e.target.elements.password.value;
