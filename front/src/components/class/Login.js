@@ -7,7 +7,7 @@ class Login extends Component {
     
     render() {
       return (
-          <div className="main login_form">
+          <div className="login_form">
             <UserForm login={this.login} />
           </div>
       );

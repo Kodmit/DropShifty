@@ -13,17 +13,22 @@ import Notifications from './components/Notifications';
 import Parameters from './components/Parameters';
 import Login from './components/class/Login';
 import {Route, BrowserRouter, PrivateRoute} from "react-router-dom";
+import axios from 'axios';
+import $ from "jquery";
+
 
 class App extends Component {
-  
-  render() {
-    return (
 
+    loginBtn = () => {
+        axios.post('http://localhost:8000/');
+
+    };
+
+    render() {
+    return (
       <BrowserRouter>
         <div>
-            <div className="login_view">
-                <Route path="/login" component={Login} />
-            </div>
+            <Route path="/login" component={Login} />
             <div className="grid-container">
                 <Header/>
                 <NavbarSide/>

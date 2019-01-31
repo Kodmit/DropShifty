@@ -25,12 +25,11 @@ class UserForm extends Component {
       const pass = e.target.elements.password.value;
 
       if (user && pass) {
-          axios.post('http://localhost:8000/login?username='+ user +'&password='+ pass)
+        axios.post('http://localhost:8000/login?username='+ user +'&password='+ pass)
         .then((res) => {
           console.log(res.data);
           let response = res.data.response;
-          if (response == 'ok') {
-              console.log("data is OK");
+            if (response == 'ok') {
               this.setState({alert_message: 'Connecté avec succes'});
               this.setState({alert_type: 'success'});
               window.location = '/';
@@ -47,30 +46,33 @@ class UserForm extends Component {
 
     loginBtn = () => {
         if (this.alert_message != '') {
-            console.log("message is empty");
             $('.alert').fadeIn("slow");
         }
     };
 
     render() {
         return (
-            <div id="user_form" className="container">
-                <img className="logo_drop mx-auto d-block" src="/images/logo-drop.png" alt="Logo dropshifty"/>
-                <div className="mt-4"></div>
-                {this.state.alert_type == 'success'?<Alert type={this.state.alert_type} message={this.state.alert_message} />:null}
-                {this.state.alert_type == 'danger'?<Alert type={this.state.alert_type} message={this.state.alert_message}/>:null}
-                {this.state.alert_type == 'warning'?<Alert type={this.state.alert_type} message={this.state.alert_message}/>:null}
+            <div className="login_view">
+                <div id="user_form" className="container">
+                    <img className="logo_drop mx-auto d-block" src="/images/logo-drop.png" alt="Logo dropshifty"/>
 
-                <form onSubmit={this.submitLogin}>
-                    <div className="form-group">
-                        <label htmlFor="username">Login</label>
-                        <input type="text" name="username" className="form-control" id="username" placeholder="Nom utilisateur" />
-                        <br/>
-                        <label htmlFor="username">Password</label>
-                        <input type="password" name="password" className="form-control" id="password" placeholder="Mot de passe" />
+                    <div className="mt-4">
+                        {this.state.alert_type == 'success'?<Alert type={this.state.alert_type} message={this.state.alert_message} />:null}
+                        {this.state.alert_type == 'danger'?<Alert type={this.state.alert_type} message={this.state.alert_message}/>:null}
+                        {this.state.alert_type == 'warning'?<Alert type={this.state.alert_type} message={this.state.alert_message}/>:null}
                     </div>
-                    <button onClick={this.loginBtn} type="submit" className="btn_login mt-3">Connexion</button>
-                </form>
+
+                    <form onSubmit={this.submitLogin}>
+                        <div className="form-group">
+                            <label htmlFor="username">Login</label>
+                            <input type="text" name="username" className="form-control" id="username" placeholder="Nom utilisateur" />
+                            <br/>
+                            <label htmlFor="username">Password</label>
+                            <input type="password" name="password" className="form-control" id="password" placeholder="Mot de passe" />
+                        </div>
+                        <button onClick={this.loginBtn} type="submit" className="btn_login mt-3">Connexion</button>
+                    </form>
+                </div>
             </div>
         );
     };
