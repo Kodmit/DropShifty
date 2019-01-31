@@ -12,9 +12,11 @@ import MyProducts from './components/MyProducts';
 import Notifications from './components/Notifications';
 import Parameters from './components/Parameters';
 import Login from './components/class/Login';
+import Register from './components/Register';
 import {Route, BrowserRouter, PrivateRoute} from "react-router-dom";
-import axios from 'axios';
 import $ from "jquery";
+import { request, GraphQLClient } from 'graphql-request';
+
 
 
 class App extends Component {
@@ -34,16 +36,19 @@ class App extends Component {
     }
 
     checkIfConnected() {
-        axios.get('http://localhost:8000/graphiql')
-        .then((res) => {
-            if (res != '') {
-                this.setState({connected: 'true'});
-                return "test";
-            } else {
-                this.setState({connected: 'false'});
-            }
-          });
+        const client = new GraphQLClient('http://localhost:8000', {
+            headers: {
+                Authorization: 'Bearer my-jwt-token',
+            },
+        });
+
+        const query = `{
+          CheckIfConnected
+        }`;
+
+        client.request(query).then(data => console.log(data));
     }
+
 
     render() {
         if (this.state.connected == 'true') {
@@ -51,6 +56,7 @@ class App extends Component {
                 <BrowserRouter>
                     <div>
                         <Route path="/login" component={Login} />
+                        <Route path="/register" component={Register} />
                         <div className="grid-container">
                             <Header/>
                             <NavbarSide/>

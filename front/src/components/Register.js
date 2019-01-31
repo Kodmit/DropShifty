@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/login.scss';
+import '../styles/register.scss';
 import '../styles/app.scss';
-import axios from 'axios';
-import Alert from '../components/includes/alert/Alert';
-import {findDOMNode} from "react-dom";
 import $ from "jquery";
+import Alert from '../components/includes/alert/Alert';
 
-
-class UserForm extends Component {
+class Register extends Component {
 
     constructor(props) {
         super(props);
@@ -17,34 +14,13 @@ class UserForm extends Component {
             alert_type: ''
         }
     }
-    
-    // Get datas from rest api using axios.
-     submitLogin = (e) => {
-      e.preventDefault();
-      const user = e.target.elements.username.value;
-      const pass = e.target.elements.password.value;
 
-      if (user && pass) {
-        axios.post('http://localhost:8000/login?username='+ user +'&password='+ pass)
-        .then((res) => {
-          console.log(res.data);
-          let response = res.data.response;
-            if (response == 'ok') {
-              this.setState({alert_message: 'Connecté avec succes'});
-              this.setState({alert_type: 'success'});
-              window.location = '/';
-          } else {
-              this.setState({alert_message: 'Identifiant ou mot de passe inccorect'});
-              this.setState({alert_type: 'danger'});
-          }
-        });
-      } else {
-          this.setState({alert_message: 'Veuillez entrer vos identifiants'});
-          this.setState({alert_type: 'warning'});
-      }    
+    // Get datas from rest api using axios.
+    submitRegister = (e) => {
+        console.log("Click on submit register")
     };
 
-    loginBtn = () => {
+    registerBtn = () => {
         if (this.alert_message != '') {
             $('.alert').fadeIn("slow");
         }
@@ -53,7 +29,7 @@ class UserForm extends Component {
     render() {
         return (
             <div className="login_view">
-                <div id="user_form" className="container">
+                <div id="user_form" className="container register_form">
                     <img className="logo_drop mx-auto d-block" src="/images/logo-drop.png" alt="Logo dropshifty"/>
 
                     <div className="mt-4">
@@ -62,22 +38,26 @@ class UserForm extends Component {
                         {this.state.alert_type == 'warning'?<Alert type={this.state.alert_type} message={this.state.alert_message}/>:null}
                     </div>
 
-                    <form onSubmit={this.submitLogin}>
+                    <form onSubmit={this.submitRegister}>
                         <div className="form-group">
-                            <label htmlFor="username">Login</label>
+                        <label htmlFor="username">Nom utilisateur</label>
+                            <input type="text" name="email" className="form-control" id="email" placeholder="Email" />
+                            <br/> 
+                            <label htmlFor="username">Nom utilisateur</label>
                             <input type="text" name="username" className="form-control" id="username" placeholder="Nom utilisateur" />
                             <br/>
                             <label htmlFor="username">Password</label>
                             <input type="password" name="password" className="form-control" id="password" placeholder="Mot de passe" />
+                            <br/>
+                            <label htmlFor="username">Password</label>
+                            <input type="password" name="confirm_password" className="form-control" id="confirm_password" placeholder="Confirmer Mot de passe" />
                         </div>
-                        <button onClick={this.loginBtn} type="submit" className="btn_register mt-3">Connexion</button>
+                        <button onClick={this.registerBtn} type="submit" className="btn_login mt-3">Inscription</button>
                     </form>
                 </div>
             </div>
         );
     };
+};
 
-}
-
-
-export default UserForm;
+export default Register;
