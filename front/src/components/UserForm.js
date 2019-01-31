@@ -65,10 +65,10 @@ class UserForm extends Component {
                     <form onSubmit={this.submitLogin}>
                         <div className="form-group">
                             <label htmlFor="username">Login</label>
-                            <input type="text" name="username" className="form-control" id="username" placeholder="Nom utilisateur" />
+                            <input required="required" type="text" name="username" className="form-control" id="username" placeholder="Nom utilisateur" />
                             <br/>
-                            <label htmlFor="username">Password</label>
-                            <input type="password" name="password" className="form-control" id="password" placeholder="Mot de passe" />
+                            <label htmlFor="username">Mot de passe</label>
+                            <input required="required" type="password" name="password" className="form-control" id="password" placeholder="Mot de passe" />
                         </div>
                         <button onClick={this.loginBtn} type="submit" className="btn_register mt-3">Connexion</button>
                     </form>

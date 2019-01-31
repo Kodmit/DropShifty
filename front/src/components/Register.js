@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/register.scss';
 import '../styles/app.scss';
 import $ from "jquery";
+import axios from 'axios';
 import Alert from '../components/includes/alert/Alert';
 
 class Register extends Component {
@@ -17,6 +18,29 @@ class Register extends Component {
 
     // Get datas from rest api using axios.
     submitRegister = (e) => {
+        e.preventDefault();
+        const email = e.target.elements.email.value;
+        const user = e.target.elements.username.value;
+        const pass = e.target.elements.password.value;
+        const confirmPass = e.target.elements.confirmpassword.value;
+
+        if (email && user && pass && confirmPass) {
+            console.log("All datas are OK.");
+            if (pass == confirmPass) {
+                this.setState({alert_message: 'Données valides'});
+                this.setState({alert_type: 'success'});
+                window.location = '/';
+            } else {
+                console.log("Mots de passe no coerents");
+                this.setState({alert_message: 'Mot de passe différents'});
+                this.setState({alert_type: 'danger'});
+            }
+            
+        } else {
+            console.log("All datas are !OK.");
+            this.setState({alert_message: 'Données invalides'});
+            this.setState({alert_type: 'danger'});
+        }
         console.log("Click on submit register")
     };
 
@@ -40,17 +64,17 @@ class Register extends Component {
 
                     <form onSubmit={this.submitRegister}>
                         <div className="form-group">
-                        <label htmlFor="username">Nom utilisateur</label>
-                            <input type="text" name="email" className="form-control" id="email" placeholder="Email" />
+                        <label htmlFor="email">Email</label>
+                            <input required="required" type="email" name="email" className="form-control" id="email" placeholder="Email" />
                             <br/> 
                             <label htmlFor="username">Nom utilisateur</label>
-                            <input type="text" name="username" className="form-control" id="username" placeholder="Nom utilisateur" />
+                            <input required="required" type="text" name="username" className="form-control" id="username" placeholder="Nom utilisateur" />
                             <br/>
-                            <label htmlFor="username">Password</label>
-                            <input type="password" name="password" className="form-control" id="password" placeholder="Mot de passe" />
+                            <label htmlFor="password">Mot de passe</label>
+                            <input required="required" type="password" name="password" className="form-control" id="password" placeholder="Mot de passe" />
                             <br/>
-                            <label htmlFor="username">Password</label>
-                            <input type="password" name="confirm_password" className="form-control" id="confirm_password" placeholder="Confirmer Mot de passe" />
+                            <label htmlFor="confirmpassword">Confirmer mot de passe</label>
+                            <input required="required" type="password" name="confirmpassword" className="form-control" id="confirmpassword" placeholder="Confirmer Mot de passe" />
                         </div>
                         <button onClick={this.registerBtn} type="submit" className="btn_login mt-3">Inscription</button>
                     </form>
