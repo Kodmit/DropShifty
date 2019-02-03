@@ -14,6 +14,7 @@ use App\Service\CoreService;
 use Doctrine\Common\Persistence\ObjectManager;
 use Overblog\GraphQLBundle\Definition\Resolver\AliasedInterface;
 use Overblog\GraphQLBundle\Definition\Resolver\ResolverInterface;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Security;
 
@@ -67,6 +68,11 @@ final class ProductResolver implements ResolverInterface, AliasedInterface
         return $this->chinaBrandsApi->getProductDetails($sku);
     }
 
+    public function getCBProductStock(string $sku, string $warehouse){
+        $data = $this->chinaBrandsApi->getProductStock($sku, $warehouse);
+        return $data["msg"]["page_result"][0]["goods_number"];
+    }
+
     public function getProductDetails(int $id){
         // If ChinaBrands ... Remember to handle other resellers but always output same data
         if($product = $this->objectManager->getRepository(Product::class)->find($id))
@@ -74,17 +80,22 @@ final class ProductResolver implements ResolverInterface, AliasedInterface
         throw new NotFoundHttpException("Product not found.");
     }
 
-    public function importToWc($sku, $cat_id){
+    public function importToWc($sku, $cat_id, $type = "simple"){
 
         // Fetch data
-        $productData = $this->chinaBrandsApi->getProductDetails($sku);
+        $fetchedProductData = $this->chinaBrandsApi->getProductDetails($sku);
 
-        if($productData["status"] == 0)
+        if($fetchedProductData["status"] == 0)
             throw new NotFoundHttpException("Product not found on ChinaBrands, please check SKU.");
 
         // Create product
 
-        $productData = $productData["msg"][0];
+        foreach ($fetchedProductData["msg"] as $s_product){
+            if($s_product["sku"] == $sku){
+                $productData = $s_product;
+            }
+        }
+
         $product = new Product();
         $product->setName($productData["title"]);
         $product->setSku($productData["sku"]);
@@ -110,17 +121,81 @@ final class ProductResolver implements ResolverInterface, AliasedInterface
 
         // Import product in WC
 
-        $value["name"] = $productData["title"];
-        $value["price"] = $warehouse["price"];
-        $value["desc"] = $productData["goods_desc"];
-        $value["cat_id"] = $cat_id;
-        $value["img_src"] = current($productData["original_img"]);
+        if($type == "simple"){
+            $value["name"] = $productData["title"];
+            $value["price"] = $warehouse["price"];
+            $value["desc"] = $productData["goods_desc"];
+            $value["sku"] = "".$sku;
+            $value["cat_id"] = $cat_id;
+            $value["img_src"] = $productData["original_img"];
 
-        $this->wc->createProduct($value);
+            $this->objectManager->flush();
 
-        $this->objectManager->flush();
+            $this->wc->createProduct($value);
 
+            return "ok_simple";
+        }
+        elseif ($type == "variable"){
 
+            $value["name"] = $productData["title"];
+            //$value["price"] = $warehouse["price"];
+            $value["desc"] = $productData["goods_desc"];
+            $value["sku"] = "".$sku;
+            $value["cat_id"] = $cat_id;
+            $value["img_src"] = $productData["original_img"];
+
+            $option_colors = [];
+            $option_sizes = [];
+
+            foreach ($fetchedProductData["msg"] as $s_product){
+                if(isset($s_product["color"]) && isset($s_product["size"])){
+                    array_push($option_colors, $s_product["color"]);
+                    array_push($option_sizes, $s_product["size"]);
+                }
+            }
+
+            $color = $this->wc->addAttribute("Couleur", "color");
+            $size = $this->wc->addAttribute("Taille", "size");
+
+            $attributes = [
+                [
+                    'id'        => $color->id,
+                    'variation' => true,
+                    'visible'   => true,
+                    'options'   => $option_colors,
+                ],
+                [
+                    'id'        => $size->id,
+                    'variation' => true,
+                    'visible'   => true,
+                    'options'   => $option_sizes,
+                ]
+            ];
+
+            $data = $this->wc->initVariableProduct($value, $attributes);
+
+            foreach ($fetchedProductData["msg"] as $s_product){
+                if(isset($s_product["warehouse_list"])){
+                    $warehouse_var = current($s_product["warehouse_list"]);
+
+                    $colors = [];
+                    $colors["id"] = $color->id;
+                    $colors["value"] = $s_product["color"];
+
+                    $sizes = [];
+                    $sizes["id"] = $size->id;
+                    $sizes["value"] = $s_product['size'];
+
+                    $this->wc->addVariation($data->id, $colors, $sizes, $warehouse_var["price"], $s_product['sku'], $s_product["original_img"]);
+                }
+            }
+
+            $this->objectManager->flush();
+
+            return $color->id;
+
+        }
+        throw new BadRequestHttpException("Please specify a correct type (simple or variable)");
     }
 
     /**
@@ -137,6 +212,7 @@ final class ProductResolver implements ResolverInterface, AliasedInterface
             'getProductDetails' => 'GetProductDetails',
             'importToWc' => 'ImportToWc',
             'getCBProductDetails' => 'GetCBProductDetails',
+            'getCBProductStock' => 'GetCBProductStock'
         ];
     }
 }
