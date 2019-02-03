@@ -16,7 +16,9 @@ class UserFixtures extends Fixture
         $user1->setUsername("admin");
         $user1->setPassword("$2y$13$.LsNIc4MoMb1D3XgZQ11cOiXVwApFWr7dGX56NcrKbiyyjmQfcKSS"); // -> password
         $user1->setEmail("contact@dropshifty.com");
-        $user1->setApiKey(bin2hex(random_bytes(100)));
+        $user1->setApiKey('key');
+        $user1->setFirstname('toto');
+        $user1->setLastname('toto');
 
         $manager->persist($user1);
         $manager->flush();
