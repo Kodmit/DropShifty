@@ -1,0 +1,22 @@
+version: '3'
+services:
+
+    mysql-dev:
+        image: mysql:5.7
+        environment:
+            MYSQL_DATABASE: "dropshifty"
+            MYSQL_ROOT_PASSWORD: "root"
+            MYSQL_USER: 'dropshifty'
+            MYSQL_PASSWORD: 'dropshifty'
+        ports:
+            - "3306:3306"
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+            - 8080:8080
+        links:
+            - mysql-dev:db
+
+volumes:
+    mysql:

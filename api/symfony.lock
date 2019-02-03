@@ -254,6 +254,12 @@
     "symfony/security-http": {
         "version": "v4.2.2"
     },
+<<<<<<< HEAD
+=======
+    "symfony/stopwatch": {
+        "version": "v4.2.2"
+    },
+>>>>>>> 0e1fd7b1b516536d4b24441f56fd33d67e6ce0ad
     "symfony/translation": {
         "version": "3.3",
         "recipe": {
@@ -284,9 +290,12 @@
             "ref": "0cdc982334f45d554957a6167e030482795bf9d7"
         }
     },
+<<<<<<< HEAD
     "symfony/var-dumper": {
         "version": "v4.1.6"
     },
+=======
+>>>>>>> 0e1fd7b1b516536d4b24441f56fd33d67e6ce0ad
     "symfony/var-exporter": {
         "version": "v4.2.2"
     },
