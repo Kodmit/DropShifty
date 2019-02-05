@@ -120,7 +120,7 @@ class User implements UserInterface, \Serializable
     /**
      * @ORM\Column(type="text", nullable=false)
      */
-    private $key;
+    private $user_key;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Offer", inversedBy="user")
@@ -306,17 +306,17 @@ class User implements UserInterface, \Serializable
     /**
      * @return mixed
      */
-    public function getKey()
+    public function getUserKey()
     {
-        return $this->key;
+        return $this->$user_key;
     }
 
     /**
      * @param mixed $key
      */
-    public function setKey($key): void
+    public function setUserKey($user_key): void
     {
-        $this->key = $key;
+        $this->$user_key = $user_key;
     }
 
     public function getCreatedAt(): ?\DateTimeInterface

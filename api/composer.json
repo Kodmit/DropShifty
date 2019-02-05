@@ -17,7 +17,9 @@
         "symfony/validator": "*",
         "symfony/var-dumper": "*",
         "symfony/web-server-bundle": "*",
-        "symfony/yaml": "*"
+        "symfony/yaml": "*",
+        "doctrine/doctrine-fixtures-bundle": "^3.0",
+        "overblog/graphiql-bundle": "^0.1.1"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.0",
