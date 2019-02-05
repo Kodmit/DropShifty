@@ -37,7 +37,7 @@ class WoocommerceApi
     public function buildLink($storeUrl){
         $user = $this->security->getUser();
 
-        $endpoint = '/wc-auth/v3/authorize';
+        $endpoint = '/wc-auth/v/authorize';
         $params = [
             'app_name' => 'Dropshifty',
             'scope' => 'read_write',
