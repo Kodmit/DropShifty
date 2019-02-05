@@ -81,9 +81,20 @@ Query:
             description: 'The ChinaBrands SKU'
             type: 'Int!'
 
+      GetCBProductStock:
+        type: 'Json'
+        resolve: "@=resolver('GetCBProductStock', [args['sku'], args['warehouse']])"
+        args:
+          sku:
+            description: "The ChinaBrands SKU"
+            type: "String!"
+          warehouse:
+            description: "Warehouse code"
+            type: "String!"
+
       ImportToWc:
         type: 'String'
-        resolve: "@=resolver('ImportToWc', [args['sku'], args['cat_id']])"
+        resolve: "@=resolver('ImportToWc', [args['sku'], args['cat_id'], args['type']])"
         args:
           sku:
             description: 'The ChinaBrands SKU'
@@ -91,6 +102,9 @@ Query:
           cat_id:
             description: 'The WooCommerce category ID'
             type: 'Int!'
+          type:
+            description: 'The type of product : simple or variable, simple by default'
+            type: 'String'
 
       # ChinaBrands API calls
 

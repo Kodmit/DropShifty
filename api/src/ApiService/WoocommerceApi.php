@@ -37,7 +37,7 @@ class WoocommerceApi
     public function buildLink($storeUrl){
         $user = $this->security->getUser();
 
-        $endpoint = '/wc-auth/v3/authorize';
+        $endpoint = '/wc-auth/v/authorize';
         $params = [
             'app_name' => 'Dropshifty',
             'scope' => 'read_write',
@@ -57,9 +57,17 @@ class WoocommerceApi
     }
 
     public function createProduct($value){
+
+        $imgs = [];
+
+        foreach ($value["img_src"] as $img){
+            array_push($imgs, ["src" => $img]);
+        }
+
         $data = [
             'name' => $value["name"],
             'type' => 'simple',
+            'sku' => $value["sku"],
             'regular_price' => $value["price"],
             'description' => $value["desc"],
             'short_description' => '',
@@ -68,15 +76,81 @@ class WoocommerceApi
                     'id' => $value["cat_id"]
                 ]
             ],
-            'images' => [
+            'images' => $imgs
+        ];
+
+        return $this->wooCommerce->post('products', $data);
+    }
+
+    public function initVariableProduct($value, $attributes){
+
+        $imgs = [];
+
+        foreach ($value["img_src"] as $img){
+            array_push($imgs, ["src" => $img]);
+        }
+
+        $data = [
+            'name' => $value["name"],
+            'type' => 'variable',
+            'description' => $value["desc"],
+            'short_description' => '',
+            'categories' => [
                 [
-                    'src' => $value["img_src"]
+                    'id' => $value["cat_id"]
+                ]
+            ],
+            'images' => $imgs,
+            'attributes'  => $attributes
+        ];
+
+        return $this->wooCommerce->post('products', $data);
+    }
+
+    public function addVariation($id, $color, $size, $price, $sku, $images){
+        $imgs = [];
+
+        foreach ($images as $img){
+            array_push($imgs, ["src" => $img]);
+        }
+
+        $data = [
+            'regular_price' => $price,
+            'sku' => $sku,
+            'image' => $imgs[0],
+            'attributes' => [
+                [
+                    'id' => $color["id"],
+                    'option' => $color["value"]
+                ],
+                [
+                    'id' => $size["id"],
+                    'option' => $size["value"]
                 ]
             ]
         ];
 
-        $this->wooCommerce->post('products', $data);
+        return $this->wooCommerce->post('products/'.$id.'/variations', $data);
     }
 
+    public function addAttribute($name, $slug){
+
+        $attributes = $this->wooCommerce->get('products/attributes');
+
+        foreach($attributes as $attribute){
+            if($attribute->slug == "pa_".$slug)
+                return $attribute;
+        }
+
+        $data = [
+            'name' => $name,
+            'slug' => $slug,
+            'type' => 'select',
+            'order_by' => 'menu_order',
+            'has_archives' => true
+        ];
+        return $this->wooCommerce->post('products/attributes', $data);
+
+    }
 
 }
