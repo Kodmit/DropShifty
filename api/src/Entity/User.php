@@ -309,7 +309,7 @@ class User implements UserInterface, \Serializable
      */
     public function getUserKey()
     {
-        return $this->$user_key;
+        return $this->user_key;
     }
 
     /**
@@ -317,7 +317,7 @@ class User implements UserInterface, \Serializable
      */
     public function setUserKey($user_key): void
     {
-        $this->$user_key = $user_key;
+        $this->user_key = $user_key;
     }
 
     public function getCreatedAt(): ?\DateTimeInterface
