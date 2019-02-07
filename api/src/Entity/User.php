@@ -21,6 +21,7 @@ class User implements UserInterface, \Serializable
      */
     private $id;
 
+
     /**
      * @Assert\Length(
      *      min = 2,
