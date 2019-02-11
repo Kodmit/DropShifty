@@ -21,15 +21,22 @@ class WoocommerceApi
 
         $shop = $objectManager->getRepository(Shop::class)->findOneBy(["owner" => $security->getUser()]);
 
-        $this->wooCommerce = new Client(
-            $shop->getWcApiUrl(),
-            $shop->getWcApiKey(),
-            $shop->getWcPassword(),
-            [
-                'wp_api' => true,
-                'version' => 'wc/v3',
-            ]
-        );
+        // todo : Handle this to avoid "Call to a member function getWcApiUrl() on null" if user doesn't have a shop yet.
+        // Error handled... To try...
+        if($shop){
+            $this->wooCommerce = new Client(
+                $shop->getWcApiUrl(),
+                $shop->getWcApiKey(),
+                $shop->getWcPassword(),
+                [
+                    'wp_api' => true,
+                    'version' => 'wc/v3',
+                ]
+            );
+        }
+        else{
+            $this->wooCommerce = null;
+        }
 
     }
 
