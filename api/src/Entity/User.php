@@ -313,7 +313,7 @@ class User implements UserInterface, \Serializable
     }
 
     /**
-     * @param mixed $key
+     * @param mixed $user_key
      */
     public function setUserKey($user_key): void
     {

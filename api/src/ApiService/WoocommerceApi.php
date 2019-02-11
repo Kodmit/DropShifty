@@ -48,7 +48,7 @@ class WoocommerceApi
         $params = [
             'app_name' => 'Dropshifty',
             'scope' => 'read_write',
-            'user_id' => $user->getKey(),
+            'user_id' => $user->getUserKey(),
             'return_url' => 'http://localhost:8000/check_wc',
             'callback_url' => 'http://localhost:8000/save_wc'
         ];
