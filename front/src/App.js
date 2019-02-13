@@ -81,6 +81,8 @@ class App extends Component {
                 <ApolloProvider client={client}>
                     <BrowserRouter>
                         <div>
+                        <Route path="/register" component={Register} />
+
                             <div className="grid-container">
                                 <Header/>
                                 <NavbarSide/>
@@ -101,6 +103,7 @@ class App extends Component {
                 <BrowserRouter>
                     <div>
                         <Route path="/login" component={Login} />
+                        <Route path="/register" component={Register} />
                     </div>
                 </BrowserRouter>
 
