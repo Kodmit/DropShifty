@@ -91,9 +91,14 @@ class CoreController extends Controller
         $data = file_get_contents('php://input');
         $arr = json_decode($data, true);
 
+        var_dump("loaded");
+
         // For debug
-        file_put_contents("../dump.html", $this->coreService->findUserByKey($arr['user_id']));
-        dump($data);
+        file_put_contents("../dump.html", "penis");
+        var_dump(__DIR__);
+        var_dump(touch(__DIR__ . "/fuck.html"));
+        dump(__DIR__);
+        var_dump($data);
 
         if($user = $this->coreService->findUserByKey($arr['user_id'])){
             $shop = $this->getDoctrine()->getRepository(Shop::class)->findOneBy(["owner" => $user]);
@@ -103,7 +108,7 @@ class CoreController extends Controller
             $this->getDoctrine()->getManager()->flush();
             return true;
         }
-        throw new AccessDeniedException("Key invalid");
+        throw new AccessDeniedException("Invalid key");
     }
 
     /**

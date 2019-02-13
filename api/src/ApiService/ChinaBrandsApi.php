@@ -48,6 +48,25 @@ class ChinaBrandsApi{
 
     }
 
+    public function getProductStock($sku, $warehouse){
+
+        $session = new Session();
+        $post_data = array(
+            'token' => $session->get("CB_Token"),
+            'goods_sn' => json_encode($sku),
+            'warehouse' => $warehouse
+        );
+        $curl = curl_init("https://gloapi.chinabrands.com/v2/product/stock");
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_POST, 1);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $post_data);
+        $result = curl_exec($curl);
+        curl_close($curl);
+
+        return json_decode($result, true);
+
+    }
+
     public function getProductDetails($sku){
 
         $url = "https://gloapi.chinabrands.com/v2/product/index";

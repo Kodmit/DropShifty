@@ -33,10 +33,10 @@ Shops:
       enabled:
         type: 'Boolean!'
       wc_api_url:
-        type: 'String!'
+        type: 'String'
       wc_api_key:
-        type: 'String!'
+        type: 'String'
       wc_user:
-        type: 'String!'
+        type: 'String'
       wc_password:
-        type: 'String!'
+        type: 'String'
