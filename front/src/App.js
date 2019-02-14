@@ -18,29 +18,13 @@ import $ from "jquery";
 import { request, GraphQLClient } from 'graphql-request';
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient from "apollo-boost";
-import { createHttpLink } from 'apollo-link-http';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import gql from 'graphql-tag';
+import axios from 'axios';
 
 
-const link = createHttpLink({
+const client = new ApolloClient({
     uri: 'http://localhost:8000',
-    withCredentials: true
-  });
-  
-  const client = new ApolloClient({
-    cache: new InMemoryCache(),
-    link,
-  });
-/*
-  client
-  .query({
-    query: gql`
-        {
-            CheckIfConnected
-        }`
-  })
-  .then(result => console.log(result.data)); */
+});
+
 
 class App extends Component {
 
@@ -48,7 +32,23 @@ class App extends Component {
         connected: false
     }
 
+    authenticate(){
+        return new Promise(resolve => setTimeout(resolve, 2000))
+      }
+
     componentDidMount() {
+
+        this.authenticate().then(() => {
+            const ele = document.getElementById('ipl-progress-indicator')
+            if (ele) {
+              // fade out
+              ele.classList.add('available')
+              setTimeout(() => {
+                // remove from DOM
+                ele.outerHTML = ''
+              }, 10000);
+            }
+          });
 
         let self = this;
         let data = "{\"query\":\"{\\n\\t " + 'CheckIfConnected' + " \\n}\"}";
@@ -58,8 +58,6 @@ class App extends Component {
         xhr.open("POST", "http://localhost:8000/");
         xhr.setRequestHeader("content-type", "application/json");
         xhr.send(data);
-
-        console.log(data)
         
         xhr.addEventListener("readystatechange", function () {
             if (this.readyState === this.DONE) {
@@ -71,18 +69,33 @@ class App extends Component {
                 });
             }
         });
+        
     }
 
+    logout() {
+        axios.get('http://localhost:8000/logout')
+        .then((res) => {
+          console.log(res.data);
+          let response = res.data.response;
+            console.log(response);
+            this.setState({
+                connected: false
+            });
+        });
+    }
 
     render() {
 
+        //this.logout();
+        //this.state.connected = false;
+        //console.log("THE state " + this.state.connected);
         if (this.state.connected == true) {
             return (
                 <ApolloProvider client={client}>
                     <BrowserRouter>
                         <div>
+                        <Route path="/login" component={Login} />
                         <Route path="/register" component={Register} />
-
                             <div className="grid-container">
                                 <Header/>
                                 <NavbarSide/>
@@ -98,15 +111,15 @@ class App extends Component {
                     </BrowserRouter>
                 </ApolloProvider>
             );
-        } else {
+        } else if (this.state.connected == false) {
             return (
                 <BrowserRouter>
                     <div>
-                        <Route path="/login" component={Login} />
+                        <Login/>
                         <Route path="/register" component={Register} />
+                        <Route path="/login" component={Login} />
                     </div>
                 </BrowserRouter>
-
             )
         }
   };

@@ -12,22 +12,10 @@ import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 
-const CREATE_USER = gql `
-    mutation NewUser($user: UserInput!) {
-        NewUser(input: $user) {
-            content
-        }
-    }`;
-
-const link = createHttpLink({
-    uri: 'http://localhost:8000',
-    withCredentials: true
-    });
-    
-    const client = new ApolloClient({
-    cache: new InMemoryCache(),
-    link,
-    });
+const client = new ApolloClient({
+    uri: "http://localhost:8000"
+  });
+  
 
 class Register extends Component {
 
@@ -39,8 +27,8 @@ class Register extends Component {
         }
     }
 
-    runQuery() {
-        return client.mutate({
+    runQuery(email, username, password) {
+        client.mutate({
             mutation: gql`
           mutation NewUser($user: UserInput!) {
               NewUser(input: $user) {
@@ -49,12 +37,13 @@ class Register extends Component {
           }`,
           variables: { 
               "user": {
-                "username": "admins",
-                "password": "pass",
-                "email": "test@live.fr"
+                "username": username,
+                "password": password,
+                "email": email
             } },
-        });
+        }).then(result => console.log(result.data));
       }
+    
 
     // Get datas from rest api using axios.
     submitRegister = (e) => {
@@ -70,12 +59,13 @@ class Register extends Component {
             if (pass == confirmPass) {
                 this.setState({alert_message: 'Données valides'});
                 this.setState({alert_type: 'success'});
-                //@TODO: Save to database and redirect to login
-                console.log("will running query")
-                this.runQuery();
-                //window.location = '/login';
+                this.runQuery(email, user, pass);
+                setTimeout(function() {
+                     window.location = '/login';
+                }, 4000);
+                
             } else {
-                console.log("Mots de passe no coerents");
+                console.log("Mots de passe différents");
                 this.setState({alert_message: 'Mot de passe différents'});
                 this.setState({alert_type: 'danger'});
             }
@@ -96,35 +86,34 @@ class Register extends Component {
 
     render() {
         return (
-                <div className="login_view">
-                    <div id="user_form" className="container register_form">
-                        <img className="logo_drop mx-auto d-block" src="/images/logo-drop.png" alt="Logo dropshifty"/>
+            <div className="login_view">
+                <div id="user_form" className="container register_form">
+                    <img className="logo_drop mx-auto d-block" src="/images/logo-drop.png" alt="Logo dropshifty"/>
 
-                        <div className="mt-4">
-                            {this.state.alert_type == 'success'?<Alert type={this.state.alert_type} message={this.state.alert_message} />:null}
-                            {this.state.alert_type == 'danger'?<Alert type={this.state.alert_type} message={this.state.alert_message}/>:null}
-                            {this.state.alert_type == 'warning'?<Alert type={this.state.alert_type} message={this.state.alert_message}/>:null}
-                        </div>
-
-                        <form onSubmit={this.submitRegister}>
-                            <div className="form-group">
-                            <label htmlFor="email">Email</label>
-                                <input required="required" type="email" name="email" className="form-control" id="email" placeholder="Email" />
-                                <br/> 
-                                <label htmlFor="username">Nom utilisateur</label>
-                                <input required="required" type="text" name="username" className="form-control" id="username" placeholder="Nom utilisateur" />
-                                <br/>
-                                <label htmlFor="password">Mot de passe</label>
-                                <input required="required" type="password" name="password" className="form-control" id="password" placeholder="Mot de passe" />
-                                <br/>
-                                <label htmlFor="confirmpassword">Confirmer mot de passe</label>
-                                <input required="required" type="password" name="confirmpassword" className="form-control" id="confirmpassword" placeholder="Confirmer Mot de passe" />
-                            </div>
-                            <button onClick={this.registerBtn} type="submit" className="btn_login mt-3">Inscription</button>
-                        </form>
+                    <div className="mt-4">
+                        {this.state.alert_type == 'success'?<Alert type={this.state.alert_type} message={this.state.alert_message} />:null}
+                        {this.state.alert_type == 'danger'?<Alert type={this.state.alert_type} message={this.state.alert_message}/>:null}
+                        {this.state.alert_type == 'warning'?<Alert type={this.state.alert_type} message={this.state.alert_message}/>:null}
                     </div>
+
+                    <form onSubmit={this.submitRegister}>
+                        <div className="form-group">
+                        <label htmlFor="email">Email</label>
+                            <input required="required" type="email" name="email" className="form-control" id="email" placeholder="Email" />
+                            <br/> 
+                            <label htmlFor="username">Nom utilisateur</label>
+                            <input required="required" type="text" name="username" className="form-control" id="username" placeholder="Nom utilisateur" />
+                            <br/>
+                            <label htmlFor="password">Mot de passe</label>
+                            <input required="required" type="password" name="password" className="form-control" id="password" placeholder="Mot de passe" />
+                            <br/>
+                            <label htmlFor="confirmpassword">Confirmer mot de passe</label>
+                            <input required="required" type="password" name="confirmpassword" className="form-control" id="confirmpassword" placeholder="Confirmer Mot de passe" />
+                        </div>
+                        <button onClick={this.registerBtn} type="submit" className="btn_login mt-3">Inscription</button>
+                    </form>
                 </div>
-            
+            </div>
         );
     };
 };

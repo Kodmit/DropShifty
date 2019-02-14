@@ -34,7 +34,7 @@ class User implements UserInterface, \Serializable
     private $username;
 
     /**
-     * @ORM\Column(type="string", unique=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $apiKey;
 

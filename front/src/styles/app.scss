@@ -16,6 +16,19 @@ header {
   height: 65px;
   position: fixed;
   z-index: 999;
+  a.logout_btn {
+    right: 0;
+    position: absolute;
+    margin-right: 55px;
+    line-height: 4em;
+    color: $white !important;
+    cursor: pointer;
+    &:hover {
+      transition: 0.5s;
+      color: rgb(51, 213, 219) !important;
+    }
+  }
+
 }
 
 .main {
@@ -189,5 +202,4 @@ html {
 .logo_drop {
   width: 250px;
 }
-
 
