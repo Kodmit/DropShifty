@@ -45,7 +45,6 @@ class App extends Component {
             }
         }, 4000);
         
-
         this.authenticate().then(() => {
             const ele = document.getElementById('ipl-progress-indicator')
             if (ele) {
