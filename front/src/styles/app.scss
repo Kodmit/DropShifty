@@ -203,3 +203,17 @@ html {
   width: 250px;
 }
 
+._center {
+  text-align: center;
+}
+
+._link {
+  color: $white;
+  cursor: pointer;
+  text-decoration: none;
+  &:hover {
+    transition: 0.5s;
+    opacity: 0.6;
+    color: $white;
+  }
+}

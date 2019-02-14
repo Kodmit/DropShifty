@@ -110,6 +110,10 @@ class Register extends Component {
                         <button onClick={this.registerBtn} type="submit" className="btn_login mt-3">Inscription</button>
                     </form>
                 </div>
+
+                <div className="mt-3 _center">
+                    <a className="_link" href="/login">Connectez-vous</a>
+                </div>
             </div>
         );
     };

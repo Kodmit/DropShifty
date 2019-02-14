@@ -108,6 +108,10 @@ class UserForm extends Component {
                             <button onClick={this.loginBtn} type="submit" className="btn_register mt-3">Connexion</button>
                         </form>
                     </div>
+
+                    <div className="mt-3 _center">
+                        <a className="_link" href="/register">Inscrivez-vous</a>
+                    </div>
                 </div>
             </ApolloProvider>
         );
