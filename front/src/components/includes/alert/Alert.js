@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import $ from "jquery";
-import { findDOMNode } from 'react-dom';
 
 export default class Alert extends Component {
 

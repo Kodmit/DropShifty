@@ -3,13 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/register.scss';
 import '../styles/app.scss';
 import $ from "jquery";
-import axios from 'axios';
 import Alert from '../components/includes/alert/Alert';
 import gql from 'graphql-tag';
 import { Mutation, withApollo } from "react-apollo";
 import ApolloClient from "apollo-boost";
-import { createHttpLink } from 'apollo-link-http';
-import { InMemoryCache } from 'apollo-cache-inmemory';
 
 
 const client = new ApolloClient({

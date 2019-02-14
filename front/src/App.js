@@ -13,9 +13,7 @@ import Notifications from './components/Notifications';
 import Parameters from './components/Parameters';
 import Login from './components/class/Login';
 import Register from './components/Register';
-import {Route, BrowserRouter, PrivateRoute} from "react-router-dom";
-import $ from "jquery";
-import { request, GraphQLClient } from 'graphql-request';
+import { Route, BrowserRouter } from "react-router-dom";
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient from "apollo-boost";
 import axios from 'axios';
@@ -32,11 +30,21 @@ class App extends Component {
         connected: false
     }
 
-    authenticate(){
-        return new Promise(resolve => setTimeout(resolve, 2000))
-      }
+    authenticate() {
+        return new Promise(
+            resolve => setTimeout(resolve, 3200)
+        );
+    }
 
     componentDidMount() {
+
+        setTimeout(() => {
+            let uri = 'http://localhost:3000/register';
+            if (window.location.href == uri) {
+                document.getElementById("login").style.display = "none";            
+            }
+        }, 4000);
+        
 
         this.authenticate().then(() => {
             const ele = document.getElementById('ipl-progress-indicator')
@@ -64,6 +72,8 @@ class App extends Component {
             let object = JSON.parse(this.response);
             let res = object.data['CheckIfConnected'];
 
+            console.log(res);
+
             self.setState({
                 connected: res
                 });
@@ -86,9 +96,6 @@ class App extends Component {
 
     render() {
 
-        //this.logout();
-        //this.state.connected = false;
-        //console.log("THE state " + this.state.connected);
         if (this.state.connected == true) {
             return (
                 <ApolloProvider client={client}>
@@ -111,16 +118,16 @@ class App extends Component {
                     </BrowserRouter>
                 </ApolloProvider>
             );
-        } else if (this.state.connected == false) {
+        } else if (this.state.connected == false){
             return (
                 <BrowserRouter>
                     <div>
-                        <Login/>
                         <Route path="/register" component={Register} />
                         <Route path="/login" component={Login} />
+                        <Login/>
                     </div>
                 </BrowserRouter>
-            )
+            );
         }
   };
 }
