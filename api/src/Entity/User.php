@@ -21,6 +21,7 @@ class User implements UserInterface, \Serializable
      */
     private $id;
 
+
     /**
      * @Assert\Length(
      *      min = 2,
@@ -33,7 +34,7 @@ class User implements UserInterface, \Serializable
     private $username;
 
     /**
-     * @ORM\Column(type="string", unique=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $apiKey;
 
@@ -118,9 +119,9 @@ class User implements UserInterface, \Serializable
     private $address_line_2;
 
     /**
-     * @ORM\Column(type="text", nullable=false)
+     * @ORM\Column(type="text", nullable=true)
      */
-    private $key;
+    private $user_key;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Offer", inversedBy="user")
@@ -306,17 +307,17 @@ class User implements UserInterface, \Serializable
     /**
      * @return mixed
      */
-    public function getKey()
+    public function getUserKey()
     {
-        return $this->key;
+        return $this->user_key;
     }
 
     /**
-     * @param mixed $key
+     * @param mixed $user_key
      */
-    public function setKey($key): void
+    public function setUserKey($user_key): void
     {
-        $this->key = $key;
+        $this->user_key = $user_key;
     }
 
     public function getCreatedAt(): ?\DateTimeInterface

@@ -4,6 +4,7 @@ import './styles/app.scss';
 import '../src/components/includes/app';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import Login from './components/class/Login';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

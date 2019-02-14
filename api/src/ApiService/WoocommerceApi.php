@@ -21,15 +21,22 @@ class WoocommerceApi
 
         $shop = $objectManager->getRepository(Shop::class)->findOneBy(["owner" => $security->getUser()]);
 
-        $this->wooCommerce = new Client(
-            $shop->getWcApiUrl(),
-            $shop->getWcApiKey(),
-            $shop->getWcPassword(),
-            [
-                'wp_api' => true,
-                'version' => 'wc/v3',
-            ]
-        );
+        // todo : Handle this to avoid "Call to a member function getWcApiUrl() on null" if user doesn't have a shop yet.
+        // Error handled... To try...
+        if($shop){
+            $this->wooCommerce = new Client(
+                $shop->getWcApiUrl(),
+                $shop->getWcApiKey(),
+                $shop->getWcPassword(),
+                [
+                    'wp_api' => true,
+                    'version' => 'wc/v3',
+                ]
+            );
+        }
+        else{
+            $this->wooCommerce = null;
+        }
 
     }
 
@@ -37,13 +44,13 @@ class WoocommerceApi
     public function buildLink($storeUrl){
         $user = $this->security->getUser();
 
-        $endpoint = '/wc-auth/v/authorize';
+        $endpoint = '/wc-auth/v1/authorize';
         $params = [
             'app_name' => 'Dropshifty',
             'scope' => 'read_write',
-            'user_id' => $user->getKey(),
-            'return_url' => 'http://localhost:8000/check_wc',
-            'callback_url' => 'http://localhost:8000/save_wc'
+            'user_id' => $user->getUserKey(),
+            'return_url' => 'https://ds-api2.herokuapp.com/check_wc',
+            'callback_url' => 'https://ds-api2.herokuapp.com/save_wc'
         ];
         $query_string = http_build_query( $params );
 

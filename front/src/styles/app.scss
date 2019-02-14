@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand|Raleway');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600|Source+Sans+Pro|Titillium+Web');
 @import "./components/variables.scss";
 
 body {
@@ -15,6 +16,19 @@ header {
   height: 65px;
   position: fixed;
   z-index: 999;
+  a.logout_btn {
+    right: 0;
+    position: absolute;
+    margin-right: 55px;
+    line-height: 4em;
+    color: $white !important;
+    cursor: pointer;
+    &:hover {
+      transition: 0.5s;
+      color: rgb(51, 213, 219) !important;
+    }
+  }
+
 }
 
 .main {
@@ -157,3 +171,35 @@ footer {
     opacity: 0.9;
   }
 }
+
+html {
+  background-color: $login-background;
+}
+
+.login_view {
+  background-color: $login-background;
+  width: 100%;
+  height: 100vh;
+}
+
+.login_form {
+  background-color: $login-background;
+}
+
+.form-control {
+  background-color: transparent !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-radius: inherit !important;
+  color: $white !important;
+  &:focus {
+    box-shadow: none !important;
+    border-color: $white;
+  }
+}
+
+.logo_drop {
+  width: 250px;
+}
+
