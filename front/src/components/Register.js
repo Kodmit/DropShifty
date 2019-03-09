@@ -57,9 +57,10 @@ class Register extends Component {
                 this.setState({alert_message: 'Données valides'});
                 this.setState({alert_type: 'success'});
                 this.runQuery(email, user, pass);
+                
                 setTimeout(function() {
                      window.location = '/login';
-                }, 4000);
+                }, 4000); 
                 
             } else {
                 console.log("Mots de passe différents");

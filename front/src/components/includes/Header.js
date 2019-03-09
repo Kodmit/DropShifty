@@ -12,7 +12,7 @@ const Header = () => {
         xhr.send(null);
         setTimeout(function() {
             window.location = '/login';
-        }, 3000);
+        }, 1500);
       }
 
     return (
@@ -22,7 +22,7 @@ const Header = () => {
                     <a href="/"><img className="logo" src="/logo.png" alt="logo"></img></a>
                 </div>
                 <div className="col-9">
-                    <a className="logout_btn" onClick={logout}>Logout</a>
+                    <a className="logout_btn" onClick={logout}>Deconnexion</a>
                 </div>
 
             </div>

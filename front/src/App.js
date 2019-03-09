@@ -32,18 +32,19 @@ class App extends Component {
 
     authenticate() {
         return new Promise(
-            resolve => setTimeout(resolve, 3200)
+            resolve => setTimeout(resolve, 7000)
         );
     }
 
     componentDidMount() {
 
         setTimeout(() => {
-            let uri = 'http://localhost:3000/register';
-            if (window.location.href == uri) {
+            let uriRegister = 'http://localhost:3000/register';
+            let uriLogin = 'http://localhost:3000/login';
+            if (window.location.href == uriRegister || window.location.href == uriLogin) {
                 document.getElementById("login").style.display = "none";            
             }
-        }, 4000);
+        }, 3600);
         
         this.authenticate().then(() => {
             const ele = document.getElementById('ipl-progress-indicator')
