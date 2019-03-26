@@ -20,7 +20,7 @@ import axios from 'axios';
 
 
 const client = new ApolloClient({
-    uri: 'http://localhost:8000',
+    uri: 'https://ds-api2.herokuapp.com/',
 });
 
 
@@ -63,7 +63,7 @@ class App extends Component {
         let xhr = new XMLHttpRequest();
 
         xhr.withCredentials = true;
-        xhr.open("POST", "http://localhost:8000/");
+        xhr.open("POST", "https://ds-api2.herokuapp.com/");
         xhr.setRequestHeader("content-type", "application/json");
         xhr.send(data);
         
@@ -83,7 +83,7 @@ class App extends Component {
     }
 
     logout() {
-        axios.get('http://localhost:8000/logout')
+        axios.get('https://ds-api2.herokuapp.com/logout')
         .then((res) => {
           console.log(res.data);
           let response = res.data.response;

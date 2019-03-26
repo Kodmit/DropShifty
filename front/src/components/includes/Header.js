@@ -7,9 +7,10 @@ const Header = () => {
 
     function logout() {
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', 'http://localhost:8000/logout', true);
+        xhr.open('GET', 'https://ds-api2.herokuapp.com/logout', true);
         xhr.withCredentials = true;
         xhr.send(null);
+
         setTimeout(function() {
             window.location = '/login';
         }, 1500);

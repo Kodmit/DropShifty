@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/login.scss';
@@ -6,30 +7,30 @@ import axios from 'axios';
 import Alert from '../components/includes/alert/Alert';
 import $ from "jquery";
 import { ApolloProvider } from 'react-apollo';
-import { ApolloClient } from "apollo-boost";
+import { ApolloClient } from "apollo-boost";
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import './includes/query';
 import gql from 'graphql-tag';
 
 
-  const link = createHttpLink({
-    uri: 'http://localhost:8000',
+const link = createHttpLink({
+    uri: 'https://ds-api2.herokuapp.com/',
     withCredentials: true
-  });
-  
-  const client = new ApolloClient({
+});
+
+const client = new ApolloClient({
     cache: new InMemoryCache(),
     link,
-  });
+});
 
-  client
-  .query({
-    query: gql`
+client
+    .query({
+        query: gql`
         {
             CheckIfConnected
         }`
-  });
+    });
 
 
 class UserForm extends Component {
@@ -41,41 +42,41 @@ class UserForm extends Component {
             alert_type: ''
         }
     }
-    
+
     // Get datas from rest api using axios.
-     submitLogin = (e) => {
-      e.preventDefault();
-      const user = e.target.elements.username.value;
-      const pass = e.target.elements.password.value;
+    submitLogin = (e) => {
+        e.preventDefault();
+        const user = e.target.elements.username.value;
+        const pass = e.target.elements.password.value;
 
-      if (user && pass) {
-        axios.defaults.withCredentials = true;
-        axios.post('http://localhost:8000/login?username='+ user +'&password='+ pass)
-        .then((res) => {
-          console.log(res.data);
-          let response = res.data.response;
-            console.log(response);
-            if (response == 'ok' && this.checkIfConnected() == true) {
-              this.setState({alert_message: 'Connecté avec succes'});
-              this.setState({alert_type: 'success'});
-              window.location = '/';
-          }
+        if (user && pass) {
+            axios.defaults.withCredentials = true;
+            axios.post('https://ds-api2.herokuapp.com/login?username='+ user +'&password='+ pass)
+                .then((res) => {
+                    console.log(res.data);
+                    let response = res.data.response;
+                    console.log(response);
+                    if (response == 'ok' && this.checkIfConnected() == true) {
+                        this.setState({alert_message: 'Connecté avec succes'});
+                        this.setState({alert_type: 'success'});
+                        window.location = '/';
+                    }
 
-          if (response == 'already logged in') {
-            this.setState({alert_message: 'Connecté avec succes'});
-            this.setState({alert_type: 'success'});
-            window.location = '/';
-        } 
-          
-          else {
-              this.setState({alert_message: 'Identifiant ou mot de passe inccorect'});
-              this.setState({alert_type: 'danger'});
-          }
-        });
-      } else {
-          this.setState({alert_message: 'Veuillez entrer vos identifiants'});
-          this.setState({alert_type: 'warning'});
-      }    
+                    if (response == 'already logged in') {
+                        this.setState({alert_message: 'Connecté avec succes'});
+                        this.setState({alert_type: 'success'});
+                        window.location = '/';
+                    }
+
+                    else {
+                        this.setState({alert_message: 'Identifiant ou mot de passe inccorect'});
+                        this.setState({alert_type: 'danger'});
+                    }
+                });
+        } else {
+            this.setState({alert_message: 'Veuillez entrer vos identifiants'});
+            this.setState({alert_type: 'warning'});
+        }
     };
 
     loginBtn = () => {
@@ -107,10 +108,9 @@ class UserForm extends Component {
                             </div>
                             <button onClick={this.loginBtn} type="submit" className="btn_register mt-3">Connexion</button>
                         </form>
-                    </div>
-
-                    <div className="mt-3 _center">
-                        <a className="_link" href="/register">Inscrivez-vous</a>
+                        <div className="mt-3 _center">
+                            <a className="_link _center" href="/register">Inscription</a>
+                        </div>
                     </div>
                 </div>
             </ApolloProvider>
