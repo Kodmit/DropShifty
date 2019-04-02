@@ -57,22 +57,41 @@ class UserForm extends Component {
                     console.log(res.data);
                     let response = res.data.response;
                     console.log(response);
-                    if (response == 'ok' && this.checkIfConnected() == true) {
-                        this.setState({alert_message: 'Connecté avec succes'});
-                        this.setState({alert_type: 'success'});
-                        window.location.replace('/');
-                    }
 
-                    if (response == 'already logged in') {
-                        this.setState({alert_message: 'Connecté avec succes'});
-                        this.setState({alert_type: 'success'});
-                        window.location.replace('/');
-                    }
+                    let self = this;
+                    let data = "{\"query\":\"{\\n\\t " + 'CheckIfConnected' + " \\n}\"}";
+                    let xhr = new XMLHttpRequest();
 
-                    else {
-                        this.setState({alert_message: 'Identifiant ou mot de passe inccorect'});
-                        this.setState({alert_type: 'danger'});
-                    }
+                    xhr.withCredentials = true;
+                    xhr.open("POST", "https://ds-api2.herokuapp.com/");
+                    xhr.setRequestHeader("content-type", "application/json");
+                    xhr.send(data);
+
+                    xhr.addEventListener("readystatechange", function () {
+                        if (this.readyState === this.DONE) {
+                            let object = JSON.parse(this.response);
+                            let res = object.data['CheckIfConnected'];
+
+                            console.log(res);
+                            if (response == 'ok' && res == true) {
+                                self.setState({alert_message: 'Connecté avec succes'});
+                                self.setState({alert_type: 'success'});
+                                window.location.replace('/');
+                            }
+
+                            if (response == 'already logged in') {
+                                self.setState({alert_message: 'Connecté avec succes'});
+                                self.setState({alert_type: 'success'});
+                                window.location.replace('/');
+                            }
+
+                            else {
+                                self.setState({alert_message: 'Identifiant ou mot de passe inccorect'});
+                                self.setState({alert_type: 'danger'});
+                            }
+                        }
+                    });
+
                 });
         } else {
             this.setState({alert_message: 'Veuillez entrer vos identifiants'});
