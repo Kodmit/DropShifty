@@ -50,6 +50,7 @@ class UserForm extends Component {
         const pass = e.target.elements.password.value;
 
         if (user && pass) {
+            console.log("user and pass ok")
             axios.defaults.withCredentials = true;
             axios.post('https://ds-api2.herokuapp.com/login?username='+ user +'&password='+ pass)
                 .then((res) => {
@@ -59,13 +60,13 @@ class UserForm extends Component {
                     if (response == 'ok' && this.checkIfConnected() == true) {
                         this.setState({alert_message: 'Connecté avec succes'});
                         this.setState({alert_type: 'success'});
-                        window.location = '/';
+                        window.location.replace('/');
                     }
 
                     if (response == 'already logged in') {
                         this.setState({alert_message: 'Connecté avec succes'});
                         this.setState({alert_type: 'success'});
-                        window.location = '/';
+                        window.location.replace('/');
                     }
 
                     else {
