@@ -9,12 +9,10 @@ class Login extends Component {
       return (
           <div id="login" className="login_form">
             <UserForm login={this.login} />
-
           </div>
-
       );
     };
-  };
+}
   
-  export default Login;
+export default Login;
   

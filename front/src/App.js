@@ -28,11 +28,11 @@ class App extends Component {
 
     state = {
         connected: false
-    }
+    };
 
     authenticate() {
         return new Promise(
-            resolve => setTimeout(resolve, 7000)
+            resolve => setTimeout(resolve, 1900)
         );
     }
 
@@ -44,7 +44,7 @@ class App extends Component {
             if (window.location.href == uriRegister || window.location.href == uriLogin) {
                 document.getElementById("login").style.display = "none";            
             }
-        }, 3600);
+        }, 2100);
         
         this.authenticate().then(() => {
             const ele = document.getElementById('ipl-progress-indicator')
@@ -54,7 +54,7 @@ class App extends Component {
               setTimeout(() => {
                 // remove from DOM
                 ele.outerHTML = ''
-              }, 10000);
+              }, 2000);
             }
           });
 
@@ -72,14 +72,11 @@ class App extends Component {
             let object = JSON.parse(this.response);
             let res = object.data['CheckIfConnected'];
 
-            console.log(res);
-
             self.setState({
                 connected: res
                 });
             }
         });
-        
     }
 
     logout() {
