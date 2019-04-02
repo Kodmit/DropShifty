@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/login.scss';
@@ -12,6 +11,8 @@ import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import './includes/query';
 import gql from 'graphql-tag';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
 
 
 const link = createHttpLink({
@@ -85,16 +86,32 @@ class UserForm extends Component {
                             }
 
                             else {
-                                self.setState({alert_message: 'Identifiant ou mot de passe inccorect'});
-                                self.setState({alert_type: 'danger'});
+                                //self.setState({alert_message: 'Identifiant ou mot de passe inccorect'});
+                                //self.setState({alert_type: 'danger'});
+                                Swal.fire({
+                                    type: 'error',
+                                    title: 'Oups...',
+                                    showCloseButton: false,
+                                    showCancelButton: false,
+                                    focusConfirm: false,
+                                    html: 'Identifiant ou mot de passe inccorect',
+                                });
                             }
                         }
                     });
 
                 });
         } else {
-            this.setState({alert_message: 'Veuillez entrer vos identifiants'});
-            this.setState({alert_type: 'warning'});
+            Swal.fire({
+                type: 'error',
+                title: 'Oups...',
+                showCloseButton: false,
+                showCancelButton: false,
+                focusConfirm: false,
+                html: 'Veuillez entrer vos identifiants',
+            });
+            //this.setState({alert_message: 'Veuillez entrer vos identifiants'});
+            //this.setState({alert_type: 'warning'});
         }
     };
 
