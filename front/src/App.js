@@ -13,7 +13,7 @@ import Notifications from './components/Notifications';
 import Parameters from './components/Parameters';
 import Login from './components/class/Login';
 import Register from './components/Register';
-import NoMatch from './components/NoMatch';
+//import NoMatch from './components/NoMatch';
 import { Route, BrowserRouter } from "react-router-dom";
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient from "apollo-boost";
@@ -98,7 +98,6 @@ class App extends Component {
                 <ApolloProvider client={client}>
                     <BrowserRouter>
                         <div>
-                            <Route component={NoMatch} />
                             <Route path="/login" component={Login} />
                             <Route path="/register" component={Register} />
                             <div className="grid-container">
@@ -120,7 +119,6 @@ class App extends Component {
             return (
                 <BrowserRouter>
                     <div>
-                        <Route component={NoMatch} />
                         <Route path="/register" component={Register} />
                         <Route path="/login" component={Login} />
                         <Login/>
