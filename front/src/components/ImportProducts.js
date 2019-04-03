@@ -24,7 +24,77 @@ class ImportProducts extends Component {
         xhr.open("POST", "https://ds-api2.herokuapp.com/");
         xhr.setRequestHeader("content-type", "application/json");
         xhr.send(data);
+    }
 
+    // Import all products (pray)
+    import_all_products(sku) {
+        //loader("show");
+
+        var category = document.getElementById("ds_cats").value;
+
+        var data = "{\"query\":\"{\\n\\tImportToWc(sku: " + sku + ", cat_id: " + category + ", type: \\\"variable\\\")\\n}\"}";
+
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+
+        xhr.addEventListener("readystatechange", function () {
+            if (this.readyState === this.DONE) {
+                console.log(this.responseText);
+                //loader("hide");
+
+                Swal.fire({
+                    title: '<strong>Produits importés</strong>',
+                    type: 'success',
+                    html: 'Les produits ont été importés avec succès ! Vous pouvez les consulter dans la liste de vos produits.',
+                    showCloseButton: true,
+                    showCancelButton: false,
+                    focusConfirm: false,
+                    confirmButtonText: 'Fermer',
+                    confirmButtonAriaLabel: 'Fermer'
+                })
+            }
+        });
+
+        xhr.open("POST", "https://ds-api2.herokuapp.com/");
+        xhr.setRequestHeader("content-type", "application/json");
+
+        xhr.send(data);
+    }
+
+    // Import single product
+    import_product(sku) {
+
+        //loader("show");
+
+        let category = document.getElementById("ds_cats").value;
+
+        let data = "{\"query\":\"{\\n\\tImportToWc(sku: " + sku + ", cat_id: " + category + ", type: \\\"simple\\\")\\n}\"}";
+
+        let xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+
+        xhr.addEventListener("readystatechange", function () {
+            if (this.readyState === this.DONE) {
+                console.log(this.responseText);
+                //loader("hide");
+
+                Swal.fire({
+                    title: '<strong>Produits importés</strong>',
+                    type: 'success',
+                    html: 'Le produit a été importé avec succès ! Vous pouvez le consulter dans la liste des produits.',
+                    showCloseButton: true,
+                    showCancelButton: false,
+                    focusConfirm: false,
+                    confirmButtonText: 'Fermer',
+                    confirmButtonAriaLabel: 'Fermer'
+                })
+            }
+        });
+
+        xhr.open("POST", "https://ds-api2.herokuapp.com/");
+        xhr.setRequestHeader("content-type", "application/json");
+
+        xhr.send(data);
     }
 
     submitImport = (e) => {
