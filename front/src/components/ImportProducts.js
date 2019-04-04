@@ -27,6 +27,7 @@ class ImportProducts extends Component {
     }
 
     // Import all products (pray)
+    /*
     import_all_products(sku) {
         //loader("show");
 
@@ -59,14 +60,15 @@ class ImportProducts extends Component {
         xhr.setRequestHeader("content-type", "application/json");
 
         xhr.send(data);
-    }
+    } */
 
     // Import single product
     import_product(sku) {
 
         //loader("show");
 
-        let category = document.getElementById("ds_cats").value;
+        //let category = document.getElementById("ds_cats").value;
+        let category = 2089;
 
         let data = "{\"query\":\"{\\n\\tImportToWc(sku: " + sku + ", cat_id: " + category + ", type: \\\"simple\\\")\\n}\"}";
 
@@ -118,6 +120,7 @@ class ImportProducts extends Component {
                 });
             }
         });
+        this.import_product(sku)
     };
 
     render () {
