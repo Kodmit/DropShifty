@@ -73,6 +73,8 @@ class App extends Component {
             let object = JSON.parse(this.response);
             let res = object.data['CheckIfConnected'];
 
+            //console.log(res)
+
             self.setState({
                 connected: res
                 });
