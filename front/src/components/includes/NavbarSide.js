@@ -8,7 +8,7 @@ const NavbarSide = () => {
         <nav className="navbar-side">
 
             <div className="row">
-                <NavLink to={"/"} style={{ padding: '15px' }}><h1 style={{ fontSize: '30px' }}>DropShifty</h1></NavLink>
+                <NavLink to={"/"} style={{ padding: '15px' }}><h1 style={{ fontSize: '30px', color: 'white' }}>DropShifty</h1></NavLink>
             </div>
 
             <div className="row mt-3">
@@ -16,7 +16,7 @@ const NavbarSide = () => {
                     <img className="icons-nav" src="./images/icons/line-chart.svg" alt="graph"></img>
                 </div>
                 <div className="col-sm-10">
-                    <NavLink to={"/"} exact activeStyle={{color: "#FFF"}}>Dashboard</NavLink>
+                    <NavLink to={"/"} exact activeStyle={{color: "#FFF"}}>Tableau de bord</NavLink>
                 </div>
             </div>
 

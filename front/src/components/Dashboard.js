@@ -7,14 +7,15 @@ import Chart from './includes/Chart';
 const Dashboard = () => {
     return (
             <div className="main">
+
                 <div className="container mt-4">
-                    <h3>Total des ventes</h3>
+                    <h3>Tableau de bord</h3>
 
                     <div className="mt-4"></div>
 
                     <div className="row">
                         <div className="col-sm-8">
-                            <div className="graph-sales">
+                            <div className="graph-sales font">
                                 <Chart />
                             </div>
                         </div>
@@ -106,6 +107,12 @@ const Dashboard = () => {
                             <div className="col-sm-2">
                                 <p>32,90 EUR</p>
                             </div>
+                        </div>
+                    </div>
+
+                    <div className="container">
+                        <div className="row">
+                            <div></div>
                         </div>
                     </div>
 

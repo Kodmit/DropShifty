@@ -9,8 +9,12 @@ body {
   padding: 0;
 }
 
+.font {
+  font-family: 'Nunito', sans-serif;
+}
 
 header {
+  box-shadow: $shadow;
   grid-area: header;
   background-color: #FFF;
   width: 100%;
@@ -241,4 +245,13 @@ html {
     opacity: 0.6;
     color: $white;
   }
+}
+
+._shadow {
+  box-shadow: $shadow;
+}
+
+.chart {
+  font-family: 'Nunito', sans-serif !important;
+
 }

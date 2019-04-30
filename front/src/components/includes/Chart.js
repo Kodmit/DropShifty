@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import {Bar} from 'react-chartjs-2';
+import {Bar, Line} from 'react-chartjs-2';
+import '../../styles/app.scss';
+
 
 class Chart extends Component {
     constructor(props) {
@@ -9,20 +11,16 @@ class Chart extends Component {
                 labels:['Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
                 datasets:[
                     {
-                        label: 'Vente',
+                        label: "Chiffre d'affaires",
                         data: [
                             1000,
-                            1500,
-                            2000,
-                            2500,
-                            3000
+                            900,
+                            1200,
+                            500,
+                            300
                         ],
                         backgroundColor:[
-                            'rgba(255, 99, 132, 0.6)',
-                            'rgba(191, 191, 63, 0.6)',
-                            'rgba(63, 127, 191, 0.6)',
-                            'rgba(127, 191, 63, 0.6)',
-                            'rgba(191, 127, 63, 0.6)',
+                            '#4e73df',
                         ]
                     }
                 ]
@@ -38,8 +36,9 @@ class Chart extends Component {
 
     render() {
         return (
-            <div className="chart">
-                <Bar
+            <div className="chart _shadow">
+                <Line
+                    className="_shadow font"
                     data={this.state.chartData}
                     width={500}
                     height={300}
@@ -47,7 +46,6 @@ class Chart extends Component {
                         maintainAspectRatio: false,
                         title:{
                             display: this.props.displayTitle,
-                            text:'Ventes mensuelles',
                             fontSize: 25
                         },
                         legend:{
