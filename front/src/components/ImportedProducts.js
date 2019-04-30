@@ -73,8 +73,8 @@ class ImportedProducts extends Component {
                             <p className="descProduct">{item.name}</p>
                             <div className="actions-container d-flex">
                                 <Link className="btn-submit" to={"/product/" + item.id}><i className="fas fa-eye"></i></Link>
-                                <button className="btn-submit ml-2"><i className="fas fa-edit"></i></button>
-                                <button className="btn-submit ml-2"><i className="far fa-trash-alt"></i></button>
+                                <Link className="btn-submit" to={"/product/" + item.id}><i className="fas fa-edit"></i></Link>
+                                <Link className="btn-submit" to={"/product/" + item.id}><i className="far fa-trash-alt"></i></Link>
                             </div>
                         </div>
                     </div>
