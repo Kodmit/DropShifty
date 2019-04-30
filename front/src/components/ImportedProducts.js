@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/importedProducts.scss';
 import '../styles/app.scss';
-import gql from 'graphql-tag';
-import { createHttpLink } from 'apollo-link-http';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import { Mutation, withApollo } from "react-apollo";
-import ApolloClient from "apollo-boost";
-import { createApolloFetch } from 'apollo-fetch';
+//import gql from 'graphql-tag';
+//import { createHttpLink } from 'apollo-link-http';
+//import { InMemoryCache } from 'apollo-cache-inmemory';
+//import { Mutation, withApollo } from "react-apollo";
+//import ApolloClient from "apollo-boost";
+//import { createApolloFetch } from 'apollo-fetch';
 
 
 class ImportedProducts extends Component {
@@ -16,13 +16,6 @@ class ImportedProducts extends Component {
         super(props)
         this.state = { 
             productList: [],
-            shop: [
-                {id: 35, name: 'jumper', color: 'red', price: 20},
-                {id: 42, name: 'shirt', color: 'blue', price: 15},
-                {id: 56, name: 'pants', color: 'green', price: 25},
-                {id: 71, name: 'socks', color: 'black', price: 5},
-                {id: 72, name: 'socks', color: 'white', price: 5},
-            ]
          }
       }
 
@@ -46,7 +39,6 @@ class ImportedProducts extends Component {
                 let object = JSON.parse(this.response);
                 let objectParsed = object.data.WC_GetProductsList;
 
-                
                 self.setState({
                     productList: objectParsed
                 })
