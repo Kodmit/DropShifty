@@ -70,10 +70,12 @@ class ImportProducts extends Component {
         //let category = document.getElementById("ds_cats").value;
         let category = 2089;
 
-        let data = "{\"query\":\"{\\n\\tImportToWc(sku: " + sku + ", cat_id: " + category + ", type: \\\"simple\\\")\\n}\"}";
+        let data = "{\"query\":\"{\\n\\tImportToWc(sku: \\\"423617502\\\", cat_id: 2089, type: \\\"simple\\\")\\n\\t# Type can be 'variable\\\" or 'simple' (by default).\\n}\"}";
 
         let xhr = new XMLHttpRequest();
         xhr.withCredentials = true;
+
+        console.log(data)
 
         xhr.addEventListener("readystatechange", function () {
             if (this.readyState === this.DONE) {
