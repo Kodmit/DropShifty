@@ -65,6 +65,8 @@ class ProductDetails extends Component {
             $('.imgsList').append('<img class="img_product_detail mx-auto d-block" src='+value.images[0].src+' />');
             $('.price').append(value.price_html);
             $('.created_at').append(moment(value.date_created).format('DD/MM/YYYY'));
+            console.log($(value.description).html())
+            $('.desc').append($(value.description).html());
             if (value.stock_status == 'instock') {
                 $('.stock').append("En stock"); 
             } else {
@@ -84,10 +86,10 @@ class ProductDetails extends Component {
                         <div className="col-6">
                             <div className="infosList">
                                 <h2></h2>
-                               <p className="desc"></p>
-                               <p className="price">Prix : </p>
-                               <p className="created_at">Date d'ajout : </p>
-                               <p className="stock"></p>
+                                <p className="price">Prix : </p>
+                                <p className="created_at">Date d'ajout : </p>
+                                <p className="stock"></p>
+                                <div className="desc"></div>
                             </div>
                         </div>
                     </div>
