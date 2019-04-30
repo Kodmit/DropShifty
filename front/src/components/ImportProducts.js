@@ -7,6 +7,10 @@ import 'sweetalert2/src/sweetalert2.scss'
 
 class ImportProducts extends Component {
 
+    state = {
+        showResults: '',
+    }
+
     // GraphQL calls function
     ds_call(arg, handledata) {
 
@@ -28,6 +32,7 @@ class ImportProducts extends Component {
 
     // Import single product
     import_product(sku) {
+        document.getElementById("loader").style.display = "block";
 
         let category = 2089;
 
@@ -41,12 +46,11 @@ class ImportProducts extends Component {
         let xhr = new XMLHttpRequest();
         xhr.withCredentials = true;
 
-        console.log(data)
+        console.log(data);
 
         xhr.addEventListener("readystatechange", function () {
             if (this.readyState === this.DONE) {
-                console.log(this.responseText);
-                //loader("hide");
+                console.log(this.responseText)
 
                 Swal.fire({
                     title: '<strong>Produits importés</strong>',
@@ -57,7 +61,9 @@ class ImportProducts extends Component {
                     focusConfirm: false,
                     confirmButtonText: 'Fermer',
                     confirmButtonAriaLabel: 'Fermer'
-                })
+                });
+                
+                document.getElementById("loader").style.display = "none";
             }
         });
 
@@ -100,26 +106,31 @@ class ImportProducts extends Component {
                     <form className="form-import-product" onSubmit={this.submitImport}>
                         <div className="form-group">
                             <label htmlFor="sku">Entrer le code SKU du produit à importer</label>
-                            <input type="text" className="_form-control" id="sku" name={'sku'} placeholder="Code SKU du produit" />
+                            <input required type="text" className="_form-control" id="sku" name={'sku'} placeholder="Code SKU du produit" />
                             <input className="btn-submit mt-3" type="submit" value="Importer" />
                         </div>
                     </form>
 
-                    <div className="box-product-import mt-5">
-                        <div className="row">
-                            <div className="col-4">
-                                <img className="product-import" src="/images/products/iphonex.jpg" alt="mug licorne" />
-                            </div>
-                            <div className="col-8 p-4">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet atque blanditiis consequatur debitis dolorum est eum harum, in minus necessitatibus odio officia quia, repellat repellendus suscipit ut vel voluptate?</p>
-                                <div className="actions-container d-flex">
-                                    <button className="btn-submit"><i className="fas fa-eye"></i></button>
-                                    <button className="btn-submit ml-2"><i className="fas fa-edit"></i></button>
-                                    <button className="btn-submit ml-2"><i className="far fa-trash-alt"></i></button>
+                    <img id="loader" style={{ display: 'none' }} src="images/loader.svg" />
+
+                    {/*
+                        <div className="box-product-import mt-5">
+                            <div className="row">
+                                <div className="col-4">
+                                    <img className="product-import" src="/images/products/iphonex.jpg" alt="mug licorne" />
+                                </div>
+                                <div className="col-8 p-4">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet atque blanditiis consequatur debitis dolorum est eum harum, in minus necessitatibus odio officia quia, repellat repellendus suscipit ut vel voluptate?</p>
+                                    <div className="actions-container d-flex">
+                                        <button className="btn-submit"><i className="fas fa-eye"></i></button>
+                                        <button className="btn-submit ml-2"><i className="fas fa-edit"></i></button>
+                                        <button className="btn-submit ml-2"><i className="far fa-trash-alt"></i></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    */}
+                    
                 </div>
             </div>
         );
