@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand|Raleway');
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600|Source+Sans+Pro|Titillium+Web');
+@import url('https://fonts.googleapis.com/css?family=Nunito');
 @import "./components/variables.scss";
 
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Nunito', sans-serif !important;
   margin: 0;
   padding: 0;
 }
@@ -11,7 +12,7 @@ body {
 
 header {
   grid-area: header;
-  background-color: $color-nav;
+  background-color: #FFF;
   width: 100%;
   height: 65px;
   position: fixed;
@@ -66,10 +67,12 @@ footer {
 }
 
 .navbar-side {
+  z-index: 1000;
   color: #FFF;
   grid-area: menu;
   width: 195px;
-  background-color: $color-nav;
+  background-color: #4e73df;
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(10%,#4e73df),to(#224abe));
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -81,11 +84,11 @@ footer {
 
   a {
     text-decoration: none;
-    color: #FFF;
+    color: $link;
     font-size: 15px;
   }
   a:hover {
-    color: #33d5db;
+    color: #FFF;
     text-decoration: none;
     transition: 0.3s;
     opacity: 0.9;
@@ -182,10 +185,6 @@ footer {
       }
     }
   }
-}
-
-.navbar-content {
-  margin-top: 75px;
 }
 
 .box-product-import {

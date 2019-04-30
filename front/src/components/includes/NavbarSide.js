@@ -7,12 +7,16 @@ const NavbarSide = () => {
     return (
         <nav className="navbar-side">
 
-            <div className="row navbar-content">
+            <div className="row">
+                <NavLink to={"/"} style={{ padding: '15px' }}><h1 style={{ fontSize: '30px' }}>DropShifty</h1></NavLink>
+            </div>
+
+            <div className="row mt-3">
                 <div className="col-sm-2">
                     <img className="icons-nav" src="./images/icons/line-chart.svg" alt="graph"></img>
                 </div>
                 <div className="col-sm-10">
-                    <NavLink to={"/"} exact activeStyle={{color: "#33d5db"}}>Dashboard</NavLink>
+                    <NavLink to={"/"} exact activeStyle={{color: "#FFF"}}>Dashboard</NavLink>
                 </div>
             </div>
 
@@ -21,7 +25,7 @@ const NavbarSide = () => {
                     <img className="icons-nav" src="./images/icons/smartphone.svg" alt="smartphone"></img>
                 </div>
                 <div className="col-sm-10">
-                    <NavLink to={"/orders"} exact activeStyle={{color: "#33d5db"}}>Commandes</NavLink>
+                    <NavLink to={"/orders"} exact activeStyle={{color: "#FFF"}}>Commandes</NavLink>
                 </div>
             </div>
 
@@ -30,15 +34,15 @@ const NavbarSide = () => {
                     <img className="icons-nav" src="./images/icons/shopping-bag.svg" alt="shopping"></img>
                 </div>
                 <div className="col-sm-10">
-                    <NavLink to={"/import"} exact activeStyle={{color: "#33d5db"}}>Importer produit</NavLink>
+                    <NavLink to={"/import"} exact activeStyle={{color: "#FFF"}}>Importer produit</NavLink>
                 </div>
                 <div className="col-sm-2"></div>
                 <div className="col-sm-10">
-                    <NavLink to={"/imported"} exact activeStyle={{color: "#33d5db"}}>Produits importés</NavLink>
+                    <NavLink to={"/imported"} exact activeStyle={{color: "#FFF"}}>Produits importés</NavLink>
                 </div>
                 <div className="col-sm-2"></div>
                 <div className="col-sm-10">
-                    <NavLink to={"/products"} exact activeStyle={{color: "#33d5db"}}>Mes produits</NavLink>
+                    <NavLink to={"/products"} exact activeStyle={{color: "#FFF"}}>Mes produits</NavLink>
                 </div>
             </div>
 
@@ -47,7 +51,7 @@ const NavbarSide = () => {
                     <img className="icons-nav" src="./images/icons/notification.svg" alt="notifications"></img>
                 </div>
                 <div className="col-sm-10">
-                    <NavLink to={"/notifications"} exact activeStyle={{color: "#33d5db"}}>Notifications</NavLink>
+                    <NavLink to={"/notifications"} exact activeStyle={{color: "#FFF"}}>Notifications</NavLink>
                 </div>
             </div>
 
@@ -65,7 +69,7 @@ const NavbarSide = () => {
                     <img className="icons-nav" src="./images/icons/settings.svg" alt="parametres"></img>
                 </div>
                 <div className="col-sm-10">
-                    <NavLink to={"/parameters"} exact activeStyle={{color: "#33d5db"}}>Parametres</NavLink>
+                    <NavLink to={"/parameters"} exact activeStyle={{color: "#FFF"}}>Parametres</NavLink>
                 </div>
             </div>
 
