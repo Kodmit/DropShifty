@@ -109,6 +109,26 @@ footer {
   font-weight: bold;
 }
 
+.btn-import {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  color: #FFF;
+  background-color: $color-nav;
+  border: none;
+  &:hover {
+    outline: none;
+    cursor: pointer;
+    transition: 0.5s;
+    box-shadow: 1px 1px 1px $shadow;
+    opacity: 0.9;
+  }
+  i {
+    margin-top: 10px;
+    color: #FFF;
+  }
+}
+
 .btn-submit {
   margin: 10px;
   width: 100%;

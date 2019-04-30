@@ -107,7 +107,7 @@ class ImportProducts extends Component {
                         <div className="form-group">
                             <label htmlFor="sku">Entrer le code SKU du produit à importer</label>
                             <input required type="text" className="_form-control" id="sku" name={'sku'} placeholder="Code SKU du produit" />
-                            <input className="btn-submit mt-3" type="submit" value="Importer" />
+                            <input className="btn-import mt-3" type="submit" value="Importer" />
                         </div>
                     </form>
 
