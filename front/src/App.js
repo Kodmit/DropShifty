@@ -18,6 +18,7 @@ import { Route, BrowserRouter } from "react-router-dom";
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient from "apollo-boost";
 import axios from 'axios';
+import ProductDetails from './components/ProductDetails';
 
 
 const client = new ApolloClient({
@@ -110,6 +111,7 @@ class App extends Component {
                                 <Route path="/import" component={ImportProducts}/>
                                 <Route path="/imported" component={ImportedProducts}/>
                                 <Route path="/products" component={MyProducts}/>
+                                <Route path="/product/:id" render={(props) => <ProductDetails {...props}/>} />
                                 <Route path="/notifications" component={Notifications}/>
                                 <Route path="/parameters" component={Parameters}/>
                             </div>
