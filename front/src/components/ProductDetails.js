@@ -61,11 +61,15 @@ class ProductDetails extends Component {
         let productInfos = this.state.productInfos;
 
         $.each( productInfos, function( key, value ) {
-            console.log(value.name)
             $(".infosList h2").append(value.name);
             $('.imgsList').append('<img class="img_product_detail mx-auto d-block" src='+value.images[0].src+' />');
             $('.price').append(value.price_html);
             $('.created_at').append(moment(value.date_created).format('DD/MM/YYYY'));
+            if (value.stock_status == 'instock') {
+                $('.stock').append("En stock"); 
+            } else {
+                $('.stock').append("Rupture de stock");
+            }
         });
         
         return (
@@ -83,6 +87,7 @@ class ProductDetails extends Component {
                                <p className="desc"></p>
                                <p className="price">Prix : </p>
                                <p className="created_at">Date d'ajout : </p>
+                               <p className="stock"></p>
                             </div>
                         </div>
                     </div>
