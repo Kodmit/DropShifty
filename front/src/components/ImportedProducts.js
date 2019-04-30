@@ -9,122 +9,87 @@ import { Mutation, withApollo } from "react-apollo";
 import ApolloClient from "apollo-boost";
 import { createApolloFetch } from 'apollo-fetch';
 
-const link = createHttpLink({
-    uri: 'https://ds-api2.herokuapp.com/',
-    withCredentials: true
-});
-
-const client = new ApolloClient({
-    cache: new InMemoryCache(),
-    link,
-});
-
-/*
-
-const fetch = createApolloFetch({
-  uri: 'https://ds-api2.herokuapp.com/',
-});
-
-*/
-
 
 class ImportedProducts extends Component {
 
+    constructor(props) {
+        super(props)
+        this.state = { 
+            productList: [],
+            shop: [
+                {id: 35, name: 'jumper', color: 'red', price: 20},
+                {id: 42, name: 'shirt', color: 'blue', price: 15},
+                {id: 56, name: 'pants', color: 'green', price: 25},
+                {id: 71, name: 'socks', color: 'black', price: 5},
+                {id: 72, name: 'socks', color: 'white', price: 5},
+            ]
+         }
+      }
+
     componentDidMount() {
-        /*
-        fetch({
-            query: '{ WC_GetProductsList }',
-          }).then(res => {
-            console.log(res);
-          });
-        
-        client.query({
-            method: "POST",
-            query: gql`
-            {
-                WC_GetProductsList
-            }`
-        }).then(result => console.log(result.data));
-        
-        
-
-        client.mutate({
-            mutation: gql`
-            {
-                WC_GetProductsList
-            }`
-        }).then(result => console.log(result.data));
-        */
-
-        let obj = this.ds_call("WC_GetProductsList");
-        console.log(obj)
-        //let res = obj.data['WC_GetProductsList'];
-        //console.log(res)
+        this.getProductsList();        
     }
 
-    ds_call(arg, handledata){
+    getProductsList() {
+        this.ds_call("WC_GetProductsList");
+    }
 
-        var data = "{\"query\":\"{\\n\\t " + arg + " \\n}\"}";
-        var xhr = new XMLHttpRequest();
+    ds_call(arg, handledata) {
+        let self = this;
+        let data = "{\"query\":\"{\\n\\t " + arg + " \\n}\"}";
+        let xhr = new XMLHttpRequest();
 
-        xhr.addEventListener("readystatechange", function () {
-        if (this.readyState === this.DONE) {
-            console.log(this.response);
-            let object = JSON.parse(this.response);
-            //handledata(object.data[arg]);
-        }
+            xhr.addEventListener("readystatechange", function () {
+
+            if (this.readyState === this.DONE) {
+                //console.log(this.response);
+                let object = JSON.parse(this.response);
+                let objectParsed = object.data.WC_GetProductsList;
+
+                
+                self.setState({
+                    productList: objectParsed
+                })
+
+                console.log(self.state.productList)
+                
+            }
         });
+
         xhr.withCredentials = true;
         xhr.open("POST", "https://ds-api2.herokuapp.com/");
         xhr.setRequestHeader("content-type", "application/json");
         xhr.send(data);
-    
     }
 
     render() {
+
+        this.items = this.state.productList.map((item, key) =>
+            <div key={item.id} className="content-import">
+                {/*console.log("Item : " + item.name)*/}
+                <div className="box-product-import mt-5">
+                    <div className="row">
+                        <div className="col-4">
+                            <img className="product-import" src={item.images[0].src} alt="mug licorne" />
+                        </div>
+                        <div className="col-8 p-4">
+                            <p className="descProduct">{item.name}</p>
+                            <div className="actions-container d-flex">
+                                <button className="btn-submit"><i className="fas fa-eye"></i></button>
+                                <button className="btn-submit ml-2"><i className="fas fa-edit"></i></button>
+                                <button className="btn-submit ml-2"><i className="far fa-trash-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+
         return (
             <div className="main">
                 <div className="container mt-4">
                     <h3>Produits importés</h3>
-
-                    <div className="content-import">
-                        <div className="box-product-import mt-5">
-                            <div className="row">
-                                <div className="col-4">
-                                    <img className="product-import" src="/images/products/iphonex.jpg" alt="mug licorne" />
-                                </div>
-                                <div className="col-8 p-4">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet atque blanditiis consequatur debitis dolorum est eum harum, in minus necessitatibus odio officia quia, repellat repellendus suscipit ut vel voluptate?</p>
-
-                                    <div className="actions-container d-flex">
-                                        <button className="btn-submit"><i className="fas fa-eye"></i></button>
-                                        <button className="btn-submit ml-2"><i className="fas fa-edit"></i></button>
-                                        <button className="btn-submit ml-2"><i className="far fa-trash-alt"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="content-import">
-                        <div className="box-product-import mt-5">
-                            <div className="row">
-                                <div className="col-4">
-                                    <img className="product-import" src="/images/products/iphonex.jpg" alt="mug licorne" />
-                                </div>
-                                <div className="col-8 p-4">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet atque blanditiis consequatur debitis dolorum est eum harum, in minus necessitatibus odio officia quia, repellat repellendus suscipit ut vel voluptate?</p>
-
-                                    <div className="actions-container d-flex">
-                                        <button className="btn-submit"><i className="fas fa-eye"></i></button>
-                                        <button className="btn-submit ml-2"><i className="fas fa-edit"></i></button>
-                                        <button className="btn-submit ml-2"><i className="far fa-trash-alt"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                        {this.items}
                 </div>
             </div>
         );
