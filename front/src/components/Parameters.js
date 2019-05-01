@@ -17,11 +17,6 @@ class Parameters extends Component {
 
     render() {
 
-        const btnStyle = {
-            color: '#FFF',
-            backgroundColor: 'grey',
-          };
-
         return (
             <div className="main">
                 <div className="container mt-3">
@@ -31,9 +26,9 @@ class Parameters extends Component {
                         <form onSubmit={this.submitParameters}>
                             <div className="form-group">
                                 <label htmlFor="apikey">Clé api</label>
-                                <input required="required" type="apikey" name="apikey" className="form-control" id="apikey" placeholder="Email"/>
+                                <input required="required" type="text" name="apikey" className="_form-control" id="apikey" placeholder="Email"/>
                             </div>
-                            <button style={btnStyle} onClick={this.parameterBtn} type="submit" className="btn_login mt-3">Enregistrer</button>
+                            <button onClick={this.parameterBtn} type="submit" className="btn-import mt-3">Enregistrer</button>
                         </form>
                     </div>
                 </div>
