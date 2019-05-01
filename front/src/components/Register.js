@@ -52,7 +52,6 @@ class Register extends Component {
         const confirmPass = e.target.elements.confirmpassword.value;
 
         if (email && user && pass && confirmPass) {
-            console.log("All datas are OK.");
             if (pass == confirmPass) {
                 this.setState({alert_message: 'Données valides'});
                 this.setState({alert_type: 'success'});
@@ -69,7 +68,6 @@ class Register extends Component {
             }
             
         } else {
-            console.log("All datas are !OK.");
             this.setState({alert_message: 'Données invalides'});
             this.setState({alert_type: 'danger'});
         }
@@ -86,7 +84,9 @@ class Register extends Component {
         return (
             <div className="login_view">
                 <div id="user_form" className="container register_form">
-                    <img className="logo_drop mx-auto d-block" src="/images/logo-drop.png" alt="Logo dropshifty"/>
+                    {/*<img className="logo_drop mx-auto d-block" src="/images/logo-drop.png" alt="Logo dropshifty"/>*/}
+                    
+                    <h1>DropShifty</h1>
 
                     <div className="mt-4">
                         {this.state.alert_type == 'success'?<Alert type={this.state.alert_type} message={this.state.alert_message} />:null}

@@ -1,10 +1,28 @@
 @import "./components/variables.scss";
 
+body, html {
+    background-color: #4e73df;
+    background-size: cover;
+}
+
 .login_form {
-    padding-left: 300px;
-    padding-right: 300px;
-    color: $white;
+    padding-top: 50px;
+    border-radius: 6px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    color: #4e73df;
     margin-top: 100px;
+    background-color: white;
+    width: 600px;
+    padding-left: 100px;
+    padding-right: 100px;
+    height: 450px;
+}
+
+._link {
+    color: #4e73df !important;
+    text-decoration: none !important;
 }
 
 .btn_login {

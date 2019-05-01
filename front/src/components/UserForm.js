@@ -126,7 +126,8 @@ class UserForm extends Component {
             <ApolloProvider client={client}>
                 <div className="login_view">
                     <div id="user_form" className="container">
-                        <img className="logo_drop mx-auto d-block" src="/images/logo-drop.png" alt="Logo dropshifty"/>
+                        {/*<img className="logo_drop mx-auto d-block" src="/images/logo-drop.png" alt="Logo dropshifty"/>*/}
+                        <h1 style={{ textAlign: 'center' }}>DropShifty</h1>
 
                         <div className="mt-4">
                             {this.state.alert_type == 'success'?<Alert type={this.state.alert_type} message={this.state.alert_message} />:null}
@@ -137,12 +138,12 @@ class UserForm extends Component {
                         <form onSubmit={this.submitLogin}>
                             <div className="form-group">
                                 <label htmlFor="username">Login</label>
-                                <input required="required" type="text" name="username" className="form-control" id="username" placeholder="Nom utilisateur" />
+                                <input required="required" type="text" name="username" className="_form-control" id="username" placeholder="Nom utilisateur" />
                                 <br/>
                                 <label htmlFor="username">Mot de passe</label>
-                                <input required="required" type="password" name="password" className="form-control" id="password" placeholder="Mot de passe" />
+                                <input required="required" type="password" name="password" className="_form-control" id="password" placeholder="Mot de passe" />
                             </div>
-                            <button onClick={this.loginBtn} type="submit" className="btn_register mt-3">Connexion</button>
+                            <button onClick={this.loginBtn} type="submit" className="btn-import mt-3">Connexion</button>
                         </form>
                         <div className="mt-3 _center">
                             <a className="_link _center" href="/register">Inscription</a>
