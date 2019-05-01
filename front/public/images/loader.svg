@@ -1,49 +1,37 @@
-<svg class="lds-spinner" width="200px" height="200px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" style="shape-rendering: auto; animation-play-state: running; animation-delay: 0s; background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%;"><g transform="rotate(0 50 50)" style="animation-play-state: running; animation-delay: 0s;">
-  <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#33d5db" style="animation-play-state: running; animation-delay: 0s;">
-    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite" style="animation-play-state: running; animation-delay: 0s;"></animate>
-  </rect>
-</g><g transform="rotate(30 50 50)" style="animation-play-state: running; animation-delay: 0s;">
-  <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#33d5db" style="animation-play-state: running; animation-delay: 0s;">
-    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.8333333333333334s" repeatCount="indefinite" style="animation-play-state: running; animation-delay: 0s;"></animate>
-  </rect>
-</g><g transform="rotate(60 50 50)" style="animation-play-state: running; animation-delay: 0s;">
-  <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#33d5db" style="animation-play-state: running; animation-delay: 0s;">
-    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.75s" repeatCount="indefinite" style="animation-play-state: running; animation-delay: 0s;"></animate>
-  </rect>
-</g><g transform="rotate(90 50 50)" style="animation-play-state: running; animation-delay: 0s;">
-  <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#33d5db" style="animation-play-state: running; animation-delay: 0s;">
-    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite" style="animation-play-state: running; animation-delay: 0s;"></animate>
-  </rect>
-</g><g transform="rotate(120 50 50)" style="animation-play-state: running; animation-delay: 0s;">
-  <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#33d5db" style="animation-play-state: running; animation-delay: 0s;">
-    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5833333333333334s" repeatCount="indefinite" style="animation-play-state: running; animation-delay: 0s;"></animate>
-  </rect>
-</g><g transform="rotate(150 50 50)" style="animation-play-state: running; animation-delay: 0s;">
-  <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#33d5db" style="animation-play-state: running; animation-delay: 0s;">
-    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5s" repeatCount="indefinite" style="animation-play-state: running; animation-delay: 0s;"></animate>
-  </rect>
-</g><g transform="rotate(180 50 50)" style="animation-play-state: running; animation-delay: 0s;">
-  <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#33d5db" style="animation-play-state: running; animation-delay: 0s;">
-    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.4166666666666667s" repeatCount="indefinite" style="animation-play-state: running; animation-delay: 0s;"></animate>
-  </rect>
-</g><g transform="rotate(210 50 50)" style="animation-play-state: running; animation-delay: 0s;">
-  <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#33d5db" style="animation-play-state: running; animation-delay: 0s;">
-    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite" style="animation-play-state: running; animation-delay: 0s;"></animate>
-  </rect>
-</g><g transform="rotate(240 50 50)" style="animation-play-state: running; animation-delay: 0s;">
-  <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#33d5db" style="animation-play-state: running; animation-delay: 0s;">
-    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.25s" repeatCount="indefinite" style="animation-play-state: running; animation-delay: 0s;"></animate>
-  </rect>
-</g><g transform="rotate(270 50 50)" style="animation-play-state: running; animation-delay: 0s;">
-  <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#33d5db" style="animation-play-state: running; animation-delay: 0s;">
-    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.16666666666666666s" repeatCount="indefinite" style="animation-play-state: running; animation-delay: 0s;"></animate>
-  </rect>
-</g><g transform="rotate(300 50 50)" style="animation-play-state: running; animation-delay: 0s;">
-  <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#33d5db" style="animation-play-state: running; animation-delay: 0s;">
-    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.08333333333333333s" repeatCount="indefinite" style="animation-play-state: running; animation-delay: 0s;"></animate>
-  </rect>
-</g><g transform="rotate(330 50 50)" style="animation-play-state: running; animation-delay: 0s;">
-  <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#33d5db" style="animation-play-state: running; animation-delay: 0s;">
-    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite" style="animation-play-state: running; animation-delay: 0s;"></animate>
-  </rect>
-</g></svg>
+<svg class="lds-default" width="200px"  height="200px"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" style="background: none;"><circle cx="75" cy="50" fill="undefined" r="3">
+  <animate attributeName="r" values="3;3;5;3;3" times="0;0.1;0.2;0.3;1" dur="1s" repeatCount="indefinite" begin="-0.917s"></animate>
+  <animate attributeName="fill" values="#6985d9;#6985d9;#4e73df;#6985d9;#6985d9" repeatCount="indefinite" times="0;0.1;0.2;0.3;1" dur="1s" begin="-0.917s"></animate>
+</circle><circle cx="71.651" cy="62.5" fill="undefined" r="3">
+  <animate attributeName="r" values="3;3;5;3;3" times="0;0.1;0.2;0.3;1" dur="1s" repeatCount="indefinite" begin="-0.833s"></animate>
+  <animate attributeName="fill" values="#6985d9;#6985d9;#4e73df;#6985d9;#6985d9" repeatCount="indefinite" times="0;0.1;0.2;0.3;1" dur="1s" begin="-0.833s"></animate>
+</circle><circle cx="62.5" cy="71.651" fill="undefined" r="3">
+  <animate attributeName="r" values="3;3;5;3;3" times="0;0.1;0.2;0.3;1" dur="1s" repeatCount="indefinite" begin="-0.75s"></animate>
+  <animate attributeName="fill" values="#6985d9;#6985d9;#4e73df;#6985d9;#6985d9" repeatCount="indefinite" times="0;0.1;0.2;0.3;1" dur="1s" begin="-0.75s"></animate>
+</circle><circle cx="50" cy="75" fill="undefined" r="3">
+  <animate attributeName="r" values="3;3;5;3;3" times="0;0.1;0.2;0.3;1" dur="1s" repeatCount="indefinite" begin="-0.667s"></animate>
+  <animate attributeName="fill" values="#6985d9;#6985d9;#4e73df;#6985d9;#6985d9" repeatCount="indefinite" times="0;0.1;0.2;0.3;1" dur="1s" begin="-0.667s"></animate>
+</circle><circle cx="37.5" cy="71.651" fill="undefined" r="3">
+  <animate attributeName="r" values="3;3;5;3;3" times="0;0.1;0.2;0.3;1" dur="1s" repeatCount="indefinite" begin="-0.583s"></animate>
+  <animate attributeName="fill" values="#6985d9;#6985d9;#4e73df;#6985d9;#6985d9" repeatCount="indefinite" times="0;0.1;0.2;0.3;1" dur="1s" begin="-0.583s"></animate>
+</circle><circle cx="28.349" cy="62.5" fill="undefined" r="3">
+  <animate attributeName="r" values="3;3;5;3;3" times="0;0.1;0.2;0.3;1" dur="1s" repeatCount="indefinite" begin="-0.5s"></animate>
+  <animate attributeName="fill" values="#6985d9;#6985d9;#4e73df;#6985d9;#6985d9" repeatCount="indefinite" times="0;0.1;0.2;0.3;1" dur="1s" begin="-0.5s"></animate>
+</circle><circle cx="25" cy="50" fill="undefined" r="3.53203">
+  <animate attributeName="r" values="3;3;5;3;3" times="0;0.1;0.2;0.3;1" dur="1s" repeatCount="indefinite" begin="-0.417s"></animate>
+  <animate attributeName="fill" values="#6985d9;#6985d9;#4e73df;#6985d9;#6985d9" repeatCount="indefinite" times="0;0.1;0.2;0.3;1" dur="1s" begin="-0.417s"></animate>
+</circle><circle cx="28.349" cy="37.5" fill="undefined" r="4.20403">
+  <animate attributeName="r" values="3;3;5;3;3" times="0;0.1;0.2;0.3;1" dur="1s" repeatCount="indefinite" begin="-0.333s"></animate>
+  <animate attributeName="fill" values="#6985d9;#6985d9;#4e73df;#6985d9;#6985d9" repeatCount="indefinite" times="0;0.1;0.2;0.3;1" dur="1s" begin="-0.333s"></animate>
+</circle><circle cx="37.5" cy="28.349" fill="undefined" r="4.86803">
+  <animate attributeName="r" values="3;3;5;3;3" times="0;0.1;0.2;0.3;1" dur="1s" repeatCount="indefinite" begin="-0.25s"></animate>
+  <animate attributeName="fill" values="#6985d9;#6985d9;#4e73df;#6985d9;#6985d9" repeatCount="indefinite" times="0;0.1;0.2;0.3;1" dur="1s" begin="-0.25s"></animate>
+</circle><circle cx="50" cy="25" fill="undefined" r="4.46797">
+  <animate attributeName="r" values="3;3;5;3;3" times="0;0.1;0.2;0.3;1" dur="1s" repeatCount="indefinite" begin="-0.167s"></animate>
+  <animate attributeName="fill" values="#6985d9;#6985d9;#4e73df;#6985d9;#6985d9" repeatCount="indefinite" times="0;0.1;0.2;0.3;1" dur="1s" begin="-0.167s"></animate>
+</circle><circle cx="62.5" cy="28.349" fill="undefined" r="3.79597">
+  <animate attributeName="r" values="3;3;5;3;3" times="0;0.1;0.2;0.3;1" dur="1s" repeatCount="indefinite" begin="-0.083s"></animate>
+  <animate attributeName="fill" values="#6985d9;#6985d9;#4e73df;#6985d9;#6985d9" repeatCount="indefinite" times="0;0.1;0.2;0.3;1" dur="1s" begin="-0.083s"></animate>
+</circle><circle cx="71.651" cy="37.5" fill="undefined" r="3.13197">
+  <animate attributeName="r" values="3;3;5;3;3" times="0;0.1;0.2;0.3;1" dur="1s" repeatCount="indefinite" begin="0s"></animate>
+  <animate attributeName="fill" values="#6985d9;#6985d9;#4e73df;#6985d9;#6985d9" repeatCount="indefinite" times="0;0.1;0.2;0.3;1" dur="1s" begin="0s"></animate>
+</circle></svg>
