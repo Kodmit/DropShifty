@@ -127,7 +127,7 @@ class UserForm extends Component {
                 <div className="login_view">
                     <div id="user_form" className="container">
                         {/*<img className="logo_drop mx-auto d-block" src="/images/logo-drop.png" alt="Logo dropshifty"/>*/}
-                        <h1 style={{ textAlign: 'center' }}>DropShifty</h1>
+                        <h1 className="_center">DropShifty</h1>
 
                         <div className="mt-4">
                             {this.state.alert_type == 'success'?<Alert type={this.state.alert_type} message={this.state.alert_message} />:null}

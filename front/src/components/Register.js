@@ -86,7 +86,7 @@ class Register extends Component {
                 <div id="user_form" className="container register_form">
                     {/*<img className="logo_drop mx-auto d-block" src="/images/logo-drop.png" alt="Logo dropshifty"/>*/}
                     
-                    <h1>DropShifty</h1>
+                    <h1 className="_center">DropShifty</h1>
 
                     <div className="mt-4">
                         {this.state.alert_type == 'success'?<Alert type={this.state.alert_type} message={this.state.alert_message} />:null}
@@ -97,23 +97,22 @@ class Register extends Component {
                     <form onSubmit={this.submitRegister}>
                         <div className="form-group">
                         <label htmlFor="email">Email</label>
-                            <input required="required" type="email" name="email" className="form-control" id="email" placeholder="Email" />
+                            <input required="required" type="email" name="email" className="_form-control" id="email" placeholder="Email" />
                             <br/> 
                             <label htmlFor="username">Nom utilisateur</label>
-                            <input required="required" type="text" name="username" className="form-control" id="username" placeholder="Nom utilisateur" />
+                            <input required="required" type="text" name="username" className="_form-control" id="username" placeholder="Nom utilisateur" />
                             <br/>
                             <label htmlFor="password">Mot de passe</label>
-                            <input required="required" type="password" name="password" className="form-control" id="password" placeholder="Mot de passe" />
+                            <input required="required" type="password" name="password" className="_form-control" id="password" placeholder="Mot de passe" />
                             <br/>
                             <label htmlFor="confirmpassword">Confirmer mot de passe</label>
-                            <input required="required" type="password" name="confirmpassword" className="form-control" id="confirmpassword" placeholder="Confirmer Mot de passe" />
+                            <input required="required" type="password" name="confirmpassword" className="_form-control" id="confirmpassword" placeholder="Confirmer Mot de passe" />
                         </div>
-                        <button onClick={this.registerBtn} type="submit" className="btn_login mt-3">Inscription</button>
+                        <button onClick={this.registerBtn} type="submit" className="btn-import mt-3">Inscription</button>
                     </form>
-                </div>
-
-                <div className="mt-3 _center">
-                    <a className="_link" href="/login">Connectez-vous</a>
+                    <div className="mt-3 _center">
+                        <a className="_link" href="/login">Connectez-vous</a>
+                    </div>  
                 </div>
             </div>
         );
