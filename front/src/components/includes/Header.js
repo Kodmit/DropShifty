@@ -20,7 +20,7 @@ const Header = () => {
         <header>
             <div className="row">
                 <div className="col-3">
-                    <a href="/"><img className="logo" src="/logo.png" alt="logo"></img></a>
+                    {/*<a href="/"><img className="logo" src="/logo.png" alt="logo" /></a>*/}
                 </div>
                 <div className="col-9">
                     <a className="logout_btn" onClick={logout}><i style={{ color: 'red', fontSize: '20px' }} class="fas fa-power-off"></i></a>

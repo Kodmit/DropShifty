@@ -12,7 +12,7 @@ const Orders = () => {
 
                 <div className="row mt-5">
                     <div className="col-sm-12">
-                        <div className="order-box">
+                        <div className="order-box _shadow">
                             <div className="order-box-up container text-order-box">
                                 <div className="text-order-box mt-2">
                                     <p>Commande</p>
@@ -34,7 +34,7 @@ const Orders = () => {
                     </div>
 
                     <div className="col-sm-12 mt-5">
-                        <div className="order-box">
+                        <div className="order-box _shadow">
                             <div className="order-box-up container text-order-box">
                                 <div className="text-order-box mt-2">
                                     <p>Commande</p>
@@ -56,7 +56,7 @@ const Orders = () => {
                     </div>
 
                     <div className="col-sm-12 mt-5">
-                        <div className="order-box">
+                        <div className="order-box _shadow">
                             <div className="order-box-up container text-order-box">
                                 <div className="text-order-box mt-2">
                                     <p>Commande</p>
@@ -78,7 +78,7 @@ const Orders = () => {
                     </div>
 
                     <div className="col-sm-12 mt-5">
-                        <div className="order-box">
+                        <div className="order-box _shadow">
                             <div className="order-box-up container text-order-box">
                                 <div className="text-order-box mt-2">
                                     <p>Commande</p>
@@ -100,7 +100,7 @@ const Orders = () => {
                     </div>
 
                     <div className="col-sm-12 mt-5">
-                        <div className="order-box">
+                        <div className="order-box _shadow">
                             <div className="order-box-up container text-order-box">
                                 <div className="text-order-box mt-2">
                                     <p>Commande</p>

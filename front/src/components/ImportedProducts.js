@@ -3,12 +3,6 @@ import {NavLink, Link} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/importedProducts.scss';
 import '../styles/app.scss';
-//import gql from 'graphql-tag';
-//import { createHttpLink } from 'apollo-link-http';
-//import { InMemoryCache } from 'apollo-cache-inmemory';
-//import { Mutation, withApollo } from "react-apollo";
-//import ApolloClient from "apollo-boost";
-//import { createApolloFetch } from 'apollo-fetch';
 
 
 class ImportedProducts extends Component {
@@ -64,7 +58,7 @@ class ImportedProducts extends Component {
         this.items = this.state.productList.map((item, key) =>
             <div key={item.id} className="content-import">
                 {/*console.log("Item : " + item.name)*/}
-                <div className="box-product-import mt-5">
+                <div className="box-product-import _shadow mt-5">
                     <div className="row">
                         <div className="col-4">
                             <img className="product-import" src={item.images[0].src} alt="mug licorne" />

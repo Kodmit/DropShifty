@@ -15,12 +15,13 @@ const Dashboard = () => {
 
                     <div className="row">
                         <div className="col-sm-8">
-                            <div className="graph-sales font">
+                            <div className="graph-sales">
                                 <Chart />
                             </div>
                         </div>
+
                         <div className="col-sm-4">
-                            <div className="overview">
+                            <div className="overview _shadow">
                                 <p className="p-2 bold">Vue d'ensemble</p>
 
                                 <div className="separator"></div>
@@ -82,7 +83,7 @@ const Dashboard = () => {
 
                     <h3>Produits les mieux vendus</h3>
 
-                    <div className="container selling-products mt-4">
+                    <div className="container selling-products mt-4 _shadow">
                         <div className="row mt-3 p-3">
                             <div className="col-sm-8">
                                 <p>Bracelet argent</p>
