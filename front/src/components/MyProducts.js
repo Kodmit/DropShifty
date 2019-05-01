@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {NavLink, Link} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/importedProducts.scss';
 import '../styles/app.scss';
@@ -61,9 +62,9 @@ class MyProducts extends Component {
                         <div className="col-8 p-4">
                             <p className="descProduct">{item.name}</p>
                             <div className="actions-container d-flex">
-                                <button className="btn-submit"><i className="fas fa-eye"></i></button>
-                                <button className="btn-submit ml-2"><i className="fas fa-edit"></i></button>
-                                <button className="btn-submit ml-2"><i className="far fa-trash-alt"></i></button>
+                                <Link className="btn-import" to={"/product/" + item.id}><i className="fas fa-eye"></i></Link>
+                                <Link className="btn-import ml-3" to={"/product/" + item.id}><i className="fas fa-edit"></i></Link>
+                                <Link className="btn-import ml-3" to={"/product/" + item.id}><i className="far fa-trash-alt"></i></Link>
                             </div>
                         </div>
                     </div>

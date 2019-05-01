@@ -62,7 +62,7 @@ class ProductDetails extends Component {
 
         $.each( productInfos, function( key, value ) {
             $(".infosList h2").append(value.name);
-            $('.imgsList').append('<img class="img_product_detail mx-auto d-block" src='+value.images[0].src+' />');
+            $('.imgsList').append('<img class="img_product_detail _shadow mx-auto d-block" src='+value.images[0].src+' />');
             $('.price').append("Prix : " + value.price_html);
             $('.created_at').append("Date d'ajout : " + moment(value.date_created).format('DD/MM/YYYY'));
             console.log($(value.description).html())

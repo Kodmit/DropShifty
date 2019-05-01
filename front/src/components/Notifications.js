@@ -10,7 +10,7 @@ const Notifications = () => {
                 <h3>Notifications</h3>
                 <div className="mt-4"></div>
 
-                <div id="notification_1" className="notification-box mt-4">
+                <div id="notification_1" className="notification-box _shadow mt-4">
                     <div className="row">
                         <div className="col-5">
                             <p>Le prix du produit Iphone X a changé</p>
@@ -22,7 +22,7 @@ const Notifications = () => {
                     </div>
                 </div>
 
-                <div id="notification_2" className="notification-box mt-4">
+                <div id="notification_2" className="notification-box _shadow mt-4">
                     <div className="row">
                         <div className="col-5">
                             <p>Le produit Changeur n'existe plus</p>
@@ -34,7 +34,7 @@ const Notifications = () => {
                     </div>
                 </div>
 
-                <div id="notification_3" className="notification-box mt-4">
+                <div id="notification_3" className="notification-box _shadow mt-4">
                     <div className="row">
                         <div className="col-5">
                             <p>Le prix du produit Film incassable a changé</p>
