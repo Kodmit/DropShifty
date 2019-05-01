@@ -40,9 +40,11 @@ class App extends Component {
 
     componentDidMount() {
 
+        let uri = 'http://localhost:3000';
+
         setTimeout(() => {
-            let uriRegister = 'http://localhost:3000/register';
-            let uriLogin = 'http://localhost:3000/login';
+            let uriRegister = uri + '/register';
+            let uriLogin = uri + '/login';
             if (window.location.href == uriRegister || window.location.href == uriLogin) {
                 document.getElementById("login").style.display = "none";            
             }
@@ -71,13 +73,13 @@ class App extends Component {
         
         xhr.addEventListener("readystatechange", function () {
             if (this.readyState === this.DONE) {
-            let object = JSON.parse(this.response);
-            let res = object.data['CheckIfConnected'];
+                let object = JSON.parse(this.response);
+                let res = object.data['CheckIfConnected'];
 
-            //console.log(res)
+                //console.log(res)
 
-            self.setState({
-                connected: res
+                self.setState({
+                    connected: res
                 });
             }
         });
@@ -89,6 +91,7 @@ class App extends Component {
           console.log(res.data);
           let response = res.data.response;
             console.log(response);
+            
             this.setState({
                 connected: false
             });

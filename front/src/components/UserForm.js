@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/login.scss';
 import '../styles/app.scss';
 import axios from 'axios';
-import Alert from '../components/includes/alert/Alert';
+//import Alert from '../components/includes/alert/Alert';
 import $ from "jquery";
 import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from "apollo-boost";
