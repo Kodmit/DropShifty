@@ -74,14 +74,14 @@ class UserForm extends Component {
                             console.log('res = ' + res);
 
                             if (response == 'ok' && res == true) {
-                                self.setState({alert_message: 'Connecté avec succes'});
-                                self.setState({alert_type: 'success'});
+                                //self.setState({alert_message: 'Connecté avec succes'});
+                                //self.setState({alert_type: 'success'});
                                 window.location.replace('/');
                             }
 
                             if (response == 'already logged in') {
-                                self.setState({alert_message: 'Connecté avec succes'});
-                                self.setState({alert_type: 'success'});
+                                //self.setState({alert_message: 'Connecté avec succes'});
+                                //self.setState({alert_type: 'success'});
                                 window.location.replace('/');
                             }
 
@@ -130,9 +130,11 @@ class UserForm extends Component {
                         <h1 className="_center">DropShifty</h1>
 
                         <div className="mt-4">
-                            {this.state.alert_type == 'success'?<Alert type={this.state.alert_type} message={this.state.alert_message} />:null}
-                            {this.state.alert_type == 'danger'?<Alert type={this.state.alert_type} message={this.state.alert_message}/>:null}
-                            {this.state.alert_type == 'warning'?<Alert type={this.state.alert_type} message={this.state.alert_message}/>:null}
+                            {/*
+                                {this.state.alert_type == 'success'?<Alert type={this.state.alert_type} message={this.state.alert_message} />:null}
+                                {this.state.alert_type == 'danger'?<Alert type={this.state.alert_type} message={this.state.alert_message}/>:null}
+                                {this.state.alert_type == 'warning'?<Alert type={this.state.alert_type} message={this.state.alert_message}/>:null}
+                            */}
                         </div>
 
                         <form onSubmit={this.submitLogin}>

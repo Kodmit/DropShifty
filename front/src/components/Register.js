@@ -7,6 +7,8 @@ import Alert from '../components/includes/alert/Alert';
 import gql from 'graphql-tag';
 import { Mutation, withApollo } from "react-apollo";
 import ApolloClient from "apollo-boost";
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
 
 
 const client = new ApolloClient({
@@ -53,9 +55,18 @@ class Register extends Component {
 
         if (email && user && pass && confirmPass) {
             if (pass == confirmPass) {
-                this.setState({alert_message: 'Données valides'});
-                this.setState({alert_type: 'success'});
+                //this.setState({alert_message: 'Données valides'});
+                //this.setState({alert_type: 'success'});
                 this.runQuery(email, user, pass);
+
+                Swal.fire({
+                    type: 'sucess',
+                    title: 'Inscription validée',
+                    showCloseButton: false,
+                    showCancelButton: false,
+                    focusConfirm: false,
+                    html: 'Vous allez être redirigé vers la page de connexion',
+                });
                 
                 setTimeout(function() {
                      window.location = '/login';
@@ -63,13 +74,30 @@ class Register extends Component {
                 
             } else {
                 console.log("Mots de passe différents");
-                this.setState({alert_message: 'Mot de passe différents'});
-                this.setState({alert_type: 'danger'});
+
+                Swal.fire({
+                    type: 'error',
+                    title: 'Oups...',
+                    showCloseButton: false,
+                    showCancelButton: false,
+                    focusConfirm: false,
+                    html: 'Les mots de passe sont différents',
+                });
+                //this.setState({alert_message: 'Mot de passe différents'});
+                //this.setState({alert_type: 'danger'});
             }
             
         } else {
-            this.setState({alert_message: 'Données invalides'});
-            this.setState({alert_type: 'danger'});
+            //this.setState({alert_message: 'Données invalides'});
+            //this.setState({alert_type: 'danger'});
+            Swal.fire({
+                type: 'error',
+                title: 'Oups...',
+                showCloseButton: false,
+                showCancelButton: false,
+                focusConfirm: false,
+                html: "Une erreur s'est produite",
+            });
         }
         console.log("Click on submit register")
     };
@@ -89,9 +117,11 @@ class Register extends Component {
                     <h1 className="_center">DropShifty</h1>
 
                     <div className="mt-4">
-                        {this.state.alert_type == 'success'?<Alert type={this.state.alert_type} message={this.state.alert_message} />:null}
+                        {/*
+                            {this.state.alert_type == 'success'?<Alert type={this.state.alert_type} message={this.state.alert_message} />:null}
                         {this.state.alert_type == 'danger'?<Alert type={this.state.alert_type} message={this.state.alert_message}/>:null}
                         {this.state.alert_type == 'warning'?<Alert type={this.state.alert_type} message={this.state.alert_message}/>:null}
+                        */}
                     </div>
 
                     <form onSubmit={this.submitRegister}>
@@ -103,10 +133,10 @@ class Register extends Component {
                             <input required="required" type="text" name="username" className="_form-control" id="username" placeholder="Nom utilisateur" />
                             <br/>
                             <label htmlFor="password">Mot de passe</label>
-                            <input required="required" type="password" name="password" className="_form-control" id="password" placeholder="Mot de passe" />
+                            <input required="required" type="password" name="password" className="_form-control" id="password" minLength="8" placeholder="Mot de passe" />
                             <br/>
                             <label htmlFor="confirmpassword">Confirmer mot de passe</label>
-                            <input required="required" type="password" name="confirmpassword" className="_form-control" id="confirmpassword" placeholder="Confirmer Mot de passe" />
+                            <input required="required" type="password" name="confirmpassword" className="_form-control" id="confirmpassword" minLength="8" placeholder="Confirmer Mot de passe" />
                         </div>
                         <button onClick={this.registerBtn} type="submit" className="btn-import mt-3">Inscription</button>
                     </form>
