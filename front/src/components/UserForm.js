@@ -76,16 +76,32 @@ class UserForm extends Component {
                             if (response == 'ok' && res == true) {
                                 //self.setState({alert_message: 'Connecté avec succes'});
                                 //self.setState({alert_type: 'success'});
+                                Swal.fire({
+                                    type: 'success',
+                                    title: 'Connexion réssie',
+                                    showCloseButton: false,
+                                    showCancelButton: false,
+                                    focusConfirm: false,
+                                    html: 'Connexion réussie, vous allez être redirigé vers votre tableau de bord',
+                                });
                                 window.location.replace('/');
                             }
 
                             if (response == 'already logged in') {
                                 //self.setState({alert_message: 'Connecté avec succes'});
                                 //self.setState({alert_type: 'success'});
+                                Swal.fire({
+                                    type: 'success',
+                                    title: 'Déjà connecté',
+                                    showCloseButton: false,
+                                    showCancelButton: false,
+                                    focusConfirm: false,
+                                    html: 'Vous êtes déjà connecté, vous allez être redirigé vers votre tableau de bord',
+                                });
                                 window.location.replace('/');
                             }
 
-                            else {
+                            if (response == 'invalid user') {
                                 //self.setState({alert_message: 'Identifiant ou mot de passe inccorect'});
                                 //self.setState({alert_type: 'danger'});
                                 Swal.fire({
