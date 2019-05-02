@@ -60,6 +60,7 @@ class Orders extends Component {
 
         this.items = this.state.ordersList.map((item, key) =>
             <div key={item.id} className="container mt-4">
+                {console.log(item)}
                 <div className="row mt-5">
                     <div className="col-sm-12">
                         <div className="order-box _shadow">
@@ -76,8 +77,8 @@ class Orders extends Component {
                                 <div className="container text-order-box mt-2">
                                     <p>Total {item.total} {item.currency}</p>
                                     <p className="nb-order">Ziang Boutique</p>
-                                    <p>N° de commande</p>
-                                    <p className="nb-order">#{item.id}</p>
+                                    <p>N° de commande #{item.id}</p>
+                                    {/*<p className="nb-order"></p>*/}
                                 </div>
                             </div>
                         </div>
