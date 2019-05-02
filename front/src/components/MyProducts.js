@@ -42,7 +42,7 @@ class MyProducts extends Component {
 
                 console.log(self.state.productList);
 
-                document.getElementById("loader-import").style.display = "none !important";
+                document.getElementById("loader-import").style.display = "none";
                 
             }
         });
@@ -81,7 +81,7 @@ class MyProducts extends Component {
                 <div className="container mt-4">
                     <h3>Mes produits</h3>
                     {this.items}
-                    <img id="loader-import" style={{ display: 'none' }} src="images/loader.svg" />
+                    <img id="loader-import" src="images/loader.svg" />
                 </div>
             </div>
         );

@@ -70,7 +70,6 @@ class ProductDetails extends Component {
             $('.imgsList').append('<img class="img_product_detail _shadow mx-auto d-block" src='+value.images[0].src+' />');
             $('.price').append("Prix : " + value.price_html);
             $('.created_at').append("Date d'ajout : " + moment(value.date_created).format('DD/MM/YYYY'));
-            console.log($(value.description).html())
             $('.desc').append($(value.description).html());
             if (value.stock_status == 'instock') {
                 $('.stock').append("En stock"); 
