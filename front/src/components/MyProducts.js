@@ -81,7 +81,7 @@ class MyProducts extends Component {
                 <div className="container mt-4">
                     <h3>Mes produits</h3>
                     {this.items}
-                    <img id="loader-import" style={{ display: 'none' }} className="mx-auto d-block" src="images/loader.svg" />
+                    <img id="loader-import" style={{ display: 'none' }} src="images/loader.svg" />
                 </div>
             </div>
         );

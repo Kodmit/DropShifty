@@ -98,7 +98,7 @@ class ProductDetails extends Component {
                         </div>
                     </div>
                 </div>
-                <img id="loader-import" className="mx-auto d-block" src="../images/loader.svg" />
+                <img id="loader-import" src="../images/loader.svg" />
             </div>
         );
     }

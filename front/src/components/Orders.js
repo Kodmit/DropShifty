@@ -35,7 +35,6 @@ class Orders extends Component {
             xhr.addEventListener("readystatechange", function () {
 
             if (this.readyState === this.DONE) {
-                //console.log(this.response);
                 let object = JSON.parse(this.response);
                 let objectParsed = object.data.WC_GetOrdersList;
 
@@ -66,19 +65,16 @@ class Orders extends Component {
                         <div className="order-box _shadow">
                             <div className="order-box-up container text-order-box">
                                 <div className="text-order-box mt-2">
-                                    <p>Commande</p>
-                                    <p className="nb-order">#1001</p>
-                                    <p>{moment(item.date_created).format('DD/MM/YYYY')}</p>
-                                    <p>Client : Roger Horloger</p>
+                                    <p>Commande <strong>#{item.id}</strong></p>
+                                    <p>Date de paiement <strong>{moment(item.date_created).format('DD/MM/YYYY')}</strong></p>
+                                    <p>Client <strong>{item.shipping.first_name} {item.shipping.last_name}</strong></p>
                                 </div>
                             </div>
                             <div className="order-box-down">
                                 <div className="separator"></div>
                                 <div className="container text-order-box mt-2">
-                                    <p>Total {item.total} {item.currency}</p>
-                                    <p className="nb-order">Ziang Boutique</p>
-                                    <p>N° de commande #{item.id}</p>
-                                    {/*<p className="nb-order"></p>*/}
+                                    <p>Total de la commande <strong>{item.total} {item.currency}</strong></p>
+                                    <p></p>
                                 </div>
                             </div>
                         </div>
@@ -91,7 +87,7 @@ class Orders extends Component {
             <div className="main">
                 <h3>Liste des commandes</h3>
                 {this.items}
-                <img id="loader-import" style={{ display: 'none' }} className="mx-auto d-block" src="images/loader.svg" />
+                <img id="loader-import" style={{ display: 'none' }} src="images/loader.svg" />
                 <div className="mb-5"></div>
             </div>
         );
