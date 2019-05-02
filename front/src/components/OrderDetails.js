@@ -68,7 +68,8 @@ class OrderDetails extends Component {
                         <p>N° de la commande : #{orderInfos.id}</p>
                         <p>Prix total : {orderInfos.total} {orderInfos.currency}</p>
                         <p>Méthode de paiement : {orderInfos.payment_method_title}</p>
-
+                        <p>Date de la commande : {moment(orderInfos.date_created).format('DD/MM/YYYY')}</p>
+                        <p></p>
                     </div>
                     <img id="loader-import" src="../images/loader.svg" />
                 </div>
