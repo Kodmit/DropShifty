@@ -58,21 +58,23 @@ class MyProducts extends Component {
         this.items = this.state.productList.map((item, key) =>
             <div key={item.id} className="content-import">
                 {/*console.log("Item : " + item.name)*/}
-                <div className="box-product-import _shadow mt-5">
-                    <div className="row">
-                        <div className="col-4">
-                            <img className="product-import" src={item.images[0].src} alt="mug licorne" />
-                        </div>
-                        <div className="col-8 p-4">
-                            <p className="descProduct">{item.name}</p>
-                            <div className="actions-container d-flex">
-                                <Link className="btn-import" to={"/product/" + item.id}><i className="fas fa-eye"></i></Link>
-                                <Link className="btn-import ml-3" to={"/product/" + item.id}><i className="fas fa-edit"></i></Link>
-                                <Link className="btn-import ml-3" to={"/product/" + item.id}><i className="far fa-trash-alt"></i></Link>
+                <Link className="link_details" to={"/product/" + item.id}>
+                    <div className="box-product-import _shadow mt-5">
+                        <div className="row">
+                            <div className="col-4">
+                                <img className="product-import" src={item.images[0].src} alt="mug licorne" />
+                            </div>
+                            <div className="col-8 p-4">
+                                <p className="descProduct">{item.name}</p>
+                                <div className="actions-container d-flex">
+                                    <Link className="btn-import" to={"/product/" + item.id}><i className="fas fa-eye"></i></Link>
+                                    <Link className="btn-import ml-3" to={"/product/" + item.id}><i className="fas fa-edit"></i></Link>
+                                    <Link className="btn-import ml-3" to={"/product/" + item.id}><i className="far fa-trash-alt"></i></Link>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </Link>
             </div>
         );
 
