@@ -32,7 +32,7 @@ class ImportProducts extends Component {
 
     // Import single product
     import_product(sku) {
-        document.getElementById("loader").style.display = "block";
+        document.getElementById("overlay").style.display = "block";
 
         let category = 2089;
 
@@ -82,7 +82,7 @@ class ImportProducts extends Component {
                 }
                 
                 
-                document.getElementById("loader").style.display = "none";
+                document.getElementById("overlay").style.display = "none";
             }
         });
 
@@ -130,7 +130,9 @@ class ImportProducts extends Component {
                         </div>
                     </form>
 
-                    <img id="loader" style={{ display: 'none' }} src="images/loader.svg" />
+                    <div id="overlay" style={{ display: 'none' }}>
+                        <img id="loader" src="images/loader.svg" />
+                    </div>
                                         
                 </div>
             </div>
