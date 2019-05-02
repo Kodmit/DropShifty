@@ -101,7 +101,7 @@ class UserForm extends Component {
                                 window.location.replace('/');
                             }
 
-                            if (response == 'invalid user') {
+                            if (response == 'invalid user' || response == 'password incorrect') {
                                 //self.setState({alert_message: 'Identifiant ou mot de passe inccorect'});
                                 //self.setState({alert_type: 'danger'});
                                 Swal.fire({

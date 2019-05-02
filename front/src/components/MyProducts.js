@@ -42,7 +42,7 @@ class MyProducts extends Component {
 
                 console.log(self.state.productList);
 
-                document.getElementById("loader-import").style.display = "none";
+                document.getElementById("loader-import").style.display = "none !important";
                 
             }
         });
@@ -80,8 +80,8 @@ class MyProducts extends Component {
             <div className="main">
                 <div className="container mt-4">
                     <h3>Mes produits</h3>
-                        {this.items}
-                        <img id="loader-import" style={{ display: 'none' }} className="mx-auto d-block" src="images/loader.svg" />
+                    {this.items}
+                    <img id="loader-import" style={{ display: 'none' }} className="mx-auto d-block" src="images/loader.svg" />
                 </div>
             </div>
         );

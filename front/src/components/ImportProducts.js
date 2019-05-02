@@ -35,7 +35,7 @@ class ImportProducts extends Component {
         document.getElementById("overlay").style.display = "block";
 
         let category = 2089;
-        
+
         // Working
         let data = '{\"query\":\"{\\n\\tImportToWc(sku:' + '\\\"' + sku + '\\\"' + ', cat_id: 2089, type: \\\"simple\\\")\\n\\t}\"}';
 
@@ -67,7 +67,7 @@ class ImportProducts extends Component {
                     Swal.fire({
                         title: '<strong>Oups</strong>',
                         type: 'error',
-                        html: "Une erreur s'est produite lors de l'import",
+                        html: "Aucun produit ne correspond au code SKU renseigné",
                         showCloseButton: true,
                         showCancelButton: false,
                         focusConfirm: false,
