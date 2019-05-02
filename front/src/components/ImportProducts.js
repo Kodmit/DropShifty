@@ -50,18 +50,37 @@ class ImportProducts extends Component {
 
         xhr.addEventListener("readystatechange", function () {
             if (this.readyState === this.DONE) {
-                console.log(this.responseText)
+                console.log(this.responseText);
 
-                Swal.fire({
-                    title: '<strong>Produits importés</strong>',
-                    type: 'success',
-                    html: 'Le produit a été importé avec succès ! Vous pouvez le consulter dans la liste des produits.',
-                    showCloseButton: true,
-                    showCancelButton: false,
-                    focusConfirm: false,
-                    confirmButtonText: 'Fermer',
-                    confirmButtonAriaLabel: 'Fermer'
-                });
+                let object = JSON.parse(this.response);
+                let res = object.data['ImportToWc'];
+
+                //{"data":{"ImportToWc":"ok_simple"}}
+
+                if (res == 'ok_simple') {
+                    Swal.fire({
+                        title: '<strong>Produits importés</strong>',
+                        type: 'success',
+                        html: 'Le produit a été importé avec succès ! Vous pouvez le consulter dans la liste des produits.',
+                        showCloseButton: true,
+                        showCancelButton: false,
+                        focusConfirm: false,
+                        confirmButtonText: 'Fermer',
+                        confirmButtonAriaLabel: 'Fermer'
+                    });
+                } else {
+                    Swal.fire({
+                        title: '<strong>Oups</strong>',
+                        type: 'error',
+                        html: "Une erreur s'est produite lors de l'import",
+                        showCloseButton: true,
+                        showCancelButton: false,
+                        focusConfirm: false,
+                        confirmButtonText: 'Fermer',
+                        confirmButtonAriaLabel: 'Fermer'
+                    });
+                }
+                
                 
                 document.getElementById("loader").style.display = "none";
             }
