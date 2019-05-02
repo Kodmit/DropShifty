@@ -30,6 +30,8 @@ class ProductDetails extends Component {
     }
 
     ds_call(arg, handledata) {
+        document.getElementById("loader-import").style.display = "block";
+
         let self = this;
         let data = "{\"query\":\"{\\n\\t " + arg + " \\n}\"}";
         let xhr = new XMLHttpRequest();
@@ -46,6 +48,9 @@ class ProductDetails extends Component {
                 })
 
                 console.log(self.state.productInfos);
+
+                document.getElementById("loader-import").style.display = "none";
+
                 
             }
         });
@@ -93,6 +98,7 @@ class ProductDetails extends Component {
                         </div>
                     </div>
                 </div>
+                <img id="loader-import" style={{ display: 'none' }} className="mx-auto d-block" src="../images/loader.svg" />
             </div>
         );
     }

@@ -35,10 +35,7 @@ class ImportProducts extends Component {
         document.getElementById("overlay").style.display = "block";
 
         let category = 2089;
-
-        // Working from insomnia
-        //let data = "{\"query\":\"{\\n\\tImportToWc(sku: \\\"423617502\\\", cat_id: 2089, type: \\\"simple\\\")\\n\\t# Type can be 'variable\\\" or 'simple' (by default).\\n}\"}";
-
+        
         // Working
         let data = '{\"query\":\"{\\n\\tImportToWc(sku:' + '\\\"' + sku + '\\\"' + ', cat_id: 2089, type: \\\"simple\\\")\\n\\t}\"}';
 
@@ -54,8 +51,6 @@ class ImportProducts extends Component {
 
                 let object = JSON.parse(this.response);
                 let res = object.data['ImportToWc'];
-
-                //{"data":{"ImportToWc":"ok_simple"}}
 
                 if (res == 'ok_simple') {
                     Swal.fire({

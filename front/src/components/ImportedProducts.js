@@ -23,6 +23,8 @@ class ImportedProducts extends Component {
     }
 
     ds_call(arg, handledata) {
+        document.getElementById("loader-import").style.display = "block";
+
         let self = this;
         let data = "{\"query\":\"{\\n\\t " + arg + " \\n}\"}";
         let xhr = new XMLHttpRequest();
@@ -39,6 +41,9 @@ class ImportedProducts extends Component {
                 })
 
                 console.log(self.state.productList)
+
+                document.getElementById("loader-import").style.display = "none";
+
                 
             }
         });
@@ -81,6 +86,7 @@ class ImportedProducts extends Component {
                 <div className="container mt-4">
                     <h3>Produits importés</h3>
                         {this.items}
+                        <img id="loader-import" style={{ display: 'none' }} className="mx-auto d-block" src="images/loader.svg" />
                 </div>
             </div>
         );
