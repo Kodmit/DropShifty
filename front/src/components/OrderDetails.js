@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/productDetails.scss';
+import '../styles/orderDetails.scss';
 import '../styles/app.scss';
 import $ from 'jquery';
 import 'moment';
@@ -62,15 +62,29 @@ class OrderDetails extends Component {
         
         return (
             <div className="main">
-                <div className="container order_detail">
+                <div className="container">
                     <h2>Detail de la commande</h2>
-                    <div className="container ml-2 mt-4">
-                        <p>N° de la commande : #{orderInfos.id}</p>
-                        <p>Prix total : {orderInfos.total} {orderInfos.currency}</p>
-                        <p>Méthode de paiement : {orderInfos.payment_method_title}</p>
-                        <p>Date de la commande : {moment(orderInfos.date_created).format('DD/MM/YYYY')}</p>
-                        <p></p>
+                    <div className="row">
+                        <div className="col-6">
+                            <div className="order_detail container ml-2 mt-4">
+                                <p>N° de la commande : #{orderInfos.id}</p>
+                                <p>Prix total : {orderInfos.total} {orderInfos.currency}</p>
+                                <p>Méthode de paiement : {orderInfos.payment_method_title}</p>
+                                <p>Date de la commande : {moment(orderInfos.date_created).format('DD/MM/YYYY')}</p>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div className="col-6">
+                            <div className="order_detail container ml-2 mt-4">
+                                <p>N° de la commande : #{orderInfos.id}</p>
+                                <p>Prix total : {orderInfos.total} {orderInfos.currency}</p>
+                                <p>Méthode de paiement : {orderInfos.payment_method_title}</p>
+                                <p>Date de la commande : {moment(orderInfos.date_created).format('DD/MM/YYYY')}</p>
+                                <p></p>
+                            </div>
+                        </div>                         
                     </div>
+                    
                     <img id="loader-import" src="../images/loader.svg" />
                 </div>
             </div>

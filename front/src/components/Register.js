@@ -13,7 +13,7 @@ import 'sweetalert2/src/sweetalert2.scss'
 
 const client = new ApolloClient({
     uri: "https://ds-api2.herokuapp.com/"
-  });
+});
   
 
 class Register extends Component {

@@ -1,0 +1,13 @@
+@import "./components/variables.scss";
+
+.order_detail {
+    border-radius: 6px;
+    background-color: #FFF !important;
+    box-shadow: $shadow;
+    min-height: 200px;
+    width: 90%;
+    padding: 5%;
+    &:hover {
+        opacity: 0.9;
+    }
+}
