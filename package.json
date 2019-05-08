@@ -2,7 +2,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "sweetalert": "^2.1.2",
-    "sweetalert2": "^8.8.0"
+    "sweetalert2": "^8.8.0",
+    "webpack-dev-server": "^2.11.1"
   },
   "engines": {
     "node": "10.15.2",
