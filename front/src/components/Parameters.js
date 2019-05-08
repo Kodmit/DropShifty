@@ -15,6 +15,7 @@ class Parameters extends Component {
 
     submitParameters = (e) => {
         e.preventDefault();
+        /*
         const name = e.target.elements.shop_name.value;
         const drescription = e.target.elements.shop_description.value;
         const city = e.target.elements.shop_city.value;
@@ -24,11 +25,11 @@ class Parameters extends Component {
 
         client.mutate({
             mutation: gql`
-          mutation NewUser($user: UserInput!) {
-              NewUser(input: $user) {
+            mutation NewShop($shop: ShopInput!) {
+                NewShop(input: $shop) {
                   content
-              }
-          }`,
+                }
+            }`,
           variables: { 
               "shop": {
                 "name": name,
@@ -44,6 +45,23 @@ class Parameters extends Component {
                 "picturePath": null
             } },
         }).then(result => console.log(result.data));
+        */
+       var data = "{\"query\":\"mutation NewShop($shop: ShopInput!) {\\n  NewShop(input: $shop) {\\n    content\\n  }\\n}\",\"variables\":{\"shop\":{\"name\":\"Mon shop de test\",\"categoryId\":2,\"countryId\":752,\"city\":\"Paris\",\"url\":\"http://wordpress.dev.dropshifty.com\",\"wcApiUrl\":\"http://wordpress.dev.dropshifty.com\",\"postalCode\":75013,\"description\":\"Description du shop de test qui peut aussi être null\",\"addressLine1\":\"6 rue de la meute\",\"addressLine2\":null,\"picturePath\":null}},\"operationName\":\"NewShop\"}";
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === this.DONE) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "https://ds-api2.herokuapp.com/");
+xhr.setRequestHeader("cookie", "PHPSESSID=004a4e235e607f64b9080c94d91477d9");
+xhr.setRequestHeader("content-type", "application/json");
+
+xhr.send(data);
     };
 
     render() {
