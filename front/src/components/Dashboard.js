@@ -1,11 +1,88 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {Bar, Line} from 'react-chartjs-2';
 import '../styles/dashboad.scss';
 import '../styles/app.scss';
 import Chart from './includes/Chart';
+import $ from 'jquery';
+import 'moment';
 
-const Dashboard = () => {
-    return (
+let moment = require('moment');
+
+
+class Dashboard extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.state = { 
+            chartData: {
+                labels:['Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
+                datasets:[
+                    {
+                        label: "Chiffre d'affaires",
+                        data: [
+                            1000,
+                            900,
+                            1200,
+                            500,
+                            300
+                        ],
+                        backgroundColor:[
+                            '#4e73df',
+                        ]
+                    }
+                ]
+            },
+            ordersList: [],
+         }
+      }
+
+    componentDidMount() {
+        this.getOrdersList();   
+        console.log(this.state.ordersList)     
+    }
+
+    componentDidUpdate() {
+        console.log(this.state.ordersList)     
+    }
+
+    getOrdersList() {
+        this.ds_call("WC_GetOrdersList");
+    }
+
+    ds_call(arg, handledata) {
+        //document.getElementById("loader-import").style.display = "block";
+
+        let self = this;
+        let data = "{\"query\":\"{\\n\\t " + arg + " \\n}\"}";
+        let xhr = new XMLHttpRequest();
+
+            xhr.addEventListener("readystatechange", function () {
+
+            if (this.readyState === this.DONE) {
+                let object = JSON.parse(this.response);
+                let objectParsed = object.data.WC_GetOrdersList;
+
+                self.setState({
+                    ordersList: objectParsed
+                })
+
+                //console.log(self.state.ordersList);
+
+                //document.getElementById("loader-import").style.display = "none";
+                
+            }
+        });
+
+        xhr.withCredentials = true;
+        xhr.open("POST", "https://ds-api2.herokuapp.com/");
+        xhr.setRequestHeader("content-type", "application/json");
+        xhr.send(data);
+    }
+    
+
+    render() {
+        return (
             <div className="main">
 
                 <div className="container mt-4">
@@ -16,7 +93,26 @@ const Dashboard = () => {
                     <div className="row">
                         <div className="col-sm-8">
                             <div className="graph-sales">
-                                <Chart />
+                                {/*<Chart />*/}
+                                <div className="chart _shadow">
+                                    <Line
+                                        className="_shadow font"
+                                        data={this.state.chartData}
+                                        width={500}
+                                        height={300}
+                                        options={{
+                                            maintainAspectRatio: false,
+                                            title:{
+                                                display: this.props.displayTitle,
+                                                fontSize: 25
+                                            },
+                                            legend:{
+                                                display: this.props.displayLegend,
+                                                position: this.props.legendPosition
+                                            }
+                                        }}
+                                    />
+                                </div>
                             </div>
                         </div>
 
@@ -119,7 +215,9 @@ const Dashboard = () => {
 
                 </div>
             </div>
-    );
+        );
+    }
+    
 };
 
 export default Dashboard;
