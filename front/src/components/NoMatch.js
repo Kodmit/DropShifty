@@ -9,7 +9,6 @@ const NoMatch = () => {
             <p>Oops! Something is wrong.</p>
             <a className="button" href="#"><i className="icon-home"></i> Go back in initial page, is better.</a>
         </div>
-
     );
 };
 
