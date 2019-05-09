@@ -33,7 +33,7 @@ const Dashboard = () => {
                                         </div>
                                         <div className="col-sm-6"></div>
                                         <div className="col-sm-4">
-                                            <p className="bold">19.90 EUR</p>
+                                            <p>19.90 EUR</p>
                                         </div>
                                     </div>
                                     <div className="row">
@@ -42,7 +42,7 @@ const Dashboard = () => {
                                         </div>
                                         <div className="col-sm-8"></div>
                                         <div className="col-sm-2">
-                                            <p className="bold">3</p>
+                                            <p>3</p>
                                         </div>
                                     </div>
                                 </div>
@@ -56,7 +56,7 @@ const Dashboard = () => {
                                         </div>
                                         <div className="col-sm-6"></div>
                                         <div className="col-sm-4">
-                                            <p className="bold">4,20 EUR</p>
+                                            <p>4,20 EUR</p>
                                         </div>
                                     </div>
                                 </div>
@@ -70,7 +70,7 @@ const Dashboard = () => {
                                         </div>
                                         <div className="col-sm-6"></div>
                                         <div className="col-sm-4">
-                                            <p className="bold">24,20 EUR</p>
+                                            <p>24,20 EUR</p>
                                         </div>
                                     </div>
                                 </div>

@@ -88,9 +88,11 @@ class Orders extends Component {
 
         return (
             <div className="main">
-                <h3>Liste des commandes</h3>
-                {this.items}
-                <img id="loader-import" style={{ display: 'none' }} src="images/loader.svg" />
+                <div className="container mt-4">
+                    <h3>Liste des commandes</h3>
+                    {this.items}
+                    <img id="loader-import" style={{ display: 'none' }} src="images/loader.svg" />
+                </div>
                 <div className="mb-5"></div>
             </div>
         );

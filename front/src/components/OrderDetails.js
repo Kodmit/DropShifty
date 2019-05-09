@@ -62,13 +62,13 @@ class OrderDetails extends Component {
         
         return (
             <div className="main">
-                <div className="container">
+                <div className="container mt-4">
                     <h2>Detail de la commande</h2>
                     <div className="row">
                         <div className="col-6">
                             <div className="order_detail container ml-2 mt-4">
                                 <p>N° de la commande : #{orderInfos.id}</p>
-                                <p>Prix total : {orderInfos.total} {orderInfos.currency}</p>
+                                <p>Montant TTC : {orderInfos.total} {orderInfos.currency}</p>
                                 <p>Méthode de paiement : {orderInfos.payment_method_title}</p>
                                 <p>Date de la commande : {moment(orderInfos.date_created).format('DD/MM/YYYY')}</p>
                                 <p></p>
@@ -76,10 +76,9 @@ class OrderDetails extends Component {
                         </div>
                         <div className="col-6">
                             <div className="order_detail container ml-2 mt-4">
-                                <p>N° de la commande : #{orderInfos.id}</p>
-                                <p>Prix total : {orderInfos.total} {orderInfos.currency}</p>
-                                <p>Méthode de paiement : {orderInfos.payment_method_title}</p>
-                                <p>Date de la commande : {moment(orderInfos.date_created).format('DD/MM/YYYY')}</p>
+                                <p>Frais de livraison : {orderInfos.shipping_total} {orderInfos.currency}</p>
+                                <p>Taxes : {orderInfos.total_tax} {orderInfos.currency}</p>
+                                <p>Montant HT : {orderInfos.total - orderInfos.shipping_total} {orderInfos.currency}</p>
                                 <p></p>
                             </div>
                         </div>                         

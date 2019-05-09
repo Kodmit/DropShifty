@@ -114,7 +114,7 @@ class ImportProducts extends Component {
     render () {
         return (
             <div className="main">
-                <div className="container mt-4 content-import">
+                <div className="container mt-4">
                     <h3>Importer un produit</h3>
 
                     <form className="form-import-product" onSubmit={this.submitImport}>
