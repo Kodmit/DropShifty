@@ -41,9 +41,14 @@ class App extends Component {
 
     componentDidMount() {
 
+
         setTimeout(() => {
-            let uriRegister = 'http://localhost:3000/register';
-            let uriLogin = 'http://localhost:3000/login';
+            let current_url = window.location.href;
+            let arr_url = current_url.split("/");
+            let complete_domain = arr_url[0] + "//" + arr_url[2];
+
+            let uriRegister = complete_domain + '/register';
+            let uriLogin = complete_domain + '/login';
             if (window.location.href == uriRegister || window.location.href == uriLogin) {
                 document.getElementById("login").style.display = "none";            
             }
