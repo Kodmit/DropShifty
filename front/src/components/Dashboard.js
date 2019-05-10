@@ -16,13 +16,11 @@ class Dashboard extends React.Component {
         super(props)
         this.state = {
             chartData: {
-                labels:['Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
+                labels:[],
                 datasets:[
                     {
                         label: "Chiffre d'affaires",
-                        data: [
-
-                        ],
+                        data: [],
                         backgroundColor:[
                             '#4e73df',
                         ]
@@ -59,16 +57,20 @@ class Dashboard extends React.Component {
                     ordersList: objectParsed
                 })
 
-                let arr = [];
+                let arrSells = [];
+                let arrDates = [];
 
                 $.each(objectParsed, function( index, value ) {
-                    console.log( value.total );
-                    arr.push(value.total);
+                    arrSells.push(value.total);
+                    arrDates.push(moment(value.date_created).format('DD/MM/YYYY'));
                 });
 
                 let chartData = {...self.state.chartData};
 
-                chartData.datasets[0].data = arr
+                chartData.datasets[0].data = arrSells
+                self.setState({chartData});
+
+                chartData.labels = arrDates
                 self.setState({chartData});
 
                 console.log(self.state.chartData);
@@ -88,17 +90,17 @@ class Dashboard extends React.Component {
     render() {
 
         let ordersList = this.state.ordersList;
+        let totalSum = 0;
+        let currency = "";
 
-        let totalSum;
-
-        $.each(ordersList.total, function(i, v) {
-          console.log(i)
-          totalSum += v;
+        $.each(ordersList, function(i, v) {
+          if (v.total != 'undefined') {
+            totalSum += parseFloat(v.total);
+            currency = v.currency;
+          }
         });
 
         console.log(this.state.ordersList);
-
-        console.log("total : " + totalSum);
 
         return (
             <div className="main">
@@ -184,7 +186,7 @@ class Dashboard extends React.Component {
                                         </div>
                                         <div className="col-sm-6"></div>
                                         <div className="col-sm-4">
-                                            <p>24,20 EUR</p>
+                                            <p>{totalSum} {currency}</p>
                                         </div>
                                     </div>
                                 </div>
