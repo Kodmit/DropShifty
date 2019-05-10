@@ -66,16 +66,12 @@ class Dashboard extends React.Component {
                     arr.push(value.total);
                 });
 
-                //self.state.chartData.datasets[0].data = arr;
+                let chartData = {...self.state.chartData};
 
-                /*
-                self.setState({
-                  chartData.datasets[0].data: arr
-                })
+                chartData.datasets[0].data = arr
+                self.setState({chartData});
 
-                */
-
-                //console.log(self.state.ordersList);
+                console.log(self.state.chartData);
 
                 //document.getElementById("loader-import").style.display = "none";
 
@@ -90,6 +86,20 @@ class Dashboard extends React.Component {
 
 
     render() {
+
+        let ordersList = this.state.ordersList;
+
+        let totalSum;
+
+        $.each(ordersList.total, function(i, v) {
+          console.log(i)
+          totalSum += v;
+        });
+
+        console.log(this.state.ordersList);
+
+        console.log("total : " + totalSum);
+
         return (
             <div className="main">
 
@@ -146,7 +156,7 @@ class Dashboard extends React.Component {
                                         </div>
                                         <div className="col-sm-8"></div>
                                         <div className="col-sm-2">
-                                            <p>3</p>
+                                            <p>{ordersList.length}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -170,7 +180,7 @@ class Dashboard extends React.Component {
                                 <div className="container mt-4">
                                     <div className="row">
                                         <div className="col-sm-2">
-                                            <p className="bold">Gains</p>
+                                            <p className="bold">Chiffre d'affaires</p>
                                         </div>
                                         <div className="col-sm-6"></div>
                                         <div className="col-sm-4">
