@@ -14,18 +14,14 @@ class Dashboard extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = { 
+        this.state = {
             chartData: {
                 labels:['Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
                 datasets:[
                     {
                         label: "Chiffre d'affaires",
                         data: [
-                            1000,
-                            900,
-                            1200,
-                            500,
-                            300
+
                         ],
                         backgroundColor:[
                             '#4e73df',
@@ -34,16 +30,12 @@ class Dashboard extends React.Component {
                 ]
             },
             ordersList: [],
+            amount: [],
          }
       }
 
     componentDidMount() {
-        this.getOrdersList();   
-        console.log(this.state.ordersList)     
-    }
-
-    componentDidUpdate() {
-        console.log(this.state.ordersList)     
+        this.getOrdersList();
     }
 
     getOrdersList() {
@@ -67,10 +59,26 @@ class Dashboard extends React.Component {
                     ordersList: objectParsed
                 })
 
+                let arr = [];
+
+                $.each(objectParsed, function( index, value ) {
+                    console.log( value.total );
+                    arr.push(value.total);
+                });
+
+                //self.state.chartData.datasets[0].data = arr;
+
+                /*
+                self.setState({
+                  chartData.datasets[0].data: arr
+                })
+
+                */
+
                 //console.log(self.state.ordersList);
 
                 //document.getElementById("loader-import").style.display = "none";
-                
+
             }
         });
 
@@ -79,7 +87,7 @@ class Dashboard extends React.Component {
         xhr.setRequestHeader("content-type", "application/json");
         xhr.send(data);
     }
-    
+
 
     render() {
         return (
@@ -207,6 +215,7 @@ class Dashboard extends React.Component {
                         </div>
                     </div>
 
+
                     <div className="container">
                         <div className="row">
                             <div></div>
@@ -217,8 +226,7 @@ class Dashboard extends React.Component {
             </div>
         );
     }
-    
+
 };
 
 export default Dashboard;
-
