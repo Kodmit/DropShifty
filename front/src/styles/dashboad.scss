@@ -14,7 +14,7 @@
 .selling-products {
     background-color: #FFF;
     width: 100%;
-    height: 150px;
+    min-height: 150px;
     box-shadow: 1px 1px 1px $shadow;
     &:hover {
         transition: 0.5s;

@@ -116,17 +116,20 @@ class Dashboard extends React.Component {
 
 
         const items = productsName.map((item, key) =>
-          <div className="row mt-3 p-3">
-              <div className="col-sm-8">
-                  <p>{item.name.substring(0, 42)}</p>
-              </div>
-              <div className="col-sm-2">
-                  <p>Quantité : {item.quantity}</p>
-              </div>
-              <div className="col-sm-2">
-                  <p>{item.subtotal} {currency}</p>
-              </div>
-          </div>
+          <div>
+            <div className="row mt-3 p-3">
+                <div className="col-sm-8">
+                    <p>{item.name.substring(0, 50)}</p>
+                </div>
+                <div className="col-sm-2">
+                    <p>Quantité : {item.quantity}</p>
+                </div>
+                <div className="col-sm-2">
+                    <p>{item.subtotal} {currency}</p>
+                </div>
+            </div>
+            <div className="separator"></div>
+         </div>
         );
 
         return (
@@ -176,7 +179,7 @@ class Dashboard extends React.Component {
                                         </div>
                                         <div className="col-sm-6"></div>
                                         <div className="col-sm-4">
-                                            <p>19.90 EUR</p>
+                                            <p>{totalSum} {currency}</p>
                                         </div>
                                     </div>
                                     <div className="row">
@@ -224,11 +227,10 @@ class Dashboard extends React.Component {
 
                     <div className="mt-5"></div>
 
-                    <h3>Produits les mieux vendus</h3>
+                    <h3>Derniers produits vendus</h3>
 
                     <div className="container selling-products mt-4 _shadow">
                         {items}
-                        <div className="separator"></div>
                     </div>
 
 
