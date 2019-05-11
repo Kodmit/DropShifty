@@ -67,10 +67,10 @@ class Dashboard extends React.Component {
 
                 let chartData = {...self.state.chartData};
 
-                chartData.datasets[0].data = arrSells
+                chartData.datasets[0].data = arrSells.reverse();
                 self.setState({chartData});
 
-                chartData.labels = arrDates
+                chartData.labels = arrDates.reverse();
                 self.setState({chartData});
 
                 console.log(self.state.chartData);
@@ -92,15 +92,42 @@ class Dashboard extends React.Component {
         let ordersList = this.state.ordersList;
         let totalSum = 0;
         let currency = "";
+        let products = [];
+        let productsName = [];
 
-        $.each(ordersList, function(i, v) {
-          if (v.total != 'undefined') {
-            totalSum += parseFloat(v.total);
-            currency = v.currency;
+        $.each(ordersList, function(index, value) {
+          if (value.total != 'undefined') {
+            totalSum += parseFloat(value.total);
+            currency = value.currency;
+            products.push(value.line_items);
           }
         });
 
         console.log(this.state.ordersList);
+
+        $.each(products, function(i, v) {
+          console.log(v[0]);
+          productsName.push(v[0]);
+        });
+
+        console.log("Products Name :");
+
+        console.log(productsName);
+
+
+        const items = productsName.map((item, key) =>
+          <div className="row mt-3 p-3">
+              <div className="col-sm-8">
+                  <p>{item.name.substring(0, 42)}</p>
+              </div>
+              <div className="col-sm-2">
+                  <p>Quantité : {item.quantity}</p>
+              </div>
+              <div className="col-sm-2">
+                  <p>{item.subtotal} {currency}</p>
+              </div>
+          </div>
+        );
 
         return (
             <div className="main">
@@ -200,31 +227,8 @@ class Dashboard extends React.Component {
                     <h3>Produits les mieux vendus</h3>
 
                     <div className="container selling-products mt-4 _shadow">
-                        <div className="row mt-3 p-3">
-                            <div className="col-sm-8">
-                                <p>Bracelet argent</p>
-                            </div>
-                            <div className="col-sm-2">
-                                <p>2 achats</p>
-                            </div>
-                            <div className="col-sm-2">
-                                <p>34,90 EUR</p>
-                            </div>
-                        </div>
-
+                        {items}
                         <div className="separator"></div>
-
-                        <div className="row p-3">
-                            <div className="col-sm-8">
-                                <p>Bracelet acier</p>
-                            </div>
-                            <div className="col-sm-2">
-                                <p>3 achats</p>
-                            </div>
-                            <div className="col-sm-2">
-                                <p>32,90 EUR</p>
-                            </div>
-                        </div>
                     </div>
 
 
