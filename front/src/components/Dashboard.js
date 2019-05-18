@@ -73,7 +73,7 @@ class Dashboard extends React.Component {
                 chartData.labels = arrDates.reverse();
                 self.setState({chartData});
 
-                console.log(self.state.chartData);
+                //console.log(self.state.chartData);
 
                 //document.getElementById("loader-import").style.display = "none";
 
@@ -110,10 +110,6 @@ class Dashboard extends React.Component {
           productsName.push(v[0]);
         });
 
-        console.log("Products Name :");
-
-        console.log(productsName);
-
 
         const items = productsName.map((item, key) =>
           <div>
@@ -132,7 +128,120 @@ class Dashboard extends React.Component {
          </div>
         );
 
-        return (
+        if (ordersList != null) {
+          return (
+              <div className="main">
+
+                  <div className="container mt-4">
+                      <h3>Tableau de bord</h3>
+
+                      <div className="mt-4"></div>
+
+                      <div className="row">
+                          <div className="col-sm-8">
+                              <div className="graph-sales">
+                                  {/*<Chart />*/}
+                                  <div className="chart _shadow">
+                                      <Line
+                                          className="_shadow font"
+                                          data={this.state.chartData}
+                                          width={500}
+                                          height={300}
+                                          options={{
+                                              maintainAspectRatio: false,
+                                              title:{
+                                                  display: this.props.displayTitle,
+                                                  fontSize: 25
+                                              },
+                                              legend:{
+                                                  display: this.props.displayLegend,
+                                                  position: this.props.legendPosition
+                                              }
+                                          }}
+                                      />
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div className="col-sm-4">
+                              <div className="overview _shadow">
+                                  <p className="p-2 bold">Vue d'ensemble</p>
+
+                                  <div className="separator"></div>
+
+                                  <div className="container mt-2">
+                                      <div className="row">
+                                          <div className="col-sm-2">
+                                              <p className="bold">Ventes</p>
+                                          </div>
+                                          <div className="col-sm-6"></div>
+                                          <div className="col-sm-4">
+                                              <p>{totalSum} {currency}</p>
+                                          </div>
+                                      </div>
+                                      <div className="row">
+                                          <div className="col-sm-2">
+                                              <p className="bold">Commandes</p>
+                                          </div>
+                                          <div className="col-sm-8"></div>
+                                          <div className="col-sm-2">
+                                              <p>{ordersList.length}</p>
+                                          </div>
+                                      </div>
+                                  </div>
+
+                                  <div className="separator"></div>
+
+                                  <div className="container mt-2">
+                                      <div className="row">
+                                          <div className="col-sm-2">
+                                              <p className="bold">Coûts</p>
+                                          </div>
+                                          <div className="col-sm-6"></div>
+                                          <div className="col-sm-4">
+                                              <p>{/* @TODO */}</p>
+                                          </div>
+                                      </div>
+                                  </div>
+
+                                  <div className="separator"></div>
+
+                                  <div className="container mt-4">
+                                      <div className="row">
+                                          <div className="col-sm-2">
+                                              <p className="bold">Chiffre d'affaires</p>
+                                          </div>
+                                          <div className="col-sm-6"></div>
+                                          <div className="col-sm-4">
+                                              <p>{totalSum} {currency}</p>
+                                          </div>
+                                      </div>
+                                  </div>
+
+                              </div>
+                          </div>
+                      </div>
+
+                      <div className="mt-5"></div>
+
+                      <h3>Derniers produits vendus</h3>
+
+                      <div className="container selling-products mt-4 _shadow">
+                          {items}
+                      </div>
+
+
+                      <div className="container">
+                          <div className="row">
+                              <div></div>
+                          </div>
+                      </div>
+
+                  </div>
+              </div>
+          );
+        } else {
+          return(
             <div className="main">
 
                 <div className="container mt-4">
@@ -143,7 +252,6 @@ class Dashboard extends React.Component {
                     <div className="row">
                         <div className="col-sm-8">
                             <div className="graph-sales">
-                                {/*<Chart />*/}
                                 <div className="chart _shadow">
                                     <Line
                                         className="_shadow font"
@@ -179,7 +287,7 @@ class Dashboard extends React.Component {
                                         </div>
                                         <div className="col-sm-6"></div>
                                         <div className="col-sm-4">
-                                            <p>{totalSum} {currency}</p>
+                                            <p></p>
                                         </div>
                                     </div>
                                     <div className="row">
@@ -188,7 +296,7 @@ class Dashboard extends React.Component {
                                         </div>
                                         <div className="col-sm-8"></div>
                                         <div className="col-sm-2">
-                                            <p>{ordersList.length}</p>
+                                            <p></p>
                                         </div>
                                     </div>
                                 </div>
@@ -202,7 +310,7 @@ class Dashboard extends React.Component {
                                         </div>
                                         <div className="col-sm-6"></div>
                                         <div className="col-sm-4">
-                                            <p>4,20 EUR</p>
+                                            <p>{/* @TODO */}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -216,7 +324,7 @@ class Dashboard extends React.Component {
                                         </div>
                                         <div className="col-sm-6"></div>
                                         <div className="col-sm-4">
-                                            <p>{totalSum} {currency}</p>
+                                            <p></p>
                                         </div>
                                     </div>
                                 </div>
@@ -230,7 +338,6 @@ class Dashboard extends React.Component {
                     <h3>Derniers produits vendus</h3>
 
                     <div className="container selling-products mt-4 _shadow">
-                        {items}
                     </div>
 
 
@@ -242,7 +349,8 @@ class Dashboard extends React.Component {
 
                 </div>
             </div>
-        );
+          );
+        }
     }
 
 };
