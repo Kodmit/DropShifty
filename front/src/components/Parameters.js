@@ -30,7 +30,7 @@ class Parameters extends Component {
                   content
                 }
             }`,
-          variables: { 
+          variables: {
               "shop": {
                 "name": name,
                 "categoryId": 2,
@@ -48,20 +48,20 @@ class Parameters extends Component {
         */
        var data = "{\"query\":\"mutation NewShop($shop: ShopInput!) {\\n  NewShop(input: $shop) {\\n    content\\n  }\\n}\",\"variables\":{\"shop\":{\"name\":\"Mon shop de test\",\"categoryId\":2,\"countryId\":752,\"city\":\"Paris\",\"url\":\"http://wordpress.dev.dropshifty.com\",\"wcApiUrl\":\"http://wordpress.dev.dropshifty.com\",\"postalCode\":75013,\"description\":\"Description du shop de test qui peut aussi être null\",\"addressLine1\":\"6 rue de la meute\",\"addressLine2\":null,\"picturePath\":null}},\"operationName\":\"NewShop\"}";
 
-var xhr = new XMLHttpRequest();
-xhr.withCredentials = true;
+      var xhr = new XMLHttpRequest();
+      xhr.withCredentials = true;
 
-xhr.addEventListener("readystatechange", function () {
-  if (this.readyState === this.DONE) {
-    console.log(this.responseText);
-  }
-});
+      xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === this.DONE) {
+          console.log(this.responseText);
+        }
+      });
 
-xhr.open("POST", "https://ds-api2.herokuapp.com/");
-xhr.setRequestHeader("cookie", "PHPSESSID=004a4e235e607f64b9080c94d91477d9");
-xhr.setRequestHeader("content-type", "application/json");
+      xhr.open("POST", "https://ds-api2.herokuapp.com/");
+      xhr.setRequestHeader("cookie", "PHPSESSID=004a4e235e607f64b9080c94d91477d9");
+      xhr.setRequestHeader("content-type", "application/json");
 
-xhr.send(data);
+      xhr.send(data);
     };
 
     render() {
@@ -72,8 +72,8 @@ xhr.send(data);
                     <h3>Paramètres</h3>
 
                     <div className="row">
-                        <div className="col-6">
-                            <div className="parm_form_1 container mt-4 ml-2">
+                        <div className="col-12">
+                            <div style={{ width: '70%' }} className="mx-auto d-block parm_form_1 container mt-4 ml-2">
                                 <h4>Créer votre boutique China Brand</h4>
 
                                 <div className="mt-3">
@@ -114,12 +114,8 @@ xhr.send(data);
                             </div>
                         </div>
 
-                        <div className="col-6">
-                            {/* Other form */}
-                        </div>
-
                     </div>
-                    
+
                 </div>
             </div>
         );
