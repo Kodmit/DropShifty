@@ -9,13 +9,13 @@ class ImportedProducts extends Component {
 
     constructor(props) {
         super(props)
-        this.state = { 
+        this.state = {
             productList: [],
          }
       }
 
     componentDidMount() {
-        this.getProductsList();        
+        this.getProductsList();
     }
 
     getProductsList() {
@@ -44,7 +44,7 @@ class ImportedProducts extends Component {
 
                 document.getElementById("loader-import").style.display = "none";
 
-                
+
             }
         });
 
@@ -59,6 +59,8 @@ class ImportedProducts extends Component {
     }
 
     render() {
+
+      if (this.state.productList != null) {
 
         this.items = this.state.productList.map((item, key) =>
             <div key={item.id} className="content-import">
@@ -87,11 +89,21 @@ class ImportedProducts extends Component {
             <div className="main">
                 <div className="container mt-4">
                     <h3>Produits importés</h3>
-                        {this.items}
-                        <img id="loader-import" style={{ display: 'none' }} src="images/loader.svg" />
+                    {this.items}
+                    <img id="loader-import" style={{ display: 'none' }} src="images/loader.svg" />
                 </div>
             </div>
         );
+      } else {
+          return (
+            <div className="main">
+                <div className="container mt-4">
+                    <h3>Aucun produit importé</h3>
+                    <img id="loader-import" style={{ display: 'none' }} src="images/loader.svg" />
+                </div>
+            </div>
+          );
+      }
     }
 };
 

@@ -13,15 +13,15 @@ class Orders extends Component {
 
     constructor(props) {
         super(props)
-        this.state = { 
+        this.state = {
             ordersList: [],
          }
       }
-    
+
     componentDidMount() {
-        this.getOrdersList();        
+        this.getOrdersList();
     }
-    
+
     getOrdersList() {
         this.ds_call("WC_GetOrdersList");
     }
@@ -46,7 +46,7 @@ class Orders extends Component {
                 console.log(self.state.ordersList);
 
                 document.getElementById("loader-import").style.display = "none";
-                
+
             }
         });
 
@@ -58,46 +58,58 @@ class Orders extends Component {
 
     render() {
 
-        this.items = this.state.ordersList.map((item, key) =>
-            <div key={item.id} className="container mt-4">
-                {console.log(item)}
-                <Link className="link_details" to={"/order/" + item.id}>
-                    <div className="row mt-5">
-                        <div className="col-sm-12">
-                            <div className="order-box _shadow">
-                                <div className="order-box-up container text-order-box">
-                                    <div className="text-order-box mt-2">
-                                        <p>Commande <strong style={{ color: '#4e73df' }}>#{item.id}</strong></p>
-                                        <p>Date de paiement <strong style={{ color: '#4e73df' }}>{moment(item.date_created).format('DD/MM/YYYY')}</strong></p>
-                                        <p>Client <strong style={{ color: '#4e73df' }}>{item.shipping.first_name} {item.shipping.last_name}</strong></p>
-                                    </div>
-                                </div>
-                                <div className="order-box-down">
-                                    <div className="separator"></div>
-                                    <div className="container text-order-box mt-2">
-                                        <p>Total de la commande <strong style={{ color: '#4e73df' }}>{item.total} {item.currency}</strong></p>
-                                        <p></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </Link>
-            </div>
-        );
+        if (this.state.ordersList != null) {
 
-        return (
+          this.items = this.state.ordersList.map((item, key) =>
+              <div key={item.id} className="container mt-4">
+                  {console.log(item)}
+                  <Link className="link_details" to={"/order/" + item.id}>
+                      <div className="row mt-5">
+                          <div className="col-sm-12">
+                              <div className="order-box _shadow">
+                                  <div className="order-box-up container text-order-box">
+                                      <div className="text-order-box mt-2">
+                                          <p>Commande <strong style={{ color: '#4e73df' }}>#{item.id}</strong></p>
+                                          <p>Date de paiement <strong style={{ color: '#4e73df' }}>{moment(item.date_created).format('DD/MM/YYYY')}</strong></p>
+                                          <p>Client <strong style={{ color: '#4e73df' }}>{item.shipping.first_name} {item.shipping.last_name}</strong></p>
+                                      </div>
+                                  </div>
+                                  <div className="order-box-down">
+                                      <div className="separator"></div>
+                                      <div className="container text-order-box mt-2">
+                                          <p>Total de la commande <strong style={{ color: '#4e73df' }}>{item.total} {item.currency}</strong></p>
+                                          <p></p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </Link>
+              </div>
+          );
+
+          return (
+              <div className="main">
+                  <div className="container mt-4">
+                      <h3>Liste des commandes</h3>
+                      {this.items}
+                      <img id="loader-import" style={{ display: 'none' }} src="images/loader.svg" />
+                  </div>
+                  <div className="mb-5"></div>
+              </div>
+          );
+        } else {
+          return (
             <div className="main">
                 <div className="container mt-4">
-                    <h3>Liste des commandes</h3>
-                    {this.items}
+                    <h3>Aucune commande trouvé</h3>
                     <img id="loader-import" style={{ display: 'none' }} src="images/loader.svg" />
                 </div>
-                <div className="mb-5"></div>
             </div>
-        );
+          );
+        }
     }
-    
+
 };
 
 export default Orders;
