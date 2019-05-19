@@ -15,38 +15,15 @@ class Parameters extends Component {
 
     submitParameters = (e) => {
         e.preventDefault();
-        /*
+
         const name = e.target.elements.shop_name.value;
-        const drescription = e.target.elements.shop_description.value;
+        const description = e.target.elements.shop_description.value;
         const city = e.target.elements.shop_city.value;
         const postalCode = e.target.elements.postal_code.value;
         const address = e.target.elements.shop_address.value;
         const shopUrl = e.target.elements.shop_url.value;
 
-        client.mutate({
-            mutation: gql`
-            mutation NewShop($shop: ShopInput!) {
-                NewShop(input: $shop) {
-                  content
-                }
-            }`,
-          variables: {
-              "shop": {
-                "name": name,
-                "categoryId": 2,
-                "countryId": 752,
-                "city": city,
-                "url": shopUrl,
-                "wcApiUrl": shopUrl,
-                "postalCode": postalCode,
-                "description": drescription,
-                "addressLine1": address,
-                "addressLine2": null,
-                "picturePath": null
-            } },
-        }).then(result => console.log(result.data));
-        */
-       var data = "{\"query\":\"mutation NewShop($shop: ShopInput!) {\\n  NewShop(input: $shop) {\\n    content\\n  }\\n}\",\"variables\":{\"shop\":{\"name\":\"Mon shop de test\",\"categoryId\":2,\"countryId\":752,\"city\":\"Paris\",\"url\":\"http://wordpress.dev.dropshifty.com\",\"wcApiUrl\":\"http://wordpress.dev.dropshifty.com\",\"postalCode\":75013,\"description\":\"Description du shop de test qui peut aussi être null\",\"addressLine1\":\"6 rue de la meute\",\"addressLine2\":null,\"picturePath\":null}},\"operationName\":\"NewShop\"}";
+       var data = '{\"query\":\"mutation NewShop($shop: ShopInput!) {\\n  NewShop(input: $shop) {\\n content\\n }\\n}\",\"variables\":{\"shop\":{\"name\":' + '\\\"' + name + '\\\"' + ',\"categoryId\":2,\"countryId\":752,\"city\":' + '\\\"' + city + '\\\"' + ',\"url\":' + '\\\"' + shopUrl + '\\\"' + ',\"wcApiUrl\":' + '\\\"' + shopUrl + '\\\"' + ',\"postalCode\":' + '\\\"' + postalCode + '\\\"' + ',\"description\":' + '\\\"' + description + '\\\"' + ',\"addressLine1\":' + '\\\"' + postalCode + '\\\"' + ',\"addressLine2\":null,\"picturePath\":null}},\"operationName\":\"NewShop\"}';
 
       var xhr = new XMLHttpRequest();
       xhr.withCredentials = true;
