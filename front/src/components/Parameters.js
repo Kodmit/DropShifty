@@ -23,7 +23,10 @@ class Parameters extends Component {
         const address = e.target.elements.shop_address.value;
         const shopUrl = e.target.elements.shop_url.value;
 
-       var data = '{\"query\":\"mutation NewShop($shop: ShopInput!) {\\n  NewShop(input: $shop) {\\n content\\n }\\n}\",\"variables\":{\"shop\":{\"name\":' + '\\\"' + name + '\\\"' + ',\"categoryId\":2,\"countryId\":752,\"city\":' + '\\\"' + city + '\\\"' + ',\"url\":' + '\\\"' + shopUrl + '\\\"' + ',\"wcApiUrl\":' + '\\\"' + shopUrl + '\\\"' + ',\"postalCode\":' + '\\\"' + postalCode + '\\\"' + ',\"description\":' + '\\\"' + description + '\\\"' + ',\"addressLine1\":' + '\\\"' + postalCode + '\\\"' + ',\"addressLine2\":null,\"picturePath\":null}},\"operationName\":\"NewShop\"}';
+
+       //var data = '{\"query\":\"mutation NewShop($shop: ShopInput!) {\\n  NewShop(input: $shop) {\\n content\\n }\\n}\",\"variables\":{\"shop\":{\"name\":' + '\\\"' + name + '\\\"' + ',\"categoryId\":2,\"countryId\":752,\"city\":' + '\\\"' + city + '\\\"' + ',\"url\":' + '\\\"' + shopUrl + '\\\"' + ',\"wcApiUrl\":' + '\\\"' + shopUrl + '\\\"' + ',\"postalCode\":' + '\\\"' + postalCode + '\\\"' + ',\"description\":' + '\\\"' + description + '\\\"' + ',\"addressLine1\":' + '\\\"' + postalCode + '\\\"' + ',\"addressLine2\":null,\"picturePath\":null}},\"operationName\":\"NewShop\"}';
+
+       var data = "{\"query\":\"mutation NewShop($shop: ShopInput!) {\\n  NewShop(input: $shop) {\\n    content\\n  }\\n}\",\"variables\":{\"shop\":{\"name\":\"Mon shop de test\",\"categoryId\":2,\"countryId\":752,\"city\":\"Paris\",\"url\":\"http://wordpress.dev.dropshifty.com\",\"wcApiUrl\":\"http://wordpress.dev.dropshifty.com\",\"postalCode\":75013,\"description\":\"Description du shop de test qui peut aussi être null\",\"addressLine1\":\"6 rue de la meute\",\"addressLine2\":null,\"picturePath\":null}},\"operationName\":\"NewShop\"}";
 
       var xhr = new XMLHttpRequest();
       xhr.withCredentials = true;
@@ -50,7 +53,7 @@ class Parameters extends Component {
 
                     <div className="row">
                         <div className="col-12">
-                            <div style={{ width: '70%' }} className="mx-auto d-block parm_form_1 container mt-4 ml-2">
+                            <div style={{ width: '70%' }} className="parm_form_1 container mt-4 ml-2">
                                 <h4>Créer votre boutique China Brand</h4>
 
                                 <div className="mt-3">
@@ -89,6 +92,10 @@ class Parameters extends Component {
                                     </form>
                                 </div>
                             </div>
+                        </div>
+
+                        <div className="col-6">
+                            {/* Other form */}
                         </div>
 
                     </div>

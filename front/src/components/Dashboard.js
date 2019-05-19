@@ -41,7 +41,6 @@ class Dashboard extends React.Component {
     }
 
     ds_call(arg, handledata) {
-        //document.getElementById("loader-import").style.display = "block";
 
         let self = this;
         let data = "{\"query\":\"{\\n\\t " + arg + " \\n}\"}";
@@ -74,9 +73,6 @@ class Dashboard extends React.Component {
                 self.setState({chartData});
 
                 //console.log(self.state.chartData);
-
-                //document.getElementById("loader-import").style.display = "none";
-
             }
         });
 
