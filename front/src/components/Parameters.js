@@ -13,8 +13,28 @@ import 'sweetalert2/src/sweetalert2.scss'
 
 class Parameters extends Component {
 
+    ds_call(arg, handledata) {
+
+        let data = "{\"query\":\"{\\n\\t " + arg + " \\n}\"}";
+        let xhr = new XMLHttpRequest();
+
+        xhr.addEventListener("readystatechange", function () {
+            if (this.readyState === this.DONE) {
+                console.log(this.response);
+                let object = JSON.parse(this.response);
+                handledata(object.data[arg]);
+            }
+        });
+        xhr.withCredentials = true;
+        xhr.open("POST", "https://ds-api2.herokuapp.com/");
+        xhr.setRequestHeader("content-type", "application/json");
+        xhr.send(data);
+    }
+
     submitParameters = (e) => {
         e.preventDefault();
+
+        let self = this;
 
         const name = e.target.elements.shop_name.value;
         const description = e.target.elements.shop_description.value;
@@ -49,20 +69,51 @@ class Parameters extends Component {
               'Content-Type': 'application/json'
             }
           }).then((result) => {
-            console.log(result.data)
-            if (result.data) {
-              Swal.fire({
-                  title: '<strong>Boutique créee !</strong>',
-                  type: 'success',
-                  html: 'Votre boutique a bien été créee ! Vous pouvez à présent importer des produits',
-                  showCloseButton: true,
-                  showCancelButton: false,
-                  focusConfirm: false,
-                  confirmButtonText: 'Fermer',
-                  confirmButtonAriaLabel: 'Fermer'
-              });
-            }
-          });
+              console.log(result.data);
+              if (!result.data.errors) {
+                Swal.fire({
+                    title: '<strong>Boutique créee !</strong>',
+                    type: 'success',
+                    html: 'Votre boutique a bien été créee ! Vous pouvez à présent importer des produits',
+                    showCloseButton: true,
+                    showCancelButton: false,
+                    focusConfirm: false,
+                    confirmButtonText: 'Fermer',
+                    confirmButtonAriaLabel: 'Fermer'
+                });
+
+                self.ds_call("CheckIfWCApiFilled", function(output) {
+                    if(!output) {
+                        self.ds_call("GenWcLink", function(link) {
+                            console.log(link)
+                            Swal.fire({
+                                type: 'error',
+                                title: 'Oups...',
+                                showCloseButton: false,
+                                showCancelButton: false,
+                                focusConfirm: false,
+                                html: 'Nous ne disposons pas de vos informations de connexion à l\'API WooCommerce, veuillez les fournir sur votre compte Dropshifty pour utiliser le plugin.<br><br><a href="'+ link +'" target="_blank">Renseigner les informations automatiquement.</a>',
+                            });
+                        });
+                    }
+                });
+
+              } else if(result.data.errors) {
+                Swal.fire({
+                    title: "<strong>Une erreur s'est produite</strong>",
+                    type: 'error',
+                    html: "Une erreur s'est produite lors de la création de votre boutique",
+                    showCloseButton: true,
+                    showCancelButton: false,
+                    focusConfirm: false,
+                    confirmButtonText: 'Fermer',
+                    confirmButtonAriaLabel: 'Fermer'
+                });
+              }
+
+            }).catch((error) => {
+                console.log(error);
+            });
     };
 
     render() {

@@ -75,8 +75,8 @@ class ImportProducts extends Component {
                         confirmButtonAriaLabel: 'Fermer'
                     });
                 }
-                
-                
+
+
                 document.getElementById("overlay").style.display = "none";
             }
         });
@@ -103,7 +103,6 @@ class ImportProducts extends Component {
                         showCancelButton: false,
                         focusConfirm: false,
                         html: 'Nous ne disposons pas de vos informations de connexion à l\'API WooCommerce, veuillez les fournir sur votre compte Dropshifty pour utiliser le plugin.<br><br><a href="'+ link +'">Renseigner les informations automatiquement.</a>',
-                        footer: '<a href="https://dropshifty.com/my-account">Renseigner mes informations sur Dropshifty.com</a>'
                     });
                 });
             }
@@ -128,7 +127,7 @@ class ImportProducts extends Component {
                     <div id="overlay" style={{ display: 'none' }}>
                         <img id="loader" src="images/loader.svg" />
                     </div>
-                                        
+
                 </div>
             </div>
         );
