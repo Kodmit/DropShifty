@@ -111,7 +111,7 @@ class Dashboard extends React.Component {
           <div>
             <div className="row mt-3 p-3">
                 <div className="col-sm-8">
-                    <p>{item.name.substring(0, 50)}</p>
+                    <p>{item.name.substring(0, 60)}...</p>
                 </div>
                 <div className="col-sm-2">
                     <p>Quantité : {item.quantity}</p>

@@ -102,7 +102,7 @@ class ImportProducts extends Component {
                         showCloseButton: false,
                         showCancelButton: false,
                         focusConfirm: false,
-                        html: 'Nous ne disposons pas de vos informations de connexion à l\'API WooCommerce, veuillez les fournir sur votre compte Dropshifty pour utiliser le plugin.<br><br><a href="'+ link +'">Renseigner les informations automatiquement.</a>',
+                        html: 'Nous ne disposons pas de vos informations de connexion à l\'API WooCommerce, veuillez les fournir sur votre compte Dropshifty pour utiliser le plugin.<br><br><a href="'+ link +'" target="_blank">Renseigner les informations automatiquement.</a>',
                     });
                 });
             }
