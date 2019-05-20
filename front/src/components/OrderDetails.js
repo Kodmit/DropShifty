@@ -59,6 +59,7 @@ class OrderDetails extends Component {
     render() {
 
         let orderInfos = this.state.orderInfos;
+        let htAmount = orderInfos.total - orderInfos.shipping_total || '';
         
         return (
             <div className="main">
@@ -78,7 +79,7 @@ class OrderDetails extends Component {
                             <div className="order_detail container ml-2 mt-4">
                                 <p>Frais de livraison : {orderInfos.shipping_total} {orderInfos.currency}</p>
                                 <p>Taxes : {orderInfos.total_tax} {orderInfos.currency}</p>
-                                <p>Montant HT : {orderInfos.total - orderInfos.shipping_total} {orderInfos.currency}</p>
+                                <p>Montant HT : {htAmount} {orderInfos.currency}</p>
                                 <p></p>
                             </div>
                         </div>                         
