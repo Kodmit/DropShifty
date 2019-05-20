@@ -170,18 +170,18 @@ class Dashboard extends React.Component {
                                           <div className="col-sm-2">
                                               <p className="bold">Ventes</p>
                                           </div>
-                                          <div className="col-sm-6"></div>
-                                          <div className="col-sm-4">
-                                              <p>{totalSum} {currency}</p>
+                                          <div className="col-sm-5"></div>
+                                          <div className="col-sm-5">
+                                              <p className="res_val">{totalSum} {currency}</p>
                                           </div>
                                       </div>
                                       <div className="row">
                                           <div className="col-sm-2">
                                               <p className="bold">Commandes</p>
                                           </div>
-                                          <div className="col-sm-8"></div>
-                                          <div className="col-sm-2">
-                                              <p>{ordersList.length}</p>
+                                          <div className="col-sm-5"></div>
+                                          <div className="col-sm-5">
+                                              <p className="res_val">{ordersList.length}</p>
                                           </div>
                                       </div>
                                   </div>
@@ -193,9 +193,9 @@ class Dashboard extends React.Component {
                                           <div className="col-sm-2">
                                               <p className="bold">Coûts</p>
                                           </div>
-                                          <div className="col-sm-6"></div>
-                                          <div className="col-sm-4">
-                                              <p>{/* @TODO */}</p>
+                                          <div className="col-sm-5"></div>
+                                          <div className="col-sm-5">
+                                              <p className="res_val">{/* @TODO */}</p>
                                           </div>
                                       </div>
                                   </div>
@@ -204,12 +204,11 @@ class Dashboard extends React.Component {
 
                                   <div className="container mt-4">
                                       <div className="row">
-                                          <div className="col-sm-2">
+                                          <div className="col-sm-7">
                                               <p className="bold">Chiffre d'affaires</p>
                                           </div>
-                                          <div className="col-sm-6"></div>
-                                          <div className="col-sm-4">
-                                              <p>{totalSum} {currency}</p>
+                                          <div className="col-sm-5">
+                                              <p className="res_val">{totalSum} {currency}</p>
                                           </div>
                                       </div>
                                   </div>

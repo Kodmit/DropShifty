@@ -116,13 +116,15 @@ class ImportProducts extends Component {
                 <div className="container mt-4">
                     <h3>Importer un produit</h3>
 
-                    <form className="form-import-product" onSubmit={this.submitImport}>
-                        <div className="form-group">
-                            <label htmlFor="sku">Entrer le code SKU du produit à importer</label>
-                            <input required type="text" className="_form-control" id="sku" name={'sku'} placeholder="Code SKU du produit" />
-                            <input className="btn-import mt-3" type="submit" value="Importer" />
-                        </div>
-                    </form>
+                    <div style={{ paddingLeft: '100px', paddingRight: '100px' }}>
+                        <form className="form-import-product" onSubmit={this.submitImport}>
+                            <div className="form-group">
+                                <label htmlFor="sku">Entrer le code SKU du produit à importer</label>
+                                <input required type="text" className="_form-control" id="sku" name={'sku'} placeholder="Code SKU du produit" />
+                                <input className="btn-import mt-3" type="submit" value="Importer" />
+                            </div>
+                        </form>
+                    </div>
 
                     <div id="overlay" style={{ display: 'none' }}>
                         <img id="loader" src="images/loader.svg" />

@@ -60,6 +60,7 @@ class OrderDetails extends Component {
 
         let orderInfos = this.state.orderInfos;
         let htAmount = orderInfos.total - orderInfos.shipping_total || '';
+        let dateOrder = moment(orderInfos.date_created).format('DD/MM/YYYY') || '';
         
         return (
             <div className="main">
@@ -71,7 +72,7 @@ class OrderDetails extends Component {
                                 <p>N° de la commande : #{orderInfos.id}</p>
                                 <p>Montant TTC : {orderInfos.total} {orderInfos.currency}</p>
                                 <p>Méthode de paiement : {orderInfos.payment_method_title}</p>
-                                <p>Date de la commande : {moment(orderInfos.date_created).format('DD/MM/YYYY')}</p>
+                                <p>Date de la commande : {dateOrder}</p>
                                 <p></p>
                             </div>
                         </div>
