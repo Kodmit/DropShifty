@@ -158,11 +158,27 @@ class ImportProducts extends Component {
 
     	this.fetch_product("chinabrands", product_sku, function(output) {
     		console.log(output);
-    		document.getElementById("modal_products").removeAttribute("style");
 
+        if (output.status === 0) {
+          Swal.fire({
+              title: '<strong>Produit non existant</strong>',
+              type: 'error',
+              html: "Le sku du produit que vous avez importé n'a pas été trouvé",
+              showCloseButton: true,
+              showCancelButton: false,
+              focusConfirm: false,
+              confirmButtonText: 'Fermer',
+              confirmButtonAriaLabel: 'Fermer'
+          });
+          return;
+        }
+
+    		document.getElementById("modal_products").removeAttribute("style");
     		let list = document.getElementsByClassName("list")[0];
 
     		if (output.status === 1) {
+          document.getElementById("modal_products").style.display = "block";
+
     			self.get_categories();
 
     			Object.keys(output.msg).map(function(objectKey, index) {
