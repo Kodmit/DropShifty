@@ -188,9 +188,9 @@ class ImportProducts extends Component {
 
     					if (value.errcode === 13006 || value.errcode === 15015) {
     						//list.innerHTML += '<div class="product"><img style="padding: 20px" width="80px" src="' + scriptParams.ds_plugin_path + 'out_of_stock.png"><span class="oos">Out of stock</span></div>';
-                            list.innerHTML += '<div class="product"><span class="oos">Out of stock</span></div>';
+                            list.innerHTML += '<div class="col-4"><div class="product"><span class="oos">Out of stock</span></div></div>';
     					} else {
-    						list.innerHTML += '<div class="product">Erreur inconnue</div>';
+    						list.innerHTML += '<div class="col-4"><div class="product">Erreur inconnue</div></div>';
     					}
     				} else {
     					document.getElementById("ds_nb_founds").innerHTML = output.msg.length;
@@ -202,7 +202,7 @@ class ImportProducts extends Component {
     						let variations = "<br><b>Couleur : " + value.color + " | Taille : " + value.size + "</b>";
     					}
 
-    					list.innerHTML += '<div class="product"><img height="120px" src="'+value.original_img[0]+'"><span class="title">' + value.title + '</span>' + variations + '<br><div class="price">Prix $'+ warehouse.price +'</div><div class="fees">Frais $'+ warehouse.handling_fee +'</div><button href="#" class="btn-import" onclick="import_product(' + value.sku + ')">Importer</button></div>';
+    					list.innerHTML += '<div class="col-4"><div class="product"><img height="120px" src="'+value.original_img[0]+'"><span class="title">' + value.title + '</span>' + variations + '<br><div class="price">Prix $'+ warehouse.price +'</div><div class="fees">Frais $'+ warehouse.handling_fee +'</div><button href="#" class="btn-import" onclick="import_product(' + value.sku + ')">Importer</button></div></div>';
     				}
     			});
     		} else {
@@ -249,7 +249,7 @@ class ImportProducts extends Component {
                             <div className="form-group">
                                 <label htmlFor="sku">Entrer le code SKU du produit à importer</label>
                                 <input required type="text" className="_form-control" id="sku" name={'sku'} placeholder="Code SKU du produit" />
-                                <input onClick={this.ds_product_submit} className="btn-import mt-3" type="submit" value="Importer" />
+                                <input onClick={this.ds_product_submit} className="btn-import mt-3" type="submit" value="Valider" />
                             </div>
                         </form>
                     </div>
@@ -276,7 +276,11 @@ class ImportProducts extends Component {
                         </div>
                   	</div>
 
-                  	<div class="list"></div>
+                    
+                    <div class="content_list">
+                        <div className="row list">
+                        </div>
+                    </div>
 
                     <button className="btn-import mx-auto d-block mt-3" onClick={this.import_all_products} id="ds_import_all">Importer toutes les variations</button>
 
