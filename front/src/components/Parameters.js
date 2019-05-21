@@ -128,7 +128,7 @@ class Parameters extends Component {
                             <div style={{ width: '70%' }} className="mx-auto d-block parm_form_1 container mt-4 ml-2">
                                 <h4>Créer votre boutique</h4>
 
-                                <div className="mt-3">
+                                <div className="mt-5">
                                     <form onSubmit={this.submitParameters}>
                                         <div className="form-group">
                                             <label htmlFor="shop_name">Nom de la boutique</label>
