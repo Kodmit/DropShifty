@@ -42,6 +42,7 @@ class Country
     public function getId(): ?int
     {
         return $this->id;
+        // ok
     }
 
     public function getName(): ?string
