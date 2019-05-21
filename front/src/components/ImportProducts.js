@@ -153,7 +153,7 @@ class ImportProducts extends Component {
 
     ds_product_submit(event) {
     	event.preventDefault();
-      let self = this;
+        let self = this;
     	let product_sku = document.getElementById("sku").value;
 
     	this.fetch_product("chinabrands", product_sku, function(output) {
@@ -177,7 +177,7 @@ class ImportProducts extends Component {
     		let list = document.getElementsByClassName("list")[0];
 
     		if (output.status === 1) {
-          document.getElementById("modal_products").style.display = "block";
+                document.getElementById("modal_products").style.display = "block";
 
     			self.get_categories();
 
@@ -188,7 +188,7 @@ class ImportProducts extends Component {
 
     					if (value.errcode === 13006 || value.errcode === 15015) {
     						//list.innerHTML += '<div class="product"><img style="padding: 20px" width="80px" src="' + scriptParams.ds_plugin_path + 'out_of_stock.png"><span class="oos">Out of stock</span></div>';
-                list.innerHTML += '<div class="product"><span class="oos">Out of stock</span></div>';
+                            list.innerHTML += '<div class="product"><span class="oos">Out of stock</span></div>';
     					} else {
     						list.innerHTML += '<div class="product">Erreur inconnue</div>';
     					}
@@ -196,7 +196,7 @@ class ImportProducts extends Component {
     					document.getElementById("ds_nb_founds").innerHTML = output.msg.length;
 
     					let warehouse = value.warehouse_list[Object.keys(value.warehouse_list)[0]];
-              let variations = '';
+                        let variations = '';
 
     					if (value.color || value.size) {
     						let variations = "<br><b>Couleur : " + value.color + " | Taille : " + value.size + "</b>";
@@ -262,16 +262,23 @@ class ImportProducts extends Component {
 
                 {/* Will display categories */}
                 <div style={{ display: 'none' }} id="modal_products">
-                  	<h1><span id="ds_nb_founds">0</span> variation(s) trouvée(s)</h1>
+                  	<h3><span id="ds_nb_founds">0</span> variation(s) trouvée(s)</h3>
 
-                  	<div class="ds_cats_container">
-                    		<h3>Choisissez une catégorie</h3>
-                    		<select id="ds_cats"></select>
+                  	<div class="ds_cats_container mt-3">
+                        <div className="row">
+                            <div className="col-6">
+                                <h4>Choisissez une catégorie</h4>
+                            </div>
+
+                            <div className="col-6">
+                                <select id="ds_cats"></select>
+                            </div>
+                        </div>
                   	</div>
 
                   	<div class="list"></div>
 
-                    <button className="btn-import mx-auto d-block mt-3" onClick={this.import_all_products} id="ds_import_all">Importer toutes les variations en un produit variable</button>
+                    <button className="btn-import mx-auto d-block mt-3" onClick={this.import_all_products} id="ds_import_all">Importer toutes les variations</button>
 
                 </div>
 

@@ -41,8 +41,7 @@
 }
 
 #modal_products .list .product{
-	border: 1px solid #cecece;
-	border-radius: 3px;
+	box-shadow: 1px 1px 1px $shadow;
 	display: inline-block;
 	margin: 5px;
 	padding: 5px;
@@ -112,4 +111,8 @@
 	margin-right: auto;
 	margin-top: 10px;
 	margin-bottom: 15px;
+}
+
+#id_cats {
+	color: black !important;
 }
