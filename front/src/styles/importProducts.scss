@@ -29,6 +29,8 @@
 
 #modal_products{
 	width: 90%;
+  padding-left: 100px;
+  padding-right: 100px;
 	border-radius: 5px;
 	left: 0;
 	right: 0;
@@ -36,7 +38,6 @@
 	margin-right: auto;
 	margin-top: 30px;
 	height: 100%;
-	overflow: auto;
 }
 
 #modal_products .list .product{
@@ -83,11 +84,13 @@
 	border: 1px solid #cecece;
 }
 
-#modal_products .list .product .price{
+#modal_products .list .product .price {
+  text-align: center;
 	padding: 5px;
 	display: inline-block;
 	font-size: 15px;
-	background-color: #b93446;
+	background-color: #2e59d9;
+  color: #FFF;
 	width: 110px;
 	border-radius: 5px;
 	margin-left: auto;
@@ -96,11 +99,13 @@
 	margin-bottom: 15px;
 }
 
-#modal_products .list .product .fees{
+#modal_products .list .product .fees {
+  text-align: center;
 	padding: 5px;
 	display: inline-block;
 	font-size: 15px;
-	background-color: #000;
+	background-color: #FFF;
+  border: 1px solid #2e59d9;
 	width: 100px;
 	border-radius: 5px;
 	margin-left: 10px;

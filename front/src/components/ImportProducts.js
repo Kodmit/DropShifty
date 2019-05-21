@@ -202,7 +202,7 @@ class ImportProducts extends Component {
     						let variations = "<br><b>Couleur : " + value.color + " | Taille : " + value.size + "</b>";
     					}
 
-    					list.innerHTML += '<div class="product"><img height="120px" src="'+value.original_img[0]+'"><span class="title">' + value.title + '</span>' + variations + '<br><div class="price">Prix $'+ warehouse.price +'</div><div class="fees">Frais $'+ warehouse.handling_fee +'</div><a href="#" onclick="import_product(' + value.sku + ')">Importer</a></div>';
+    					list.innerHTML += '<div class="product"><img height="120px" src="'+value.original_img[0]+'"><span class="title">' + value.title + '</span>' + variations + '<br><div class="price">Prix $'+ warehouse.price +'</div><div class="fees">Frais $'+ warehouse.handling_fee +'</div><button href="#" class="btn-import" onclick="import_product(' + value.sku + ')">Importer</button></div>';
     				}
     			});
     		} else {
@@ -269,11 +269,10 @@ class ImportProducts extends Component {
                     		<select id="ds_cats"></select>
                   	</div>
 
-                  	<button onClick={this.import_all_products} id="ds_import_all">Importer toutes les variations en un produit variable</button>
+                  	<div class="list"></div>
 
-                  	<div class="list">
+                    <button className="btn-import mx-auto d-block mt-3" onClick={this.import_all_products} id="ds_import_all">Importer toutes les variations en un produit variable</button>
 
-                  	</div>
                 </div>
 
             </div>
