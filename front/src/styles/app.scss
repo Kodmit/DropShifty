@@ -287,3 +287,16 @@ footer {
 }
 
 // React transition group 
+.profile_icon {
+  position: absolute;
+  right: 0;
+  margin-right: 50px;
+  font-size: 40px;
+  color: #4e73df;
+  margin-top: 13px;
+  cursor: pointer;
+  &:hover {
+    transition: 0.3s;
+    opacity: 0.9;
+  }
+}

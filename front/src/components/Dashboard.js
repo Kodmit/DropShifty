@@ -102,7 +102,6 @@ class Dashboard extends React.Component {
             }
           }).then((result) => {
             console.log(result.data.data.CheckIfHaveShop);
-            return result.data.data.checkIfHaveShop;
         });
     }
 

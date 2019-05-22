@@ -23,7 +23,8 @@ const Header = () => {
                     {/*<a href="/"><img className="logo" src="/logo.png" alt="logo" /></a>*/}
                 </div>
                 <div className="col-9">
-                    <a className="logout_btn mt-1" onClick={logout}><i style={{ color: 'red', fontSize: '20px' }} class="fas fa-power-off"></i></a>
+                    {/*<a className="logout_btn mt-1" onClick={logout}><i style={{ color: 'red', fontSize: '20px' }} class="fas fa-power-off"></i></a>*/}
+                    <i class="profile_icon fas fa-user-circle"></i>
                 </div>
 
             </div>
