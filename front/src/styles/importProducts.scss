@@ -1,5 +1,13 @@
 @import "./components/variables.scss";
 
+select {
+	width: 90%;
+	border-radius: 30px;
+	border: 2px solid #2e59d9;
+	padding: 5px 12px;
+	outline: none;
+}
+
 .content-import {
   padding-left: 100px;
   padding-right: 100px;
@@ -28,7 +36,7 @@
 }
 
 #modal_products{
-	width: 90%;
+	width: 100%;
   padding-left: 100px;
   padding-right: 100px;
 	border-radius: 5px;
@@ -40,17 +48,14 @@
 	height: 100%;
 }
 
-#modal_products .list .product{
-	box-shadow: 1px 1px 1px $shadow;
-	display: inline-block;
-	margin: 5px;
-	padding: 5px;
+#modal_products .list .product {
+	padding: 15px;
 	width: 250px;
+	background-color: #FFF;
 }
 
 #modal_products .list .product img{
 	display: block;
-	padding: 10px;
 	margin: auto;
 }
 
@@ -60,7 +65,7 @@
 }
 
 #modal_products .list .product .oos{
-	color: #ee012a;
+	color: #2e59d9;
 	font-family: 'Montserrat', sans-serif;
 	text-transform: uppercase;
 	font-weight: 600;
@@ -99,7 +104,8 @@
 }
 
 #modal_products .list .product .fees {
-  text-align: center;
+	text-align: center;
+	color: #2e59d9;
 	padding: 5px;
 	display: inline-block;
 	font-size: 15px;

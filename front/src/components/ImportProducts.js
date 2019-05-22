@@ -94,11 +94,13 @@ class ImportProducts extends Component {
     }
 
     // Import all variables products
-    import_all_products(sku) {
+    import_all_products() {
+
         document.getElementById("overlay").style.display = "block";
 
+        let sku = document.getElementById("sku").value;
         let category = document.getElementById("ds_cats").value;
-        let data = "{\"query\":\"{\\n\\tImportToWc(sku: " + sku + ", cat_id: " + category + ", type: \\\"variable\\\")\\n}\"}";
+        let data = "{\"query\":\"{\\n\\tImportToWc(sku: " + '\\\"' + sku + '\\\"' + ", cat_id: " + category + ", type: \\\"variable\\\")\\n}\"}";
         let xhr = new XMLHttpRequest();
 
         xhr.withCredentials = true;
@@ -179,6 +181,8 @@ class ImportProducts extends Component {
     		if (output.status === 1) {
                 document.getElementById("modal_products").style.display = "block";
 
+                list.innerHTML = '';
+
     			self.get_categories();
 
     			Object.keys(output.msg).map(function(objectKey, index) {
@@ -188,9 +192,9 @@ class ImportProducts extends Component {
 
     					if (value.errcode === 13006 || value.errcode === 15015) {
     						//list.innerHTML += '<div class="product"><img style="padding: 20px" width="80px" src="' + scriptParams.ds_plugin_path + 'out_of_stock.png"><span class="oos">Out of stock</span></div>';
-                            list.innerHTML += '<div class="col-4"><div class="product"><span class="oos">Out of stock</span></div></div>';
+                            list.innerHTML += '<div class="list_product col-4 mt-3"><div class="product _shadow"><span class="oos">Rupture de stock</span></div></div>';
     					} else {
-    						list.innerHTML += '<div class="col-4"><div class="product">Erreur inconnue</div></div>';
+    						list.innerHTML += '<div class="list_product col-4 mt-3"><div class="product _shadow">Erreur inconnue</div></div>';
     					}
     				} else {
     					document.getElementById("ds_nb_founds").innerHTML = output.msg.length;
@@ -202,7 +206,7 @@ class ImportProducts extends Component {
     						let variations = "<br><b>Couleur : " + value.color + " | Taille : " + value.size + "</b>";
     					}
 
-    					list.innerHTML += '<div class="col-4"><div class="product"><img height="120px" src="'+value.original_img[0]+'"><span class="title">' + value.title + '</span>' + variations + '<br><div class="price">Prix $'+ warehouse.price +'</div><div class="fees">Frais $'+ warehouse.handling_fee +'</div><button href="#" class="btn-import" onclick="import_product(' + value.sku + ')">Importer</button></div></div>';
+    					list.innerHTML += '<div class="list_product col-4 mt-3"><div class="product _shadow"><img height="120px" src="'+value.original_img[0]+'"><span class="title">' + value.title + '</span>' + variations + '<br><div class="price">Prix €'+ warehouse.price +'</div><div class="fees">Frais €'+ warehouse.handling_fee +'</div><button style="border: none; width: 70%; height: 35px;" href="#" class="btn-import mx-auto d-block" onclick="import_product(' + value.sku + ')">Importer</button></div></div>';
     				}
     			});
     		} else {
@@ -242,13 +246,13 @@ class ImportProducts extends Component {
             <div className="main">
 
                 <div className="container mt-4">
-                    <h3>Importer un produit</h3>
+                    <h3>Importer des produits</h3>
 
                     <div style={{ paddingLeft: '100px', paddingRight: '100px' }}>
                         <form className="form-import-product" onSubmit={this.submitImport}>
                             <div className="form-group">
                                 <label htmlFor="sku">Entrer le code SKU du produit à importer</label>
-                                <input required type="text" className="_form-control" id="sku" name={'sku'} placeholder="Code SKU du produit" />
+                                <input required="required" type="text" className="_form-control" id="sku" name={'sku'} placeholder="Code SKU du produit" />
                                 <input onClick={this.ds_product_submit} className="btn-import mt-3" type="submit" value="Valider" />
                             </div>
                         </form>
@@ -262,27 +266,26 @@ class ImportProducts extends Component {
 
                 {/* Will display categories */}
                 <div style={{ display: 'none' }} id="modal_products">
-                  	<h3><span id="ds_nb_founds">0</span> variation(s) trouvée(s)</h3>
 
                   	<div class="ds_cats_container mt-3">
                         <div className="row">
                             <div className="col-6">
-                                <h4>Choisissez une catégorie</h4>
+                                <h5>Choisissez une catégorie</h5>
+                                <select id="ds_cats"></select>
                             </div>
 
                             <div className="col-6">
-                                <select id="ds_cats"></select>
+                                <h4 className="mt-4"><span id="ds_nb_founds">0</span> variation(s) trouvée(s)</h4>
                             </div>
                         </div>
                   	</div>
 
                     
-                    <div class="content_list">
-                        <div className="row list">
-                        </div>
+                    <div class="content_list mt-3">
+                        <div className="row list"></div>
                     </div>
 
-                    <button className="btn-import mx-auto d-block mt-3" onClick={this.import_all_products} id="ds_import_all">Importer toutes les variations</button>
+                    <button className="btn-import mx-auto d-block mt-5" onClick={this.import_all_products} id="ds_import_all">Importer toutes les variations</button>
 
                 </div>
 
