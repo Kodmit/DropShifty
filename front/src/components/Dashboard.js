@@ -41,13 +41,38 @@ class Dashboard extends React.Component {
         let self = this;
         let data = "{\"query\":\"{\\n\\t " + 'CheckIfWCApiFilled' + " \\n}\"}";
         let xhr = new XMLHttpRequest();
-        
+
         xhr.addEventListener("readystatechange", function () {
             if (this.readyState === this.DONE) {
                 let object = JSON.parse(this.response);
                 let objectParsed = object.data.CheckIfWCApiFilled;
                 if (objectParsed === false) {
-                    self.genWcLink(); 
+                    axios({
+                        url: 'https://ds-api2.herokuapp.com',
+                        method: 'post',
+                        data: {
+                          query: `
+                          {
+                            CheckIfHaveShop
+                          }
+                        `
+                        }
+                      }).then((result) => {
+                        let resCheckIfHaveShop = result.data.data.CheckIfHaveShop;
+
+                        if (resCheckIfHaveShop === true) {
+                            self.genWcLink(); 
+                        } else {
+                            Swal.fire({
+                                type: 'error',
+                                title: 'Oups...',
+                                showCloseButton: false,
+                                showCancelButton: false,
+                                focusConfirm: false,
+                                html: 'Vous devez d\'abord créer votre boutique pour utiliser l\'application.<br><br><a href="/parameters">Créer votre boutique.</a>',
+                            });
+                        }
+                    });
                 }
             }
         });
@@ -64,6 +89,23 @@ class Dashboard extends React.Component {
         this.ds_call("WC_GetOrdersList");
     }
 
+    checkIfHaveShop() {
+        axios({
+            url: 'https://ds-api2.herokuapp.com',
+            method: 'post',
+            data: {
+              query: `
+              {
+                CheckIfHaveShop
+              }
+            `
+            }
+          }).then((result) => {
+            console.log(result.data.data.CheckIfHaveShop);
+            return result.data.data.checkIfHaveShop;
+        });
+    }
+
     genWcLink() {
         axios({
             url: 'https://ds-api2.herokuapp.com',
@@ -76,10 +118,7 @@ class Dashboard extends React.Component {
             `
             }
           }).then((result) => {
-            console.log(result.data);
             let link = result.data.data.GenWcLink;
-            console.log("link : ")
-            console.log(link)
             Swal.fire({
                 type: 'error',
                 title: 'Oups...',
@@ -88,7 +127,7 @@ class Dashboard extends React.Component {
                 focusConfirm: false,
                 html: 'Nous ne disposons pas de vos informations de connexion à l\'API WooCommerce, veuillez les fournir sur votre compte Dropshifty pour utiliser le plugin.<br><br><a href="'+ link +'" target="_blank">Renseigner les informations automatiquement.</a>',
             });
-          });
+        });
     }
 
     ds_call(arg, handledata) {
