@@ -40,7 +40,7 @@ class MyProducts extends Component {
                     productList: objectParsed
                 })
 
-                console.log(self.state.productList);
+                //console.log(self.state.productList);
 
                 document.getElementById("loader-import").style.display = "none";
 

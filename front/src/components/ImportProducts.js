@@ -50,11 +50,11 @@ class ImportProducts extends Component {
         let xhr = new XMLHttpRequest();
         xhr.withCredentials = true;
 
-        console.log(data);
+        //console.log(data);
 
         xhr.addEventListener("readystatechange", function () {
             if (this.readyState === this.DONE) {
-                console.log(this.responseText);
+                //console.log(this.responseText);
 
                 let object = JSON.parse(this.response);
                 let res = object.data['ImportToWc'];
@@ -106,7 +106,7 @@ class ImportProducts extends Component {
 
         xhr.addEventListener("readystatechange", function () {
             if (this.readyState === this.DONE) {
-                console.log(this.responseText);
+                //console.log(this.responseText);
                 document.getElementById("overlay").style.display = "none";
 
                 Swal.fire({
@@ -158,7 +158,7 @@ class ImportProducts extends Component {
     	let product_sku = document.getElementById("sku").value;
 
     	this.fetch_product("chinabrands", product_sku, function(output) {
-    		console.log(output);
+    		//console.log(output);
 
         if (output.status === 0) {
           Swal.fire({

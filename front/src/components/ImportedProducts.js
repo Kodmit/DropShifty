@@ -40,7 +40,7 @@ class ImportedProducts extends Component {
                     productList: objectParsed
                 })
 
-                console.log(self.state.productList)
+                //console.log(self.state.productList)
 
                 document.getElementById("loader-import").style.display = "none";
 
@@ -55,7 +55,7 @@ class ImportedProducts extends Component {
     }
 
     viewProduct(id) {
-        console.log("click on product" + id)
+        //console.log("click on product" + id)
     }
 
     render() {

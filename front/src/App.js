@@ -14,7 +14,7 @@ import Parameters from './components/Parameters';
 import Login from './components/class/Login';
 import Register from './components/Register';
 //import NoMatch from './components/NoMatch';
-import { Route, BrowserRouter } from "react-router-dom";
+import { Route, BrowserRouter as Router, Switch, Link } from "react-router-dom";
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient from "apollo-boost";
 import axios from 'axios';
@@ -40,7 +40,6 @@ class App extends Component {
     }
 
     componentDidMount() {
-
 
         setTimeout(() => {
             let current_url = window.location.href;
@@ -92,9 +91,7 @@ class App extends Component {
     logout() {
         axios.get('https://ds-api2.herokuapp.com/logout')
         .then((res) => {
-          console.log(res.data);
           let response = res.data.response;
-            console.log(response);
             this.setState({
                 connected: false
             });
@@ -105,36 +102,41 @@ class App extends Component {
         if (this.state.connected == true) {
             return (
                 <ApolloProvider client={client}>
-                    <BrowserRouter>
+                    <Router>
                         <div>
-                            <Route path="/login" component={Login} />
-                            <Route path="/register" component={Register} />
-                            <div className="grid-container">
-                                <Header/>
-                                <NavbarSide/>
-                                <Route path="/" component={Dashboard} exact/>
-                                <Route path="/orders" component={Orders}/>
-                                <Route path="/order/:id" render={(props) => <OrderDetails {...props}/>} />
-                                <Route path="/import" component={ImportProducts}/>
-                                <Route path="/imported" component={ImportedProducts}/>
-                                <Route path="/products" component={MyProducts}/>
-                                <Route path="/product/:id" render={(props) => <ProductDetails {...props}/>} />
-                                <Route path="/notifications" component={Notifications}/>
-                                <Route path="/parameters" component={Parameters}/>
-                            </div>
+                            <Switch>
+                                <div>
+                                    <Route path="/login" component={Login} />
+                                    <Route path="/register" component={Register} />
+                                    <div className="grid-container">
+                                        <Header/>
+                                        <NavbarSide/>
+                                        <Route path="/" component={Dashboard} exact/>
+                                        <Route path="/orders" component={Orders}/>
+                                        <Route path="/order/:id" render={(props) => <OrderDetails {...props}/>} />
+                                        <Route path="/import" component={ImportProducts}/>
+                                        <Route path="/imported" component={ImportedProducts}/>
+                                        <Route path="/products" component={MyProducts}/>
+                                        <Route path="/product/:id" render={(props) => <ProductDetails {...props}/>} />
+                                        <Route path="/notifications" component={Notifications}/>
+                                        <Route path="/parameters" component={Parameters}/>
+                                    </div>
+                                </div>
+                            </Switch>
+                            {/*<Route component={NoMatch} />*/}
                         </div>
-                    </BrowserRouter>
+                    </Router>
                 </ApolloProvider>
             );
         } else if (this.state.connected == false){
             return (
-                <BrowserRouter>
+                <Router>
                     <div>
                         <Route path="/register" component={Register} />
                         <Route path="/login" component={Login} />
                         <Login/>
                     </div>
-                </BrowserRouter>
+                </Router>
             );
         }
   };

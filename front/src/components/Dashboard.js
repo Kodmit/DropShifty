@@ -4,8 +4,11 @@ import {Bar, Line} from 'react-chartjs-2';
 import '../styles/dashboad.scss';
 import '../styles/app.scss';
 import Chart from './includes/Chart';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import 'sweetalert2/src/sweetalert2.scss';
 import $ from 'jquery';
 import 'moment';
+import axios from 'axios';
 
 let moment = require('moment');
 
@@ -32,12 +35,60 @@ class Dashboard extends React.Component {
          }
       }
 
+
     componentDidMount() {
+
+        let self = this;
+        let data = "{\"query\":\"{\\n\\t " + 'CheckIfWCApiFilled' + " \\n}\"}";
+        let xhr = new XMLHttpRequest();
+        
+        xhr.addEventListener("readystatechange", function () {
+            if (this.readyState === this.DONE) {
+                let object = JSON.parse(this.response);
+                let objectParsed = object.data.CheckIfWCApiFilled;
+                if (objectParsed === false) {
+                    self.genWcLink(); 
+                }
+            }
+        });
+
+        xhr.withCredentials = true;
+        xhr.open("POST", "https://ds-api2.herokuapp.com/");
+        xhr.setRequestHeader("content-type", "application/json");
+        xhr.send(data);
+
         this.getOrdersList();
     }
 
     getOrdersList() {
         this.ds_call("WC_GetOrdersList");
+    }
+
+    genWcLink() {
+        axios({
+            url: 'https://ds-api2.herokuapp.com',
+            method: 'post',
+            data: {
+              query: `
+              {
+                GenWcLink
+              }
+            `
+            }
+          }).then((result) => {
+            console.log(result.data);
+            let link = result.data.data.GenWcLink;
+            console.log("link : ")
+            console.log(link)
+            Swal.fire({
+                type: 'error',
+                title: 'Oups...',
+                showCloseButton: false,
+                showCancelButton: false,
+                focusConfirm: false,
+                html: 'Nous ne disposons pas de vos informations de connexion à l\'API WooCommerce, veuillez les fournir sur votre compte Dropshifty pour utiliser le plugin.<br><br><a href="'+ link +'" target="_blank">Renseigner les informations automatiquement.</a>',
+            });
+          });
     }
 
     ds_call(arg, handledata) {
