@@ -31,6 +31,37 @@ class Parameters extends Component {
         xhr.send(data);
     }
 
+    submitEditProfile = (e) => {
+        e.preventDefault();
+
+        let self = this;
+
+        const username = e.target.elements.edit_username.value;
+        const email = e.target.elements.edit_email.value;
+        const password = e.target.elements.edit_password.value;
+
+        axios.post("https://ds-api2.herokuapp.com/", {
+          query: `mutation NewUser($user: UserInput!) {
+            NewUser(input: $user) {
+              content
+            }
+          }`,
+          variables: {
+            "user": {
+                username: username,
+                email: email,
+                password: password            
+            }
+          }
+        }, {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }).then((result) => {
+            console.log(result)
+          });
+    }
+
     submitParameters = (e) => {
         e.preventDefault();
 
@@ -124,11 +155,11 @@ class Parameters extends Component {
                     <h3>Paramètres</h3>
 
                     <div className="row">
-                        <div className="col-12">
-                            <div style={{ width: '70%' }} className="mx-auto d-block parm_form_1 container mt-4 ml-2">
+                        <div className="col-6">
+                            <div style={{ width: '95%' }} className="parm_form_1 container mt-4 ml-2">
                                 <h4>Créer votre boutique</h4>
 
-                                <div className="mt-5">
+                                <div className="mt-4">
                                     <form onSubmit={this.submitParameters}>
                                         <div className="form-group">
                                             <label htmlFor="shop_name">Nom de la boutique</label>
@@ -164,6 +195,31 @@ class Parameters extends Component {
                                     </form>
                                 </div>
                             </div>
+                        </div>
+
+                        <div className="col-6">
+                            <div style={{ width: '95%' }} className="parm_form_1 container mt-4 ml-2">
+                                <h4>Editer votre profil</h4>
+                                <form onSubmit={this.submitEditProfile}>
+                                    <div className="form-group mt-4">
+                                        <label htmlFor="edit_username">Nom d'utilisateur</label>
+                                        <input required="required" type="text" name="edit_username" className="_form-control" id="edit_username" placeholder="Nom d'utilisateur"/>
+                                    </div>
+
+                                    <div className="form-group">
+                                        <label htmlFor="edit_email">Email</label>
+                                        <input required="required" type="text" name="edit_email" className="_form-control" id="edit_email" placeholder="Email"/>
+                                    </div>
+
+                                    <div className="form-group">
+                                        <label htmlFor="edit_password">Mot de passe</label>
+                                        <input required="required" type="text" name="edit_password" className="_form-control" id="edit_password" placeholder="Mot de passe"/>
+                                    </div>
+
+                                    <input type="submit" className="btn-import mt-3" value="Valider" />
+                                </form>
+                            </div>
+
                         </div>
                     </div>
 

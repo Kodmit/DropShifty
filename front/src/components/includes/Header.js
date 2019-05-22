@@ -33,28 +33,16 @@ class Header extends Component {
                         {/*<a href="/"><img className="logo" src="/logo.png" alt="logo" /></a>*/}
                     </div>
                     <div className="col-9">
-                        {/*<a className="logout_btn mt-1" onClick={logout}><i style={{ color: 'red', fontSize: '20px' }} class="fas fa-power-off"></i></a>*/}
-                        <i class="_shadow profile_icon fas fa-user-circle"></i>
-                        <div className="profile_links">
-                            <div className="row">
-                                <div className="col-12">
-                                    <NavLink to={"/profile"}>Mon profil</NavLink>
-                                </div>
-                                <div className="col-12">
-                                    <NavLink to={"/edit-profile"}>Editer profil</NavLink>
-                                </div>
-                                <div className="col-12">
-                                    <a onClick={this.logout} to={"/logout"}>Déconnexion</a>
-                                </div>
-                            </div>
-                        </div>
+                        {/*<NavLink to={"/edit-profile"}>Editer profil</NavLink>*/}
+                        {/*<NavLink to={"/profile"}>Mon profil</NavLink>*/}
+                        <a className="logout_btn mt-1" onClick={this.logout}><i style={{ color: 'red', fontSize: '20px' }} class="fas fa-power-off"></i></a>
                     </div>
     
                 </div>
             </header>
         );
     }
-    
+     
 };
 
 export default Header;
