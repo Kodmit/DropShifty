@@ -1,11 +1,18 @@
-import React from 'react';
+import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
+import $ from 'jquery';
 
 
-const Header = () => {
+class Header extends Component {
 
-    function logout() {
+    componentDidMount() {
+        $('.profile_icon').click(function() {
+            $('.profile_links').fadeToggle();
+        });
+    }
+
+    logout() {
         let xhr = new XMLHttpRequest();
         xhr.open('GET', 'https://ds-api2.herokuapp.com/logout', true);
         xhr.withCredentials = true;
@@ -16,20 +23,27 @@ const Header = () => {
         }, 1500);
       }
 
-    return (
-        <header>
-            <div className="row">
-                <div className="col-3">
-                    {/*<a href="/"><img className="logo" src="/logo.png" alt="logo" /></a>*/}
+    
+    render() {
+        return (
+            <header>
+                <div className="row">
+                    <div className="col-3">
+                        {/*<a href="/"><img className="logo" src="/logo.png" alt="logo" /></a>*/}
+                    </div>
+                    <div className="col-9">
+                        {/*<a className="logout_btn mt-1" onClick={logout}><i style={{ color: 'red', fontSize: '20px' }} class="fas fa-power-off"></i></a>*/}
+                        <i class="_shadow profile_icon fas fa-user-circle"></i>
+                        <div className="profile_links">
+                            <p>Link One</p>
+                        </div>
+                    </div>
+    
                 </div>
-                <div className="col-9">
-                    {/*<a className="logout_btn mt-1" onClick={logout}><i style={{ color: 'red', fontSize: '20px' }} class="fas fa-power-off"></i></a>*/}
-                    <i class="profile_icon fas fa-user-circle"></i>
-                </div>
-
-            </div>
-        </header>
-    );
+            </header>
+        );
+    }
+    
 };
 
 export default Header;

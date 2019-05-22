@@ -295,8 +295,20 @@ footer {
   color: #4e73df;
   margin-top: 13px;
   cursor: pointer;
+  outline: none;
   &:hover {
     transition: 0.3s;
     opacity: 0.9;
   }
+}
+
+.profile_links {
+  position: absolute;
+  right: 0;
+  width: 300px;
+  background-color: #FFF;
+  display: none;
+  min-height: 150px;
+  margin-top: 60px;
+  padding: 10px;
 }
