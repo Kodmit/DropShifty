@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
+import { NavLink } from 'react-router-dom';
 import $ from 'jquery';
 
 
@@ -35,7 +36,17 @@ class Header extends Component {
                         {/*<a className="logout_btn mt-1" onClick={logout}><i style={{ color: 'red', fontSize: '20px' }} class="fas fa-power-off"></i></a>*/}
                         <i class="_shadow profile_icon fas fa-user-circle"></i>
                         <div className="profile_links">
-                            <p>Link One</p>
+                            <div className="row">
+                                <div className="col-12">
+                                    <NavLink to={"/profile"}>Mon profil</NavLink>
+                                </div>
+                                <div className="col-12">
+                                    <NavLink to={"/edit-profile"}>Editer profil</NavLink>
+                                </div>
+                                <div className="col-12">
+                                    <a onClick={this.logout} to={"/logout"}>Déconnexion</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
     
