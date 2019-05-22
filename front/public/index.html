@@ -230,13 +230,55 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+
   <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
+
 <script>
 	$( document ).ready(function() {
     $('[title="Hosted on free web hosting 000webhost.com. Host your own website for FREE."]').hide();
 });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+<script>
+  function import_product(sku) {
+
+      document.getElementById("overlay").style.display = "block";
+
+      var category = document.getElementById("ds_cats").value;
+
+      var data = "{\"query\":\"{\\n\\tImportToWc(sku: " + '\\\"' + sku + '\\\"' + ", cat_id: " + category + ", type: \\\"simple\\\")\\n}\"}";
+
+      var xhr = new XMLHttpRequest();
+      xhr.withCredentials = true;
+
+      xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === this.DONE) {
+          console.log(this.responseText);
+
+          document.getElementById("overlay").style.display = "none";
+
+          Swal.fire({
+          title: '<strong>Produits importés</strong>',
+          type: 'success',
+          html: 'Le produit a été importé avec succès ! Vous pouvez le consulter dans la liste des produits.',
+          showCloseButton: true,
+          showCancelButton: false,
+          focusConfirm: false,
+          confirmButtonText: 'Fermer',
+          confirmButtonAriaLabel: 'Fermer'
+        })
+        }
+      });
+
+      xhr.open("POST", "https://ds-api2.herokuapp.com/");
+      xhr.setRequestHeader("content-type", "application/json");
+
+      xhr.send(data);
+  }
 </script>
 </html>

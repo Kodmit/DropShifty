@@ -27,7 +27,6 @@ class ImportProducts extends Component {
 
         xhr.addEventListener("readystatechange", function () {
             if (this.readyState === this.DONE) {
-                console.log(this.response);
                 let object = JSON.parse(this.response);
                 handledata(object.data[arg]);
             }
@@ -183,7 +182,8 @@ class ImportProducts extends Component {
 
                 list.innerHTML = '';
 
-    			self.get_categories();
+                self.get_categories();
+                
 
     			Object.keys(output.msg).map(function(objectKey, index) {
     				let value = output.msg[objectKey];
@@ -206,7 +206,7 @@ class ImportProducts extends Component {
     						let variations = "<br><b>Couleur : " + value.color + " | Taille : " + value.size + "</b>";
     					}
 
-    					list.innerHTML += '<div class="list_product col-4 mt-3"><div class="product _shadow"><img height="120px" src="'+value.original_img[0]+'"><span class="title">' + value.title + '</span>' + variations + '<br><div class="price">Prix €'+ warehouse.price +'</div><div class="fees">Frais €'+ warehouse.handling_fee +'</div><button style="border: none; width: 70%; height: 35px;" href="#" class="btn-import mx-auto d-block" onclick="import_product(' + value.sku + ')">Importer</button></div></div>';
+    					list.innerHTML += '<div class="list_product col-4 mt-3"><div class="product _shadow"><img height="120px" src="'+value.original_img[0]+'"><span class="title">' + value.title + '</span>' + variations + '<br><div class="price">Prix €'+ warehouse.price +'</div><div class="fees">Frais €'+ warehouse.handling_fee +'</div><button style="border: none; width: 70%; height: 35px;" href="#" class="btn-import mx-auto d-block" onclick="self.import_product(' + value.sku + ')">Importer</button></div></div>';
     				}
     			});
     		} else {
