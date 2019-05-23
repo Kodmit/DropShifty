@@ -58,7 +58,31 @@ class Parameters extends Component {
               'Content-Type': 'application/json'
             }
           }).then((result) => {
-            console.log(result)
+            console.log(result.data);
+
+            if(result.data.data.NewUser.content == 'user_edited') {
+                Swal.fire({
+                    title: '<strong>Utilisateur modifié !</strong>',
+                    type: 'success',
+                    html: 'Vos informations ont bien étés modfiées',
+                    showCloseButton: true,
+                    showCancelButton: false,
+                    focusConfirm: false,
+                    confirmButtonText: 'Fermer',
+                    confirmButtonAriaLabel: 'Fermer'
+                });
+            } else {
+                Swal.fire({
+                    title: '<strong>Oups !</strong>',
+                    type: 'error',
+                    html: "Une erreur s'est produite lors de l'édition",
+                    showCloseButton: true,
+                    showCancelButton: false,
+                    focusConfirm: false,
+                    confirmButtonText: 'Fermer',
+                    confirmButtonAriaLabel: 'Fermer'
+                });
+            }
           });
     }
 
@@ -191,7 +215,7 @@ class Parameters extends Component {
                                             <input required="required" type="text" name="shop_url" className="_form-control" id="shop_url" placeholder="Url de la boutique"/>
                                         </div>
 
-                                        <input type="submit" className="btn-import mt-3" value="Enregistrer" />
+                                        <input type="submit" className="btn-import mt-3" value="Créer" />
                                     </form>
                                 </div>
                             </div>
@@ -216,7 +240,7 @@ class Parameters extends Component {
                                         <input required="required" type="text" name="edit_password" className="_form-control" id="edit_password" placeholder="Mot de passe"/>
                                     </div>
 
-                                    <input type="submit" className="btn-import mt-3" value="Valider" />
+                                    <input type="submit" className="btn-import mt-3" value="Editer" />
                                 </form>
                             </div>
 

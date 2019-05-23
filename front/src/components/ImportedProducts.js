@@ -75,7 +75,7 @@ class ImportedProducts extends Component {
                                 <p className="descProduct">{item.name}</p>
                                 <div className="actions-container d-flex">
                                     <Link className="btn-import" to={"/product/" + item.id}><i className="fas fa-eye"></i></Link>
-                                    <Link className="btn-import ml-3" to={"/product/" + item.id}><i className="fas fa-edit"></i></Link>
+                                    <Link className="btn-import ml-3" to={"/product/edit/" + item.id}><i className="fas fa-edit"></i></Link>
                                     <Link className="btn-import ml-3" to={"/product/" + item.id}><i className="far fa-trash-alt"></i></Link>
                                 </div>
                             </div>

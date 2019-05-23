@@ -20,6 +20,7 @@ import ApolloClient from "apollo-boost";
 import axios from 'axios';
 import ProductDetails from './components/ProductDetails';
 import OrderDetails from './components/OrderDetails';
+import EditProduct from './components/EditProduct';
 
 
 const client = new ApolloClient({
@@ -118,6 +119,7 @@ class App extends Component {
                                         <Route path="/imported" component={ImportedProducts}/>
                                         <Route path="/products" component={MyProducts}/>
                                         <Route path="/product/:id" render={(props) => <ProductDetails {...props}/>} />
+                                        <Route path="/product/edit/:id" render={(props) => <EditProduct {...props}/>} />
                                         <Route path="/notifications" component={Notifications}/>
                                         <Route path="/parameters" component={Parameters}/>
                                     </div>
