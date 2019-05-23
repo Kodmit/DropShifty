@@ -13,7 +13,7 @@ const NavbarSide = () => {
 
             <div className="row mt-3">
                 <div className="col-sm-2">
-                    <img className="icons-nav" src="./images/icons/line-chart.svg" alt="graph"></img>
+                    <img className="icons-nav" src={process.env.PUBLIC_URL + '/images/icons/line-chart.svg'} alt="graph"></img>
                 </div>
                 <div className="col-sm-10">
                     <NavLink to={"/"} exact activeStyle={{color: "#FFF"}}>Tableau de bord</NavLink>
@@ -22,7 +22,7 @@ const NavbarSide = () => {
 
             <div className="row mt-4">
                 <div className="col-sm-2">
-                    <img className="icons-nav" src="./images/icons/smartphone.svg" alt="smartphone"></img>
+                    <img className="icons-nav" src={process.env.PUBLIC_URL + "/images/icons/smartphone.svg"} alt="smartphone"></img>
                 </div>
                 <div className="col-sm-10">
                     <NavLink to={"/orders"} exact activeStyle={{color: "#FFF"}}>Commandes</NavLink>
@@ -31,7 +31,7 @@ const NavbarSide = () => {
 
             <div className="row mt-4">
                 <div className="col-sm-2">
-                    <img className="icons-nav" src="./images/icons/shopping-bag.svg" alt="shopping"></img>
+                    <img className="icons-nav" src={process.env.PUBLIC_URL + "/images/icons/shopping-bag.svg"} alt="shopping"></img>
                 </div>
                 <div className="col-sm-10">
                     <NavLink to={"/import"} exact activeStyle={{color: "#FFF"}}>Importer produit</NavLink>
@@ -48,7 +48,7 @@ const NavbarSide = () => {
 
             <div className="row mt-4">
                 <div className="col-sm-2">
-                    <img className="icons-nav" src="./images/icons/notification.svg" alt="notifications"></img>
+                    <img className="icons-nav" src={process.env.PUBLIC_URL + "/images/icons/notification.svg"} alt="notifications"></img>
                 </div>
                 <div className="col-sm-10">
                     <NavLink to={"/notifications"} exact activeStyle={{color: "#FFF"}}>Notifications</NavLink>
@@ -57,7 +57,7 @@ const NavbarSide = () => {
 
             <div className="row mt-4">
                 <div className="col-sm-2">
-                    <img className="icons-nav" src="./images/icons/web.svg" alt="web"></img>
+                    <img className="icons-nav" src={process.env.PUBLIC_URL + "/images/icons/web.svg"} alt="web"></img>
                 </div>
                 <div className="col-sm-10">
                     <a href="http://wordpress.dev.dropshifty.com" target="_blank">Mon site</a>
@@ -66,7 +66,7 @@ const NavbarSide = () => {
 
             <div className="row mt-4">
                 <div className="col-sm-2">
-                    <img className="icons-nav" src="./images/icons/settings.svg" alt="parametres"></img>
+                    <img className="icons-nav" src={process.env.PUBLIC_URL + "/images/icons/settings.svg"} alt="parametres"></img>
                 </div>
                 <div className="col-sm-10">
                     <NavLink to={"/parameters"} exact activeStyle={{color: "#FFF"}}>Parametres</NavLink>

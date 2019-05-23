@@ -34,8 +34,6 @@ class Parameters extends Component {
     submitEditProfile = (e) => {
         e.preventDefault();
 
-        let self = this;
-
         const username = e.target.elements.edit_username.value;
         const email = e.target.elements.edit_email.value;
         const password = e.target.elements.edit_password.value;
