@@ -21,7 +21,6 @@ class ProductDetails extends Component {
         let self = this;
         let product_id = this.props.match.params.id;
 
-        console.log(product_id);
         this.getProductDetails(product_id);
     }
 
@@ -47,7 +46,7 @@ class ProductDetails extends Component {
                     productInfos: objectParsed
                 })
 
-                console.log(self.state.productInfos);
+                //console.log(self.state.productInfos);
 
                 document.getElementById("loader-import").style.display = "none";
 

@@ -43,7 +43,7 @@ class OrderDetails extends Component {
                     orderInfos: objectParsed
                 })
 
-                console.log(self.state.orderInfos);
+                //console.log(self.state.orderInfos);
 
                 document.getElementById("loader-import").style.display = "none";
                 

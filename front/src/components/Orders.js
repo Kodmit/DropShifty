@@ -43,7 +43,7 @@ class Orders extends Component {
                     ordersList: objectParsed
                 })
 
-                console.log(self.state.ordersList);
+                //console.log(self.state.ordersList);
 
                 document.getElementById("loader-import").style.display = "none";
 
@@ -62,7 +62,7 @@ class Orders extends Component {
 
           this.items = this.state.ordersList.map((item, key) =>
               <div key={item.id} className="container mt-4">
-                  {console.log(item)}
+                  {/*console.log(item)*/}
                   <Link className="link_details" to={"/order/" + item.id}>
                       <div className="row mt-5">
                           <div className="col-sm-12">

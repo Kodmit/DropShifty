@@ -101,7 +101,7 @@ class Dashboard extends React.Component {
             `
             }
           }).then((result) => {
-            console.log(result.data.data.CheckIfHaveShop);
+            //console.log(result.data.data.CheckIfHaveShop);
         });
     }
 
@@ -186,10 +186,10 @@ class Dashboard extends React.Component {
           }
         });
 
-        console.log(this.state.ordersList);
+        //console.log(this.state.ordersList);
 
         $.each(products, function(i, v) {
-          console.log(v[0]);
+          //console.log(v[0]);
           productsName.push(v[0]);
         });
 
