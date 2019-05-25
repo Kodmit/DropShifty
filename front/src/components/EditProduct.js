@@ -16,7 +16,7 @@ class EditProduct extends Component {
 
         this.state = {
             productInfos: [],
-            value: 'un beau sac'
+            description: ''
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -28,7 +28,10 @@ class EditProduct extends Component {
     }
 
     handleChange(event) {
-        this.setState({productInfos: event.target.value});
+        this.setState({
+            productInfos: event.target.value,
+            description: event.target.value,
+        });
     }
 
     getProductInfo(id) {
@@ -45,6 +48,10 @@ class EditProduct extends Component {
             }
           }).then((result) => {
               let datas = result.data.data.WC_GetProduct;
+
+              let obj = {"desc": $(datas.description).text()}
+
+              Object.assign(datas, obj);
 
               self.setState({
                   productInfos: datas
@@ -118,8 +125,6 @@ class EditProduct extends Component {
 
         let productInfos = this.state.productInfos;
 
-        let description;
-
         console.log(productInfos);
 
         return (
@@ -128,7 +133,7 @@ class EditProduct extends Component {
                     <div className="row mt-3">
                         <div className="col-9 mx-auto d-block">
                             <form className="edit_form" onSubmit={this.submitEditProfile}>
-                                <h3>Editer produit</h3>
+                                <h3>{"Editer produit : " + productInfos.name}</h3>
 
                                 <div className="mt-4"></div>
 
@@ -139,7 +144,7 @@ class EditProduct extends Component {
 
                                 <div className="form-group">
                                     <label htmlFor="edit_description">Description</label>
-                                    <input required="required" type="text" name="edit_description" className="_form-control" id="edit_description" placeholder="Description" value={productInfos.description} onChange={this.handleChange} />
+                                    <input required="required" type="text" name="edit_description" className="_form-control" id="edit_description" placeholder="Description" value={productInfos.desc} onChange={this.handleChange} />
                                 </div>
 
                                 <div className="form-group">
