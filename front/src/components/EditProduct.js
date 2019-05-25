@@ -13,14 +13,44 @@ class EditProduct extends Component {
 
     constructor(props) {
         super(props)
+
         this.state = {
             productInfos: [],
+            value: 'un beau sac'
         }
+
+        this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount() {
-        //let product_id = this.props.match.params.id;
-        //console.log(product_id)
+        let product_id = this.props.match.params.id;
+        this.getProductInfo(product_id);
+    }
+
+    handleChange(event) {
+        this.setState({productInfos: event.target.value});
+    }
+
+    getProductInfo(id) {
+
+        let self = this;
+
+        axios.post("https://ds-api2.herokuapp.com/", {
+          query: `{
+            WC_GetProduct(id:` + id +`)
+        }`,
+        }, {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }).then((result) => {
+              let datas = result.data.data.WC_GetProduct;
+
+              self.setState({
+                  productInfos: datas
+              })
+
+          })
     }
 
     submitEditProfile = (e) => {
@@ -43,8 +73,11 @@ class EditProduct extends Component {
         xhr.addEventListener("readystatechange", function () {
             if (this.readyState === this.DONE) {
                 document.getElementById("overlay").style.display = "none";
+
                 let object = JSON.parse(this.response);
                 let objectParsed = object.data.EditProduct;
+
+                console.log(objectParsed)
 
                 if (objectParsed == 'product_edited') {
                     Swal.fire({
@@ -60,7 +93,7 @@ class EditProduct extends Component {
                 } else {
                     Swal.fire({
                         title: '<strong>Oups !</strong>',
-                        type: 'success',
+                        type: 'error',
                         html: 'Une erreur s\'est produite lors de l\'édition du produit',
                         showCloseButton: true,
                         showCancelButton: false,
@@ -82,7 +115,13 @@ class EditProduct extends Component {
     }
 
     render() {
-        
+
+        let productInfos = this.state.productInfos;
+
+        let description;
+
+        console.log(productInfos);
+
         return (
             <div className="main">
                 <div className="container mt-4">
@@ -95,22 +134,22 @@ class EditProduct extends Component {
 
                                 <div className="form-group">
                                     <label htmlFor="edit_title">Titre</label>
-                                    <input required="required" type="text" name="edit_title" className="_form-control" id="edit_title" placeholder="Titre du produit"/>
+                                    <input required="required" type="text" name="edit_title" className="_form-control" id="edit_title" placeholder="Titre du produit" value={productInfos.name} onChange={this.handleChange} />
                                 </div>
 
                                 <div className="form-group">
                                     <label htmlFor="edit_description">Description</label>
-                                    <input required="required" type="text" name="edit_description" className="_form-control" id="edit_description" placeholder="Description"/>
+                                    <input required="required" type="text" name="edit_description" className="_form-control" id="edit_description" placeholder="Description" value={productInfos.description} onChange={this.handleChange} />
                                 </div>
 
                                 <div className="form-group">
                                     <label htmlFor="edit_price">Prix</label>
-                                    <input required="required" type="number" name="edit_price" className="_form-control" id="edit_price" placeholder="Prix"/>
+                                    <input required="required" type="number" name="edit_price" className="_form-control" id="edit_price" placeholder="Prix" value={productInfos.regular_price} onChange={this.handleChange} />
                                 </div>
 
                                 <div className="form-group">
                                     <label htmlFor="edit_stock">Stock</label>
-                                    <input required="required" type="number" name="edit_stock" className="_form-control" id="edit_stock" placeholder="Stock"/>
+                                    <input required="required" type="number" name="edit_stock" className="_form-control" id="edit_stock" placeholder="Stock" value={productInfos.stock_quantity} onChange={this.handleChange} />
                                 </div>
 
                                 <input type="submit" className="btn-import mt-3" value="Editer produit" />
