@@ -1,0 +1,5 @@
+{
+    "config": {
+        "api_url": "https://ds-api2.herokuapp.com"
+    }
+}

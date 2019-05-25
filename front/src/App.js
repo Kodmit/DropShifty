@@ -22,9 +22,13 @@ import ProductDetails from './components/ProductDetails';
 import OrderDetails from './components/OrderDetails';
 import EditProduct from './components/EditProduct';
 
+const config = require('./components/includes/config.json');
+
+console.log(config)
+
 
 const client = new ApolloClient({
-    uri: 'https://ds-api2.herokuapp.com/',
+    uri: config.config.api_url,
 });
 
 
@@ -71,7 +75,7 @@ class App extends Component {
         let xhr = new XMLHttpRequest();
 
         xhr.withCredentials = true;
-        xhr.open("POST", "https://ds-api2.herokuapp.com/");
+        xhr.open("POST", config.config.api_url);
         xhr.setRequestHeader("content-type", "application/json");
         xhr.send(data);
         
@@ -90,7 +94,7 @@ class App extends Component {
     }
 
     logout() {
-        axios.get('https://ds-api2.herokuapp.com/logout')
+        axios.get(config.config.api_url + '/logout')
         .then((res) => {
           let response = res.data.response;
             this.setState({

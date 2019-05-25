@@ -409,5 +409,11 @@ module.exports = {
       "Access-Control-Allow-Origin": "*",
     }
   },
+  
+  externals: {
+    'Config': {
+      serverUrl: "https://ds-api2.herokuapp.com/"
+    }
+  },
 
 };

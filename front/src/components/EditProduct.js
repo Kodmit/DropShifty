@@ -133,7 +133,7 @@ class EditProduct extends Component {
                     <div className="row mt-3">
                         <div className="col-9 mx-auto d-block">
                             <form className="edit_form" onSubmit={this.submitEditProfile}>
-                                <h3>{"Editer produit : " + productInfos.name}</h3>
+                                <h3>{"Editer produit"}</h3>
 
                                 <div className="mt-4"></div>
 

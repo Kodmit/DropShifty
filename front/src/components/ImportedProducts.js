@@ -44,7 +44,6 @@ class ImportedProducts extends Component {
 
                 document.getElementById("loader-import").style.display = "none";
 
-
             }
         });
 
@@ -52,10 +51,6 @@ class ImportedProducts extends Component {
         xhr.open("POST", "https://ds-api2.herokuapp.com/");
         xhr.setRequestHeader("content-type", "application/json");
         xhr.send(data);
-    }
-
-    viewProduct(id) {
-        //console.log("click on product" + id)
     }
 
     render() {
