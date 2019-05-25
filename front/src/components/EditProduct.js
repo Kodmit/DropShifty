@@ -26,21 +26,51 @@ class EditProduct extends Component {
     submitEditProfile = (e) => {
         e.preventDefault();
 
+        document.getElementById("overlay").style.display = "block";
+
         const id = this.props.match.params.id;
         const title  = e.target.elements.edit_title.value;
         const description = e.target.elements.edit_description.value;
         const price = e.target.elements.edit_price.value;
         const stock = e.target.elements.edit_stock.value;
 
-        var data = '{\"query\":\"{\\n  EditProduct(id:' + '\\\"' + id + '\\\"' + ', name:' + '\\\"' + title + '\\\"' + ', description: ' + '\\\"' + description + '\\\"' + ', price:' + '\\\"' + price + '\\\"' + ', stock: ' + '\\\"' + stock + '\\\"' + ')\\n}\"}';
+        let data = "{\"query\":\"{\\n  EditProduct(id:" + id + ", name: " + '\\\"' + title + '\\\"' + ", description: " + '\\\"' + description + '\\\"' + ", price: " + '\\\"' + price + '\\\"' + ", stock: " + stock + ")\\n}\"}";
+        
+        let xhr = new XMLHttpRequest();
 
-        var xhr = new XMLHttpRequest();
         xhr.withCredentials = true;
 
         xhr.addEventListener("readystatechange", function () {
-        if (this.readyState === this.DONE) {
-            console.log(this.responseText);
-        }
+            if (this.readyState === this.DONE) {
+                document.getElementById("overlay").style.display = "none";
+                let object = JSON.parse(this.response);
+                let objectParsed = object.data.EditProduct;
+
+                if (objectParsed == 'product_edited') {
+                    Swal.fire({
+                        title: '<strong>Produits édité</strong>',
+                        type: 'success',
+                        html: 'Le produit a été édité avec succes',
+                        showCloseButton: true,
+                        showCancelButton: false,
+                        focusConfirm: false,
+                        confirmButtonText: 'Fermer',
+                        confirmButtonAriaLabel: 'Fermer'
+                    })
+                } else {
+                    Swal.fire({
+                        title: '<strong>Oups !</strong>',
+                        type: 'success',
+                        html: 'Une erreur s\'est produite lors de l\'édition du produit',
+                        showCloseButton: true,
+                        showCancelButton: false,
+                        focusConfirm: false,
+                        confirmButtonText: 'Fermer',
+                        confirmButtonAriaLabel: 'Fermer'
+                    })
+                }
+
+            }
         });
 
         xhr.open("POST", "https://ds-api2.herokuapp.com/");
@@ -48,32 +78,7 @@ class EditProduct extends Component {
         xhr.setRequestHeader("content-type", "application/json");
 
         xhr.send(data);
-
-
-        /*
-        axios.post("https://ds-api2.herokuapp.com/", {
-            query: 
-               `{
-                    EditProduct(id: " + '\\\"' + sku + '\\\"' + ", name: "caca", description: "un super caca", price: "20.5", stock: 5)
-              }
-              `,
-              variables: {
-                "product": {
-                    id: id,
-                    name: title,
-                    description: description,
-                    price: price,
-                    stock: stock          
-                }
-              }
-            }, {
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          }).then((result) => {
-            console.log(result);
-          });
-          */
+              
     }
 
     render() {
@@ -112,10 +117,12 @@ class EditProduct extends Component {
                             </form>         
                         </div>
                     </div>
-
-                    
                 </div>
-                <img id="loader-import" src={process.env.PUBLIC_URL + "/images/loader.svg"} />
+
+                <div id="overlay" style={{ display: 'none' }}>
+                    <img id="loader" src={process.env.PUBLIC_URL + "/images/loader.svg"} />
+                </div>
+
             </div>
         );
     }

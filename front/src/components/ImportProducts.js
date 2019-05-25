@@ -213,33 +213,7 @@ class ImportProducts extends Component {
     			list.innerHTML = "Produit non trouvé";
     		}
     	});
-
     }
-
-    /*
-    submitImport = (e) => {
-        e.preventDefault();
-        let self = this;
-        const sku = e.target.elements.sku.value;
-        console.log(sku);
-        this.ds_call("CheckIfWCApiFilled", function(output){
-            if(!output) {
-                self.ds_call("GenWcLink", function(link){
-                    console.log(link)
-                    Swal.fire({
-                        type: 'error',
-                        title: 'Oups...',
-                        showCloseButton: false,
-                        showCancelButton: false,
-                        focusConfirm: false,
-                        html: 'Nous ne disposons pas de vos informations de connexion à l\'API WooCommerce, veuillez les fournir sur votre compte Dropshifty pour utiliser le plugin.<br><br><a href="'+ link +'" target="_blank">Renseigner les informations automatiquement.</a>',
-                    });
-                });
-            }
-        });
-        this.import_product(sku);
-    };
-    */
 
     render () {
         return (
