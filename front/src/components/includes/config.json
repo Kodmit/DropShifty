@@ -1,5 +1,6 @@
 {
     "config": {
-        "api_url": "https://ds-api2.herokuapp.com"
+        "api_url": "https://ds-api2.herokuapp.com",
+        "chinabrand_api_url": "https://gloapi.chinabrands.com/v2/product/index"
     }
 }

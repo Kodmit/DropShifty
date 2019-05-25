@@ -6,6 +6,8 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
 import $ from 'jquery';
 
+const config = require('../components/includes/config.json');
+
 class ImportProducts extends Component {
 
     constructor(props) {
@@ -32,7 +34,7 @@ class ImportProducts extends Component {
             }
         });
         xhr.withCredentials = true;
-        xhr.open("POST", "https://ds-api2.herokuapp.com/");
+        xhr.open("POST", config.config.api_url);
         xhr.setRequestHeader("content-type", "application/json");
         xhr.send(data);
     }
@@ -86,7 +88,7 @@ class ImportProducts extends Component {
             }
         });
 
-        xhr.open("POST", "https://ds-api2.herokuapp.com/");
+        xhr.open("POST", config.config.api_url);
         xhr.setRequestHeader("content-type", "application/json");
 
         xhr.send(data);
@@ -122,7 +124,7 @@ class ImportProducts extends Component {
             }
         });
 
-        xhr.open("POST", "https://ds-api2.herokuapp.com/");
+        xhr.open("POST", config.config.api_url);
         xhr.setRequestHeader("content-type", "application/json");
 
         xhr.send(data);
@@ -148,7 +150,7 @@ class ImportProducts extends Component {
       	});
 
       	if (supplier === "chinabrands") {
-      		url = "https://gloapi.chinabrands.com/v2/product/index";
+      		url = config.config.chinabrand_api_url;
       	}
     }
 

@@ -1,21 +1,24 @@
 import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import axios from 'axios';
-import { NavLink } from 'react-router-dom';
-import $ from 'jquery';
+//import axios from 'axios';
+//import { NavLink } from 'react-router-dom';
+//import $ from 'jquery';
 
+const config = require('./config.json');
 
 class Header extends Component {
 
+    /*
     componentDidMount() {
         $('.profile_icon').click(function() {
             $('.profile_links').fadeToggle();
         });
     }
+    */
 
     logout() {
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', 'https://ds-api2.herokuapp.com/logout', true);
+        xhr.open('GET', config.config.api_url + '/logout', true);
         xhr.withCredentials = true;
         xhr.send(null);
 

@@ -3,16 +3,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/register.scss';
 import '../styles/app.scss';
 import $ from "jquery";
-import Alert from '../components/includes/alert/Alert';
+//import Alert from '../components/includes/alert/Alert';
 import gql from 'graphql-tag';
-import { Mutation, withApollo } from "react-apollo";
+import { withApollo } from "react-apollo";
 import ApolloClient from "apollo-boost";
-import Swal from 'sweetalert2/dist/sweetalert2.js'
-import 'sweetalert2/src/sweetalert2.scss'
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import 'sweetalert2/src/sweetalert2.scss';
+
+const config = require('../components/includes/config.json');
 
 
 const client = new ApolloClient({
-    uri: "https://ds-api2.herokuapp.com/"
+    uri: config.config.api_url
 });
   
 
@@ -55,8 +57,6 @@ class Register extends Component {
 
         if (email && user && pass && confirmPass) {
             if (pass == confirmPass) {
-                //this.setState({alert_message: 'Données valides'});
-                //this.setState({alert_type: 'success'});
                 this.runQuery(email, user, pass);
 
                 Swal.fire({
@@ -83,13 +83,9 @@ class Register extends Component {
                     focusConfirm: false,
                     html: 'Les mots de passe sont différents',
                 });
-                //this.setState({alert_message: 'Mot de passe différents'});
-                //this.setState({alert_type: 'danger'});
             }
             
         } else {
-            //this.setState({alert_message: 'Données invalides'});
-            //this.setState({alert_type: 'danger'});
             Swal.fire({
                 type: 'error',
                 title: 'Oups...',
@@ -111,18 +107,10 @@ class Register extends Component {
     render() {
         return (
             <div className="login_view">
-                <div id="user_form" className="container register_form">
-                    {/*<img className="logo_drop mx-auto d-block" src="/images/logo-drop.png" alt="Logo dropshifty"/>*/}
-                    
+                <div id="user_form" className="container register_form">                    
                     <h1 className="_center">DropShifty</h1>
 
-                    <div className="mt-4">
-                        {/*
-                            {this.state.alert_type == 'success'?<Alert type={this.state.alert_type} message={this.state.alert_message} />:null}
-                        {this.state.alert_type == 'danger'?<Alert type={this.state.alert_type} message={this.state.alert_message}/>:null}
-                        {this.state.alert_type == 'warning'?<Alert type={this.state.alert_type} message={this.state.alert_message}/>:null}
-                        */}
-                    </div>
+                    <div className="mt-4"></div>
 
                     <form onSubmit={this.submitRegister}>
                         <div className="form-group">

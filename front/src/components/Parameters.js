@@ -7,8 +7,10 @@ import gql from 'graphql-tag';
 import { Mutation, withApollo } from "react-apollo";
 import ApolloClient from "apollo-boost";
 import { print } from 'graphql';
-import Swal from 'sweetalert2/dist/sweetalert2.js'
-import 'sweetalert2/src/sweetalert2.scss'
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import 'sweetalert2/src/sweetalert2.scss';
+
+const config = require('../components/includes/config.json');
 
 
 class Parameters extends Component {
@@ -26,7 +28,7 @@ class Parameters extends Component {
             }
         });
         xhr.withCredentials = true;
-        xhr.open("POST", "https://ds-api2.herokuapp.com/");
+        xhr.open("POST", config.config.api_url);
         xhr.setRequestHeader("content-type", "application/json");
         xhr.send(data);
     }
@@ -38,7 +40,7 @@ class Parameters extends Component {
         const email = e.target.elements.edit_email.value;
         const password = e.target.elements.edit_password.value;
 
-        axios.post("https://ds-api2.herokuapp.com/", {
+        axios.post(config.config.api_url, {
           query: `mutation NewUser($user: UserInput!) {
             NewUser(input: $user) {
               content
@@ -96,7 +98,7 @@ class Parameters extends Component {
         const address = e.target.elements.shop_address.value;
         const shopUrl = e.target.elements.shop_url.value;
 
-        axios.post("https://ds-api2.herokuapp.com/", {
+        axios.post(config.config.api_url, {
           query: `mutation NewShop($shop: ShopInput!) {
             NewShop(input: $shop) {
               content

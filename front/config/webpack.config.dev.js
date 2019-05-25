@@ -410,10 +410,4 @@ module.exports = {
     }
   },
   
-  externals: {
-    'Config': {
-      serverUrl: "https://ds-api2.herokuapp.com/"
-    }
-  },
-
 };

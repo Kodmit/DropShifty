@@ -24,8 +24,6 @@ import EditProduct from './components/EditProduct';
 
 const config = require('./components/includes/config.json');
 
-console.log(config)
-
 
 const client = new ApolloClient({
     uri: config.config.api_url,

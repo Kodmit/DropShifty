@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Bar, Line} from 'react-chartjs-2';
 import '../styles/dashboad.scss';
 import '../styles/app.scss';
-import Chart from './includes/Chart';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
 import $ from 'jquery';
@@ -11,6 +10,8 @@ import 'moment';
 import axios from 'axios';
 
 let moment = require('moment');
+
+const config = require('../components/includes/config.json');
 
 
 class Dashboard extends React.Component {
@@ -48,7 +49,7 @@ class Dashboard extends React.Component {
                 let objectParsed = object.data.CheckIfWCApiFilled;
                 if (objectParsed === false) {
                     axios({
-                        url: 'https://ds-api2.herokuapp.com',
+                        url: config.config.api_url,
                         method: 'post',
                         data: {
                           query: `
@@ -78,7 +79,7 @@ class Dashboard extends React.Component {
         });
 
         xhr.withCredentials = true;
-        xhr.open("POST", "https://ds-api2.herokuapp.com/");
+        xhr.open("POST", config.config.api_url);
         xhr.setRequestHeader("content-type", "application/json");
         xhr.send(data);
 
@@ -91,7 +92,7 @@ class Dashboard extends React.Component {
 
     checkIfHaveShop() {
         axios({
-            url: 'https://ds-api2.herokuapp.com',
+            url: config.config.api_url,
             method: 'post',
             data: {
               query: `
@@ -107,7 +108,7 @@ class Dashboard extends React.Component {
 
     genWcLink() {
         axios({
-            url: 'https://ds-api2.herokuapp.com',
+            url: config.config.api_url,
             method: 'post',
             data: {
               query: `
@@ -164,7 +165,7 @@ class Dashboard extends React.Component {
         });
 
         xhr.withCredentials = true;
-        xhr.open("POST", "https://ds-api2.herokuapp.com/");
+        xhr.open("POST", config.config.api_url);
         xhr.setRequestHeader("content-type", "application/json");
         xhr.send(data);
     }
@@ -186,10 +187,7 @@ class Dashboard extends React.Component {
           }
         });
 
-        //console.log(this.state.ordersList);
-
         $.each(products, function(i, v) {
-          //console.log(v[0]);
           productsName.push(v[0]);
         });
 

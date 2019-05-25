@@ -8,6 +8,8 @@ import axios from 'axios';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
 
+const config = require('../components/includes/config.json');
+
 
 class EditProduct extends Component {
 
@@ -38,7 +40,7 @@ class EditProduct extends Component {
 
         let self = this;
 
-        axios.post("https://ds-api2.herokuapp.com/", {
+        axios.post(config.config.api_url, {
           query: `{
             WC_GetProduct(id:` + id +`)
         }`,
@@ -113,7 +115,7 @@ class EditProduct extends Component {
             }
         });
 
-        xhr.open("POST", "https://ds-api2.herokuapp.com/");
+        xhr.open("POST", config.config.api_url);
         xhr.setRequestHeader("cookie", "PHPSESSID=dbdf85c6a55ebbca573330402391fddc");
         xhr.setRequestHeader("content-type", "application/json");
 

@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/importedProducts.scss';
 import '../styles/app.scss';
 
+const config = require('../components/includes/config.json');
+
 
 class MyProducts extends Component {
 
@@ -48,7 +50,7 @@ class MyProducts extends Component {
         });
 
         xhr.withCredentials = true;
-        xhr.open("POST", "https://ds-api2.herokuapp.com/");
+        xhr.open("POST", config.config.api_url);
         xhr.setRequestHeader("content-type", "application/json");
         xhr.send(data);
     }

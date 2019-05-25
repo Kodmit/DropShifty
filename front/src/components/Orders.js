@@ -8,6 +8,8 @@ import 'moment';
 
 let moment = require('moment');
 
+const config = require('../components/includes/config.json');
+
 
 class Orders extends Component {
 
@@ -51,7 +53,7 @@ class Orders extends Component {
         });
 
         xhr.withCredentials = true;
-        xhr.open("POST", "https://ds-api2.herokuapp.com/");
+        xhr.open("POST", config.config.api_url);
         xhr.setRequestHeader("content-type", "application/json");
         xhr.send(data);
     }
