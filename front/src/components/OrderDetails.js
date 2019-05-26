@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/orderDetails.scss';
 import '../styles/app.scss';
-import $ from 'jquery';
 import 'moment';
 
 let moment = require('moment');
@@ -43,9 +42,7 @@ class OrderDetails extends Component {
 
                 self.setState({
                     orderInfos: objectParsed
-                })
-
-                //console.log(self.state.orderInfos);
+                });
 
                 document.getElementById("loader-import").style.display = "none";
                 
