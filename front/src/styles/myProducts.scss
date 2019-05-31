@@ -8,6 +8,23 @@
 .box-product-import {
   background-color: #FFF;
   width: 100%;
-  height: 300px;
+  height: 260px;
 }
 
+.actions-container {
+  width: 80%;
+  bottom: 0;
+  position: absolute;
+  right: 15px;
+  margin-right: 25px;
+  margin-bottom: 20px;
+}
+
+.img_container {
+  display : flex;
+  align-items : center;
+  img {
+    width: 200px;
+    object-fit: cover;
+  }
+}

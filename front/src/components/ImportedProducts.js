@@ -64,9 +64,9 @@ class ImportedProducts extends Component {
                 {/*console.log("Item : " + item.name)*/}
                 <Link className="link_details" to={"/product/" + item.id}>
                     <div className="box-product-import _shadow mt-5">
-                        <div className="row">
-                            <div className="col-4">
-                                <img className="product-import" src={item.images[0].src} alt="mug licorne" />
+                        <div style={{ width: '100%', height: '100%' }} className="row">
+                            <div  className="col-4 img_container">
+                                <img className="product-import mx-auto d-block" src={item.images[0].src} alt="mug licorne" />
                             </div>
                             <div className="col-8 p-4">
                                 <p className="descProduct">{item.name}</p>

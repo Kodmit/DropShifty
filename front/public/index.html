@@ -247,15 +247,15 @@
 <script>
   function import_product(sku) {
 
-    let api_url = "https://ds-api2.herokuapp.com";
+      let api_url = "https://ds-api2.herokuapp.com";
 
       document.getElementById("overlay").style.display = "block";
 
-      var category = document.getElementById("ds_cats").value;
+      let category = document.getElementById("ds_cats").value;
 
-      var data = "{\"query\":\"{\\n\\tImportToWc(sku: " + '\\\"' + sku + '\\\"' + ", cat_id: " + category + ", type: \\\"simple\\\")\\n}\"}";
+      let data = "{\"query\":\"{\\n\\tImportToWc(sku: " + '\\\"' + sku + '\\\"' + ", cat_id: " + category + ", type: \\\"simple\\\")\\n}\"}";
 
-      var xhr = new XMLHttpRequest();
+      let xhr = new XMLHttpRequest();
       xhr.withCredentials = true;
 
       xhr.addEventListener("readystatechange", function () {

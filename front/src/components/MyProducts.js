@@ -42,7 +42,7 @@ class MyProducts extends Component {
                     productList: objectParsed
                 })
 
-                //console.log(self.state.productList);
+                //console.log(self.state.productList)
 
                 document.getElementById("loader-import").style.display = "none";
 
@@ -64,15 +64,15 @@ class MyProducts extends Component {
                 {/*console.log("Item : " + item.name)*/}
                 <Link className="link_details" to={"/product/" + item.id}>
                     <div className="box-product-import _shadow mt-5">
-                        <div className="row">
-                            <div className="col-4">
-                                <img className="product-import" src={item.images[0].src} alt="mug licorne" />
+                        <div style={{ width: '100%', height: '100%' }} className="row">
+                            <div  className="col-4 img_container">
+                                <img className="product-import mx-auto d-block" src={item.images[0].src} alt="mug licorne" />
                             </div>
                             <div className="col-8 p-4">
                                 <p className="descProduct">{item.name}</p>
                                 <div className="actions-container d-flex">
                                     <Link className="btn-import" to={"/product/" + item.id}><i className="fas fa-eye"></i></Link>
-                                    <Link className="btn-import ml-3" to={"/product/" + item.id}><i className="fas fa-edit"></i></Link>
+                                    <Link className="btn-import ml-3" to={"/product/edit/" + item.id}><i className="fas fa-edit"></i></Link>
                                     <Link className="btn-import ml-3" to={"/product/" + item.id}><i className="far fa-trash-alt"></i></Link>
                                 </div>
                             </div>
@@ -85,9 +85,9 @@ class MyProducts extends Component {
         return (
             <div className="main">
                 <div className="container mt-4">
-                    <h3>Mes produits</h3>
+                    <h3>Produits importés</h3>
                     {this.items}
-                    <img id="loader-import" src="images/loader.svg" />
+                    <img id="loader-import" style={{ display: 'none' }} src="images/loader.svg" />
                 </div>
             </div>
         );
@@ -95,13 +95,13 @@ class MyProducts extends Component {
           return (
             <div className="main">
                 <div className="container mt-4">
-                    <h3>Aucun produit trouvé</h3>
-                    <img id="loader-import" src="images/loader.svg" />
+                    <h3>Aucun produit importé</h3>
+                    <img id="loader-import" style={{ display: 'none' }} src="images/loader.svg" />
                 </div>
             </div>
           );
       }
-  }
+    }
 };
 
 export default MyProducts;

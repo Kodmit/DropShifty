@@ -5,6 +5,7 @@ import '../styles/app.scss';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
 import $ from 'jquery';
+import './includes/app.js';
 
 const config = require('../components/includes/config.json');
 
@@ -208,7 +209,7 @@ class ImportProducts extends Component {
     						let variations = "<br><b>Couleur : " + value.color + " | Taille : " + value.size + "</b>";
     					}
 
-    					list.innerHTML += '<div class="list_product col-4 mt-3"><div class="product _shadow"><img height="120px" src="'+value.original_img[0]+'"><span class="title">' + value.title + '</span>' + variations + '<br><div class="price">Prix €'+ warehouse.price +'</div><div class="fees">Frais €'+ warehouse.handling_fee +'</div><button style="border: none; width: 70%; height: 35px;" href="#" class="btn-import mx-auto d-block" onclick="self.import_product(' + value.sku + ')">Importer</button></div></div>';
+    					list.innerHTML += '<div class="list_product col-4 mt-3"><div class="product _shadow"><img height="120px" src="'+value.original_img[0]+'"><span class="title">' + value.title + '</span>' + variations + '<br><div class="price">Prix €'+ warehouse.price +'</div><div class="fees">Frais €'+ warehouse.handling_fee +'</div><button style="border: none; width: 70%; height: 35px;" href="#" class="btn-import mx-auto d-block" onclick="import_product(' + value.sku + ')">Importer</button></div></div>';
     				}
     			});
     		} else {
@@ -224,7 +225,7 @@ class ImportProducts extends Component {
                 <div className="container mt-4">
                     <h3>Importer des produits</h3>
 
-                    <div style={{ paddingLeft: '100px', paddingRight: '100px' }}>
+                    <div style={{ paddingLeft: '50px', paddingRight: '50px' }}>
                         <form className="form-import-product" onSubmit={this.submitImport}>
                             <div className="form-group">
                                 <label htmlFor="sku">Entrer le code SKU du produit à importer</label>
@@ -232,36 +233,36 @@ class ImportProducts extends Component {
                                 <input onClick={this.ds_product_submit} className="btn-import mt-3" type="submit" value="Valider" />
                             </div>
                         </form>
+
+                    {/* Will display categories */}
+                    <div className="mt-5" style={{ display: 'none' }} id="modal_products">
+
+                        <div class="ds_cats_container mt-3">
+                            <div className="row">
+                                <div className="col-6">
+                                    <h5>Choisissez une catégorie</h5>
+                                    <select id="ds_cats"></select>
+                                </div>
+
+                                <div className="col-6">
+                                    <h4 className="mt-4"><span id="ds_nb_founds">0</span> variation(s) trouvée(s)</h4>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="content_list mt-3">
+                            <div className="row list"></div>
+                            </div>
+
+                            <button style={{ width: '60%' }} className="btn-import mx-auto d-block mt-5" onClick={this.import_all_products} id="ds_import_all">Importer toutes les variations</button>
+
+                        </div>
                     </div>
 
                     <div id="overlay" style={{ display: 'none' }}>
                         <img id="loader" src="images/loader.svg" />
                     </div>
-
-                </div>
-
-                {/* Will display categories */}
-                <div style={{ display: 'none' }} id="modal_products">
-
-                  	<div class="ds_cats_container mt-3">
-                        <div className="row">
-                            <div className="col-6">
-                                <h5>Choisissez une catégorie</h5>
-                                <select id="ds_cats"></select>
-                            </div>
-
-                            <div className="col-6">
-                                <h4 className="mt-4"><span id="ds_nb_founds">0</span> variation(s) trouvée(s)</h4>
-                            </div>
-                        </div>
-                  	</div>
-
-                    
-                    <div class="content_list mt-3">
-                        <div className="row list"></div>
-                    </div>
-
-                    <button className="btn-import mx-auto d-block mt-5" onClick={this.import_all_products} id="ds_import_all">Importer toutes les variations</button>
 
                 </div>
 
