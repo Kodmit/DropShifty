@@ -1,18 +1,70 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {NavLink} from 'react-router-dom';
+import axios from 'axios';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import 'sweetalert2/src/sweetalert2.scss';
+import $ from 'jquery';
 
-let session_username = sessionStorage.getItem('username');
+const config = require('./config.json');
 
 
 class NavbarSide extends Component {
 
+  state = {
+      userInfos: [],
+  }
+
+  componentDidMount() {
+    console.log("user informations : ")
+    this.getUserInfos();
+  }
+
   getUserInfos() {
       let session_username = sessionStorage.getItem('username');
 
+      axios.post(config.config.api_url, {
+        query: `{
+          User(username: ` + `"` + session_username + `"` + `) {
+            username,
+            lastname,
+            email,
+            shops {
+              id,
+              url
+            }
+          }
+      }`,
+      }, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then((result) => {
+
+          let res = result.data.data.User;
+
+          //console.log(res);
+
+          this.setState({
+              userInfos: res
+          });
+
+        })
   }
 
   render() {
+
+    let userInfos = [];
+
+    userInfos.push(this.state.userInfos);
+
+    let shopUrl = '';
+
+    $(userInfos).each(function(index, element) {
+      $(element.shops).each(function(i, elem) {
+        shopUrl = elem.url;
+      });
+    });
 
     return (
 
@@ -70,7 +122,7 @@ class NavbarSide extends Component {
                     <img className="icons-nav" src={process.env.PUBLIC_URL + "/images/icons/web.svg"} alt="web"></img>
                 </div>
                 <div className="col-sm-10">
-                    <a href="http://wordpress.dev.dropshifty.com" target="_blank">Mon site</a>
+                    <a href={shopUrl} target="_blank">Mon site</a>
                 </div>
             </div>
 
@@ -83,10 +135,11 @@ class NavbarSide extends Component {
                 </div>
             </div>
         </nav>
-    );
+    )
+
   }
 
 
-};
+}
 
 export default NavbarSide;
