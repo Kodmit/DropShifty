@@ -62,7 +62,7 @@ class Dashboard extends React.Component {
                         let resCheckIfHaveShop = result.data.data.CheckIfHaveShop;
 
                         if (resCheckIfHaveShop === true) {
-                            self.genWcLink(); 
+                            self.genWcLink();
                         } else {
                             Swal.fire({
                                 type: 'error',

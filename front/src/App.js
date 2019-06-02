@@ -43,7 +43,7 @@ class App extends Component {
     }
 
     componentDidMount() {
-
+      
         setTimeout(() => {
             let current_url = window.location.href;
             let arr_url = current_url.split("/");
@@ -52,10 +52,10 @@ class App extends Component {
             let uriRegister = complete_domain + '/register';
             let uriLogin = complete_domain + '/login';
             if (window.location.href == uriRegister || window.location.href == uriLogin) {
-                document.getElementById("login").style.display = "none";            
+                document.getElementById("login").style.display = "none";
             }
         }, 2100);
-        
+
         this.authenticate().then(() => {
             const ele = document.getElementById('ipl-progress-indicator');
             if (ele) {
@@ -76,7 +76,7 @@ class App extends Component {
         xhr.open("POST", config.config.api_url);
         xhr.setRequestHeader("content-type", "application/json");
         xhr.send(data);
-        
+
         xhr.addEventListener("readystatechange", function () {
             if (this.readyState === this.DONE) {
             let object = JSON.parse(this.response);

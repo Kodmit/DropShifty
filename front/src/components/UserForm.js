@@ -75,6 +75,7 @@ class UserForm extends Component {
                             let res = object.data['CheckIfConnected'];
 
                             if (response == 'ok' && res == true) {
+                                sessionStorage.setItem('username', user);
                                 Swal.fire({
                                     type: 'success',
                                     title: 'Connexion réssie',

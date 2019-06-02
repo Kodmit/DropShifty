@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {NavLink} from 'react-router-dom';
 
-const NavbarSide = () => {
+let session_username = sessionStorage.getItem('username');
+
+
+class NavbarSide extends Component {
+
+  getUserInfos() {
+      let session_username = sessionStorage.getItem('username');
+
+  }
+
+  render() {
 
     return (
-        <nav className="navbar-side">
 
+        <nav className="navbar-side">
             <div className="row">
                 <NavLink to={"/"} style={{ padding: '15px' }}><h1 style={{ fontSize: '30px', color: 'white' }}>DropShifty</h1></NavLink>
             </div>
@@ -72,9 +82,11 @@ const NavbarSide = () => {
                     <NavLink to={"/parameters"} exact activeStyle={{color: "#FFF"}}>Parametres</NavLink>
                 </div>
             </div>
-
         </nav>
     );
+  }
+
+
 };
 
 export default NavbarSide;
