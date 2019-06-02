@@ -16,8 +16,9 @@ class NavbarSide extends Component {
   }
 
   componentDidMount() {
-    console.log("user informations : ")
-    this.getUserInfos();
+    if (sessionStorage.getItem('username') != null) {
+      this.getUserInfos();
+    }
   }
 
   getUserInfos() {
@@ -60,11 +61,13 @@ class NavbarSide extends Component {
 
     let shopUrl = '';
 
-    $(userInfos).each(function(index, element) {
-      $(element.shops).each(function(i, elem) {
-        shopUrl = elem.url;
+    if (this.state.userInfos != null || this.state.userInfos != undefined) {
+      $(userInfos).each(function(index, element) {
+        $(element.shops).each(function(i, elem) {
+          shopUrl = elem.url;
+        });
       });
-    });
+    }
 
     return (
 
@@ -122,7 +125,7 @@ class NavbarSide extends Component {
                     <img className="icons-nav" src={process.env.PUBLIC_URL + "/images/icons/web.svg"} alt="web"></img>
                 </div>
                 <div className="col-sm-10">
-                    <a href={shopUrl} target="_blank">Mon site</a>
+                    <a href={shopUrl || ''} target="_blank">Mon site</a>
                 </div>
             </div>
 
