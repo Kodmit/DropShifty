@@ -22,12 +22,14 @@ class Header extends Component {
         xhr.withCredentials = true;
         xhr.send(null);
 
+        sessionStorage.removeItem('username');
+
         setTimeout(function() {
             window.location = '/login';
         }, 1500);
       }
 
-    
+
     render() {
         return (
             <header>
@@ -40,12 +42,12 @@ class Header extends Component {
                         {/*<NavLink to={"/profile"}>Mon profil</NavLink>*/}
                         <a className="logout_btn mt-1" onClick={this.logout}><i style={{ color: 'red', fontSize: '20px' }} class="fas fa-power-off"></i></a>
                     </div>
-    
+
                 </div>
             </header>
         );
     }
-     
+
 };
 
 export default Header;
