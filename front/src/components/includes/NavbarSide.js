@@ -44,8 +44,6 @@ class NavbarSide extends Component {
 
           let res = result.data.data.User;
 
-          //console.log(res);
-
           this.setState({
               userInfos: res
           });

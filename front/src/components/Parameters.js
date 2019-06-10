@@ -15,6 +15,48 @@ const config = require('../components/includes/config.json');
 
 class Parameters extends Component {
 
+    state = {
+        userInfos: [],
+    }
+
+    componentDidMount() {
+      if (sessionStorage.getItem('username') != null) {
+        this.getUserInfos();
+      }
+      this.checkIfHaveShop();
+    }
+
+    getUserInfos() {
+        let session_username = sessionStorage.getItem('username');
+
+        axios.post(config.config.api_url, {
+          query: `{
+            User(username: ` + `"` + session_username + `"` + `) {
+              username,
+              lastname,
+              email,
+              shops {
+                id,
+                url
+              }
+            }
+        }`,
+        }, {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }).then((result) => {
+
+            let res = result.data.data.User;
+
+            this.setState({
+                userInfos: res
+            });
+
+          })
+    }
+
+
     ds_call(arg, handledata) {
 
         let data = "{\"query\":\"{\\n\\t " + arg + " \\n}\"}";
@@ -50,7 +92,7 @@ class Parameters extends Component {
             "user": {
                 username: username,
                 email: email,
-                password: password            
+                password: password
             }
           }
         }, {
@@ -170,6 +212,10 @@ class Parameters extends Component {
                 console.log(error);
             });
     };
+
+    checkIfHaveShop() {
+      console.log("check if have shop func")
+    }
 
     render() {
 
