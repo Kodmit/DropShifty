@@ -66,7 +66,7 @@ class OrderDetails extends Component {
                 <div className="container mt-4">
                     <h2>Detail de la commande</h2>
                     <div className="row">
-                        <div className="col-6">
+                        <div className="col-lg-6 col-sm-12">
                             <div className="order_detail container ml-2 mt-4">
                                 <p>N° de la commande : #{orderInfos.id}</p>
                                 <p>Montant TTC : {orderInfos.total} {orderInfos.currency}</p>
@@ -75,7 +75,7 @@ class OrderDetails extends Component {
                                 <p></p>
                             </div>
                         </div>
-                        <div className="col-6">
+                        <div className="col-lg-6 col-sm-12">
                             <div className="order_detail container ml-2 mt-4">
                                 <p>Frais de livraison : {orderInfos.shipping_total} {orderInfos.currency}</p>
                                 <p>Taxes : {orderInfos.total_tax} {orderInfos.currency}</p>
