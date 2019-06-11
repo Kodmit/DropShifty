@@ -253,7 +253,7 @@
 
       let category = document.getElementById("ds_cats").value;
 
-      let data = "{\"query\":\"{\\n\\tImportToWc(sku: " + '\\\"' + sku + '\\\"' + ", cat_id: " + category + ", type: \\\"simple\\\")\\n}\"}";
+      let data = "{\"query\":\"{\\n\\tImportToWc(sku: " + sku +  ", cat_id: " + category + ", type: \\\"simple\\\")\\n}\"}";
 
       let xhr = new XMLHttpRequest();
       xhr.withCredentials = true;

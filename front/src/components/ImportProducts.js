@@ -102,7 +102,7 @@ class ImportProducts extends Component {
 
         let sku = document.getElementById("sku").value;
         let category = document.getElementById("ds_cats").value;
-        let data = "{\"query\":\"{\\n\\tImportToWc(sku: " + '\\\"' + sku + '\\\"' + ", cat_id: " + category + ", type: \\\"variable\\\")\\n}\"}";
+        let data = "{\"query\":\"{\\n\\tImportToWc(sku: " +  sku + ", cat_id: " + category + ", type: \\\"variable\\\")\\n}\"}";
         let xhr = new XMLHttpRequest();
 
         xhr.withCredentials = true;

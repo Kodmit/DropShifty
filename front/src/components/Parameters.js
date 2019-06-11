@@ -108,6 +108,7 @@ class Parameters extends Component {
     handleChange(event) {
       this.setState({
           shopInfos: event.target.value,
+          userInfos: event.target.value,
       });
     }
 
@@ -280,6 +281,7 @@ class Parameters extends Component {
     render() {
 
       let shopInfos = this.state.shopInfos;
+      let userInfos = this.state.userInfos;
 
       if (this.state.userHaveShop === true) {        
 
@@ -337,17 +339,17 @@ class Parameters extends Component {
                               <form onSubmit={this.submitEditProfile}>
                                   <div className="form-group mt-4">
                                       <label htmlFor="edit_username">Nom d'utilisateur</label>
-                                      <input required="required" type="text" name="edit_username" className="_form-control" id="edit_username" placeholder="Nom d'utilisateur"/>
+                                      <input required="required" type="text" name="edit_username" className="_form-control" id="edit_username" placeholder="Nom d'utilisateur" value={userInfos.username} onChange={this.handleChange} />
                                   </div>
 
                                   <div className="form-group">
                                       <label htmlFor="edit_email">Email</label>
-                                      <input required="required" type="text" name="edit_email" className="_form-control" id="edit_email" placeholder="Email"/>
+                                      <input required="required" type="text" name="edit_email" className="_form-control" id="edit_email" placeholder="Email" value={userInfos.email} onChange={this.handleChange} />
                                   </div>
 
                                   <div className="form-group">
                                       <label htmlFor="edit_password">Mot de passe</label>
-                                      <input required="required" type="text" name="edit_password" className="_form-control" id="edit_password" placeholder="Mot de passe"/>
+                                      <input required="required" type="password" name="edit_password" className="_form-control" id="edit_password" placeholder="Mot de passe" />
                                   </div>
 
                                   <input type="submit" className="btn-import mt-3" value="Editer" />
@@ -427,7 +429,7 @@ class Parameters extends Component {
 
                                   <div className="form-group">
                                       <label htmlFor="edit_password">Mot de passe</label>
-                                      <input required="required" type="text" name="edit_password" className="_form-control" id="edit_password" placeholder="Mot de passe"/>
+                                      <input required="required" type="password" name="edit_password" className="_form-control" id="edit_password" placeholder="Mot de passe"/>
                                   </div>
 
                                   <input type="submit" className="btn-import mt-3" value="Editer" />
