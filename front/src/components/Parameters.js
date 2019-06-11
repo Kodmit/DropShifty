@@ -12,17 +12,26 @@ const config = require('../components/includes/config.json');
 
 class Parameters extends Component {
 
-    state = {
+    constructor(props) {
+      super(props)
+
+      this.state = {
         userInfos: [],
+        shopInfos: [],
         userHaveShop: "",
     }
 
+      this.handleChange = this.handleChange.bind(this);
+    }
+
+    
     componentDidMount() {
       if (sessionStorage.getItem('username') != null) {
         this.getUserInfos();
       }
       this.checkIfHaveShop();
       this.getUserInfos();
+      //this.getShopInfos();
     }
 
     ds_call(arg, handledata) {
@@ -98,7 +107,7 @@ class Parameters extends Component {
 
     handleChange(event) {
       this.setState({
-          userInfos: event.target.value,
+          shopInfos: event.target.value,
       });
     }
 
@@ -143,9 +152,9 @@ class Parameters extends Component {
               console.log(result.data);
               if (!result.data.errors) {
                 Swal.fire({
-                    title: '<strong>Boutique créee !</strong>',
+                    title: '<strong>Informations enregistrées !</strong>',
                     type: 'success',
-                    html: 'Votre boutique a bien été créee ! Vous pouvez à présent importer des produits',
+                    html: 'Les informations ont bien étées enregistrées ! Vous pouvez à présent importer des produits',
                     showCloseButton: true,
                     showCancelButton: false,
                     focusConfirm: false,
@@ -173,7 +182,7 @@ class Parameters extends Component {
                 Swal.fire({
                     title: "<strong>Une erreur s'est produite</strong>",
                     type: 'error',
-                    html: "Une erreur s'est produite lors de la création de votre boutique",
+                    html: "Une erreur s'est produite lors de l'enregistrement de votre boutique",
                     showCloseButton: true,
                     showCancelButton: false,
                     focusConfirm: false,
@@ -245,34 +254,32 @@ class Parameters extends Component {
               userInfos: res
           });
 
+          let userInfos = [];
+
+          userInfos.push(this.state.userInfos);
+
+          let infos = [];
+
+          if (this.state.userInfos != null || this.state.userInfos != undefined) {
+            $(userInfos).each(function(index, element) {
+              $(element.shops).each(function(i, elem) {
+                infos.push(elem)
+              });
+            });
+          }
+
+          let shopInfos = infos[0];
+
+          this.setState({
+            shopInfos: shopInfos,
+          });
+
         })
   }
 
     render() {
 
-      //console.log(this.state.userHaveShop);
-
-      {/* @TODO If user has shop display edit view */}
-
-      //let userInfos = this.state.userInfos;
-
-      //console.log(userInfos)
-
-      let userInfos = [];
-
-      userInfos.push(this.state.userInfos);
-
-      let infos = [];
-
-      if (this.state.userInfos != null || this.state.userInfos != undefined) {
-        $(userInfos).each(function(index, element) {
-          $(element.shops).each(function(i, elem) {
-            infos.push(elem)
-          });
-        });
-      }
-
-      let shopInfos = infos[0];
+      let shopInfos = this.state.shopInfos;
 
       if (this.state.userHaveShop === true) {        
 
