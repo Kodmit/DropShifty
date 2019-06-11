@@ -5,6 +5,7 @@ import '../styles/app.scss';
 import axios from "axios";
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
+import $ from 'jquery';
 
 const config = require('../components/includes/config.json');
 
@@ -21,38 +22,8 @@ class Parameters extends Component {
         this.getUserInfos();
       }
       this.checkIfHaveShop();
+      this.getUserInfos();
     }
-
-    getUserInfos() {
-        let session_username = sessionStorage.getItem('username');
-
-        axios.post(config.config.api_url, {
-          query: `{
-            User(username: ` + `"` + session_username + `"` + `) {
-              username,
-              lastname,
-              email,
-              shops {
-                id,
-                url
-              }
-            }
-        }`,
-        }, {
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          }).then((result) => {
-
-            let res = result.data.data.User;
-
-            this.setState({
-                userInfos: res
-            });
-
-          })
-    }
-
 
     ds_call(arg, handledata) {
 
@@ -123,6 +94,12 @@ class Parameters extends Component {
                 });
             }
           });
+    }
+
+    handleChange(event) {
+      this.setState({
+          userInfos: event.target.value,
+      });
     }
 
     submitParameters = (e) => {
@@ -277,7 +254,27 @@ class Parameters extends Component {
 
       {/* @TODO If user has shop display edit view */}
 
-      if (this.state.userHaveShop === true) {
+      //let userInfos = this.state.userInfos;
+
+      //console.log(userInfos)
+
+      let userInfos = [];
+
+      userInfos.push(this.state.userInfos);
+
+      let infos = [];
+
+      if (this.state.userInfos != null || this.state.userInfos != undefined) {
+        $(userInfos).each(function(index, element) {
+          $(element.shops).each(function(i, elem) {
+            infos.push(elem)
+          });
+        });
+      }
+
+      let shopInfos = infos[0];
+
+      if (this.state.userHaveShop === true) {        
 
         return (
           <div className="main">
@@ -293,32 +290,32 @@ class Parameters extends Component {
                                   <form onSubmit={this.submitParameters}>
                                       <div className="form-group">
                                           <label htmlFor="shop_name">Nom de la boutique</label>
-                                          <input required="required" type="text" name="shop_name" className="_form-control" id="shop_name" placeholder="Nom de la boutique"/>
+                                          <input required="required" type="text" name="shop_name" className="_form-control" id="shop_name" placeholder="Nom de la boutique" value={shopInfos.name} onChange={this.handleChange}/>
                                       </div>
 
                                       <div className="form-group">
                                           <label htmlFor="shop_description">Description</label>
-                                          <input required="required" type="text" name="shop_description" className="_form-control" id="shop_description" placeholder="Description"/>
+                                          <input required="required" type="text" name="shop_description" className="_form-control" id="shop_description" placeholder="Description" value={shopInfos.description} onChange={this.handleChange}/>
                                       </div>
 
                                       <div className="form-group">
                                           <label htmlFor="shop_city">Ville</label>
-                                          <input required="required" type="text" name="shop_city" className="_form-control" id="shop_city" placeholder="Ville de la boutique"/>
+                                          <input required="required" type="text" name="shop_city" className="_form-control" id="shop_city" placeholder="Ville de la boutique" value={shopInfos.city} onChange={this.handleChange}/>
                                       </div>
 
                                       <div className="form-group">
                                           <label htmlFor="shop_address">Adresse</label>
-                                          <input required="required" type="text" name="shop_address" className="_form-control" id="shop_address" placeholder="Ville de la boutique"/>
+                                          <input required="required" type="text" name="shop_address" className="_form-control" id="shop_address" placeholder="Ville de la boutique" value={shopInfos.city} onChange={this.handleChange}/>
                                       </div>
 
                                       <div className="form-group">
                                           <label htmlFor="postal_code">Code postal</label>
-                                          <input required="required" type="text" name="postal_code" className="_form-control" id="postal_code" placeholder="Code postal de la boutique"/>
+                                          <input required="required" type="text" name="postal_code" className="_form-control" id="postal_code" placeholder="Code postal de la boutique" value={shopInfos.postal_code} onChange={this.handleChange}/>
                                       </div>
 
                                       <div className="form-group">
                                           <label htmlFor="shop_url">Url de la boutique</label>
-                                          <input required="required" type="text" name="shop_url" className="_form-control" id="shop_url" placeholder="Url de la boutique"/>
+                                          <input required="required" type="text" name="shop_url" className="_form-control" id="shop_url" placeholder="Url de la boutique" value={shopInfos.url} onChange={this.handleChange}/>
                                       </div>
 
                                       <input type="submit" className="btn-import mt-3" value="Editer" />
