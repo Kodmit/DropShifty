@@ -23,6 +23,8 @@ class ImportedProducts extends Component {
     }
 
     handlePageChange(pageNumber) {
+        //window.scrollTo(0, 0);
+
         let self = this;
         const bindPageNumber = pageNumber;
 
@@ -73,7 +75,6 @@ class ImportedProducts extends Component {
 
     render() {
 
-
       if (this.state.productList != null) {
 
         const { productList, activePage, totalPerPage } = this.state;
@@ -114,7 +115,7 @@ class ImportedProducts extends Component {
                     <img id="loader-import" style={{ display: 'none' }} src="images/loader.svg" />
                 </div>
 
-                <div className="mt-5 mx-auto d-block">
+                <div className="_pagination mt-5 mx-auto">
                     <Pagination
                         activePage={this.state.activePage}
                         itemsCountPerPage={20}
