@@ -6,6 +6,7 @@ import '../styles/app.scss';
 import './includes/app';
 import 'moment';
 import Pagination from "react-js-pagination";
+import $ from 'jquery';
 
 
 let moment = require('moment');

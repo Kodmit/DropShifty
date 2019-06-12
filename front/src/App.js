@@ -13,7 +13,7 @@ import Notifications from './components/Notifications';
 import Parameters from './components/Parameters';
 import Login from './components/class/Login';
 import Register from './components/Register';
-//import NoMatch from './components/NoMatch';
+import NoMatch from './components/NoMatch';
 import { Route, BrowserRouter as Router, Switch, Link } from "react-router-dom";
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient from "apollo-boost";
@@ -21,9 +21,9 @@ import axios from 'axios';
 import ProductDetails from './components/ProductDetails';
 import OrderDetails from './components/OrderDetails';
 import EditProduct from './components/EditProduct';
+import $ from 'jquery';
 
 const config = require('./components/includes/config.json');
-
 
 const client = new ApolloClient({
     uri: config.config.api_url,
@@ -43,7 +43,11 @@ class App extends Component {
     }
 
     componentDidMount() {
+
+        $(window).scrollTop(0);
+        $(".main").scrollTop(0);
       
+        /*
         setTimeout(() => {
             let current_url = window.location.href;
             let arr_url = current_url.split("/");
@@ -54,7 +58,7 @@ class App extends Component {
             if (window.location.href == uriRegister || window.location.href == uriLogin) {
                 document.getElementById("login").style.display = "none";
             }
-        }, 2100);
+        }, 2100); */
 
         this.authenticate().then(() => {
             const ele = document.getElementById('ipl-progress-indicator');
@@ -107,13 +111,14 @@ class App extends Component {
                 <ApolloProvider client={client}>
                     <Router>
                         <div>
-                            <Switch>
-                                <div>
-                                    <Route path="/login" component={Login} />
-                                    <Route path="/register" component={Register} />
-                                    <div className="grid-container">
-                                        <Header/>
-                                        <NavbarSide/>
+                            <div>
+                                <Route path="/login" component={Login} />
+                                <Route path="/register" component={Register} />
+
+                                <div className="grid-container">
+                                    <Header/>
+                                    <NavbarSide/>
+                                    <Switch>
                                         <Route path="/" component={Dashboard} exact/>
                                         <Route path="/orders" component={Orders}/>
                                         <Route path="/order/:id" render={(props) => <OrderDetails {...props}/>} />
@@ -124,10 +129,11 @@ class App extends Component {
                                         <Route path="/product/edit/:id" render={(props) => <EditProduct {...props}/>} />
                                         <Route path="/notifications" component={Notifications}/>
                                         <Route path="/parameters" component={Parameters}/>
-                                    </div>
+                                        <Route path="" component={NoMatch} />
+                                    </Switch>
+
                                 </div>
-                            </Switch>
-                            {/*<Route component={NoMatch} />*/}
+                            </div>
                         </div>
                     </Router>
                 </ApolloProvider>
@@ -136,9 +142,11 @@ class App extends Component {
             return (
                 <Router>
                     <div>
-                        <Route path="/register" component={Register} />
-                        <Route path="/login" component={Login} />
-                        <Login/>
+                        <Switch>
+                            <Route path="/register" component={Register} />
+                            <Route path="/login" component={Login} />
+                            <Route path="" component={NoMatch} />
+                        </Switch>
                     </div>
                 </Router>
             );

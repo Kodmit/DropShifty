@@ -145,11 +145,6 @@ class EditProduct extends Component {
                                 </div>
 
                                 <div className="form-group">
-                                    <label htmlFor="edit_description">Description</label>
-                                    <input required="required" type="text" name="edit_description" className="_form-control" id="edit_description" placeholder="Description" value={productInfos.desc} onChange={this.handleChange} />
-                                </div>
-
-                                <div className="form-group">
                                     <label htmlFor="edit_price">Prix</label>
                                     <input required="required" type="number" name="edit_price" className="_form-control" id="edit_price" placeholder="Prix" value={productInfos.regular_price} onChange={this.handleChange} />
                                 </div>
@@ -157,6 +152,11 @@ class EditProduct extends Component {
                                 <div className="form-group">
                                     <label htmlFor="edit_stock">Stock</label>
                                     <input required="required" type="number" name="edit_stock" className="_form-control" id="edit_stock" placeholder="Stock" value={productInfos.stock_quantity} onChange={this.handleChange} />
+                                </div>
+
+                                <div className="form-group">
+                                    <label htmlFor="edit_description">Description</label>
+                                    <textarea style={{ height: "150px" }} required="required" name="edit_description" className="_form-control" id="edit_description" placeholder="Description" value={productInfos.desc} onChange={this.handleChange} />
                                 </div>
 
                                 <input type="submit" className="btn-import mt-3" value="Editer produit" />

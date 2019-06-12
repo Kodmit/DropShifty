@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/importedProducts.scss';
 import '../styles/app.scss';
 import Pagination from "react-js-pagination";
+import $ from 'jquery';
 
 const config = require('../components/includes/config.json');
 
