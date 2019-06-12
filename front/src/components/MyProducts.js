@@ -22,13 +22,9 @@ class MyProducts extends Component {
     }
 
     handlePageChange(pageNumber) {
-        //window.scrollTo(0, 0);
-
-        let self = this;
         const bindPageNumber = pageNumber;
 
-        console.log('active page is : ' +  bindPageNumber);
-        self.setState({
+        this.setState({
             activePage: bindPageNumber
         });
     }
@@ -77,8 +73,6 @@ class MyProducts extends Component {
       if (this.state.productList != null) {
 
         const { productList, activePage, totalPerPage } = this.state;
-
-        // Logic for displaying current total
         const indexOfLastTodo = activePage * totalPerPage;
         const indexOfFirstTodo = indexOfLastTodo - totalPerPage;
         const currentTodos = productList.slice(indexOfFirstTodo, indexOfLastTodo);
@@ -117,7 +111,7 @@ class MyProducts extends Component {
                 <div className="_pagination mt-5 mx-auto">
                     <Pagination
                         activePage={this.state.activePage}
-                        itemsCountPerPage={20}
+                        itemsCountPerPage={5}
                         totalItemsCount={this.state.productList.length}
                         pageRangeDisplayed={5}
                         onChange={this.handlePageChange}

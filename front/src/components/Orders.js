@@ -5,6 +5,8 @@ import '../styles/orders.scss';
 import '../styles/app.scss';
 import './includes/app';
 import 'moment';
+import Pagination from "react-js-pagination";
+
 
 let moment = require('moment');
 
@@ -17,8 +19,20 @@ class Orders extends Component {
         super(props)
         this.state = {
             ordersList: [],
+            activePage: 1,
+            totalPerPage: 5,
          }
+
+         this.handlePageChange = this.handlePageChange.bind(this);
       }
+
+    handlePageChange(pageNumber) {
+        const bindPageNumber = pageNumber;
+
+        this.setState({
+            activePage: bindPageNumber
+        });
+    }
 
     componentDidMount() {
         this.getOrdersList();
@@ -62,7 +76,12 @@ class Orders extends Component {
 
         if (this.state.ordersList != null) {
 
-          this.items = this.state.ordersList.map((item, key) =>
+          const { ordersList, activePage, totalPerPage } = this.state;
+          const indexOfLastTodo = activePage * totalPerPage;
+          const indexOfFirstTodo = indexOfLastTodo - totalPerPage;
+          const currentTodos = ordersList.slice(indexOfFirstTodo, indexOfLastTodo);
+
+          this.items = currentTodos.map((item, key) =>
               <div key={item.id} className="container mt-4">
                   {/*console.log(item)*/}
                   <Link className="link_details" to={"/order/" + item.id}>
@@ -97,7 +116,22 @@ class Orders extends Component {
                       {this.items}
                       <img id="loader-import" style={{ display: 'none' }} src="images/loader.svg" />
                   </div>
+
                   <div className="mb-5"></div>
+
+                  {console.log(this.state.ordersList.length)}
+
+                  <div className="_pagination mt-5 mx-auto">
+                    <Pagination
+                        activePage={this.state.activePage}
+                        itemsCountPerPage={5}
+                        totalItemsCount={this.state.ordersList.length}
+                        pageRangeDisplayed={5}
+                        onChange={this.handlePageChange}
+                        itemClass={'page-item'}
+                        linkClass={'page-link'}
+                    />
+                  </div>
               </div>
           );
         } else {
