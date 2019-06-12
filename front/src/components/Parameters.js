@@ -5,6 +5,8 @@ import '../styles/app.scss';
 import axios from "axios";
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
+import Header from './includes/Header';
+import NavbarSide from './includes/NavbarSide';
 import $ from 'jquery';
 
 const config = require('../components/includes/config.json');
@@ -286,79 +288,83 @@ class Parameters extends Component {
       if (this.state.userHaveShop === true) {        
 
         return (
-          <div className="main">
-              <div className="container mt-3">
-                  <h3>Paramètres</h3>
+          <div className="grid-container">
+              <Header/>
+              <NavbarSide/>
+              <div className="main">
+                  <div className="container mt-3">
+                      <h3>Paramètres</h3>
 
-                  <div className="row">
-                      <div className="col-lg-6 col-sm-12">
-                          <div style={{ width: '95%' }} className="parm_form_1 container mt-4 ml-2">
-                              <h4>Editer votre boutique</h4>
+                      <div className="row">
+                          <div className="col-lg-6 col-sm-12">
+                              <div style={{ width: '95%' }} className="parm_form_1 container mt-4 ml-2">
+                                  <h4>Editer votre boutique</h4>
 
-                              <div className="mt-4">
-                                  <form onSubmit={this.submitParameters}>
-                                      <div className="form-group">
-                                          <label htmlFor="shop_name">Nom de la boutique</label>
-                                          <input required="required" type="text" name="shop_name" className="_form-control" id="shop_name" placeholder="Nom de la boutique" value={shopInfos.name} onChange={this.handleChange}/>
+                                  <div className="mt-4">
+                                      <form onSubmit={this.submitParameters}>
+                                          <div className="form-group">
+                                              <label htmlFor="shop_name">Nom de la boutique</label>
+                                              <input required="required" type="text" name="shop_name" className="_form-control" id="shop_name" placeholder="Nom de la boutique" value={shopInfos.name} onChange={this.handleChange}/>
+                                          </div>
+
+                                          <div className="form-group">
+                                              <label htmlFor="shop_description">Description</label>
+                                              <input required="required" type="text" name="shop_description" className="_form-control" id="shop_description" placeholder="Description" value={shopInfos.description} onChange={this.handleChange}/>
+                                          </div>
+
+                                          <div className="form-group">
+                                              <label htmlFor="shop_city">Ville</label>
+                                              <input required="required" type="text" name="shop_city" className="_form-control" id="shop_city" placeholder="Ville de la boutique" value={shopInfos.city} onChange={this.handleChange}/>
+                                          </div>
+
+                                          <div className="form-group">
+                                              <label htmlFor="shop_address">Adresse</label>
+                                              <input required="required" type="text" name="shop_address" className="_form-control" id="shop_address" placeholder="Ville de la boutique" value={shopInfos.city} onChange={this.handleChange}/>
+                                          </div>
+
+                                          <div className="form-group">
+                                              <label htmlFor="postal_code">Code postal</label>
+                                              <input required="required" type="text" name="postal_code" className="_form-control" id="postal_code" placeholder="Code postal de la boutique" value={shopInfos.postal_code} onChange={this.handleChange}/>
+                                          </div>
+
+                                          <div className="form-group">
+                                              <label htmlFor="shop_url">Url de la boutique</label>
+                                              <input required="required" type="text" name="shop_url" className="_form-control" id="shop_url" placeholder="Url de la boutique" value={shopInfos.url} onChange={this.handleChange}/>
+                                          </div>
+
+                                          <input type="submit" className="btn-import mt-3" value="Editer" />
+                                      </form>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div className="col-lg-6 col-sm-12">
+                              <div style={{ width: '95%' }} className="parm_form_1 container mt-4 ml-2">
+                                  <h4>Editer votre profil</h4>
+                                  <form onSubmit={this.submitEditProfile}>
+                                      <div className="form-group mt-4">
+                                          <label htmlFor="edit_username">Nom d'utilisateur</label>
+                                          <input required="required" type="text" name="edit_username" className="_form-control" id="edit_username" placeholder="Nom d'utilisateur" value={userInfos.username} onChange={this.handleChange} />
                                       </div>
 
                                       <div className="form-group">
-                                          <label htmlFor="shop_description">Description</label>
-                                          <input required="required" type="text" name="shop_description" className="_form-control" id="shop_description" placeholder="Description" value={shopInfos.description} onChange={this.handleChange}/>
+                                          <label htmlFor="edit_email">Email</label>
+                                          <input required="required" type="text" name="edit_email" className="_form-control" id="edit_email" placeholder="Email" value={userInfos.email} onChange={this.handleChange} />
                                       </div>
 
                                       <div className="form-group">
-                                          <label htmlFor="shop_city">Ville</label>
-                                          <input required="required" type="text" name="shop_city" className="_form-control" id="shop_city" placeholder="Ville de la boutique" value={shopInfos.city} onChange={this.handleChange}/>
-                                      </div>
-
-                                      <div className="form-group">
-                                          <label htmlFor="shop_address">Adresse</label>
-                                          <input required="required" type="text" name="shop_address" className="_form-control" id="shop_address" placeholder="Ville de la boutique" value={shopInfos.city} onChange={this.handleChange}/>
-                                      </div>
-
-                                      <div className="form-group">
-                                          <label htmlFor="postal_code">Code postal</label>
-                                          <input required="required" type="text" name="postal_code" className="_form-control" id="postal_code" placeholder="Code postal de la boutique" value={shopInfos.postal_code} onChange={this.handleChange}/>
-                                      </div>
-
-                                      <div className="form-group">
-                                          <label htmlFor="shop_url">Url de la boutique</label>
-                                          <input required="required" type="text" name="shop_url" className="_form-control" id="shop_url" placeholder="Url de la boutique" value={shopInfos.url} onChange={this.handleChange}/>
+                                          <label htmlFor="edit_password">Mot de passe</label>
+                                          <input required="required" type="password" name="edit_password" className="_form-control" id="edit_password" placeholder="Mot de passe" />
                                       </div>
 
                                       <input type="submit" className="btn-import mt-3" value="Editer" />
                                   </form>
                               </div>
+
                           </div>
                       </div>
 
-                      <div className="col-lg-6 col-sm-12">
-                          <div style={{ width: '95%' }} className="parm_form_1 container mt-4 ml-2">
-                              <h4>Editer votre profil</h4>
-                              <form onSubmit={this.submitEditProfile}>
-                                  <div className="form-group mt-4">
-                                      <label htmlFor="edit_username">Nom d'utilisateur</label>
-                                      <input required="required" type="text" name="edit_username" className="_form-control" id="edit_username" placeholder="Nom d'utilisateur" value={userInfos.username} onChange={this.handleChange} />
-                                  </div>
-
-                                  <div className="form-group">
-                                      <label htmlFor="edit_email">Email</label>
-                                      <input required="required" type="text" name="edit_email" className="_form-control" id="edit_email" placeholder="Email" value={userInfos.email} onChange={this.handleChange} />
-                                  </div>
-
-                                  <div className="form-group">
-                                      <label htmlFor="edit_password">Mot de passe</label>
-                                      <input required="required" type="password" name="edit_password" className="_form-control" id="edit_password" placeholder="Mot de passe" />
-                                  </div>
-
-                                  <input type="submit" className="btn-import mt-3" value="Editer" />
-                              </form>
-                          </div>
-
-                      </div>
                   </div>
-
               </div>
           </div>
         );
@@ -366,79 +372,83 @@ class Parameters extends Component {
 
       else {
         return (
-          <div className="main">
-              <div className="container mt-3">
-                  <h3>Paramètres</h3>
+          <div className="grid-container">
+              <Header/>
+              <NavbarSide/>
+              <div className="main">
+                  <div className="container mt-3">
+                      <h3>Paramètres</h3>
 
-                  <div className="row">
-                      <div className="col-lg-6 col-sm-12">
-                          <div style={{ width: '95%' }} className="parm_form_1 container mt-4 ml-2">
-                              <h4>Créer votre boutique</h4>
+                      <div className="row">
+                          <div className="col-lg-6 col-sm-12">
+                              <div style={{ width: '95%' }} className="parm_form_1 container mt-4 ml-2">
+                                  <h4>Créer votre boutique</h4>
 
-                              <div className="mt-4">
-                                  <form onSubmit={this.submitParameters}>
-                                      <div className="form-group">
-                                          <label htmlFor="shop_name">Nom de la boutique</label>
-                                          <input required="required" type="text" name="shop_name" className="_form-control" id="shop_name" placeholder="Nom de la boutique"/>
-                                      </div>
+                                  <div className="mt-4">
+                                      <form onSubmit={this.submitParameters}>
+                                          <div className="form-group">
+                                              <label htmlFor="shop_name">Nom de la boutique</label>
+                                              <input required="required" type="text" name="shop_name" className="_form-control" id="shop_name" placeholder="Nom de la boutique"/>
+                                          </div>
 
-                                      <div className="form-group">
-                                          <label htmlFor="shop_description">Description</label>
-                                          <input required="required" type="text" name="shop_description" className="_form-control" id="shop_description" placeholder="Description"/>
-                                      </div>
+                                          <div className="form-group">
+                                              <label htmlFor="shop_description">Description</label>
+                                              <input required="required" type="text" name="shop_description" className="_form-control" id="shop_description" placeholder="Description"/>
+                                          </div>
 
-                                      <div className="form-group">
-                                          <label htmlFor="shop_city">Ville</label>
-                                          <input required="required" type="text" name="shop_city" className="_form-control" id="shop_city" placeholder="Ville de la boutique"/>
-                                      </div>
+                                          <div className="form-group">
+                                              <label htmlFor="shop_city">Ville</label>
+                                              <input required="required" type="text" name="shop_city" className="_form-control" id="shop_city" placeholder="Ville de la boutique"/>
+                                          </div>
 
-                                      <div className="form-group">
-                                          <label htmlFor="shop_address">Adresse</label>
-                                          <input required="required" type="text" name="shop_address" className="_form-control" id="shop_address" placeholder="Ville de la boutique"/>
-                                      </div>
+                                          <div className="form-group">
+                                              <label htmlFor="shop_address">Adresse</label>
+                                              <input required="required" type="text" name="shop_address" className="_form-control" id="shop_address" placeholder="Ville de la boutique"/>
+                                          </div>
 
-                                      <div className="form-group">
-                                          <label htmlFor="postal_code">Code postal</label>
-                                          <input required="required" type="text" name="postal_code" className="_form-control" id="postal_code" placeholder="Code postal de la boutique"/>
-                                      </div>
+                                          <div className="form-group">
+                                              <label htmlFor="postal_code">Code postal</label>
+                                              <input required="required" type="text" name="postal_code" className="_form-control" id="postal_code" placeholder="Code postal de la boutique"/>
+                                          </div>
 
-                                      <div className="form-group">
-                                          <label htmlFor="shop_url">Url de la boutique</label>
-                                          <input required="required" type="text" name="shop_url" className="_form-control" id="shop_url" placeholder="Url de la boutique"/>
-                                      </div>
+                                          <div className="form-group">
+                                              <label htmlFor="shop_url">Url de la boutique</label>
+                                              <input required="required" type="text" name="shop_url" className="_form-control" id="shop_url" placeholder="Url de la boutique"/>
+                                          </div>
 
-                                      <input type="submit" className="btn-import mt-3" value="Créer" />
-                                  </form>
+                                          <input type="submit" className="btn-import mt-3" value="Créer" />
+                                      </form>
+                                  </div>
                               </div>
                           </div>
-                      </div>
 
-                      <div className="col-lg-6 col-sm-12">
-                          <div style={{ width: '95%' }} className="parm_form_1 container mt-4 ml-2">
-                              <h4>Editer votre profil</h4>
-                              <form onSubmit={this.submitEditProfile}>
-                                  <div className="form-group mt-4">
-                                      <label htmlFor="edit_username">Nom d'utilisateur</label>
-                                      <input required="required" type="text" name="edit_username" className="_form-control" id="edit_username" placeholder="Nom d'utilisateur"/>
-                                  </div>
+                          <div className="col-lg-6 col-sm-12">
+                              <div style={{ width: '95%' }} className="parm_form_1 container mt-4 ml-2">
+                                  <h4>Editer votre profil</h4>
+                                  <form onSubmit={this.submitEditProfile}>
+                                      <div className="form-group mt-4">
+                                          <label htmlFor="edit_username">Nom d'utilisateur</label>
+                                          <input required="required" type="text" name="edit_username" className="_form-control" id="edit_username" placeholder="Nom d'utilisateur"/>
+                                      </div>
 
-                                  <div className="form-group">
-                                      <label htmlFor="edit_email">Email</label>
-                                      <input required="required" type="text" name="edit_email" className="_form-control" id="edit_email" placeholder="Email"/>
-                                  </div>
+                                      <div className="form-group">
+                                          <label htmlFor="edit_email">Email</label>
+                                          <input required="required" type="text" name="edit_email" className="_form-control" id="edit_email" placeholder="Email"/>
+                                      </div>
 
-                                  <div className="form-group">
-                                      <label htmlFor="edit_password">Mot de passe</label>
-                                      <input required="required" type="password" name="edit_password" className="_form-control" id="edit_password" placeholder="Mot de passe"/>
-                                  </div>
+                                      <div className="form-group">
+                                          <label htmlFor="edit_password">Mot de passe</label>
+                                          <input required="required" type="password" name="edit_password" className="_form-control" id="edit_password" placeholder="Mot de passe"/>
+                                      </div>
 
-                                  <input type="submit" className="btn-import mt-3" value="Editer" />
-                              </form>
+                                      <input type="submit" className="btn-import mt-3" value="Editer" />
+                                  </form>
+                              </div>
+
                           </div>
-
                       </div>
-                  </div>
 
+                  </div>
               </div>
           </div>
         );
