@@ -4,9 +4,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/orders.scss';
 import '../styles/app.scss';
 import './includes/app';
+import Header from './includes/Header';
+import NavbarSide from './includes/NavbarSide';
 import 'moment';
 import Pagination from "react-js-pagination";
 import $ from 'jquery';
+
 
 
 let moment = require('moment');
@@ -111,36 +114,44 @@ class Orders extends Component {
           );
 
           return (
-              <div className="main">
-                  <div className="container mt-4">
-                      <h3>Liste des commandes</h3>
-                      {this.items}
-                      <img id="loader-import" style={{ display: 'none' }} src="images/loader.svg" />
-                  </div>
+            <div className="grid-container">
+                <Header/>
+                <NavbarSide/>
+                <div className="main">
+                    <div className="container mt-4">
+                        <h3>Liste des commandes</h3>
+                        {this.items}
+                        <img id="loader-import" style={{ display: 'none' }} src="images/loader.svg" />
+                    </div>
 
-                  <div className="mb-5"></div>
+                    <div className="mb-5"></div>
 
-                  {console.log(this.state.ordersList.length)}
+                    {console.log(this.state.ordersList.length)}
 
-                  <div className="_pagination mt-5 mx-auto">
-                    <Pagination
-                        activePage={this.state.activePage}
-                        itemsCountPerPage={5}
-                        totalItemsCount={this.state.ordersList.length}
-                        pageRangeDisplayed={5}
-                        onChange={this.handlePageChange}
-                        itemClass={'page-item'}
-                        linkClass={'page-link'}
-                    />
-                  </div>
-              </div>
+                    <div className="_pagination mt-5 mx-auto">
+                        <Pagination
+                            activePage={this.state.activePage}
+                            itemsCountPerPage={5}
+                            totalItemsCount={this.state.ordersList.length}
+                            pageRangeDisplayed={5}
+                            onChange={this.handlePageChange}
+                            itemClass={'page-item'}
+                            linkClass={'page-link'}
+                        />
+                    </div>
+                </div>
+            </div>
           );
         } else {
           return (
-            <div className="main">
-                <div className="container mt-4">
-                    <h3>Aucune commande trouvé</h3>
-                    <img id="loader-import" style={{ display: 'none' }} src="images/loader.svg" />
+            <div className="grid-container">
+                <Header/>
+                <NavbarSide/>
+                <div className="main">
+                    <div className="container mt-4">
+                        <h3>Aucune commande trouvé</h3>
+                        <img id="loader-import" style={{ display: 'none' }} src="images/loader.svg" />
+                    </div>
                 </div>
             </div>
           );

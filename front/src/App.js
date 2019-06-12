@@ -115,9 +115,6 @@ class App extends Component {
                                 <Route path="/login" component={Login} />
                                 <Route path="/register" component={Register} />
 
-                                <div className="grid-container">
-                                    <Header/>
-                                    <NavbarSide/>
                                     <Switch>
                                         <Route path="/" component={Dashboard} exact/>
                                         <Route path="/orders" component={Orders}/>
@@ -132,7 +129,6 @@ class App extends Component {
                                         <Route path="" component={NoMatch} />
                                     </Switch>
 
-                                </div>
                             </div>
                         </div>
                     </Router>

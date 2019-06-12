@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/orderDetails.scss';
 import '../styles/app.scss';
+import Header from './includes/Header';
+import NavbarSide from './includes/NavbarSide';
 import 'moment';
 
 let moment = require('moment');
@@ -62,30 +64,34 @@ class OrderDetails extends Component {
         let dateOrder = moment(orderInfos.date_created).format('DD/MM/YYYY') || '';
         
         return (
-            <div className="main">
-                <div className="container mt-4">
-                    <h2>Detail de la commande</h2>
-                    <div className="row">
-                        <div className="col-lg-6 col-sm-12">
-                            <div className="order_detail container ml-2 mt-4">
-                                <p>N° de la commande : #{orderInfos.id}</p>
-                                <p>Montant TTC : {orderInfos.total} {orderInfos.currency}</p>
-                                <p>Méthode de paiement : {orderInfos.payment_method_title}</p>
-                                <p>Date de la commande : {dateOrder}</p>
-                                <p></p>
+            <div className="grid-container">
+                <Header/>
+                <NavbarSide/>
+                <div className="main">
+                    <div className="container mt-4">
+                        <h2>Detail de la commande</h2>
+                        <div className="row">
+                            <div className="col-lg-6 col-sm-12">
+                                <div className="order_detail container ml-2 mt-4">
+                                    <p>N° de la commande : #{orderInfos.id}</p>
+                                    <p>Montant TTC : {orderInfos.total} {orderInfos.currency}</p>
+                                    <p>Méthode de paiement : {orderInfos.payment_method_title}</p>
+                                    <p>Date de la commande : {dateOrder}</p>
+                                    <p></p>
+                                </div>
                             </div>
+                            <div className="col-lg-6 col-sm-12">
+                                <div className="order_detail container ml-2 mt-4">
+                                    <p>Frais de livraison : {orderInfos.shipping_total} {orderInfos.currency}</p>
+                                    <p>Taxes : {orderInfos.total_tax} {orderInfos.currency}</p>
+                                    <p>Montant HT : {htAmount} {orderInfos.currency}</p>
+                                    <p></p>
+                                </div>
+                            </div>                         
                         </div>
-                        <div className="col-lg-6 col-sm-12">
-                            <div className="order_detail container ml-2 mt-4">
-                                <p>Frais de livraison : {orderInfos.shipping_total} {orderInfos.currency}</p>
-                                <p>Taxes : {orderInfos.total_tax} {orderInfos.currency}</p>
-                                <p>Montant HT : {htAmount} {orderInfos.currency}</p>
-                                <p></p>
-                            </div>
-                        </div>                         
+                        
+                        <img id="loader-import" src="../images/loader.svg" />
                     </div>
-                    
-                    <img id="loader-import" src="../images/loader.svg" />
                 </div>
             </div>
         );
