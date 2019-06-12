@@ -83,13 +83,11 @@ class App extends Component {
 
         xhr.addEventListener("readystatechange", function () {
             if (this.readyState === this.DONE) {
-            let object = JSON.parse(this.response);
-            let res = object.data['CheckIfConnected'];
+                let object = JSON.parse(this.response);
+                let res = object.data['CheckIfConnected'];
 
-            //console.log(res)
-
-            self.setState({
-                connected: res
+                self.setState({
+                    connected: res
                 });
             }
         });

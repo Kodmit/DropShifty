@@ -7,6 +7,8 @@ import 'moment';
 import axios from 'axios';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
+import Header from './includes/Header';
+import NavbarSide from './includes/NavbarSide';
 
 const config = require('../components/includes/config.json');
 
@@ -127,48 +129,50 @@ class EditProduct extends Component {
 
         let productInfos = this.state.productInfos;
 
-        console.log(productInfos);
-
         return (
-            <div className="main">
-                <div className="container mt-4">
-                    <div className="row mt-3">
-                        <div className="col-9 mx-auto d-block">
-                            <form className="edit_form" onSubmit={this.submitEditProfile}>
-                                <h3>{"Editer produit"}</h3>
+            <div className="grid-container">
+                <Header/>
+                <NavbarSide/>
+                <div className="main">
+                    <div className="container mt-4">
+                        <div className="row mt-3">
+                            <div className="col-9 mx-auto d-block">
+                                <form className="edit_form" onSubmit={this.submitEditProfile}>
+                                    <h3>{"Editer produit"}</h3>
 
-                                <div className="mt-4"></div>
+                                    <div className="mt-4"></div>
 
-                                <div className="form-group">
-                                    <label htmlFor="edit_title">Titre</label>
-                                    <input required="required" type="text" name="edit_title" className="_form-control" id="edit_title" placeholder="Titre du produit" value={productInfos.name} onChange={this.handleChange} />
-                                </div>
+                                    <div className="form-group">
+                                        <label htmlFor="edit_title">Titre</label>
+                                        <input required="required" type="text" name="edit_title" className="_form-control" id="edit_title" placeholder="Titre du produit" value={productInfos.name} onChange={this.handleChange} />
+                                    </div>
 
-                                <div className="form-group">
-                                    <label htmlFor="edit_price">Prix</label>
-                                    <input required="required" type="number" name="edit_price" className="_form-control" id="edit_price" placeholder="Prix" value={productInfos.regular_price} onChange={this.handleChange} />
-                                </div>
+                                    <div className="form-group">
+                                        <label htmlFor="edit_price">Prix</label>
+                                        <input required="required" type="number" name="edit_price" className="_form-control" id="edit_price" placeholder="Prix" value={productInfos.regular_price} onChange={this.handleChange} />
+                                    </div>
 
-                                <div className="form-group">
-                                    <label htmlFor="edit_stock">Stock</label>
-                                    <input required="required" type="number" name="edit_stock" className="_form-control" id="edit_stock" placeholder="Stock" value={productInfos.stock_quantity} onChange={this.handleChange} />
-                                </div>
+                                    <div className="form-group">
+                                        <label htmlFor="edit_stock">Stock</label>
+                                        <input required="required" type="number" name="edit_stock" className="_form-control" id="edit_stock" placeholder="Stock" value={productInfos.stock_quantity} onChange={this.handleChange} />
+                                    </div>
 
-                                <div className="form-group">
-                                    <label htmlFor="edit_description">Description</label>
-                                    <textarea style={{ height: "150px" }} required="required" name="edit_description" className="_form-control" id="edit_description" placeholder="Description" value={productInfos.desc} onChange={this.handleChange} />
-                                </div>
+                                    <div className="form-group">
+                                        <label htmlFor="edit_description">Description</label>
+                                        <textarea style={{ height: "150px" }} required="required" name="edit_description" className="_form-control" id="edit_description" placeholder="Description" value={productInfos.desc} onChange={this.handleChange} />
+                                    </div>
 
-                                <input type="submit" className="btn-import mt-3" value="Editer produit" />
-                            </form>         
+                                    <input type="submit" className="btn-import mt-3" value="Editer produit" />
+                                </form>         
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div id="overlay" style={{ display: 'none' }}>
-                    <img id="loader" src={process.env.PUBLIC_URL + "/images/loader.svg"} />
-                </div>
+                    <div id="overlay" style={{ display: 'none' }}>
+                        <img id="loader" src={process.env.PUBLIC_URL + "/images/loader.svg"} />
+                    </div>
 
+                </div>
             </div>
         );
     }
