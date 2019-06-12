@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/productDetails.scss';
 import '../styles/app.scss';
+import Header from './includes/Header';
+import NavbarSide from './includes/NavbarSide';
 import $ from 'jquery';
 import 'moment';
 
@@ -80,25 +82,29 @@ class ProductDetails extends Component {
         });
         
         return (
-            <div className="main">
-                <div className="container mt-4">
-                    <div className="row">
-                        <div className="col-6">
-                            <div className="imgsList"></div>
-                        </div>
-                        <div className="col-6">
-                            <div className="infosList">
-                                <h2></h2>
-                                <div className="mt-4"></div>
-                                <p className="price"> </p>
-                                <p className="created_at"></p>
-                                <p className="stock"></p>
-                                <div className="desc"></div>
+            <div className="grid-container">
+                <Header/>
+                <NavbarSide/>
+                <div className="main">
+                    <div className="container mt-4">
+                        <div className="row">
+                            <div className="col-6">
+                                <div className="imgsList"></div>
+                            </div>
+                            <div className="col-6">
+                                <div className="infosList">
+                                    <h2></h2>
+                                    <div className="mt-4"></div>
+                                    <p className="price"> </p>
+                                    <p className="created_at"></p>
+                                    <p className="stock"></p>
+                                    <div className="desc"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <img id="loader-import" src="../images/loader.svg" />
                 </div>
-                <img id="loader-import" src="../images/loader.svg" />
             </div>
         );
     }

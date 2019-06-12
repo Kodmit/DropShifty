@@ -3,6 +3,8 @@ import {NavLink, Link} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/importedProducts.scss';
 import '../styles/app.scss';
+import Header from './includes/Header';
+import NavbarSide from './includes/NavbarSide';
 import Pagination from "react-js-pagination";
 import $ from 'jquery';
 
@@ -101,32 +103,40 @@ class MyProducts extends Component {
         );
 
         return (
-            <div className="main">
-                <div className="container mt-4">
-                    <h3>Mes Produits</h3>
-                    {this.items}
-                    <img id="loader-import" style={{ display: 'none' }} src="images/loader.svg" />
-                </div>
+            <div className="grid-container">
+                <Header/>
+                <NavbarSide/>
+                <div className="main">
+                    <div className="container mt-4">
+                        <h3>Mes Produits</h3>
+                        {this.items}
+                        <img id="loader-import" style={{ display: 'none' }} src="images/loader.svg" />
+                    </div>
 
-                <div className="_pagination mt-5 mx-auto">
-                    <Pagination
-                        activePage={this.state.activePage}
-                        itemsCountPerPage={5}
-                        totalItemsCount={this.state.productList.length}
-                        pageRangeDisplayed={5}
-                        onChange={this.handlePageChange}
-                        itemClass={'page-item'}
-                        linkClass={'page-link'}
-                    />
+                    <div className="_pagination mt-5 mx-auto">
+                        <Pagination
+                            activePage={this.state.activePage}
+                            itemsCountPerPage={5}
+                            totalItemsCount={this.state.productList.length}
+                            pageRangeDisplayed={5}
+                            onChange={this.handlePageChange}
+                            itemClass={'page-item'}
+                            linkClass={'page-link'}
+                        />
+                    </div>
                 </div>
             </div>
         );
       } else {
           return (
-            <div className="main">
-                <div className="container mt-4">
-                    <h3>Aucun produit importé</h3>
-                    <img id="loader-import" style={{ display: 'none' }} src="images/loader.svg" />
+            <div className="grid-container">
+                <Header/>
+                <NavbarSide/>
+                <div className="main">
+                    <div className="container mt-4">
+                        <h3>Aucun produit importé</h3>
+                        <img id="loader-import" style={{ display: 'none' }} src="images/loader.svg" />
+                    </div>
                 </div>
             </div>
           );
