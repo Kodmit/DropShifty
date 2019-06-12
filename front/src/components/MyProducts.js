@@ -22,6 +22,9 @@ class MyProducts extends Component {
     }
 
     handlePageChange(pageNumber) {
+        $(window).scrollTop(0);
+        $(".main").scrollTop(0);
+
         const bindPageNumber = pageNumber;
 
         this.setState({
@@ -47,15 +50,12 @@ class MyProducts extends Component {
             xhr.addEventListener("readystatechange", function () {
 
             if (this.readyState === this.DONE) {
-                //console.log(this.response);
                 let object = JSON.parse(this.response);
                 let objectParsed = object.data.WC_GetProductsList;
 
                 self.setState({
                     productList: objectParsed
-                })
-
-                //console.log(self.state.productList)
+                });
 
                 document.getElementById("loader-import").style.display = "none";
 
@@ -79,7 +79,6 @@ class MyProducts extends Component {
 
         this.items = currentTodos.map((item, key) =>
             <div key={item.id} className="content-import">
-                {/*console.log("Item : " + item.name)*/}
                 <Link className="link_details" to={"/product/" + item.id}>
                     <div className="box-product-import _shadow mt-5">
                         <div style={{ width: '100%', height: '100%' }} className="row">

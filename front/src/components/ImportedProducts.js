@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/importedProducts.scss';
 import '../styles/app.scss';
 import Pagination from "react-js-pagination";
+import $ from 'jquery';
 
 
 const config = require('../components/includes/config.json');
@@ -23,6 +24,9 @@ class ImportedProducts extends Component {
     }
 
     handlePageChange(pageNumber) {
+        $(window).scrollTop(0);
+        $(".main").scrollTop(0);
+
         const bindPageNumber = pageNumber;
 
         this.setState({
@@ -48,15 +52,12 @@ class ImportedProducts extends Component {
             xhr.addEventListener("readystatechange", function () {
 
             if (this.readyState === this.DONE) {
-                //console.log(this.response);
                 let object = JSON.parse(this.response);
                 let objectParsed = object.data.WC_GetProductsList;
 
                 self.setState({
                     productList: objectParsed
-                })
-
-                //console.log(self.state.productList)
+                });
 
                 document.getElementById("loader-import").style.display = "none";
 

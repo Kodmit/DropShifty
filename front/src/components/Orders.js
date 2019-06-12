@@ -27,6 +27,9 @@ class Orders extends Component {
       }
 
     handlePageChange(pageNumber) {
+        $(window).scrollTop(0);
+        $(".main").scrollTop(0);
+
         const bindPageNumber = pageNumber;
 
         this.setState({
@@ -57,9 +60,7 @@ class Orders extends Component {
 
                 self.setState({
                     ordersList: objectParsed
-                })
-
-                //console.log(self.state.ordersList);
+                });
 
                 document.getElementById("loader-import").style.display = "none";
 
@@ -83,7 +84,6 @@ class Orders extends Component {
 
           this.items = currentTodos.map((item, key) =>
               <div key={item.id} className="container mt-4">
-                  {/*console.log(item)*/}
                   <Link className="link_details" to={"/order/" + item.id}>
                       <div className="row mt-5">
                           <div className="col-sm-12">
