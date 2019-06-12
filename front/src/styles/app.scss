@@ -25,7 +25,7 @@ header {
     right: 0;
     position: absolute;
     margin-right: 55px;
-    line-height: 4em;
+    top: -43px;
     color: $white !important;
     cursor: pointer;
     &:hover {
@@ -318,4 +318,9 @@ footer {
   font-size: 18px;
   font-weight: bold;
   margin-top: 19px;
+  margin-left: 219px;
+}
+
+ul.pagination {
+  
 }

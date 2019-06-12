@@ -3,6 +3,8 @@ import {NavLink, Link} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/importedProducts.scss';
 import '../styles/app.scss';
+import Pagination from "react-js-pagination";
+
 
 const config = require('../components/includes/config.json');
 
@@ -13,8 +15,22 @@ class ImportedProducts extends Component {
         super(props)
         this.state = {
             productList: [],
-         }
-      }
+            activePage: 1,
+            totalPerPage: 5,
+        }
+        this.handlePageChange = this.handlePageChange.bind(this);
+
+    }
+
+    handlePageChange(pageNumber) {
+        let self = this;
+        const bindPageNumber = pageNumber;
+
+        console.log('active page is : ' +  bindPageNumber);
+        self.setState({
+            activePage: bindPageNumber
+        });
+    }
 
     componentDidMount() {
         this.getProductsList();
@@ -57,11 +73,18 @@ class ImportedProducts extends Component {
 
     render() {
 
+
       if (this.state.productList != null) {
 
-        this.items = this.state.productList.map((item, key) =>
+        const { productList, activePage, totalPerPage } = this.state;
+
+        // Logic for displaying current total
+        const indexOfLastTodo = activePage * totalPerPage;
+        const indexOfFirstTodo = indexOfLastTodo - totalPerPage;
+        const currentTodos = productList.slice(indexOfFirstTodo, indexOfLastTodo);
+
+        this.items = currentTodos.map((item, key) =>
             <div key={item.id} className="content-import">
-                {/*console.log("Item : " + item.name)*/}
                 <Link className="link_details" to={"/product/" + item.id}>
                     <div className="box-product-import _shadow mt-5">
                         <div style={{ width: '100%', height: '100%' }} className="row">
@@ -87,7 +110,20 @@ class ImportedProducts extends Component {
                 <div className="container mt-4">
                     <h3>Produits importés</h3>
                     {this.items}
+                    {console.log(this.items.length)}
                     <img id="loader-import" style={{ display: 'none' }} src="images/loader.svg" />
+                </div>
+
+                <div className="mt-5 mx-auto d-block">
+                    <Pagination
+                        activePage={this.state.activePage}
+                        itemsCountPerPage={20}
+                        totalItemsCount={this.state.productList.length}
+                        pageRangeDisplayed={5}
+                        onChange={this.handlePageChange}
+                        itemClass={'page-item'}
+                        linkClass={'page-link'}
+                    />
                 </div>
             </div>
         );

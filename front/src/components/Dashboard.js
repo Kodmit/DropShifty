@@ -179,12 +179,16 @@ class Dashboard extends React.Component {
         let products = [];
         let productsName = [];
 
+        
+
         $.each(ordersList, function(index, value) {
           if (value.total != 'undefined') {
             totalSum += parseFloat(value.total);
             currency = value.currency;
             products.push(value.line_items);
           }
+          return index < 4; // => Limit to 5 items
+
         });
 
         $.each(products, function(i, v) {
@@ -219,7 +223,7 @@ class Dashboard extends React.Component {
                       <div className="mt-4"></div>
 
                       <div className="row">
-                          <div className="col-sm-8">
+                          <div className="col-lg-8 col-sm-12">
                               <div className="graph-sales">
                                   {/*<Chart />*/}
                                   <div className="chart _shadow">
@@ -244,7 +248,7 @@ class Dashboard extends React.Component {
                               </div>
                           </div>
 
-                          <div className="col-sm-4">
+                          <div className="col-lg-4 col-sm-12">
                               <div className="overview _shadow">
                                   <p className="p-2 bold">Vue d'ensemble</p>
 
@@ -257,7 +261,7 @@ class Dashboard extends React.Component {
                                           </div>
                                           <div className="col-sm-5"></div>
                                           <div className="col-sm-5">
-                                              <p className="res_val">{totalSum || '-'} {currency}</p>
+                                              <p className="res_val">{totalSum.toFixed(2) || '-'} {currency}</p>
                                           </div>
                                       </div>
                                       <div className="row">
@@ -293,7 +297,7 @@ class Dashboard extends React.Component {
                                               <p className="bold">Chiffre d'affaires</p>
                                           </div>
                                           <div className="col-sm-5">
-                                              <p className="res_val">{totalSum || '-'} {currency}</p>
+                                              <p className="res_val">{totalSum.toFixed(2) || '-'} {currency}</p>
                                           </div>
                                       </div>
                                   </div>
@@ -330,7 +334,7 @@ class Dashboard extends React.Component {
                     <div className="mt-4"></div>
 
                     <div className="row">
-                        <div className="col-sm-8">
+                        <div className="col-lg-8 col-sm-12">
                             <div className="graph-sales">
                                 <div className="chart _shadow">
                                     <Line
@@ -354,7 +358,7 @@ class Dashboard extends React.Component {
                             </div>
                         </div>
 
-                        <div className="col-sm-4">
+                        <div className="col-lg-4 col-sm-12">
                             <div className="overview _shadow">
                                 <p className="p-2 bold">Vue d'ensemble</p>
 

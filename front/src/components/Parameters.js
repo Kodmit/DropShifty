@@ -83,7 +83,7 @@ class Parameters extends Component {
                 Swal.fire({
                     title: '<strong>Utilisateur modifié !</strong>',
                     type: 'success',
-                    html: 'Vos informations ont bien étés modfiées',
+                    html: 'Vos informations ont bien été modfiées',
                     showCloseButton: true,
                     showCancelButton: false,
                     focusConfirm: false,
@@ -155,7 +155,7 @@ class Parameters extends Component {
                 Swal.fire({
                     title: '<strong>Informations enregistrées !</strong>',
                     type: 'success',
-                    html: 'Les informations ont bien étées enregistrées ! Vous pouvez à présent importer des produits',
+                    html: 'Les informations ont bien été enregistrées ! Vous pouvez à présent importer des produits',
                     showCloseButton: true,
                     showCancelButton: false,
                     focusConfirm: false,

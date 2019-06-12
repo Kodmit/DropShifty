@@ -68,19 +68,17 @@ class Header extends Component {
 
         return (
             <header>
+                <p style={{ textTransform: 'capitalize' }} className="welcome_user">Bienvenue {username}</p>
                 <div className="row">
-                    <div className="col-2">
+                    <div className="col-5">
                         {/*<a href="/"><img className="logo" src="/logo.png" alt="logo" /></a>*/}
                     </div>
-                    <div className="col-3">
-                        <p style={{ textTransform: 'capitalize' }} className="welcome_user">Bienvenue {username}</p>
-                    </div>
+                    
                     <div className="col-7">
                         {/*<NavLink to={"/edit-profile"}>Editer profil</NavLink>*/}
                         {/*<NavLink to={"/profile"}>Mon profil</NavLink>*/}
                         <a className="logout_btn mt-1" onClick={this.logout}><i style={{ color: 'red', fontSize: '20px' }} class="fas fa-power-off"></i></a>
                     </div>
-
                 </div>
             </header>
         );
