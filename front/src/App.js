@@ -111,25 +111,22 @@ class App extends Component {
                 <ApolloProvider client={client}>
                     <Router>
                         <div>
-                            <div>
-                                <Route path="/login" component={Login} />
-                                <Route path="/register" component={Register} />
+                            <Route path="/login" component={Login} exact />
+                            <Route path="/register" component={Register} exact />
 
-                                    <Switch>
-                                        <Route path="/" component={Dashboard} exact/>
-                                        <Route path="/orders" component={Orders}/>
-                                        <Route path="/order/:id" render={(props) => <OrderDetails {...props}/>} />
-                                        <Route path="/import" component={ImportProducts}/>
-                                        <Route path="/imported" component={ImportedProducts}/>
-                                        <Route path="/products" component={MyProducts}/>
-                                        <Route path="/product/:id" render={(props) => <ProductDetails {...props}/>} />
-                                        <Route path="/product/edit/:id" render={(props) => <EditProduct {...props}/>} />
-                                        <Route path="/notifications" component={Notifications}/>
-                                        <Route path="/parameters" component={Parameters}/>
-                                        <Route path="" component={NoMatch} />
-                                    </Switch>
-
-                            </div>
+                            <Switch>
+                                <Route path="/" component={Dashboard} exact/>
+                                <Route path="/orders" component={Orders} exact />
+                                <Route path="/order/:id" render={(props) => <OrderDetails {...props}/>} exact />
+                                <Route path="/import" component={ImportProducts} exact />
+                                <Route path="/imported" component={ImportedProducts} exact />
+                                <Route path="/products" component={MyProducts} exact />
+                                <Route path="/product/:id" render={(props) => <ProductDetails {...props}/>} exact />
+                                <Route path="/product/edit/:id" render={(props) => <EditProduct {...props}/>} exact />
+                                <Route path="/notifications" component={Notifications} exact />
+                                <Route path="/parameters" component={Parameters} exact />
+                                <Route path="" component={NoMatch} exact />
+                            </Switch>
                         </div>
                     </Router>
                 </ApolloProvider>
@@ -139,8 +136,9 @@ class App extends Component {
                 <Router>
                     <div>
                         <Switch>
-                            <Route path="/register" component={Register} />
-                            <Route path="/login" component={Login} />
+                            <Route path="/register" component={Register} exact />
+                            <Route path="/login" component={Login} exact />
+                            <Route path="/" component={Login} exact />
                             <Route path="" component={NoMatch} />
                         </Switch>
                     </div>
