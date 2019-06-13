@@ -5,6 +5,7 @@ import '../styles/app.scss';
 import Header from './includes/Header';
 import NavbarSide from './includes/NavbarSide';
 import axios from 'axios';
+import $ from 'jquery';
 import 'moment';
 
 let moment = require('moment');
@@ -18,28 +19,57 @@ class OrderDetails extends Component {
         super(props)
         this.state = {
             orderInfos: [],
+            line_items: [],
+            orderId: '',
         }
     }
 
-    passOrder() {
-        axios.post(config.config.api_url, {
-            query: `mutation PlaceOrder($data: PlaceOrderInput!) {
-                PlaceOrder(input: $data) {
-                content
-              }
-            }`,
-            variables: {
-              "data": {
-                  sku: "205214501",
-                  qty: "1",
-                  order_id: "1537",
-                  remark: "Remarque de test"
-              }
+    passOrder(orderId) {
+        //console.log(this.state.line_items.sku);
+
+       axios.post(config.config.api_url, {
+        query: `{
+            WC_GetOrder(id:` + orderId +`)
+        }`,
+        }, {
+            headers: {
+            'Content-Type': 'application/json'
             }
-          }, {
-              headers: {
+        }).then((result) => {
+            let orderInfos = result.data.data.WC_GetOrder;
+            let lineItems = orderInfos.line_items;
+            let line_items_arr = [];
+
+            $(lineItems).each(function(index, value) {
+                line_items_arr.push(value);
+            });
+
+            console.log(line_items_arr[0]);
+            console.log(orderInfos.billing)
+
+            axios.post(config.config.api_url, {
+                query: `mutation PlaceOrder($data: PlaceOrderInput!) {
+                    PlaceOrder(input: $data) {
+                    content
+                  }
+                }`,
+                variables: {
+                  "data": {
+                      sku: line_items_arr[0].sku,
+                      qty: line_items_arr[0].quantity,
+                      order_id: orderId,
+                      first_name: orderInfos.billing.first_name,
+                      last_name: orderInfos.billing.last_name,
+                      address: orderInfos.billing.last_name,
+                      city: orderInfos.billing.city,
+                      postal_code: orderInfos.billing.postcode,
+                      remark: "Remarque de test"
+                  }
+                }
+            }, {
+                headers: {
                 'Content-Type': 'application/json'
-              }
+                }
             }).then((result) => {
                 let content = JSON.parse(result.data.data.PlaceOrder.content);
                 console.log(content);
@@ -51,12 +81,17 @@ class OrderDetails extends Component {
                 if (content.status == 1) {
                     console.log("status = 1")
                 }
-
+                
             });
+        });
+
     }
 
     componentDidMount() {
         let order_id = this.props.match.params.id;
+        this.setState({
+            orderId: order_id
+        })
         this.getOrderDetails(order_id);
     }
 
@@ -78,7 +113,8 @@ class OrderDetails extends Component {
                 let objectParsed = object.data.WC_GetOrder;
 
                 self.setState({
-                    orderInfos: objectParsed
+                    orderInfos: objectParsed,
+                    line_items: objectParsed.line_items
                 });
 
                 document.getElementById("loader-import").style.display = "none";
@@ -127,7 +163,7 @@ class OrderDetails extends Component {
                         </div>
 
                         <div>
-                            <button style={{ width: '250px' }} onClick={this.passOrder} className="btn-import float-right mt-5 mr-5">Passer la commande</button>
+                            <button style={{ width: '250px' }} onClick={() => this.passOrder(orderInfos.id)} className="btn-import float-right mt-5 mr-5">Passer la commande</button>
                         </div>
                         
                         <img id="loader-import" src="../images/loader.svg" />
