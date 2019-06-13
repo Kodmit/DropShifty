@@ -6,6 +6,8 @@ import Header from './includes/Header';
 import NavbarSide from './includes/NavbarSide';
 import axios from 'axios';
 import $ from 'jquery';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import 'sweetalert2/src/sweetalert2.scss';
 import 'moment';
 
 let moment = require('moment');
@@ -44,8 +46,8 @@ class OrderDetails extends Component {
                 line_items_arr.push(value);
             });
 
-            console.log(line_items_arr[0]);
-            console.log(orderInfos.billing)
+            //console.log(line_items_arr[0]);
+            //console.log(orderInfos.billing)
 
             axios.post(config.config.api_url, {
                 query: `mutation PlaceOrder($data: PlaceOrderInput!) {
@@ -72,15 +74,48 @@ class OrderDetails extends Component {
                 }
             }).then((result) => {
                 let content = JSON.parse(result.data.data.PlaceOrder.content);
-                console.log(content);
-
-                if (content.status == 0) {
-                    console.log("status = 0")
+                //let content = JSON.parse(result);
+                console.log(content.msg[orderId]);
+                
+                if (content.msg[orderId].msg == "success") {
+                    Swal.fire({
+                        title: '<strong>Commande passée !</strong>',
+                        type: 'error',
+                        html: 'La commande a été passée avec succes' + '<a href="'+ config.config.chinabrand_login_url +'">Passer commande chez le fournisseur</a>',
+                        showCloseButton: true,
+                        showCancelButton: false,
+                        focusConfirm: false,
+                        confirmButtonText: 'Fermer',
+                        confirmButtonAriaLabel: 'Fermer'
+                    });
                 }
 
-                if (content.status == 1) {
-                    console.log("status = 1")
+                if (content.msg[orderId].msg == "Order already placed") {
+                    Swal.fire({
+                        title: '<strong>Commande déjà passée !</strong>',
+                        type: 'error',
+                        html: "La commande a déjà été passée veuillez essayer avec une autre commande.",
+                        showCloseButton: true,
+                        showCancelButton: false,
+                        focusConfirm: false,
+                        confirmButtonText: 'Fermer',
+                        confirmButtonAriaLabel: 'Fermer'
+                    });
                 }
+
+                else {
+                    Swal.fire({
+                        title: '<strong>Erreur !</strong>',
+                        type: 'error',
+                        html: "Oups ! Une erreur s'est produite veuillez réessayer.",
+                        showCloseButton: true,
+                        showCancelButton: false,
+                        focusConfirm: false,
+                        confirmButtonText: 'Fermer',
+                        confirmButtonAriaLabel: 'Fermer'
+                    });
+                }
+                
                 
             });
         });
