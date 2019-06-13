@@ -21,6 +21,7 @@ import axios from 'axios';
 import ProductDetails from './components/ProductDetails';
 import OrderDetails from './components/OrderDetails';
 import EditProduct from './components/EditProduct';
+import Profile from './components/Profile';
 import $ from 'jquery';
 
 const config = require('./components/includes/config.json');
@@ -122,6 +123,7 @@ class App extends Component {
                                 <Route path="/product/:id" render={(props) => <ProductDetails {...props}/>} exact />
                                 <Route path="/product/edit/:id" render={(props) => <EditProduct {...props}/>} exact />
                                 <Route path="/notifications" component={Notifications} exact />
+                                <Route path="/profile" component={Profile} exact />
                                 <Route path="/parameters" component={Parameters} exact />
                                 <Route path="" component={NoMatch} exact />
                             </Switch>

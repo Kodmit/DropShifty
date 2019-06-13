@@ -129,6 +129,15 @@ class NavbarSide extends Component {
 
             <div className="row mt-4">
                 <div className="col-sm-2">
+                    <img className="icons-nav" src={process.env.PUBLIC_URL + "/images/icons/user.svg"} alt="profil"></img>
+                </div>
+                <div className="col-sm-10">
+                    <NavLink to={"/profile"} exact activeStyle={{color: "#FFF"}}>Mon profil</NavLink>
+                </div>
+            </div>
+
+            <div className="row mt-4">
+                <div className="col-sm-2">
                     <img className="icons-nav" src={process.env.PUBLIC_URL + "/images/icons/settings.svg"} alt="parametres"></img>
                 </div>
                 <div className="col-sm-10">

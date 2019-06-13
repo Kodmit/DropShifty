@@ -80,8 +80,8 @@ class OrderDetails extends Component {
                 if (content.msg[orderId].msg == "success") {
                     Swal.fire({
                         title: '<strong>Commande passée !</strong>',
-                        type: 'error',
-                        html: 'La commande a été passée avec succes' + '<a href="'+ config.config.chinabrand_login_url +'">Passer commande chez le fournisseur</a>',
+                        type: 'success',
+                        html: 'La commande a été passée avec succes.' + '<br><a href="'+ config.config.chinabrand_login_url +'" target="_blank">Passer commande chez le fournisseur</a>',
                         showCloseButton: true,
                         showCancelButton: false,
                         focusConfirm: false,
@@ -93,29 +93,15 @@ class OrderDetails extends Component {
                 if (content.msg[orderId].msg == "Order already placed") {
                     Swal.fire({
                         title: '<strong>Commande déjà passée !</strong>',
-                        type: 'error',
-                        html: "La commande a déjà été passée veuillez essayer avec une autre commande.",
+                        type: 'warning',
+                        html: 'La commande a déjà été passée.' + '<br><a href="'+ config.config.chinabrand_login_url +'" target="_blank">Consulter la commande chez le fournisseur</a>',
                         showCloseButton: true,
                         showCancelButton: false,
                         focusConfirm: false,
                         confirmButtonText: 'Fermer',
                         confirmButtonAriaLabel: 'Fermer'
                     });
-                }
-
-                else {
-                    Swal.fire({
-                        title: '<strong>Erreur !</strong>',
-                        type: 'error',
-                        html: "Oups ! Une erreur s'est produite veuillez réessayer.",
-                        showCloseButton: true,
-                        showCancelButton: false,
-                        focusConfirm: false,
-                        confirmButtonText: 'Fermer',
-                        confirmButtonAriaLabel: 'Fermer'
-                    });
-                }
-                
+                }                
                 
             });
         });
