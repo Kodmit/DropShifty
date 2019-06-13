@@ -4,6 +4,7 @@ import '../styles/orderDetails.scss';
 import '../styles/app.scss';
 import Header from './includes/Header';
 import NavbarSide from './includes/NavbarSide';
+import axios from 'axios';
 import 'moment';
 
 let moment = require('moment');
@@ -18,6 +19,40 @@ class OrderDetails extends Component {
         this.state = {
             orderInfos: [],
         }
+    }
+
+    passOrder() {
+        axios.post(config.config.api_url, {
+            query: `mutation PlaceOrder($data: PlaceOrderInput!) {
+                PlaceOrder(input: $data) {
+                content
+              }
+            }`,
+            variables: {
+              "data": {
+                  sku: "205214501",
+                  qty: "1",
+                  order_id: "1537",
+                  remark: "Remarque de test"
+              }
+            }
+          }, {
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            }).then((result) => {
+                let content = JSON.parse(result.data.data.PlaceOrder.content);
+                console.log(content);
+
+                if (content.status == 0) {
+                    console.log("status = 0")
+                }
+
+                if (content.status == 1) {
+                    console.log("status = 1")
+                }
+
+            });
     }
 
     componentDidMount() {
@@ -70,7 +105,7 @@ class OrderDetails extends Component {
                 <div className="main">
                     <div className="container mt-4">
                         <h2>Detail de la commande</h2>
-                        <div className="row">
+                        <div className="row mt-4">
                             <div className="col-lg-6 col-sm-12">
                                 <div className="order_detail container ml-2 mt-4">
                                     <p>N° de la commande : #{orderInfos.id}</p>
@@ -80,6 +115,7 @@ class OrderDetails extends Component {
                                     <p></p>
                                 </div>
                             </div>
+                            
                             <div className="col-lg-6 col-sm-12">
                                 <div className="order_detail container ml-2 mt-4">
                                     <p>Frais de livraison : {orderInfos.shipping_total} {orderInfos.currency}</p>
@@ -88,6 +124,10 @@ class OrderDetails extends Component {
                                     <p></p>
                                 </div>
                             </div>                         
+                        </div>
+
+                        <div>
+                            <button style={{ width: '250px' }} onClick={this.passOrder} className="btn-import float-right mt-5 mr-5">Passer la commande</button>
                         </div>
                         
                         <img id="loader-import" src="../images/loader.svg" />
