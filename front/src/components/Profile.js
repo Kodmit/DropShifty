@@ -148,7 +148,6 @@ class Profile extends Component {
         })
   }
 
-  
 
     render() {   
 
@@ -178,7 +177,7 @@ class Profile extends Component {
 
                             <div className="col-lg-6 col-sm-12">
                                 <div style={{ width: '95%' }} className="parm_form_1 container mt-4 ml-2">
-                                    <h4>Editer votre profil</h4>
+                                    <h4>Editer mon profil</h4>
                                     <form onSubmit={this.submitEditProfile}>
                                         <div className="form-group mt-4">
                                             <label htmlFor="edit_username">Nom d'utilisateur</label>

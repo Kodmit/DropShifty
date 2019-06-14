@@ -224,6 +224,41 @@ class Parameters extends Component {
         
     }
 
+    saveChinabrandAccount = (e) => {
+      e.preventDefault();
+
+      console.log("save chinabrand account");
+
+      const api_key = e.target.elements.shop_name.value;
+      const api_secret = e.target.elements.shop_description.value;
+      const username = e.target.elements.shop_city.value;
+      const password = e.target.elements.postal_code.value;
+      const shop_reseller_id = e.target.elements.shop_address.value;
+
+      axios.post(config.config.api_url, {
+        query: `mutation SaveShopResellerAccount($credentials: UserResellerInput!) {
+          SaveShopResellerAccount(input: $credentials) {
+            content
+          }
+        }`,
+        variables: {
+          "credentials": {
+            api_key: api_key,
+		        api_secret: api_secret,
+		        username: username,
+		        password: password,
+	    	    shop_reseller_id: shop_reseller_id
+          }
+        }
+      }, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then((result) => {
+          console.log(result)
+        });
+    }
+
     getUserInfos() {
       let session_username = sessionStorage.getItem('username');
 
@@ -340,27 +375,33 @@ class Parameters extends Component {
 
                           <div className="col-lg-6 col-sm-12">
                               <div style={{ width: '95%' }} className="parm_form_1 container mt-4 ml-2">
-                                  <h4>Editer votre profil</h4>
-                                  <form onSubmit={this.submitEditProfile}>
-                                      <div className="form-group mt-4">
-                                          <label htmlFor="edit_username">Nom d'utilisateur</label>
-                                          <input required="required" type="text" name="edit_username" className="_form-control" id="edit_username" placeholder="Nom d'utilisateur" value={userInfos.username} onChange={this.handleChange} />
-                                      </div>
+                                  <h4>Editer compte ChinaBrand</h4>
+                                    <div className="mt-4">
+                                        <form onSubmit={this.saveChinabrandAccount}>
+                                            <div className="form-group">
+                                                <label htmlFor="reseller_api_key">Clé api</label>
+                                                <input required="required" type="text" name="reseller_api_key" className="_form-control" id="reseller_api_key" placeholder="Clé api" value={shopInfos.reseller_api_key} onChange={this.handleChange}/>
+                                            </div>
 
-                                      <div className="form-group">
-                                          <label htmlFor="edit_email">Email</label>
-                                          <input required="required" type="text" name="edit_email" className="_form-control" id="edit_email" placeholder="Email" value={userInfos.email} onChange={this.handleChange} />
-                                      </div>
+                                            <div className="form-group">
+                                                <label htmlFor="reseller_api_secret">Clé secrete</label>
+                                                <input required="required" type="password" name="reseller_api_secret" className="_form-control" id="reseller_api_secret" placeholder="Clé secrete" value={shopInfos.reseller_api_secret} onChange={this.handleChange}/>
+                                            </div>
 
-                                      <div className="form-group">
-                                          <label htmlFor="edit_password">Mot de passe</label>
-                                          <input required="required" type="password" name="edit_password" className="_form-control" id="edit_password" placeholder="Mot de passe" />
-                                      </div>
+                                            <div className="form-group">
+                                                <label htmlFor="reseller_username">Username</label>
+                                                <input required="required" type="text" name="reseller_username" className="_form-control" id="reseller_username" placeholder="Username" value={shopInfos.reseller_username} onChange={this.handleChange}/>
+                                            </div>
 
-                                      <input type="submit" className="btn-import mt-3" value="Editer" />
-                                  </form>
+                                            <div className="form-group">
+                                                <label htmlFor="reseller_password">Mot de passe</label>
+                                                <input required="required" type="password" name="reseller_password" className="_form-control" id="reseller_password" placeholder="Mot de passe" value={shopInfos.reseller_password} onChange={this.handleChange}/>
+                                            </div>
+
+                                            <input type="submit" className="btn-import mt-3" value="Editer" />
+                                        </form>
+                                    </div>
                               </div>
-
                           </div>
                       </div>
 
@@ -424,27 +465,8 @@ class Parameters extends Component {
 
                           <div className="col-lg-6 col-sm-12">
                               <div style={{ width: '95%' }} className="parm_form_1 container mt-4 ml-2">
-                                  <h4>Editer votre profil</h4>
-                                  <form onSubmit={this.submitEditProfile}>
-                                      <div className="form-group mt-4">
-                                          <label htmlFor="edit_username">Nom d'utilisateur</label>
-                                          <input required="required" type="text" name="edit_username" className="_form-control" id="edit_username" placeholder="Nom d'utilisateur"/>
-                                      </div>
-
-                                      <div className="form-group">
-                                          <label htmlFor="edit_email">Email</label>
-                                          <input required="required" type="text" name="edit_email" className="_form-control" id="edit_email" placeholder="Email"/>
-                                      </div>
-
-                                      <div className="form-group">
-                                          <label htmlFor="edit_password">Mot de passe</label>
-                                          <input required="required" type="password" name="edit_password" className="_form-control" id="edit_password" placeholder="Mot de passe"/>
-                                      </div>
-
-                                      <input type="submit" className="btn-import mt-3" value="Editer" />
-                                  </form>
+                                  <h4>Créer compte ChinaBrand</h4>
                               </div>
-
                           </div>
                       </div>
 
