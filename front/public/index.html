@@ -260,20 +260,40 @@
 
       xhr.addEventListener("readystatechange", function () {
         if (this.readyState === this.DONE) {
-          console.log(this.responseText);
+          let object = JSON.parse(this.response);
+          let res = object;
+
+          console.log(res)
 
           document.getElementById("overlay").style.display = "none";
 
-          Swal.fire({
-          title: '<strong>Produits importés</strong>',
-          type: 'success',
-          html: 'Le produit a été importé avec succès ! Vous pouvez le consulter dans la liste des produits.',
-          showCloseButton: true,
-          showCancelButton: false,
-          focusConfirm: false,
-          confirmButtonText: 'Fermer',
-          confirmButtonAriaLabel: 'Fermer'
-        })
+          if (res.data['ImportToWc'] != "ok_simple") {
+            Swal.fire({
+              title: '<strong>Produits importés</strong>',
+              type: 'success',
+              html: 'Le produit a été importé avec succès ! Vous pouvez le consulter dans la liste des produits.',
+              showCloseButton: true,
+              showCancelButton: false,
+              focusConfirm: false,
+              confirmButtonText: 'Fermer',
+              confirmButtonAriaLabel: 'Fermer'
+            })
+          }
+          
+          if (res.errors != null) {
+            Swal.fire({
+              title: '<strong>Oups !</strong>',
+              type: 'error',
+              html: 'Le produit a déjà été importer. Veuillez en importer un autre.',
+              showCloseButton: true,
+              showCancelButton: false,
+              focusConfirm: false,
+              confirmButtonText: 'Fermer',
+              confirmButtonAriaLabel: 'Fermer'
+            })
+          }
+
+          
         }
       });
 
