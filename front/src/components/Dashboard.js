@@ -180,7 +180,7 @@ class Dashboard extends React.Component {
         let currency = "";
         let products = [];
         let productsName = [];
-
+        let totalSumDash = 0;
         
 
         $.each(ordersList, function(index, value) {
@@ -190,7 +190,12 @@ class Dashboard extends React.Component {
             products.push(value.line_items);
           }
           return index < 4; // => Limit to 5 items
+        });
 
+        $.each(ordersList, function(index, value) {
+            if (value.total != 'undefined') {
+              totalSumDash += parseFloat(value.total);
+            }
         });
 
         $.each(products, function(i, v) {
@@ -265,7 +270,7 @@ class Dashboard extends React.Component {
                                             </div>
                                             <div className="col-sm-5"></div>
                                             <div className="col-sm-5">
-                                                <p className="res_val">{totalSum.toFixed(2) || '-'} {currency}</p>
+                                                <p className="res_val">{totalSumDash.toFixed(2) || '-'} {currency}</p>
                                             </div>
                                         </div>
                                         <div className="row">
@@ -301,7 +306,7 @@ class Dashboard extends React.Component {
                                                 <p className="bold">Chiffre d'affaires</p>
                                             </div>
                                             <div className="col-sm-5">
-                                                <p className="res_val">{totalSum.toFixed(2) || '-'} {currency}</p>
+                                                <p className="res_val">{totalSumDash.toFixed(2) || '-'} {currency}</p>
                                             </div>
                                         </div>
                                     </div>

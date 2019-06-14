@@ -375,27 +375,27 @@ class Parameters extends Component {
 
                           <div className="col-lg-6 col-sm-12">
                               <div style={{ width: '95%' }} className="parm_form_1 container mt-4 ml-2">
-                                  <h4>Editer compte ChinaBrand</h4>
+                                  <h4>Compte ChinaBrand</h4>
                                     <div className="mt-4">
                                         <form onSubmit={this.saveChinabrandAccount}>
                                             <div className="form-group">
                                                 <label htmlFor="reseller_api_key">Clé api</label>
-                                                <input required="required" type="text" name="reseller_api_key" className="_form-control" id="reseller_api_key" placeholder="Clé api" value={shopInfos.reseller_api_key} onChange={this.handleChange}/>
+                                                <input required="required" type="text" name="reseller_api_key" className="_form-control" id="reseller_api_key" placeholder="Clé api" value="078bb812d6292a9f78eade8957a1b6a6" onChange={this.handleChange}/>
                                             </div>
 
                                             <div className="form-group">
                                                 <label htmlFor="reseller_api_secret">Clé secrete</label>
-                                                <input required="required" type="password" name="reseller_api_secret" className="_form-control" id="reseller_api_secret" placeholder="Clé secrete" value={shopInfos.reseller_api_secret} onChange={this.handleChange}/>
+                                                <input required="required" type="password" name="reseller_api_secret" className="_form-control" id="reseller_api_secret" placeholder="Clé secrete" value="2177686781" onChange={this.handleChange}/>
                                             </div>
 
                                             <div className="form-group">
-                                                <label htmlFor="reseller_username">Username</label>
-                                                <input required="required" type="text" name="reseller_username" className="_form-control" id="reseller_username" placeholder="Username" value={shopInfos.reseller_username} onChange={this.handleChange}/>
+                                                <label htmlFor="reseller_username">Nom d'utilisateur</label>
+                                                <input required="required" type="text" name="reseller_username" className="_form-control" id="reseller_username" placeholder="Nom d'utilisateur" value="alexandre.bly60@gmail.com" onChange={this.handleChange}/>
                                             </div>
 
                                             <div className="form-group">
                                                 <label htmlFor="reseller_password">Mot de passe</label>
-                                                <input required="required" type="password" name="reseller_password" className="_form-control" id="reseller_password" placeholder="Mot de passe" value={shopInfos.reseller_password} onChange={this.handleChange}/>
+                                                <input required="required" type="password" name="reseller_password" className="_form-control" id="reseller_password" placeholder="Mot de passe" value="totodu93" onChange={this.handleChange}/>
                                             </div>
 
                                             <input type="submit" className="btn-import mt-3" value="Editer" />
