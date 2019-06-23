@@ -155,7 +155,7 @@ class Dashboard extends React.Component {
                 $.each(objectParsed, function( index, value ) {
                     arrSells.push(value.total);
                     arrDates.push(moment(value.date_created).format('DD/MM/YYYY'));
-
+                    return index < 15; // => Limit to 15 results ChartDatas.
                 });
 
                 let chartData = {...self.state.chartData};
@@ -268,7 +268,7 @@ class Dashboard extends React.Component {
 
                             <div className="col-lg-4 col-sm-12">
                                 <div className="overview _shadow">
-                                    <p className="p-2 bold">Vue d'ensemble</p>
+                                    <h5 className="p-2 bold">Vue d'ensemble</h5>
 
                                     <div className="separator"></div>
 
@@ -297,10 +297,9 @@ class Dashboard extends React.Component {
 
                                     <div className="container mt-2">
                                         <div className="row">
-                                            <div className="col-sm-2">
+                                            <div className="col-sm-7">
                                                 <p className="bold">Dernière vente</p>
                                             </div>
-                                            <div className="col-sm-5"></div>
                                             <div className="col-sm-5">
                                                 <p className="res_val">{lastSell}</p>
                                             </div>
