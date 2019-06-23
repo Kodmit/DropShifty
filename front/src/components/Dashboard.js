@@ -25,7 +25,7 @@ class Dashboard extends React.Component {
                 labels:[],
                 datasets:[
                     {
-                        label: "Chiffre d'affaires",
+                        label: "Ventes",
                         data: [],
                         backgroundColor:[
                             '#4e73df',
@@ -35,6 +35,7 @@ class Dashboard extends React.Component {
             },
             ordersList: [],
             amount: [],
+            lastSell: '',
          }
       }
 
@@ -154,6 +155,7 @@ class Dashboard extends React.Component {
                 $.each(objectParsed, function( index, value ) {
                     arrSells.push(value.total);
                     arrDates.push(moment(value.date_created).format('DD/MM/YYYY'));
+
                 });
 
                 let chartData = {...self.state.chartData};
@@ -163,6 +165,10 @@ class Dashboard extends React.Component {
 
                 chartData.labels = arrDates.reverse();
                 self.setState({chartData});
+
+                self.setState({
+                    lastSell: arrDates[[arrDates.length-1]]
+                })
             }
         });
 
@@ -175,12 +181,15 @@ class Dashboard extends React.Component {
 
     render() {
 
+        console.log(this.state.ordersList)
+
         let ordersList = this.state.ordersList;
         let totalSum = 0;
         let currency = "";
         let products = [];
         let productsName = [];
         let totalSumDash = 0;
+        let lastSell = this.state.lastSell;
         
 
         $.each(ordersList, function(index, value) {
@@ -289,11 +298,11 @@ class Dashboard extends React.Component {
                                     <div className="container mt-2">
                                         <div className="row">
                                             <div className="col-sm-2">
-                                                <p className="bold">Coûts</p>
+                                                <p className="bold">Dernière vente</p>
                                             </div>
                                             <div className="col-sm-5"></div>
                                             <div className="col-sm-5">
-                                                <p className="res_val">-</p>
+                                                <p className="res_val">{lastSell}</p>
                                             </div>
                                         </div>
                                     </div>

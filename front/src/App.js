@@ -45,8 +45,11 @@ class App extends Component {
 
     componentDidMount() {
 
-        $(window).scrollTop(0);
-        $(".main").scrollTop(0);
+        /*
+        if (this.state.connected === false) {
+            window.location = '/login';
+        }
+        */
       
         /*
         setTimeout(() => {
@@ -87,9 +90,12 @@ class App extends Component {
                 let object = JSON.parse(this.response);
                 let res = object.data['CheckIfConnected'];
 
+                //console.log(res)
+
                 self.setState({
                     connected: res
                 });
+
             }
         });
     }
@@ -105,7 +111,8 @@ class App extends Component {
     }
 
     render() {
-        if (this.state.connected == true) {
+
+        if (this.state.connected === true) {
             return (
                 <ApolloProvider client={client}>
                     <Router>
@@ -131,7 +138,7 @@ class App extends Component {
                     </Router>
                 </ApolloProvider>
             );
-        } else if (this.state.connected == false){
+        } else if (this.state.connected === false) {
             return (
                 <Router>
                     <div>
