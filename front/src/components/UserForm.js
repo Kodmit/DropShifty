@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/login.scss';
-import '../styles/app.scss';
 import axios from 'axios';
 //import Alert from '../components/includes/alert/Alert';
 import $ from "jquery";
@@ -134,6 +133,7 @@ class UserForm extends Component {
     render() {
         return (
             <ApolloProvider client={client}>
+                <style>{'body, html { background-color: #4e73df !important; }'}</style>
                 <div className="login_view container">
                     <div id="user_form" className="container">
                         <h1 className="_center">DropShifty</h1>

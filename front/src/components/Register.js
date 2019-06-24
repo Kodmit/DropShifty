@@ -107,6 +107,7 @@ class Register extends Component {
     render() {
         return (
             <div className="login_view">
+                <style>{'body, html { background-color: #4e73df !important; }'}</style>
                 <div id="user_form" className="container register_form">                    
                     <h1 className="_center">DropShifty</h1>
 
