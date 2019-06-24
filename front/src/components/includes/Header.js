@@ -99,23 +99,23 @@ class Header extends Component {
                     <div className="mt-5">
 
                     <div className="col-12 mt-3">
-                        <NavLink to={"/"} exact activeStyle={{color: "#2653d4"}}>Tableau de bord</NavLink>
+                        <NavLink to={"/"} exact activeStyle={{color: "#000"}}>Tableau de bord</NavLink>
                     </div>
 
                     <div className="col-12 mt-3">
-                        <NavLink to={"/orders"} exact activeStyle={{color: "#2653d4"}}>Commandes</NavLink>
+                        <NavLink to={"/orders"} exact activeStyle={{color: "#000"}}>Commandes</NavLink>
                     </div>
 
                     <div className="col-12 mt-3">
-                        <NavLink to={"/products"} exact activeStyle={{color: "#2653d4"}}>Mes produits</NavLink>
+                        <NavLink to={"/products"} exact activeStyle={{color: "#000"}}>Mes produits</NavLink>
                     </div>
 
                     <div className="col-12 mt-3">
-                        <NavLink to={"/notifications"} exact activeStyle={{color: "#2653d4"}}>Notifications</NavLink>
+                        <NavLink to={"/notifications"} exact activeStyle={{color: "#000"}}>Notifications</NavLink>
                     </div>
 
                     <div className="col-12 mt-3">
-                        <NavLink to={"/profile"} exact activeStyle={{color: "#2653d4"}}>Mon profil</NavLink>
+                        <NavLink to={"/profile"} exact activeStyle={{color: "#000"}}>Mon profil</NavLink>
                     </div>
 
                     <div className="col-12 mt-3">
