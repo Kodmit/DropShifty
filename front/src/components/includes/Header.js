@@ -78,18 +78,10 @@ class Header extends Component {
             <div>
               <header>
                 <p style={{ textTransform: 'capitalize' }} className="welcome_user">Bienvenue {sessionStorage.getItem('username')}</p>
-                <div className="row">
-                    <div className="col-5">
-                        <i id="bars" className="burger fa fa-bars" aria-hidden="true"></i>
-                        {/*<a href="/"><img className="logo" src="/logo.png" alt="logo" /></a>*/}
-                    </div>
+                <h3 style={{ display: 'none' }} className="dropshifty_header_mobile">DropShifty</h3>
+                <i id="bars" className="burger fa fa-bars" aria-hidden="true"></i>
+                <a className="logout_btn mt-1" onClick={this.logout}><i style={{ color: 'red', fontSize: '20px' }} class="fas fa-power-off"></i></a>
                     
-                    <div className="col-7">
-                        {/*<NavLink to={"/edit-profile"}>Editer profil</NavLink>*/}
-                        {/*<NavLink to={"/profile"}>Mon profil</NavLink>*/}
-                        <a className="logout_btn mt-1" onClick={this.logout}><i style={{ color: 'red', fontSize: '20px' }} class="fas fa-power-off"></i></a>
-                    </div>
-                </div>
               </header>
 
               <div style={{ display: 'none' }} id="mobile_nav">

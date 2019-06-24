@@ -25,9 +25,8 @@ header {
   a.logout_btn {
     right: 0;
     position: absolute;
-    margin-right: 55px;
-    top: -43px;
-    color: $white !important;
+    margin-right: 20px;
+    top: 20px;
     cursor: pointer;
     &:hover {
       transition: 0.5s;
@@ -329,6 +328,9 @@ footer {
   font-weight: bold;
   margin-top: 19px;
   margin-left: 219px;
+  @media only screen and (max-width: 790px) {
+    display: none;
+  }
 }
 
 ._pagination {
@@ -337,7 +339,7 @@ footer {
 
 .burger {
   position: absolute;
-  margin-top: -40px;
+  margin-top: -35px;
   color: #4e73df;
   font-size: 24px;
   margin-left: 25px;
@@ -375,3 +377,13 @@ footer {
     transition: 0.5s;
   }
 }
+
+.dropshifty_header_mobile {
+  color: #4e73df;
+  text-align: center;
+  margin-top: 15px;
+  @media only screen and (max-width: 790px) {
+    display: block !important;
+  }
+}
+
