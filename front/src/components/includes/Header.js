@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-//import { NavLink } from 'react-router-dom';
-//import $ from 'jquery';
+import {NavLink} from 'react-router-dom';
+import $ from 'jquery';
 
 const config = require('./config.json');
 
@@ -16,6 +16,14 @@ class Header extends Component {
       if (sessionStorage.getItem('username') != null) {
         this.getUserInfos();
       }
+
+      $("#bars").click(function() {
+          $("#mobile_nav").fadeIn(500);
+      });
+
+      $("#close_nav").click(function() {
+        $("#mobile_nav").fadeOut(500);
+      });
     }
 
     getUserInfos() {
@@ -67,10 +75,12 @@ class Header extends Component {
         let username = this.state.userInfos.username;
 
         return (
-            <header>
+            <div>
+              <header>
                 <p style={{ textTransform: 'capitalize' }} className="welcome_user">Bienvenue {sessionStorage.getItem('username')}</p>
                 <div className="row">
                     <div className="col-5">
+                        <i id="bars" className="burger fa fa-bars" aria-hidden="true"></i>
                         {/*<a href="/"><img className="logo" src="/logo.png" alt="logo" /></a>*/}
                     </div>
                     
@@ -80,7 +90,46 @@ class Header extends Component {
                         <a className="logout_btn mt-1" onClick={this.logout}><i style={{ color: 'red', fontSize: '20px' }} class="fas fa-power-off"></i></a>
                     </div>
                 </div>
-            </header>
+              </header>
+
+              <div style={{ display: 'none' }} id="mobile_nav">
+                  <div className="container row p-3">
+                    <i id="close_nav" className="ml-3 fas fa-times"></i>
+
+                    <div className="mt-5">
+
+                    <div className="col-12 mt-3">
+                        <NavLink to={"/"} exact activeStyle={{color: "#2653d4"}}>Tableau de bord</NavLink>
+                    </div>
+
+                    <div className="col-12 mt-3">
+                        <NavLink to={"/orders"} exact activeStyle={{color: "#2653d4"}}>Commandes</NavLink>
+                    </div>
+
+                    <div className="col-12 mt-3">
+                        <NavLink to={"/products"} exact activeStyle={{color: "#2653d4"}}>Mes produits</NavLink>
+                    </div>
+
+                    <div className="col-12 mt-3">
+                        <NavLink to={"/notifications"} exact activeStyle={{color: "#2653d4"}}>Notifications</NavLink>
+                    </div>
+
+                    <div className="col-12 mt-3">
+                        <NavLink to={"/profile"} exact activeStyle={{color: "#2653d4"}}>Mon profil</NavLink>
+                    </div>
+
+                    <div className="col-12 mt-3">
+                        <NavLink to={"/parameters"} exact activeStyle={{color: "#2653d4"}}>Parametres</NavLink>
+                    </div>
+
+
+                    </div>
+
+                  </div>
+              </div>
+
+            </div>
+            
         );
     }
 

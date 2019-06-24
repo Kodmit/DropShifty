@@ -14,7 +14,7 @@ import Parameters from './components/Parameters';
 import Login from './components/class/Login';
 import Register from './components/Register';
 import NoMatch from './components/NoMatch';
-import { Route, BrowserRouter as Router, Switch, Link } from "react-router-dom";
+import { Route, BrowserRouter as Router, Switch, Link, Redirect } from "react-router-dom";
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient from "apollo-boost";
 import axios from 'axios';

@@ -153,8 +153,6 @@ class Profile extends Component {
 
         let userInfos = this.state.userInfos;
 
-        console.log(userInfos)
-
         return (
             <div className="grid-container">
                 <Header/>
@@ -169,7 +167,7 @@ class Profile extends Component {
                                     <h4>Mes informations</h4>
                                     <div className="container mt-3">
                                         <p>Nom d'utilisateur : {userInfos.username || "-"}</p>
-                                        <p>Nom : {userInfos.lastname || "-"}</p>
+                                        <p style={{ textTransform: 'capitalize' }}>Nom : {userInfos.username || "-"}</p>
                                         <p>Adresse e-mail : {userInfos.email || "-"}</p>
                                     </div>
                                 </div>

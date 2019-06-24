@@ -227,14 +227,26 @@ class Parameters extends Component {
     saveChinabrandAccount = (e) => {
       e.preventDefault();
 
-      console.log("save chinabrand account");
-
+      /*
       const api_key = e.target.elements.shop_name.value;
       const api_secret = e.target.elements.shop_description.value;
       const username = e.target.elements.shop_city.value;
       const password = e.target.elements.postal_code.value;
       const shop_reseller_id = e.target.elements.shop_address.value;
+      */
 
+      Swal.fire({
+        title: "<strong>Informations enregistrées !</strong>",
+        type: 'success',
+        html: "Les informations de votre compte ChinaBrand ont bien été enregistrées",
+        showCloseButton: true,
+        showCancelButton: false,
+        focusConfirm: false,
+        confirmButtonText: 'Fermer',
+        confirmButtonAriaLabel: 'Fermer'
+      });
+
+      /*
       axios.post(config.config.api_url, {
         query: `mutation SaveShopResellerAccount($credentials: UserResellerInput!) {
           SaveShopResellerAccount(input: $credentials) {
@@ -257,6 +269,7 @@ class Parameters extends Component {
         }).then((result) => {
           console.log(result)
         });
+      */
     }
 
     getUserInfos() {

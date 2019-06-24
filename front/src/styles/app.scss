@@ -58,6 +58,12 @@ footer {
     'header header'
     'menu main';
   background-color: $background;
+  @media only screen and (max-width: 790px) {
+    grid-template-columns: 220px 1fr;
+    grid-template-areas:
+      'header header'
+      'main main';
+  }
 }
 
 .logo {
@@ -99,6 +105,9 @@ footer {
   }
   .icons-nav {
     width: 25px;
+  }
+  @media only screen and (max-width: 790px) {
+    display: none;
   }
 }
 
@@ -323,4 +332,45 @@ footer {
 
 ._pagination {
   display: table;
+}
+
+.burger {
+  position: absolute;
+  margin-top: -40px;
+  color: #4e73df;
+  font-size: 24px;
+  margin-left: 25px;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.9;
+    transition: 0.5s;
+  }
+}
+
+#mobile_nav {
+  height: 100vh;
+  background-color: #FFF;
+  width: 300px;
+  position: absolute;
+  z-index: 1000;
+  color: #4e73df;
+  a {
+    color: #4e73df;
+    font-size: 16px;
+    text-decoration: none;
+    &:hover {
+      opacity: 0.9;
+      transition: 0.5s;
+    }
+  }
+}
+
+#close_nav {
+  font-size: 19px;
+  color: red;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.9;
+    transition: 0.5s;
+  }
 }

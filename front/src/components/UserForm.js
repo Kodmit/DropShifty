@@ -134,7 +134,7 @@ class UserForm extends Component {
     render() {
         return (
             <ApolloProvider client={client}>
-                <div className="login_view">
+                <div className="login_view container">
                     <div id="user_form" className="container">
                         <h1 className="_center">DropShifty</h1>
 

@@ -19,6 +19,12 @@ body, html {
     padding-left: 100px;
     padding-right: 100px;
     height: 450px;
+    @media only screen and (max-width: 790px) {
+        width: 95%;
+        transform: translateY(-25%);
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }
 
 ._link {
