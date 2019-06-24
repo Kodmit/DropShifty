@@ -101,7 +101,7 @@ class NavbarSide extends Component {
                 </div>
                 <div className="col-sm-2"></div>
                 <div className="col-sm-10">
-                    <NavLink to={"/imported"} exact activeStyle={{color: "#FFF"}}>Produits importés</NavLink>
+                    {/*<NavLink to={"/imported"} exact activeStyle={{color: "#FFF"}}>Produits importés</NavLink>*/}
                 </div>
                 <div className="col-sm-2"></div>
                 <div className="col-sm-10">

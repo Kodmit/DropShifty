@@ -28,10 +28,12 @@ class Notifications extends Component {
   
       
     componentDidMount() {
+        document.getElementById("loader-import").style.display = "block";
         this.getOrdersList();
     }
 
     getOrdersList() {
+
         axios.post(config.config.api_url, {
             query: `{
                 WC_GetOrdersList
@@ -46,6 +48,9 @@ class Notifications extends Component {
                 this.setState({
                     ordersList: res
                 });
+
+                document.getElementById("loader-import").style.display = "none";
+
             });
     }
 
@@ -54,13 +59,15 @@ class Notifications extends Component {
 
         let orders = this.state.ordersList;
 
-        console.log(orders)
-
         $(orders).each(function(index, value) {
             if (moment(value.date_created).format('DD/MM/YYYY') == moment().format('DD/MM/YYYY')) {
                 $('.content_notifications').append('<div class="notification mt-3"><p>' + 'Une nouvelle commande passée le ' + moment().format('DD/MM/YYYY') +  '</p></div>')
             }
         });
+
+        if ( $('.content_notifications').children().length == 0 ) {
+            $('.content_notifications').append('<div class="notification mt-3"><p>' + "Aucune notification" +  '</p></div>')
+        }
 
         return (
             <div className="grid-container">
@@ -71,9 +78,9 @@ class Notifications extends Component {
                         <h4>Notifications du jour</h4>
                     </div>
 
-                    <div className="content_notifications container mt-4">
+                    <div className="content_notifications container mt-4"></div>
 
-                    </div>
+                    <img id="loader-import" src="../images/loader.svg" />
                 </div>
             </div>
         );
