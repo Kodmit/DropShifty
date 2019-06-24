@@ -265,7 +265,7 @@ class Dashboard extends React.Component {
                             </div>
 
                             <div className="col-lg-4 col-sm-12">
-                                <div className="overview _shadow">
+                                <div className="overview _shadow mt-lg-0 mt-5">
                                     <h5 className="p-2 bold">Vue d'ensemble</h5>
 
                                     <div className="separator"></div>
@@ -325,7 +325,7 @@ class Dashboard extends React.Component {
 
                         <h3>Derniers produits vendus</h3>
 
-                        <div className="container selling-products mt-4 _shadow">
+                        <div className="container selling-products mt-4 _shadow mt-lg-0 mt-5">
                             {items}
                         </div>
 
