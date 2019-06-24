@@ -9,6 +9,8 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
 import Header from './includes/Header';
 import NavbarSide from './includes/NavbarSide';
+import { Editor } from '@tinymce/tinymce-react';
+
 
 const config = require('../components/includes/config.json');
 
@@ -20,10 +22,12 @@ class EditProduct extends Component {
 
         this.state = {
             productInfos: [],
-            description: ''
+            description: '',
+            desc_tiny: ''
         }
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleEditorChange = this.handleEditorChange.bind(this);
     }
 
     componentDidMount() {
@@ -34,7 +38,7 @@ class EditProduct extends Component {
     handleChange(event) {
         this.setState({
             productInfos: event.target.value,
-            description: event.target.value,
+            //description: event.target.value,
         });
     }
 
@@ -71,11 +75,14 @@ class EditProduct extends Component {
 
         const id = this.props.match.params.id;
         const title  = e.target.elements.edit_title.value;
-        const description = e.target.elements.edit_description.value;
+        //const description = e.target.elements.edit_description.value;
+        const description = this.state.desc_tiny;
         const price = e.target.elements.edit_price.value;
         const stock = e.target.elements.edit_stock.value;
 
-        let data = "{\"query\":\"{\\n  EditProduct(id:" + id + ", name: " + '\\\"' + title + '\\\"' + ", description: " + '\\\"' + description + '\\\"' + ", price: " + '\\\"' + price + '\\\"' + ", stock: " + stock + ")\\n}\"}";
+        let desc = description.replace(/\r?\n|\r/g, ""); // => Regex to fix html in json
+
+        let data = "{\"query\":\"{\\n  EditProduct(id:" + id + ", name: " + '\\\"' + title + '\\\"' + ", description: " + '\\\"' + desc + '\\\"' + ", price: " + '\\\"' + price + '\\\"' + ", stock: " + stock + ")\\n}\"}";
         
         let xhr = new XMLHttpRequest();
 
@@ -86,9 +93,10 @@ class EditProduct extends Component {
                 document.getElementById("overlay").style.display = "none";
 
                 let object = JSON.parse(this.response);
+                console.log(object)
+
                 let objectParsed = object.data.EditProduct;
 
-                console.log(objectParsed)
 
                 if (objectParsed == 'product_edited') {
                     Swal.fire({
@@ -125,9 +133,20 @@ class EditProduct extends Component {
               
     }
 
+    
+    handleEditorChange(e) {
+        console.log('Content was updated:', e.target.getContent());
+        this.setState({
+            desc_tiny: e.target.getContent()
+        })
+    }
+    
+
     render() {
 
         let productInfos = this.state.productInfos;
+
+        console.log(productInfos.description)
 
         return (
             <div className="grid-container">
@@ -157,10 +176,25 @@ class EditProduct extends Component {
                                         <input required="required" type="number" name="edit_stock" className="_form-control" id="edit_stock" placeholder="Stock" value={productInfos.stock_quantity} onChange={this.handleChange} />
                                     </div>
 
+                                    {/* 
                                     <div className="form-group">
                                         <label htmlFor="edit_description">Description</label>
                                         <textarea style={{ height: "150px" }} required="required" name="edit_description" className="_form-control" id="edit_description" placeholder="Description" value={productInfos.desc} onChange={this.handleChange} />
                                     </div>
+                                    */}
+                                    
+                                    <p>Description</p>
+                                    <Editor
+                                        init={{
+                                        plugins: 'link image code',
+                                        toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
+                                        }}
+                                        onChange={this.handleEditorChange}
+                                        placeholder="Entrer la descrption du produit"
+                                        name="edit_description"
+                                        value={productInfos.description}
+                                        apiKey={config.config.tiny_mce_api_key}
+                                    />
 
                                     <input type="submit" className="btn-import mt-3" value="Editer produit" />
                                 </form>         

@@ -69,6 +69,7 @@ class ProductDetails extends Component {
         let productInfos = this.state.productInfos;
 
         $.each( productInfos, function( key, value ) {
+            console.log(value)
             $(".infosList h2").append(value.name);
             $('.imgsList').append('<img class="img_product_detail _shadow mx-auto d-block" src='+value.images[0].src+' />');
             $('.price').append("Prix : " + value.price_html);

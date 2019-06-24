@@ -2,6 +2,7 @@
     "config": {
         "api_url": "https://ds-api2.herokuapp.com",
         "chinabrand_api_url": "https://gloapi.chinabrands.com/v2/product/index",
-        "chinabrand_login_url": "https://www.chinabrands.com/site/login.html?rel=/"
+        "chinabrand_login_url": "https://www.chinabrands.com/site/login.html?rel=/",
+        "tiny_mce_api_key": "3bgmze7vjiupcr4r6n86zasxw3txa79sl6n88upf2s8kyzmp"
     }
 }

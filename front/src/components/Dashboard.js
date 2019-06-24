@@ -181,8 +181,6 @@ class Dashboard extends React.Component {
 
     render() {
 
-        console.log(this.state.ordersList)
-
         let ordersList = this.state.ordersList;
         let totalSum = 0;
         let currency = "";
