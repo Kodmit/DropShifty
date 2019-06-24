@@ -68,7 +68,7 @@ class Header extends Component {
 
         return (
             <header>
-                <p style={{ textTransform: 'capitalize' }} className="welcome_user">Bienvenue {username}</p>
+                <p style={{ textTransform: 'capitalize' }} className="welcome_user">Bienvenue {sessionStorage.getItem('username')}</p>
                 <div className="row">
                     <div className="col-5">
                         {/*<a href="/"><img className="logo" src="/logo.png" alt="logo" /></a>*/}

@@ -230,11 +230,11 @@ class ImportProducts extends Component {
                         <h3>Importer des produits</h3>
 
                         <div style={{ paddingLeft: '50px', paddingRight: '50px' }}>
-                            <form className="form-import-product" onSubmit={this.submitImport}>
+                            <form className="form-import-product" onSubmit={this.ds_product_submit}>
                                 <div className="form-group">
                                     <label htmlFor="sku">Entrer le code SKU du produit à importer</label>
                                     <input required="required" type="text" className="_form-control" id="sku" name={'sku'} placeholder="Code SKU du produit" />
-                                    <input onClick={this.ds_product_submit} className="btn-import mt-3" type="submit" value="Valider" />
+                                    <input className="btn-import mt-3" type="submit" value="Valider" />
                                 </div>
                             </form>
 
