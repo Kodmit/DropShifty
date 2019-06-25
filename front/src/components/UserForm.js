@@ -89,11 +89,11 @@ class UserForm extends Component {
                             if (response == 'already logged in') {
                                 Swal.fire({
                                     type: 'success',
-                                    title: 'Déjà connecté',
+                                    title: 'Connexion réssie',
                                     showCloseButton: false,
                                     showCancelButton: false,
                                     focusConfirm: false,
-                                    html: 'Vous êtes déjà connecté, vous allez être redirigé vers votre tableau de bord',
+                                    html: 'Connexion réussie, vous allez être redirigé vers votre tableau de bord',
                                 });
                                 window.location.replace('/');
                             }

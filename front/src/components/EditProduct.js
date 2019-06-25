@@ -146,7 +146,7 @@ class EditProduct extends Component {
 
         let productInfos = this.state.productInfos;
 
-        console.log(productInfos.description)
+        console.log(productInfos)
 
         return (
             <div className="grid-container">
@@ -168,7 +168,7 @@ class EditProduct extends Component {
 
                                     <div className="form-group">
                                         <label htmlFor="edit_price">Prix</label>
-                                        <input required="required" type="float" name="edit_price" className="_form-control" id="edit_price" placeholder="Prix" value={productInfos.regular_price} onChange={this.handleChange} />
+                                        <input required="required" type="float" name="edit_price" className="_form-control" id="edit_price" placeholder="Prix" value={productInfos.price} onChange={this.handleChange} />
                                     </div>
 
                                     <div className="form-group">

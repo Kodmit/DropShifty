@@ -49,32 +49,17 @@ class App extends Component {
 
     componentDidMount() {
 
-        /*
-        if (this.state.connected === false) {
-            window.location = '/login';
+        //sessionStorage.removeItem('username');
+        
+        if (sessionStorage.getItem('username') == "" || sessionStorage.getItem('username') == undefined) {
+            this.logout();
         }
-        */
-      
-        /*
-        setTimeout(() => {
-            let current_url = window.location.href;
-            let arr_url = current_url.split("/");
-            let complete_domain = arr_url[0] + "//" + arr_url[2];
-
-            let uriRegister = complete_domain + '/register';
-            let uriLogin = complete_domain + '/login';
-            if (window.location.href == uriRegister || window.location.href == uriLogin) {
-                document.getElementById("login").style.display = "none";
-            }
-        }, 2100); */
-
+        
         this.authenticate().then(() => {
             const ele = document.getElementById('ipl-progress-indicator');
             if (ele) {
-              // fade out
               ele.classList.add('available')
               setTimeout(() => {
-                // remove from DOM
                 ele.outerHTML = ''
               }, 2000);
             }
