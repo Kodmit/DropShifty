@@ -101,6 +101,10 @@ class Header extends Component {
                     </div>
 
                     <div className="col-12 mt-3">
+                        <NavLink to={"/import"} exact activeStyle={{color: "#FFF"}}>Importer produit</NavLink>
+                    </div>
+
+                    <div className="col-12 mt-3">
                         <NavLink to={"/products"} exact activeStyle={{color: "#000"}}>Mes produits</NavLink>
                     </div>
 

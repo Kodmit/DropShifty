@@ -100,7 +100,7 @@ class ImportProducts extends Component {
     // Import all variables products
     import_all_products() {
 
-        document.getElementById("overlay").style.display = "block";
+        $("#overlay").css("display", "block");
 
         let sku = document.getElementById("sku").value;
         let category = document.getElementById("ds_cats").value;
@@ -112,7 +112,7 @@ class ImportProducts extends Component {
         xhr.addEventListener("readystatechange", function () {
             if (this.readyState === this.DONE) {
                 //console.log(this.responseText);
-                document.getElementById("overlay").style.display = "none";
+                $("#overlay").css("display", "none");
 
                 Swal.fire({
                     title: '<strong>Produits importés</strong>',

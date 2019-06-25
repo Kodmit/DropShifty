@@ -50,7 +50,7 @@ class Orders extends Component {
     }
 
     ds_call(arg, handledata) {
-        document.getElementById("loader-import").style.display = "block";
+        $("#loader-import").css("display", "block");
 
         let self = this;
         let data = "{\"query\":\"{\\n\\t " + arg + " \\n}\"}";
@@ -66,7 +66,7 @@ class Orders extends Component {
                     ordersList: objectParsed
                 });
 
-                document.getElementById("loader-import").style.display = "none";
+                $("#loader-import").css("display", "none");
 
             }
         });

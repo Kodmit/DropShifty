@@ -28,7 +28,8 @@ class Notifications extends Component {
   
       
     componentDidMount() {
-        document.getElementById("loader-import").style.display = "block";
+        
+        $("#loader-import").css("display", "block")
         this.getOrdersList();
     }
 
@@ -49,7 +50,7 @@ class Notifications extends Component {
                     ordersList: res
                 });
 
-                document.getElementById("loader-import").style.display = "none";
+                $("#loader-import").css("display", "none")
 
             });
     }
