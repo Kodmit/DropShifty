@@ -73,8 +73,20 @@ class Header extends Component {
 
 
     render() {
+      
+        let userInfos = [];
 
-        let username = this.state.userInfos.username;
+        userInfos.push(this.state.userInfos);
+
+        let shopUrl = '';
+
+        if (this.state.userInfos != null || this.state.userInfos != undefined) {
+          $(userInfos).each(function(index, element) {
+            $(element.shops).each(function(i, elem) {
+              shopUrl = elem.url;
+            });
+          });
+        }
 
         return (
             <div>
@@ -101,7 +113,7 @@ class Header extends Component {
                     </div>
 
                     <div className="col-12 mt-3">
-                        <NavLink to={"/import"} exact activeStyle={{color: "#FFF"}}>Importer produit</NavLink>
+                        <NavLink to={"/import"} exact activeStyle={{color: "#000"}}>Importer produit</NavLink>
                     </div>
 
                     <div className="col-12 mt-3">
@@ -110,6 +122,10 @@ class Header extends Component {
 
                     <div className="col-12 mt-3">
                         <NavLink to={"/notifications"} exact activeStyle={{color: "#000"}}>Notifications</NavLink>
+                    </div>
+
+                    <div className="col-12 mt-3">
+                        <a href={shopUrl || ''} target="_blank">Mon site</a>
                     </div>
 
                     <div className="col-12 mt-3">
