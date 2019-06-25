@@ -55,9 +55,9 @@ class UserForm extends Component {
             axios.defaults.withCredentials = true;
             axios.post(config.config.api_url + '/login?username=' + user + '&password=' + pass)
                 .then((res) => {
-                    console.log(res.data);
+                    //console.log(res.data);
                     let response = res.data.response;
-                    console.log(response);
+                    //console.log(response);
 
                     let self = this;
                     let data = "{\"query\":\"{\\n\\t " + 'CheckIfConnected' + " \\n}\"}";

@@ -93,7 +93,7 @@ class EditProduct extends Component {
                 document.getElementById("overlay").style.display = "none";
 
                 let object = JSON.parse(this.response);
-                console.log(object)
+                //console.log(object)
 
                 let objectParsed = object.data.EditProduct;
 
@@ -135,7 +135,7 @@ class EditProduct extends Component {
 
     
     handleEditorChange(e) {
-        console.log('Content was updated:', e.target.getContent());
+        //console.log('Content was updated:', e.target.getContent());
         this.setState({
             desc_tiny: e.target.getContent()
         })
@@ -146,7 +146,7 @@ class EditProduct extends Component {
 
         let productInfos = this.state.productInfos;
 
-        console.log(productInfos)
+        //console.log(productInfos)
 
         return (
             <div className="grid-container">

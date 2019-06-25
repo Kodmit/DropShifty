@@ -40,10 +40,6 @@ class Chart extends Component {
     componentDidMount() {
         this.getOrdersList();
     }
-
-    componentDidUpdate() {
-        console.log("update")
-    }
     
     getOrdersList() {
         this.ds_call("WC_GetOrdersList");
@@ -86,18 +82,6 @@ class Chart extends Component {
     }
 
     render() {
-
-        /*
-        let orderList = this.state.ordersList;
-        let arr = [];
-
-        $.each(orderList, function( index, value ) {
-            console.log("test")
-            console.log( value.total );
-            arr.push(value.total);
-            self.setState({amount: arr});
-        });
-        */
 
         return (
             <div className="chart _shadow">

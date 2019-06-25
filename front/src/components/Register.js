@@ -73,7 +73,7 @@ class Register extends Component {
                 }, 4000); 
                 
             } else {
-                console.log("Mots de passe différents");
+                //console.log("Mots de passe différents");
 
                 Swal.fire({
                     type: 'error',
@@ -95,7 +95,7 @@ class Register extends Component {
                 html: "Une erreur s'est produite",
             });
         }
-        console.log("Click on submit register")
+        //console.log("Click on submit register")
     };
 
     registerBtn = () => {

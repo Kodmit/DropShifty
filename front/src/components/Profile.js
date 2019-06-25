@@ -57,7 +57,7 @@ class Profile extends Component {
               'Content-Type': 'application/json'
             }
           }).then((result) => {
-            console.log(result.data);
+            //console.log(result.data);
 
             if(result.data.data.NewUser.content == 'user_edited') {
                 Swal.fire({

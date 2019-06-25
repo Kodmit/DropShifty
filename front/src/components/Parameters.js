@@ -43,7 +43,7 @@ class Parameters extends Component {
 
         xhr.addEventListener("readystatechange", function () {
             if (this.readyState === this.DONE) {
-                console.log(this.response);
+                //console.log(this.response);
                 let object = JSON.parse(this.response);
                 handledata(object.data[arg]);
             }
@@ -79,7 +79,7 @@ class Parameters extends Component {
               'Content-Type': 'application/json'
             }
           }).then((result) => {
-            console.log(result.data);
+            //console.log(result.data);
 
             if(result.data.data.NewUser.content == 'user_edited') {
                 Swal.fire({

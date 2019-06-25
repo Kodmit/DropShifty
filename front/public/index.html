@@ -241,11 +241,11 @@
           let object = JSON.parse(this.response);
           let res = object;
 
-          console.log(res)
+          console.log(res.data)
 
           document.getElementById("overlay").style.display = "none";
 
-          if (res.data['ImportToWc'] != "ok_simple") {
+          if (res.data['ImportToWc'] == "ok_simple") {
             Swal.fire({
               title: '<strong>Produits importés</strong>',
               type: 'success',
