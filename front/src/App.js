@@ -23,6 +23,10 @@ import OrderDetails from './components/OrderDetails';
 import EditProduct from './components/EditProduct';
 import Profile from './components/Profile';
 import $ from 'jquery';
+import {
+    CSSTransition,
+    TransitionGroup,
+  } from 'react-transition-group';
 
 const config = require('./components/includes/config.json');
 
@@ -120,20 +124,32 @@ class App extends Component {
                             <Route path="/login" component={Login} exact />
                             <Route path="/register" component={Register} exact />
 
-                            <Switch>
-                                <Route path="/" component={Dashboard} exact/>
-                                <Route path="/orders" component={Orders} exact />
-                                <Route path="/order/:id" render={(props) => <OrderDetails {...props}/>} exact />
-                                <Route path="/import" component={ImportProducts} exact />
-                                <Route path="/imported" component={ImportedProducts} exact />
-                                <Route path="/products" component={MyProducts} exact />
-                                <Route path="/product/:id" render={(props) => <ProductDetails {...props}/>} exact />
-                                <Route path="/product/edit/:id" render={(props) => <EditProduct {...props}/>} exact />
-                                <Route path="/notifications" component={Notifications} exact />
-                                <Route path="/profile" component={Profile} exact />
-                                <Route path="/parameters" component={Parameters} exact />
-                                <Route path="" component={NoMatch} exact />
-                            </Switch>
+                            <Route render={({location}) => (
+                                <TransitionGroup>
+                                    <CSSTransition
+                                    key={location.key}
+                                    timeout={450}
+                                    classNames="fade"
+                                    >
+
+                                        <Switch>
+                                            <Route path="/" component={Dashboard} exact/>
+                                            <Route path="/orders" component={Orders} exact />
+                                            <Route path="/order/:id" render={(props) => <OrderDetails {...props}/>} exact />
+                                            <Route path="/import" component={ImportProducts} exact />
+                                            <Route path="/imported" component={ImportedProducts} exact />
+                                            <Route path="/products" component={MyProducts} exact />
+                                            <Route path="/product/:id" render={(props) => <ProductDetails {...props}/>} exact />
+                                            <Route path="/product/edit/:id" render={(props) => <EditProduct {...props}/>} exact />
+                                            <Route path="/notifications" component={Notifications} exact />
+                                            <Route path="/profile" component={Profile} exact />
+                                            <Route path="/parameters" component={Parameters} exact />
+                                            <Route path="" component={NoMatch} exact />
+                                        </Switch>
+
+                                    </CSSTransition>
+                                </TransitionGroup>
+                            )} />
                         </div>
                     </Router>
                 </ApolloProvider>
