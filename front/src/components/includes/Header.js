@@ -19,11 +19,13 @@ class Header extends Component {
 
       $("#bars").click(function() {
           $("#mobile_nav").fadeIn(500);
+          window.scrollTo(0, 0);
       });
 
       $("#close_nav").click(function() {
         $("#mobile_nav").fadeOut(500);
       });
+      
     }
 
     getUserInfos() {
