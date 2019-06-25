@@ -3,7 +3,7 @@
 .order-box {
   background-color: #FFF;
   width: 100%;
-  height: 120px;
+  min-height: 120px;
   .text-order-box {
     display: flex;
     p {
