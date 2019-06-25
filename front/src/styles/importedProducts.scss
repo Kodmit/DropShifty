@@ -42,7 +42,9 @@
 }
 
 .descProduct {
+  max-height: 150px;
   @media only screen and (max-width: 790px) {
     margin-left: 45px;
+    overflow: hidden;
   }
 }
