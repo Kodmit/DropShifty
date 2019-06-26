@@ -46,7 +46,7 @@ class OrderDetails extends Component {
                 line_items_arr.push(value);
             });
 
-            //console.log(line_items_arr[0]);
+            console.log(line_items_arr);
             //console.log(orderInfos.billing)
 
             axios.post(config.config.api_url, {
@@ -73,9 +73,11 @@ class OrderDetails extends Component {
                 'Content-Type': 'application/json'
                 }
             }).then((result) => {
-                let content = JSON.parse(result.data.data.PlaceOrder.content);
+                console.log(result.data)
+                let content = JSON.parse(result.data.data.PlaceOrder.content) || "";
+                //let errors = JSON.parse(result.data.errors) || "";
                 //let content = JSON.parse(result);
-                console.log(content.msg[orderId]);
+                //console.log(content.msg[orderId]);
                 
                 if (content.msg[orderId].msg == "success") {
                     Swal.fire({
@@ -101,7 +103,34 @@ class OrderDetails extends Component {
                         confirmButtonText: 'Fermer',
                         confirmButtonAriaLabel: 'Fermer'
                     });
-                }                
+                }
+                
+                if (content.msg[orderId].msg == "Shipping method is not available") {
+                    Swal.fire({
+                        title: "<strong>Méthode d'envoi non renseignée !</strong>",
+                        type: 'warning',
+                        html: "La méthode d'envoi n'a pas été renseignée, vous pouvez consulter l'ajouter à partir de votre compte" + '<br><a href="'+ config.config.chinabrand_login_url +'" target="_blank">Consulter la commande chez le fournisseur</a>',
+                        showCloseButton: true,
+                        showCancelButton: false,
+                        focusConfirm: false,
+                        confirmButtonText: 'Fermer',
+                        confirmButtonAriaLabel: 'Fermer'
+                    });
+                }
+                /*
+                else {
+                    Swal.fire({
+                        title: '<strong>Oups !</strong>',
+                        type: 'warning',
+                        html: "Une erreur s'est produite lors du passage de la commande.",
+                        showCloseButton: true,
+                        showCancelButton: false,
+                        focusConfirm: false,
+                        confirmButtonText: 'Fermer',
+                        confirmButtonAriaLabel: 'Fermer'
+                    });
+                }
+                */
                 
             });
         });
@@ -121,7 +150,7 @@ class OrderDetails extends Component {
     }
 
     ds_call(arg, handledata) {
-        document.getElementById("loader-import").style.display = "block";
+        $("#loader-import").css("display", "block");
 
         let self = this;
         let data = "{\"query\":\"{\\n\\t " + arg + " \\n}\"}";
@@ -138,7 +167,7 @@ class OrderDetails extends Component {
                     line_items: objectParsed.line_items
                 });
 
-                document.getElementById("loader-import").style.display = "none";
+                $("#loader-import").css("display", "none");
                 
             }
         });

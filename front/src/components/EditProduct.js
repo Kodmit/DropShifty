@@ -93,7 +93,7 @@ class EditProduct extends Component {
                 document.getElementById("overlay").style.display = "none";
 
                 let object = JSON.parse(this.response);
-                //console.log(object)
+                console.log(object)
 
                 let objectParsed = object.data.EditProduct;
 
@@ -109,7 +109,9 @@ class EditProduct extends Component {
                         confirmButtonText: 'Fermer',
                         confirmButtonAriaLabel: 'Fermer'
                     })
-                } else {
+                } 
+                
+                if (objectParsed == undefined || objectParsed == null || objectParsed == "") {
                     Swal.fire({
                         title: '<strong>Oups !</strong>',
                         type: 'error',
