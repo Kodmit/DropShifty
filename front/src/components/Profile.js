@@ -57,9 +57,21 @@ class Profile extends Component {
               'Content-Type': 'application/json'
             }
           }).then((result) => {
-            console.log(result.data);
+            //console.log(result.data);
 
             if(result.data.data.NewUser.content == 'user_edited') {
+                Swal.fire({
+                    title: '<strong>Utilisateur modifié !</strong>',
+                    type: 'success',
+                    html: 'Vos informations ont bien été modfiées',
+                    showCloseButton: true,
+                    showCancelButton: false,
+                    focusConfirm: false,
+                    confirmButtonText: 'Fermer',
+                    confirmButtonAriaLabel: 'Fermer'
+                });
+
+                /* Si deconnecter popup de redirection
                 Swal.fire({
                     title: '<strong>Utilisateur modifié !</strong>',
                     type: 'success',
@@ -70,6 +82,7 @@ class Profile extends Component {
                     confirmButtonText: 'Fermer',
                     confirmButtonAriaLabel: 'Fermer'
                 });
+                */
             } else {
                 Swal.fire({
                     title: '<strong>Oups !</strong>',
