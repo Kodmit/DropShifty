@@ -109,7 +109,7 @@ class OrderDetails extends Component {
                     Swal.fire({
                         title: "<strong>Méthode d'envoi non renseignée !</strong>",
                         type: 'warning',
-                        html: "La méthode d'envoi n'a pas été renseignée, vous pouvez consulter l'ajouter à partir de votre compte" + '<br><a href="'+ config.config.chinabrand_login_url +'" target="_blank">Consulter la commande chez le fournisseur</a>',
+                        html: "La méthode d'envoi n'a pas été renseignée, vous pouvez l'ajouter à partir de votre compte" + '<br><a href="'+ config.config.chinabrand_login_url +'" target="_blank">Consulter la commande chez le fournisseur</a>',
                         showCloseButton: true,
                         showCancelButton: false,
                         focusConfirm: false,
@@ -117,7 +117,7 @@ class OrderDetails extends Component {
                         confirmButtonAriaLabel: 'Fermer'
                     });
                 }
-                /*
+                
                 else {
                     Swal.fire({
                         title: '<strong>Oups !</strong>',
@@ -130,7 +130,7 @@ class OrderDetails extends Component {
                         confirmButtonAriaLabel: 'Fermer'
                     });
                 }
-                */
+                
                 
             });
         });

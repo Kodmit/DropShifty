@@ -57,13 +57,13 @@ class Profile extends Component {
               'Content-Type': 'application/json'
             }
           }).then((result) => {
-            //console.log(result.data);
+            console.log(result.data);
 
             if(result.data.data.NewUser.content == 'user_edited') {
                 Swal.fire({
                     title: '<strong>Utilisateur modifié !</strong>',
                     type: 'success',
-                    html: 'Vos informations ont bien été modfiées',
+                    html: 'Vos informations ont bien été modfiées vous allez être déconnecté veuillez vous reconnecter' + '<br><a href="/login">Vous reconnecter</a>',
                     showCloseButton: true,
                     showCancelButton: false,
                     focusConfirm: false,

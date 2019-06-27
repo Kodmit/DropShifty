@@ -62,13 +62,16 @@ class Notifications extends Component {
 
         $(orders).each(function(index, value) {
             if (moment(value.date_created).format('DD/MM/YYYY') == moment().format('DD/MM/YYYY')) {
-                $('.content_notifications').append('<div class="notification mt-3"><p>' + 'Une nouvelle commande passée le ' + moment().format('DD/MM/YYYY') +  '</p></div>')
+                $('.content_notifications').append('<div class="notification notif mt-3"><p>' + 'Une nouvelle commande passée le ' + moment().format('DD/MM/YYYY') +  '</p></div>')
             }
         });
 
-        if ( $('.content_notifications').children().length == 0 ) {
+        /*
+        if ( $('.notif').text().length != 0 ) {
+            //console.log("in condition")
             $('.content_notifications').append('<div class="notification mt-3"><p>' + "Aucune notification" +  '</p></div>')
         }
+        */
 
         return (
             <div className="grid-container">
