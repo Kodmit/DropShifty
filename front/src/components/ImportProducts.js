@@ -43,59 +43,65 @@ class ImportProducts extends Component {
     }
 
     // Import single product
-    import_product(sku) {
+    /*
+    function import_product(sku) {
+
+        let api_url = "https://ds-api2.herokuapp.com";
+    
         document.getElementById("overlay").style.display = "block";
-
-        //let category = 2089;
-
-        // Working
-        let data = '{\"query\":\"{\\n\\tImportToWc(sku:' + '\\\"' + sku + '\\\"' + ', cat_id: 2089, type: \\\"simple\\\")\\n\\t}\"}';
-
-
+    
+        let category = document.getElementById("ds_cats").value;
+    
+        let data = "{\"query\":\"{\\n\\tImportToWc(sku: " + sku +  ", cat_id: " + category + ", type: \\\"simple\\\")\\n}\"}";
+    
         let xhr = new XMLHttpRequest();
         xhr.withCredentials = true;
-
-        //console.log(data);
-
+    
         xhr.addEventListener("readystatechange", function () {
-            if (this.readyState === this.DONE) {
-                //console.log(this.responseText);
-
-                let object = JSON.parse(this.response);
-                let res = object.data['ImportToWc'];
-
-                if (res == 'ok_simple') {
-                    Swal.fire({
-                        title: '<strong>Produits importés</strong>',
-                        type: 'success',
-                        html: 'Le produit a été importé avec succès ! Vous pouvez le consulter dans la liste des produits.',
-                        showCloseButton: true,
-                        showCancelButton: false,
-                        focusConfirm: false,
-                        confirmButtonText: 'Fermer',
-                        confirmButtonAriaLabel: 'Fermer'
-                    });
-                } else {
-                    Swal.fire({
-                        title: '<strong>Oups</strong>',
-                        type: 'error',
-                        html: "Aucun produit ne correspond au code SKU renseigné",
-                        showCloseButton: true,
-                        showCancelButton: false,
-                        focusConfirm: false,
-                        confirmButtonText: 'Fermer',
-                        confirmButtonAriaLabel: 'Fermer'
-                    });
-                }
-                document.getElementById("overlay").style.display = "none";
+          if (this.readyState === this.DONE) {
+            let object = JSON.parse(this.response);
+            let res = object;
+    
+            console.log(res.data)
+    
+            document.getElementById("overlay").style.display = "none";
+    
+            if (res.data['ImportToWc'] == "ok_simple") {
+              Swal.fire({
+                title: '<strong>Produits importés</strong>',
+                type: 'success',
+                html: 'Le produit a été importé avec succès ! Vous pouvez le consulter dans la liste des produits.',
+                showCloseButton: true,
+                showCancelButton: false,
+                focusConfirm: false,
+                confirmButtonText: 'Fermer',
+                confirmButtonAriaLabel: 'Fermer'
+              })
             }
+            
+            if (res.errors != null) {
+              Swal.fire({
+                title: '<strong>Oups !</strong>',
+                type: 'error',
+                html: 'Le produit a déjà été importer. Veuillez en importer un autre.',
+                showCloseButton: true,
+                showCancelButton: false,
+                focusConfirm: false,
+                confirmButtonText: 'Fermer',
+                confirmButtonAriaLabel: 'Fermer'
+              })
+            }
+    
+            
+          }
         });
-
-        xhr.open("POST", config.config.api_url);
+    
+        xhr.open("POST", api_url);
         xhr.setRequestHeader("content-type", "application/json");
-
+    
         xhr.send(data);
     }
+    */
 
     // Import all variables products
     import_all_products() {
