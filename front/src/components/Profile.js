@@ -38,64 +38,80 @@ class Profile extends Component {
         const username = e.target.elements.edit_username.value;
         const email = e.target.elements.edit_email.value;
         const password = e.target.elements.edit_password.value;
+        const confirm_password = e.target.elements.confirm_edit_password.value;
 
-        axios.post(config.config.api_url, {
-          query: `mutation NewUser($user: UserInput!) {
-            NewUser(input: $user) {
-              content
+        if (password == confirm_password) {
+          axios.post(config.config.api_url, {
+            query: `mutation NewUser($user: UserInput!) {
+              NewUser(input: $user) {
+                content
+              }
+            }`,
+            variables: {
+              "user": {
+                  username: username,
+                  email: email,
+                  password: password
+              }
             }
-          }`,
-          variables: {
-            "user": {
-                username: username,
-                email: email,
-                password: password
-            }
-          }
-        }, {
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          }).then((result) => {
-            //console.log(result.data);
+          }, {
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            }).then((result) => {
+              //console.log(result.data);
+  
+              if(result.data.data.NewUser.content == 'user_edited') {
+                  Swal.fire({
+                      title: '<strong>Utilisateur modifié !</strong>',
+                      type: 'success',
+                      html: 'Vos informations ont bien été modfiées',
+                      showCloseButton: true,
+                      showCancelButton: false,
+                      focusConfirm: false,
+                      confirmButtonText: 'Fermer',
+                      confirmButtonAriaLabel: 'Fermer'
+                  });
+  
+                  /* Si deconnecter popup de redirection
+                  Swal.fire({
+                      title: '<strong>Utilisateur modifié !</strong>',
+                      type: 'success',
+                      html: 'Vos informations ont bien été modfiées vous allez être déconnecté veuillez vous reconnecter' + '<br><a href="/login">Vous reconnecter</a>',
+                      showCloseButton: true,
+                      showCancelButton: false,
+                      focusConfirm: false,
+                      confirmButtonText: 'Fermer',
+                      confirmButtonAriaLabel: 'Fermer'
+                  });
+                  */
+              } else {
+                  Swal.fire({
+                      title: '<strong>Oups !</strong>',
+                      type: 'error',
+                      html: "Une erreur s'est produite lors de l'édition",
+                      showCloseButton: true,
+                      showCancelButton: false,
+                      focusConfirm: false,
+                      confirmButtonText: 'Fermer',
+                      confirmButtonAriaLabel: 'Fermer'
+                  });
+              }
+            });
+        } else {
+            Swal.fire({
+              title: '<strong>Oups !</strong>',
+              type: 'warning',
+              html: "Les mots de passe ne sont pas égaux",
+              showCloseButton: true,
+              showCancelButton: false,
+              focusConfirm: false,
+              confirmButtonText: 'Fermer',
+              confirmButtonAriaLabel: 'Fermer'
+            });
+        }
 
-            if(result.data.data.NewUser.content == 'user_edited') {
-                Swal.fire({
-                    title: '<strong>Utilisateur modifié !</strong>',
-                    type: 'success',
-                    html: 'Vos informations ont bien été modfiées',
-                    showCloseButton: true,
-                    showCancelButton: false,
-                    focusConfirm: false,
-                    confirmButtonText: 'Fermer',
-                    confirmButtonAriaLabel: 'Fermer'
-                });
-
-                /* Si deconnecter popup de redirection
-                Swal.fire({
-                    title: '<strong>Utilisateur modifié !</strong>',
-                    type: 'success',
-                    html: 'Vos informations ont bien été modfiées vous allez être déconnecté veuillez vous reconnecter' + '<br><a href="/login">Vous reconnecter</a>',
-                    showCloseButton: true,
-                    showCancelButton: false,
-                    focusConfirm: false,
-                    confirmButtonText: 'Fermer',
-                    confirmButtonAriaLabel: 'Fermer'
-                });
-                */
-            } else {
-                Swal.fire({
-                    title: '<strong>Oups !</strong>',
-                    type: 'error',
-                    html: "Une erreur s'est produite lors de l'édition",
-                    showCloseButton: true,
-                    showCancelButton: false,
-                    focusConfirm: false,
-                    confirmButtonText: 'Fermer',
-                    confirmButtonAriaLabel: 'Fermer'
-                });
-            }
-          });
+        
     }
 
     handleChange(event) {
@@ -200,9 +216,16 @@ class Profile extends Component {
                                             <input required="required" type="text" name="edit_email" className="_form-control" id="edit_email" placeholder="Email" value={userInfos.email} onChange={this.handleChange} />
                                         </div>
 
+                                        <p style={{ fontWeight: "bold" }}>Confirmer mot de passe</p>
+
                                         <div className="form-group">
                                             <label htmlFor="edit_password">Mot de passe</label>
                                             <input required="required" type="password" name="edit_password" className="_form-control" id="edit_password" placeholder="Mot de passe"/>
+                                        </div>
+
+                                        <div className="form-group">
+                                            <label htmlFor="confirm_edit_password">Confirmer mot de passe</label>
+                                            <input required="required" type="password" name="confirm_edit_password" className="_form-control" id="confirm_edit_password" placeholder="Confirmer mot de passe"/>
                                         </div>
 
                                         <input type="submit" className="btn-import mt-3" value="Editer" />
