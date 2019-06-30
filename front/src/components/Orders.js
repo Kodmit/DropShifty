@@ -126,8 +126,6 @@ class Orders extends Component {
 
                     <div className="mb-5"></div>
 
-                    {console.log(this.state.ordersList.length)}
-
                     <div className="_pagination mt-5 mx-auto">
                         <Pagination
                             activePage={this.state.activePage}

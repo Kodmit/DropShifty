@@ -152,7 +152,7 @@ class Parameters extends Component {
               'Content-Type': 'application/json'
             }
           }).then((result) => {
-              console.log(result.data);
+              //console.log(result.data);
               if (!result.data.errors) {
                 Swal.fire({
                     title: '<strong>Informations enregistrées !</strong>',
@@ -168,7 +168,7 @@ class Parameters extends Component {
                 self.ds_call("CheckIfWCApiFilled", function(output) {
                     if (!output) {
                         self.ds_call("GenWcLink", function(link) {
-                            console.log(link)
+                            //console.log(link)
                             Swal.fire({
                                 type: 'error',
                                 title: 'Oups...',

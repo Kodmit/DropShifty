@@ -169,13 +169,13 @@ class ImportProducts extends Component {
     	let product_sku = document.getElementById("sku").value;
 
     	this.fetch_product("chinabrands", product_sku, function(output) {
-    		//console.log(output);
+    	//console.log(output);
 
         if (output.status === 0) {
           Swal.fire({
-              title: '<strong>Produit non existant</strong>',
+              title: '<strong>Oups !</strong>',
               type: 'error',
-              html: "Le sku du produit que vous avez importé n'a pas été trouvé",
+              html: "Une erreur s'est produite",
               showCloseButton: true,
               showCancelButton: false,
               focusConfirm: false,

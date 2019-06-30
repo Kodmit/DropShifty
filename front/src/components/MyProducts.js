@@ -49,7 +49,7 @@ class MyProducts extends Component {
                     'Content-Type': 'application/json'
                     }
                 }).then((result) => {
-                    console.log(result.data);
+                    //console.log(result.data);
                     Swal.fire(
                         'Supprimé !',
                         'Le produit a bien été supprimé.',

@@ -46,8 +46,8 @@ class OrderDetails extends Component {
                 line_items_arr.push(value);
             });
 
-            console.log(line_items_arr);
-            console.log(orderInfos.billing)
+            //console.log(line_items_arr);
+            //console.log(orderInfos.billing)
 
             let content = "";
 
@@ -76,7 +76,7 @@ class OrderDetails extends Component {
                 'Content-Type': 'application/json'
                 }
             }).then((result) => {
-                console.log(result.data.data)
+                //console.log(result.data.data)
                 content = JSON.parse(result.data.data.PlaceOrder.content);
                 //let errors = JSON.parse(result.data.errors) || "";
                 //let content = JSON.parse(result);
