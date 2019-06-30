@@ -47,7 +47,10 @@ class OrderDetails extends Component {
             });
 
             console.log(line_items_arr);
-            //console.log(orderInfos.billing)
+            console.log(orderInfos.billing)
+
+            let content = "";
+
 
             axios.post(config.config.api_url, {
                 query: `mutation PlaceOrder($data: PlaceOrderInput!) {
@@ -73,11 +76,12 @@ class OrderDetails extends Component {
                 'Content-Type': 'application/json'
                 }
             }).then((result) => {
-                console.log(result.data)
-                let content = JSON.parse(result.data.data.PlaceOrder.content) || "";
+                console.log(result.data.data)
+                content = JSON.parse(result.data.data.PlaceOrder.content);
                 //let errors = JSON.parse(result.data.errors) || "";
                 //let content = JSON.parse(result);
                 //console.log(content.msg[orderId]);
+                
                 
                 if (content.msg[orderId].msg == "success") {
                     Swal.fire({
@@ -118,11 +122,11 @@ class OrderDetails extends Component {
                     });
                 }
                 
-                else {
+                if (content === null || content === undefined) {
                     Swal.fire({
-                        title: '<strong>Oups !</strong>',
+                        title: '<strong>Commande déjà passée !</strong>',
                         type: 'warning',
-                        html: "Une erreur s'est produite lors du passage de la commande.",
+                        html: 'La commande a déjà été passée.' + '<br><a href="'+ config.config.chinabrand_login_url +'" target="_blank">Consulter la commande chez le fournisseur</a>',
                         showCloseButton: true,
                         showCancelButton: false,
                         focusConfirm: false,
@@ -130,6 +134,7 @@ class OrderDetails extends Component {
                         confirmButtonAriaLabel: 'Fermer'
                     });
                 }
+
                 
                 
             });

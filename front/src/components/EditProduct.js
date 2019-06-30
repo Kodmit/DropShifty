@@ -80,6 +80,8 @@ class EditProduct extends Component {
         const price = e.target.elements.edit_price.value;
         const stock = e.target.elements.edit_stock.value;
 
+        console.log(price)
+
         let desc = description.replace(/\r?\n|\r/g, ""); // => Regex to fix html in json
 
         let data = "{\"query\":\"{\\n  EditProduct(id:" + id + ", name: " + '\\\"' + title + '\\\"' + ", description: " + '\\\"' + desc + '\\\"' + ", price: " + '\\\"' + price + '\\\"' + ", stock: " + stock + ")\\n}\"}";
@@ -93,7 +95,7 @@ class EditProduct extends Component {
                 document.getElementById("overlay").style.display = "none";
 
                 let object = JSON.parse(this.response);
-                console.log(object)
+                //console.log(object)
 
                 let objectParsed = object.data.EditProduct;
 
