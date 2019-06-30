@@ -66,6 +66,13 @@ class Notifications extends Component {
             }
         });
 
+        //FadeOut notifications on click
+        $(".notification").each(function(index, value) {
+            $(value).click(function() {
+                $(this).fadeOut();
+            })
+        });
+
         /*
         if ( $('.notif').text().length != 0 ) {
             //console.log("in condition")
