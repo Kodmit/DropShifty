@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "react-motion": "^0.5.2",
     "sweetalert": "^2.1.2",
     "sweetalert2": "^8.8.0"
